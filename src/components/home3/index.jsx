@@ -51,8 +51,6 @@ import {
   Pattern02,
   Pattern03,
   Pattern04,
-  PatternSvg5,
-  PatternSvg6,
   Shape01,
   Shape02,
   StudentIcon,
@@ -69,11 +67,11 @@ import {
 } from "../imagepath";
 import { TopCategories2 } from "./slider/topCategories";
 import { Trending3 } from "./slider/trendingCourse";
-import { Testimonial3 } from "./slider/testimonial";
 import Select from "react-select";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import CountUp from "react-countup";
+import Testinomal from "./Testinomal";
 
 const options = [
   { label: "Select category", value: "category" },
@@ -5242,53 +5240,7 @@ export const Home3 = () => {
       {/* Leading companies */}
 
       {/* Testimonial */}
-      <section className="testimonial-three">
-        <div className="container">
-          <div className="testimonial-pattern">
-            <img className="pattern-left img-fluid" alt="" src={PatternSvg5} />
-            <img className="pattern-right img-fluid" alt="" src={PatternSvg6} />
-          </div>
-          <div className="testimonial-three-content">
-            <div className="row align-items-center">
-              <div
-                className="col-xl-4 col-lg-12 col-md-12"
-                data-aos="fade-down"
-              >
-                <div className="become-content">
-                  <h2 className="aos-init aos-animate">They Trusted us</h2>
-                  <h4 className="aos-init aos-animate">
-                    We are a very happy because we have a happy customer
-                  </h4>
-                </div>
-
-                {/* View all Testimonail */}
-                <Link
-                  to="/instructor/instructor-profile"
-                  className="btn btn-action aos-init aos-animate"
-                  data-aos="fade-up"
-                >
-                  View all Testimonial
-                </Link>
-                {/* View all Testimonail */}
-              </div>
-              <div
-                className="col-xl-8 col-lg-12 col-md-12"
-                data-aos="fade-down"
-              >
-                {/* Swiper Element */}
-                <div
-                  className="swiper-testimonial-three"
-                  style={{ width: "100%", height: "400px" }}
-                >
-                  <Testimonial3 />
-                </div>
-                {/* <Testimonial03 /> */}
-                {/* Swiper Element */}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Testinomal/>
       {/* Testimonial */}
 
       {/* Latest Blog */}
