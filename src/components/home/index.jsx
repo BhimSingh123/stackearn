@@ -50,7 +50,7 @@ import Companies from "./slider/companies";
 // import Loginbg from "../../assets/img/banner.png";
 // import UserLove from "../../assets/img/user-love.jpg";
 import Blog from "./slider/blog";
-import Footer from "../footer";
+import Footer from "../footer3";
 import Testimonial from "./slider/testimonial";
 import Select from "react-select";
 import { Link } from "react-router-dom";

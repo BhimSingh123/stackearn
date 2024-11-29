@@ -123,24 +123,7 @@ const Header = () => {
                   >
                     Home <i className="fas fa-chevron-down" />
                   </Link>
-                  <ul
-                    className={
-                      mobileSubMenu ? "submenu submenuShow" : "submenu"
-                    }
-                  >
-                    <li className="active">
-                      <Link to="/home">Home</Link>
-                    </li>
-                    <li>
-                      <Link to="/home2">Home Two</Link>
-                    </li>
-                    <li>
-                      <Link to="/home3">Home Three</Link>
-                    </li>
-                    <li>
-                      <Link to="/home4">Home Four</Link>
-                    </li>
-                  </ul>
+                
                 </li>
                 <li className="has-submenu">
                   <Link to="/home" onClick={openMobileSubMenu2}>
