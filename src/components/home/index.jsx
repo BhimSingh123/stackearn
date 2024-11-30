@@ -1483,7 +1483,10 @@ export const Home = () => {
         {/* /Blog */}
 
         {/* Footer */}
+        <div className="home-three">
+
         <Footer3 />
+        </div>
         {/* /Footer */}
       </div>
     </>

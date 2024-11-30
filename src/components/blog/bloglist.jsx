@@ -512,8 +512,11 @@ const BlogList = () => {
           </div>
         </div>
       </section>
+      <div className="home-three">
+
       {/* <Footer/> */}
       <Footer3/>
+      </div>
       </div>
       
     </>

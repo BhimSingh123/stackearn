@@ -461,8 +461,11 @@ const BlogModern = () => {
                     </div>
                 </div>
             </section>
+        <div className="home-three">
+
             <Footer3/>
-        </div>
+            </div>
+            </div>
     </>
   )
 }

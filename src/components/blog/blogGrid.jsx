@@ -639,7 +639,9 @@ const BlogGrid = () => {
           </div>
         </section>
         {/* <Footer /> */}
+        <div className="home-three">
         <Footer3/>
+        </div>
       </div>
     </>
   );
