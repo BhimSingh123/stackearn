@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Filter, Grid, List, Search } from "react-feather";
 import { Link } from "react-router-dom";
-import Footer from "../../footer";
 import {
   Icon1,
   Icon2,
@@ -15,9 +14,10 @@ import {
   User4,
   User5,
 } from "../../imagepath";
-import { InstructorHeader } from "../../instructor/header";
 import { useSelector } from "react-redux";
 import Select from "react-select";
+import Header from "../../header";
+import { Footer3 } from "../../footer3";
 
 export default function InstructorGrid() {
   const mobileSidebar = useSelector(
@@ -73,33 +73,12 @@ export default function InstructorGrid() {
     }),
   };
   return (
+    <>
     <div className="main-wrapper">
-      <InstructorHeader activeMenu={"Grid"} />
-      {/* BreadCrumb */}
-      <div className="breadcrumb-bar">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12 col-12">
-              <div className="breadcrumb-list">
-                <nav aria-label="breadcrumb" className="page-breadcrumb">
-                  <ol className="breadcrumb">
-                    <li className="breadcrumb-item">
-                      <Link to="index">Home</Link>
-                    </li>
-                    <li className="breadcrumb-item">Pages</li>
-                    <li className="breadcrumb-item">Instructors Grid</li>
-                  </ol>
-                </nav>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* BreadCrumb */}
+<Header/>
 
-      {/* Page Wrapper */}
-      <div className="page-content">
-        <div className="container">
+      <div className="page-content home-slide d-flex align-items-center">
+        <div className="container  mt-5">
           <div className="row">
             <div className="col-lg-9">
               {/* Filter */}
@@ -702,7 +681,12 @@ export default function InstructorGrid() {
         </div>
       </div>
       {/* Page Wrapper */}
-      <Footer />
+      {/* <Footer /> */}
+      <div className="home-three">
+
+<Footer3 />
+</div>
     </div>
+    </>
   );
 }

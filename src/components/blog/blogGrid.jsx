@@ -3,14 +3,9 @@ import { Link } from "react-router-dom";
 // import Header from "../header";
 import {
   Blog1,
-  Blog10,
-  Blog11,
-  Blog12,
-  Blog13,
   Blog2,
   Blog3,
   Blog8,
-  Blog9,
   Icon22,
   Icon23,
 } from "../imagepath";
@@ -115,64 +110,7 @@ const BlogGrid = () => {
                         <Link to="/blog-details">
                           <img
                             className="img-fluid"
-                            src={Blog9}
-                            alt="Post Image"
-                          />
-                        </Link>
-                      </div>
-                      <div className="blog-grid-box">
-                        <div className="blog-info clearfix">
-                          <div className="post-left">
-                            <ul>
-                              <li>
-                                <img
-                                  className="img-fluid"
-                                  src={Icon22}
-                                  alt=""
-                                />
-                                May 24, 2024
-                              </li>
-                              <li>
-                                <img
-                                  className="img-fluid"
-                                  src={Icon23}
-                                  alt=""
-                                />
-                                Programming, Courses
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                        <h3 className="blog-title">
-                          <Link to="/blog-details">
-                            Expand Your Career Opportunities With Python
-                          </Link>
-                        </h3>
-                        <div className="blog-content blog-read">
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing
-                            elit. Phasellus hendrerit. Sed egestas, ante et
-                            vulputate volutpat, eros pede […]
-                          </p>
-                          <Link
-                            to="/blog-details"
-                            className="read-more btn btn-primary"
-                          >
-                            Read More
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                    {/* /Blog Post */}
-                  </div>
-                  <div className="col-md-6 col-sm-12">
-                    {/* Blog Post */}
-                    <div className="blog grid-blog">
-                      <div className="blog-image">
-                        <Link to="/blog-details">
-                          <img
-                            className="img-fluid"
-                            src={Blog10}
+                            src={Blog8}
                             alt="Post Image"
                           />
                         </Link>
@@ -202,7 +140,7 @@ const BlogGrid = () => {
                         </div>
                         <h3 className="blog-title">
                           <Link to="/blog-details">
-                            Complete PHP Programming Career Guideline
+                            Learn Webs Applications Development from Experts
                           </Link>
                         </h3>
                         <div className="blog-content blog-read">
@@ -221,15 +159,14 @@ const BlogGrid = () => {
                       </div>
                     </div>
                     {/* /Blog Post */}
-                  </div>
-                  <div className="col-md-6 col-sm-12">
+                  </div><div className="col-md-6 col-sm-12">
                     {/* Blog Post */}
                     <div className="blog grid-blog">
                       <div className="blog-image">
                         <Link to="/blog-details">
                           <img
                             className="img-fluid"
-                            src={Blog11}
+                            src={Blog8}
                             alt="Post Image"
                           />
                         </Link>
@@ -244,64 +181,7 @@ const BlogGrid = () => {
                                   src={Icon22}
                                   alt=""
                                 />
-                                Sep 18, 2024
-                              </li>
-                              <li>
-                                <img
-                                  className="img-fluid"
-                                  src={Icon23}
-                                  alt=""
-                                />
-                                Programming, Courses
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                        <h3 className="blog-title">
-                          <Link to="/blog-details">
-                            Programming Content Guideline For Beginners
-                          </Link>
-                        </h3>
-                        <div className="blog-content blog-read">
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing
-                            elit. Phasellus hendrerit. Sed egestas, ante et
-                            vulputate volutpat, eros pede […]
-                          </p>
-                          <Link
-                            to="/blog-details"
-                            className="read-more btn btn-primary"
-                          >
-                            Read More
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                    {/* /Blog Post */}
-                  </div>
-                  <div className="col-md-6 col-sm-12">
-                    {/* Blog Post */}
-                    <div className="blog grid-blog">
-                      <div className="blog-image">
-                        <Link to="/blog-details">
-                          <img
-                            className="img-fluid"
-                            src={Blog12}
-                            alt="Post Image"
-                          />
-                        </Link>
-                      </div>
-                      <div className="blog-grid-box">
-                        <div className="blog-info clearfix">
-                          <div className="post-left">
-                            <ul>
-                              <li>
-                                <img
-                                  className="img-fluid"
-                                  src={Icon22}
-                                  alt=""
-                                />
-                                Jun 26, 2024
+                                Jun 14, 2024
                               </li>
                               <li>
                                 <img
@@ -316,7 +196,7 @@ const BlogGrid = () => {
                         </div>
                         <h3 className="blog-title">
                           <Link to="/blog-details">
-                            The Complete JavaScript Course for Beginners
+                            Learn Webs Applications Development from Experts
                           </Link>
                         </h3>
                         <div className="blog-content blog-read">
@@ -335,15 +215,14 @@ const BlogGrid = () => {
                       </div>
                     </div>
                     {/* /Blog Post */}
-                  </div>
-                  <div className="col-md-6 col-sm-12">
+                  </div><div className="col-md-6 col-sm-12">
                     {/* Blog Post */}
                     <div className="blog grid-blog">
                       <div className="blog-image">
                         <Link to="/blog-details">
                           <img
                             className="img-fluid"
-                            src={Blog13}
+                            src={Blog8}
                             alt="Post Image"
                           />
                         </Link>
@@ -358,7 +237,7 @@ const BlogGrid = () => {
                                   src={Icon22}
                                   alt=""
                                 />
-                                Feb 14, 2024
+                                Jun 14, 2024
                               </li>
                               <li>
                                 <img
@@ -366,14 +245,182 @@ const BlogGrid = () => {
                                   src={Icon23}
                                   alt=""
                                 />
-                                Programming, Courses
+                                Programming, Web Design
                               </li>
                             </ul>
                           </div>
                         </div>
                         <h3 className="blog-title">
                           <Link to="/blog-details">
-                            Learn Mobile Applications Development from Experts
+                            Learn Webs Applications Development from Experts
+                          </Link>
+                        </h3>
+                        <div className="blog-content blog-read">
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing
+                            elit. Phasellus hendrerit. Sed egestas, ante et
+                            vulputate volutpat, eros pede […]
+                          </p>
+                          <Link
+                            to="/blog-details"
+                            className="read-more btn btn-primary"
+                          >
+                            Read More
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                    {/* /Blog Post */}
+                  </div><div className="col-md-6 col-sm-12">
+                    {/* Blog Post */}
+                    <div className="blog grid-blog">
+                      <div className="blog-image">
+                        <Link to="/blog-details">
+                          <img
+                            className="img-fluid"
+                            src={Blog8}
+                            alt="Post Image"
+                          />
+                        </Link>
+                      </div>
+                      <div className="blog-grid-box">
+                        <div className="blog-info clearfix">
+                          <div className="post-left">
+                            <ul>
+                              <li>
+                                <img
+                                  className="img-fluid"
+                                  src={Icon22}
+                                  alt=""
+                                />
+                                Jun 14, 2024
+                              </li>
+                              <li>
+                                <img
+                                  className="img-fluid"
+                                  src={Icon23}
+                                  alt=""
+                                />
+                                Programming, Web Design
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <h3 className="blog-title">
+                          <Link to="/blog-details">
+                            Learn Webs Applications Development from Experts
+                          </Link>
+                        </h3>
+                        <div className="blog-content blog-read">
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing
+                            elit. Phasellus hendrerit. Sed egestas, ante et
+                            vulputate volutpat, eros pede […]
+                          </p>
+                          <Link
+                            to="/blog-details"
+                            className="read-more btn btn-primary"
+                          >
+                            Read More
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                    {/* /Blog Post */}
+                  </div><div className="col-md-6 col-sm-12">
+                    {/* Blog Post */}
+                    <div className="blog grid-blog">
+                      <div className="blog-image">
+                        <Link to="/blog-details">
+                          <img
+                            className="img-fluid"
+                            src={Blog8}
+                            alt="Post Image"
+                          />
+                        </Link>
+                      </div>
+                      <div className="blog-grid-box">
+                        <div className="blog-info clearfix">
+                          <div className="post-left">
+                            <ul>
+                              <li>
+                                <img
+                                  className="img-fluid"
+                                  src={Icon22}
+                                  alt=""
+                                />
+                                Jun 14, 2024
+                              </li>
+                              <li>
+                                <img
+                                  className="img-fluid"
+                                  src={Icon23}
+                                  alt=""
+                                />
+                                Programming, Web Design
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <h3 className="blog-title">
+                          <Link to="/blog-details">
+                            Learn Webs Applications Development from Experts
+                          </Link>
+                        </h3>
+                        <div className="blog-content blog-read">
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing
+                            elit. Phasellus hendrerit. Sed egestas, ante et
+                            vulputate volutpat, eros pede […]
+                          </p>
+                          <Link
+                            to="/blog-details"
+                            className="read-more btn btn-primary"
+                          >
+                            Read More
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                    {/* /Blog Post */}
+                  </div><div className="col-md-6 col-sm-12">
+                    {/* Blog Post */}
+                    <div className="blog grid-blog">
+                      <div className="blog-image">
+                        <Link to="/blog-details">
+                          <img
+                            className="img-fluid"
+                            src={Blog8}
+                            alt="Post Image"
+                          />
+                        </Link>
+                      </div>
+                      <div className="blog-grid-box">
+                        <div className="blog-info clearfix">
+                          <div className="post-left">
+                            <ul>
+                              <li>
+                                <img
+                                  className="img-fluid"
+                                  src={Icon22}
+                                  alt=""
+                                />
+                                Jun 14, 2024
+                              </li>
+                              <li>
+                                <img
+                                  className="img-fluid"
+                                  src={Icon23}
+                                  alt=""
+                                />
+                                Programming, Web Design
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <h3 className="blog-title">
+                          <Link to="/blog-details">
+                            Learn Webs Applications Development from Experts
                           </Link>
                         </h3>
                         <div className="blog-content blog-read">
@@ -393,6 +440,7 @@ const BlogGrid = () => {
                     </div>
                     {/* /Blog Post */}
                   </div>
+                
                 </div>
                 {/* Blog pagination */}
                 <div className="row">

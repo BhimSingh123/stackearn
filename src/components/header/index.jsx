@@ -14,9 +14,6 @@ const Header = () => {
   // change header background on scroll
   const [navbar, setNavbar] = useState(false);
   // Mobile Menu toggle
-  const [mobileSubMenu, setMobileSubMenu] = useState(false);
-  const [mobileSubMenu2, setMobileSubMenu2] = useState(false);
-  const [mobileSubMenu22, setMobileSubMenu22] = useState(false);
   const [mobileSubMenu3, setMobileSubMenu3] = useState(false);
   const [mobileSubMenu32, setMobileSubMenu32] = useState(false);
   const [mobileSubMenu4, setMobileSubMenu4] = useState(false);
@@ -31,18 +28,6 @@ const Header = () => {
     document.body?.classList?.remove("menu-opened");
   };
 
-  const openMobileSubMenu = (e) => {
-    e.preventDefault();
-    setMobileSubMenu(!mobileSubMenu);
-  };
-  const openMobileSubMenu2 = (e) => {
-    e.preventDefault();
-    setMobileSubMenu2(!mobileSubMenu2);
-  };
-  const openMobileSubMenu22 = (e) => {
-    e.preventDefault();
-    setMobileSubMenu22(!mobileSubMenu22);
-  };
   const openMobileSubMenu3 = (e) => {
     e.preventDefault();
     setMobileSubMenu3(!mobileSubMenu3);
@@ -117,94 +102,16 @@ const Header = () => {
               <ul className="main-nav">
                 <li className="has-submenu active">
                   <Link
-                    className={mobileSubMenu ? "submenu" : ""}
                     to="/home"
-                    onClick={openMobileSubMenu}
                   >
                     Home
                   </Link>
                 
                 </li>
                 <li className="has-submenu">
-                  <Link to="/home" onClick={openMobileSubMenu2}>
-                    Instructor <i className="fas fa-chevron-down" />
+                  <Link to="/instructor/instructor-grid" >
+                    Instructor 
                   </Link>
-                  <ul
-                    className={
-                      mobileSubMenu2 ? "submenu submenuShow" : "submenu"
-                    }
-                  >
-
-                    <li className="has-submenu">
-                      <Link to="/instructor/instructor-list">
-                        Instructor
-                        <i
-                          // className=""
-                          onClick={openMobileSubMenu22}
-                        ></i>
-                      </Link>
-                      <ul
-                        className={
-                          mobileSubMenu22 ? "submenu submenuShow" : "submenu"
-                        }
-                      >
-                        <li>
-                          <Link to="/instructor/instructor-list">List</Link>
-                        </li>
-                        <li>
-                          <Link to="/instructor/instructor-grid">Grid</Link>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <Link to="/instructor/instructor-dashboard">Dashboard</Link>
-                    </li>
-                    <li>
-                      <Link to="/instructor/instructor-course">My Profile</Link>
-                    </li>
-                    <li>
-                      <Link to="/instructor/instructor-reviews">My Cources</Link>
-                    </li>
-                    <li>
-                      <Link to="/instructor/instructor-earnings">Wishlist</Link>
-                    </li>
-                    <li>
-                      <Link to="/instructor/instructor-orders">Reviews</Link>
-                    </li>
-                    <li>
-                      <Link to="/instructor/instructor-payouts">My Quiz Attempts</Link>
-                    </li>
-                    <li>
-                      <Link to="/instructor/instructor-tickets">Orders</Link>
-                    </li>
-                    <li>
-                      <Link to="/instructor/instructor-edit-profile">
-                        Question and Answer
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/instructor/instructor-security">Referrals</Link>
-                    </li>
-                    <li>
-                      <Link to="/instructor/instructor-chat">
-                        Message
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/instructor/instructor-notifications">Support Ticket</Link>
-                    </li>
-                    <li>
-                      <Link to="/instructor/instructor-profile-privacy">
-                        Notification
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/instructor/instructor-delete-profile">
-                        Settings
-                      </Link>
-                    </li>
-
-                  </ul>
                 </li>
                 <li className="has-submenu">
                   <Link to="/student/students-list" onClick={openMobileSubMenu3}>

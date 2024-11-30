@@ -1,10 +1,11 @@
+
 import {
-  CategoryIcon,
-  CategoryIcon1,
-  CategoryIcon2,
-  CategoryIcon3,
-  CategoryIcon4,
-  CategoryIcon5,
+  Category1,
+  Category2,
+  Category3,
+  Category4,
+  Category5,
+  Category6,
 } from "../../imagepath";
 import React from "react";
 import OwlCarousel from "react-owl-carousel";
@@ -76,7 +77,7 @@ const TopCategory = () => {
             <div className="feature-bg">
               <div className="feature-header">
                 <div className="feature-icon">
-                  <img src={CategoryIcon} alt="" />
+                  <img src={Category1} alt="" />
                 </div>
                 <div className="feature-cont">
                   <div className="feature-text">Angular Development</div>
@@ -89,7 +90,7 @@ const TopCategory = () => {
             <div className="feature-bg">
               <div className="feature-header">
                 <div className="feature-icon">
-                  <img src={CategoryIcon1} alt="" />
+                  <img src={Category1} alt="" />
                 </div>
                 <div className="feature-cont">
                   <div className="feature-text">Docker Development</div>
@@ -102,7 +103,7 @@ const TopCategory = () => {
             <div className="feature-bg">
               <div className="feature-header">
                 <div className="feature-icon">
-                  <img src={CategoryIcon2} alt="" />
+                  <img src={Category3} alt="" />
                 </div>
                 <div className="feature-cont">
                   <div className="feature-text">Node JS Frontend</div>
@@ -115,7 +116,7 @@ const TopCategory = () => {
             <div className="feature-bg">
               <div className="feature-header">
                 <div className="feature-icon">
-                  <img src={CategoryIcon3} alt="" />
+                  <img src={Category3} alt="" />
                 </div>
                 <div className="feature-cont">
                   <div className="feature-text">Swift Development</div>
@@ -128,7 +129,7 @@ const TopCategory = () => {
             <div className="feature-bg">
               <div className="feature-header">
                 <div className="feature-icon">
-                  <img src={CategoryIcon4} alt="" />
+                  <img src={Category2} alt="" />
                 </div>
                 <div className="feature-cont">
                   <div className="feature-text">Python Development</div>
@@ -141,7 +142,7 @@ const TopCategory = () => {
             <div className="feature-bg">
               <div className="feature-header">
                 <div className="feature-icon">
-                  <img src={CategoryIcon5} alt="" />
+                  <img src={Category5} alt="" />
                 </div>
                 <div className="feature-cont">
                   <div className="feature-text">
@@ -157,7 +158,7 @@ const TopCategory = () => {
             <div className="feature-bg">
               <div className="feature-header">
                 <div className="feature-icon">
-                  <img src={CategoryIcon4} alt="" />
+                  <img src={Category6} alt="" />
                 </div>
                 <div className="feature-cont">
                   <div className="feature-text">Angular Development</div>
@@ -170,7 +171,7 @@ const TopCategory = () => {
             <div className="feature-bg">
               <div className="feature-header">
                 <div className="feature-icon">
-                  <img src={CategoryIcon1} alt="" />
+                  <img src={Category1} alt="" />
                 </div>
                 <div className="feature-cont">
                   <div className="feature-text">Docker Development</div>
@@ -183,7 +184,7 @@ const TopCategory = () => {
             <div className="feature-bg">
               <div className="feature-header">
                 <div className="feature-icon">
-                  <img src={CategoryIcon2} alt="" />
+                  <img src={Category2} alt="" />
                 </div>
                 <div className="feature-cont">
                   <div className="feature-text">Node JS Frontend</div>
@@ -196,7 +197,7 @@ const TopCategory = () => {
             <div className="feature-bg">
               <div className="feature-header">
                 <div className="feature-icon">
-                  <img src={CategoryIcon3} alt="" />
+                  <img src={Category3} alt="" />
                 </div>
                 <div className="feature-cont">
                   <div className="feature-text">Swift Development</div>
@@ -209,7 +210,7 @@ const TopCategory = () => {
             <div className="feature-bg">
               <div className="feature-header">
                 <div className="feature-icon">
-                  <img src={CategoryIcon4} alt="" />
+                  <img src={Category4} alt="" />
                 </div>
                 <div className="feature-cont">
                   <div className="feature-text">Python Development</div>
@@ -222,7 +223,7 @@ const TopCategory = () => {
             <div className="feature-bg">
               <div className="feature-header">
                 <div className="feature-icon">
-                  <img src={CategoryIcon1} alt="" />
+                  <img src={Category5} alt="" />
                 </div>
                 <div className="feature-cont">
                   <div className="feature-text">Docker Development</div>
@@ -235,7 +236,7 @@ const TopCategory = () => {
             <div className="feature-bg">
               <div className="feature-header">
                 <div className="feature-icon">
-                  <img src={CategoryIcon2} alt="" />
+                  <img src={Category2} alt="" />
                 </div>
                 <div className="feature-cont">
                   <div className="feature-text">Node JS Frontend</div>
@@ -248,7 +249,7 @@ const TopCategory = () => {
             <div className="feature-bg">
               <div className="feature-header">
                 <div className="feature-icon">
-                  <img src={CategoryIcon3} alt="" />
+                  <img src={Category3} alt="" />
                 </div>
                 <div className="feature-cont">
                   <div className="feature-text">Swift Development</div>
@@ -261,7 +262,7 @@ const TopCategory = () => {
             <div className="feature-bg">
               <div className="feature-header">
                 <div className="feature-icon">
-                  <img src={CategoryIcon4} alt="" />
+                  <img src={Category4} alt="" />
                 </div>
                 <div className="feature-cont">
                   <div className="feature-text">Python Development</div>

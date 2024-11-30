@@ -14,12 +14,7 @@ import {
   Pattern04,
   Shape01,
   Time,
-  User1,
   User2,
-  User3,
-  User4,
-  User5,
-  User6,
   Winning,
 } from "../imagepath";
 import {
@@ -27,12 +22,7 @@ import {
   Become1,
   Become2,
   CertificateIcon,
-  Course1,
   Course2,
-  Course3,
-  Course4,
-  Course5,
-  Course6,
   CourseIcon,
   GratuateIcon,
   Icon01,
@@ -79,32 +69,12 @@ const options = [
 
 export const Home = () => {
   const [setValue] = useState(null);
-  const [isActive, setIsActive] = useState(false);
-  const [isActivetwo, setIsActivetwo] = useState(false);
-  const [isActivethree, setIsActivethree] = useState(false);
-  const [isActivefour, setIsActivefour] = useState(false);
-  const [isActivefive, setIsActivefive] = useState(false);
-  const [isActivesix, setIsActivesix] = useState(false);
+  const [isActivetwo, setIsActive] = useState(false);
   const mobileSidebar = useSelector(
     (state) => state.sidebarSlice.expandMenu
   );
-  const toggleClass = () => {
-    setIsActive(!isActive);
-  };
   const toggleClasstwo = () => {
-    setIsActivetwo(!isActivetwo);
-  };
-  const toggleClassthree = () => {
-    setIsActivethree(!isActivethree);
-  };
-  const toggleClassfour = () => {
-    setIsActivefour(!isActivefour);
-  };
-  const toggleClassfive = () => {
-    setIsActivefive(!isActivefive);
-  };
-  const toggleClasssix = () => {
-    setIsActivesix(!isActivesix);
+    setIsActive(!isActivetwo);
   };
 
   const formatValue = (value) => `${Math.floor(value)}`;
@@ -392,16 +362,16 @@ export const Home = () => {
             </div>
             <div className="course-feature">
               <div className="row">
-                <div className="col-lg-4 col-md-6 d-flex">
+              <div className="col-lg-4 col-md-6 d-flex">
                   <div className="course-box d-flex aos" data-aos="fade-up">
                     <div className="product">
                       <div className="product-img">
                         <Link to="/course-details">
-                          <img className="img-fluid" alt="" src={Course1} />
+                          <img className="img-fluid" alt="" src={Course2} />
                         </Link>
                         <div className="price">
                           <h3>
-                            $300 <span>$99.00</span>
+                            $400 <span>$99.00</span>
                           </h3>
                         </div>
                       </div>
@@ -409,13 +379,11 @@ export const Home = () => {
                         <div className="course-group d-flex">
                           <div className="course-group-img d-flex">
                             <Link to="/instructor/instructor-profile">
-                              <img src={User1} alt="" className="img-fluid" />
+                              <img src={User2} alt="" className="img-fluid" />
                             </Link>
                             <div className="course-name">
                               <h4>
-                                <Link to="/instructor/instructor-profile">
-                                  Nicole Brown
-                                </Link>
+                                <Link to="/instructor/instructor-profile">Jenis R.</Link>
                               </h4>
                               <p>Instructor</p>
                             </div>
@@ -423,9 +391,9 @@ export const Home = () => {
                           <div className="course-share d-flex align-items-center justify-content-center">
                             <Link to="#">
                               <i
-                                onClick={toggleClass}
+                                onClick={toggleClasstwo}
                                 className={
-                                  isActive
+                                  isActivetwo
                                     ? "fa-regular fa-heart fa-solid"
                                     : "fa-regular fa-heart "
                                 }
@@ -435,35 +403,30 @@ export const Home = () => {
                         </div>
                         <h3 className="title instructor-text">
                           <Link to="/course-details">
-                            Information About UI/UX Design Degree
+                            Wordpress for Beginners - Master Wordpress Quickly
                           </Link>
                         </h3>
                         <div className="course-info d-flex align-items-center">
                           <div className="rating-img d-flex align-items-center">
                             <img src={Icon1} alt="" />
-                            <p>12+ Lesson</p>
+                            <p>11+ Lesson</p>
                           </div>
                           <div className="course-view d-flex align-items-center">
                             <img src={Icon2} alt="" />
-                            <p>9hr 30min</p>
+                            <p>6hr 30min</p>
                           </div>
                         </div>
                         <div className="d-flex align-items-center justify-content-between">
-
-                          <div className="rating">
-                            <i className="fas fa-star filled me-1" />
-                            <i className="fas fa-star filled me-1" />
-                            <i className="fas fa-star filled me-1" />
-                            <i className="fas fa-star filled me-1" />
-                            <i className="fas fa-star" />
-                            <span className="d-inline-block average-rating">
-                              <span>4.0</span> (15)
-                            </span>
+                          <div className="rating m-0">
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star"></i>
+                            <span className="d-inline-block average-rating"><span>4.0</span> (15)</span>
                           </div>
                           <div className="all-btn all-category d-flex align-items-center">
-                            <Link to="/checkout" className="btn btn-primary">
-                              BUY NOW
-                            </Link>
+                            <Link to="/checkout" className="btn btn-primary">BUY NOW</Link>
                           </div>
                         </div>
                       </div>
@@ -541,92 +504,17 @@ export const Home = () => {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-4 col-md-6 d-flex">
-                  <div className="course-box d-flex aos" data-aos="fade-up">
-                    <div className="product">
-                      <div className="product-img">
-                        <Link to="/course-details">
-                          <img className="img-fluid" alt="" src={Course3} />
-                        </Link>
-                        <div className="price combo">
-                          <h3>FREE</h3>
-                        </div>
-                      </div>
-                      <div className="product-content">
-                        <div className="course-group d-flex">
-                          <div className="course-group-img d-flex">
-                            <Link to="/instructor/instructor-profile">
-                              <img src={User5} alt="" className="img-fluid" />
-                            </Link>
-                            <div className="course-name">
-                              <h4>
-                                <Link to="/instructor/instructor-profile">
-                                  Jesse Stevens
-                                </Link>
-                              </h4>
-                              <p>Instructor</p>
-                            </div>
-                          </div>
-                          <div className="course-share d-flex align-items-center justify-content-center">
-                            <Link to="#">
-                              <i
-                                onClick={toggleClassthree}
-                                className={
-                                  isActivethree
-                                    ? "fa-regular fa-heart fa-solid"
-                                    : "fa-regular fa-heart "
-                                }
-                              />
-                            </Link>
-                          </div>
-                        </div>
-                        <h3 className="title instructor-text">
-                          <Link to="/course-details">
-                            Sketch from A to Z (2024): Become an app designer
-                          </Link>
-                        </h3>
-                        <div className="course-info d-flex align-items-center">
-                          <div className="rating-img d-flex align-items-center">
-                            <img src={Icon1} alt="" />
-                            <p>16+ Lesson</p>
-                          </div>
-                          <div className="course-view d-flex align-items-center">
-                            <img src={Icon2} alt="" />
-                            <p>12hr 30min</p>
-                          </div>
-                        </div>
-                        <div className="d-flex align-items-center justify-content-between">
 
-                          <div className="rating">
-                            <i className="fas fa-star filled me-1" />
-                            <i className="fas fa-star filled me-1" />
-                            <i className="fas fa-star filled me-1" />
-                            <i className="fas fa-star filled me-1" />
-                            <i className="fas fa-star" />
-                            <span className="d-inline-block average-rating">
-                              <span>4.5</span> (15)
-                            </span>
-                          </div>
-                          <div className="all-btn all-category d-flex align-items-center">
-                            <Link to="/checkout" className="btn btn-primary">
-                              BUY NOW
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
                 <div className="col-lg-4 col-md-6 d-flex">
                   <div className="course-box d-flex aos" data-aos="fade-up">
                     <div className="product">
                       <div className="product-img">
                         <Link to="/course-details">
-                          <img className="img-fluid" alt="" src={Course4} />
+                          <img className="img-fluid" alt="" src={Course2} />
                         </Link>
                         <div className="price">
                           <h3>
-                            $500 <span>$99.00</span>
+                            $400 <span>$99.00</span>
                           </h3>
                         </div>
                       </div>
@@ -634,13 +522,11 @@ export const Home = () => {
                         <div className="course-group d-flex">
                           <div className="course-group-img d-flex">
                             <Link to="/instructor/instructor-profile">
-                              <img src={User4} alt="" className="img-fluid" />
+                              <img src={User2} alt="" className="img-fluid" />
                             </Link>
                             <div className="course-name">
                               <h4>
-                                <Link to="/instructor/instructor-profile">
-                                  Nicole Brown
-                                </Link>
+                                <Link to="/instructor/instructor-profile">Jenis R.</Link>
                               </h4>
                               <p>Instructor</p>
                             </div>
@@ -648,9 +534,9 @@ export const Home = () => {
                           <div className="course-share d-flex align-items-center justify-content-center">
                             <Link to="#">
                               <i
-                                onClick={toggleClassfour}
+                                onClick={toggleClasstwo}
                                 className={
-                                  isActivefour
+                                  isActivetwo
                                     ? "fa-regular fa-heart fa-solid"
                                     : "fa-regular fa-heart "
                                 }
@@ -660,52 +546,48 @@ export const Home = () => {
                         </div>
                         <h3 className="title instructor-text">
                           <Link to="/course-details">
-                            Learn Angular Fundamentals From beginning to advance
-                            lavel
+                            Wordpress for Beginners - Master Wordpress Quickly
                           </Link>
                         </h3>
                         <div className="course-info d-flex align-items-center">
                           <div className="rating-img d-flex align-items-center">
                             <img src={Icon1} alt="" />
-                            <p>10+ Lesson</p>
+                            <p>11+ Lesson</p>
                           </div>
                           <div className="course-view d-flex align-items-center">
                             <img src={Icon2} alt="" />
-                            <p>8hr 30min</p>
+                            <p>6hr 30min</p>
                           </div>
                         </div>
                         <div className="d-flex align-items-center justify-content-between">
-
-                          <div className="rating">
-                            <i className="fas fa-star filled me-1" />
-                            <i className="fas fa-star filled me-1" />
-                            <i className="fas fa-star filled me-1" />
-                            <i className="fas fa-star filled me-1" />
-                            <i className="fas fa-star" />
-                            <span className="d-inline-block average-rating">
-                              <span>4.2</span> (15)
-                            </span>
+                          <div className="rating m-0">
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star"></i>
+                            <span className="d-inline-block average-rating"><span>4.0</span> (15)</span>
                           </div>
                           <div className="all-btn all-category d-flex align-items-center">
-                            <Link to="/checkout" className="btn btn-primary">
-                              BUY NOW
-                            </Link>
+                            <Link to="/checkout" className="btn btn-primary">BUY NOW</Link>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+
+
                 <div className="col-lg-4 col-md-6 d-flex">
                   <div className="course-box d-flex aos" data-aos="fade-up">
                     <div className="product">
                       <div className="product-img">
                         <Link to="/course-details">
-                          <img className="img-fluid" alt="" src={Course5} />
+                          <img className="img-fluid" alt="" src={Course2} />
                         </Link>
                         <div className="price">
                           <h3>
-                            $300 <span>$99.00</span>
+                            $400 <span>$99.00</span>
                           </h3>
                         </div>
                       </div>
@@ -713,11 +595,11 @@ export const Home = () => {
                         <div className="course-group d-flex">
                           <div className="course-group-img d-flex">
                             <Link to="/instructor/instructor-profile">
-                              <img src={User3} alt="" className="img-fluid" />
+                              <img src={User2} alt="" className="img-fluid" />
                             </Link>
                             <div className="course-name">
                               <h4>
-                                <Link to="/instructor/instructor-profile">John Smith</Link>
+                                <Link to="/instructor/instructor-profile">Jenis R.</Link>
                               </h4>
                               <p>Instructor</p>
                             </div>
@@ -725,9 +607,9 @@ export const Home = () => {
                           <div className="course-share d-flex align-items-center justify-content-center">
                             <Link to="#">
                               <i
-                                onClick={toggleClassfive}
+                                onClick={toggleClasstwo}
                                 className={
-                                  isActivefive
+                                  isActivetwo
                                     ? "fa-regular fa-heart fa-solid"
                                     : "fa-regular fa-heart "
                                 }
@@ -737,36 +619,102 @@ export const Home = () => {
                         </div>
                         <h3 className="title instructor-text">
                           <Link to="/course-details">
-                            Build Responsive Real World Websites with HTML5 and
-                            CSS3
+                            Wordpress for Beginners - Master Wordpress Quickly
                           </Link>
                         </h3>
                         <div className="course-info d-flex align-items-center">
                           <div className="rating-img d-flex align-items-center">
                             <img src={Icon1} alt="" />
-                            <p>13+ Lesson</p>
+                            <p>11+ Lesson</p>
                           </div>
                           <div className="course-view d-flex align-items-center">
                             <img src={Icon2} alt="" />
-                            <p>10hr 30min</p>
+                            <p>6hr 30min</p>
                           </div>
                         </div>
                         <div className="d-flex align-items-center justify-content-between">
-
-                          <div className="rating">
-                            <i className="fas fa-star filled me-1" />
-                            <i className="fas fa-star filled me-1" />
-                            <i className="fas fa-star filled me-1" />
-                            <i className="fas fa-star filled me-1" />
-                            <i className="fas fa-star" />
-                            <span className="d-inline-block average-rating">
-                              <span>4.0</span> (15)
-                            </span>
+                          <div className="rating m-0">
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star"></i>
+                            <span className="d-inline-block average-rating"><span>4.0</span> (15)</span>
                           </div>
                           <div className="all-btn all-category d-flex align-items-center">
-                            <Link to="/checkout" className="btn btn-primary">
-                              BUY NOW
+                            <Link to="/checkout" className="btn btn-primary">BUY NOW</Link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-lg-4 col-md-6 d-flex">
+                  <div className="course-box d-flex aos" data-aos="fade-up">
+                    <div className="product">
+                      <div className="product-img">
+                        <Link to="/course-details">
+                          <img className="img-fluid" alt="" src={Course2} />
+                        </Link>
+                        <div className="price">
+                          <h3>
+                            $400 <span>$99.00</span>
+                          </h3>
+                        </div>
+                      </div>
+                      <div className="product-content">
+                        <div className="course-group d-flex">
+                          <div className="course-group-img d-flex">
+                            <Link to="/instructor/instructor-profile">
+                              <img src={User2} alt="" className="img-fluid" />
                             </Link>
+                            <div className="course-name">
+                              <h4>
+                                <Link to="/instructor/instructor-profile">Jenis R.</Link>
+                              </h4>
+                              <p>Instructor</p>
+                            </div>
+                          </div>
+                          <div className="course-share d-flex align-items-center justify-content-center">
+                            <Link to="#">
+                              <i
+                                onClick={toggleClasstwo}
+                                className={
+                                  isActivetwo
+                                    ? "fa-regular fa-heart fa-solid"
+                                    : "fa-regular fa-heart "
+                                }
+                              />
+                            </Link>
+                          </div>
+                        </div>
+                        <h3 className="title instructor-text">
+                          <Link to="/course-details">
+                            Wordpress for Beginners - Master Wordpress Quickly
+                          </Link>
+                        </h3>
+                        <div className="course-info d-flex align-items-center">
+                          <div className="rating-img d-flex align-items-center">
+                            <img src={Icon1} alt="" />
+                            <p>11+ Lesson</p>
+                          </div>
+                          <div className="course-view d-flex align-items-center">
+                            <img src={Icon2} alt="" />
+                            <p>6hr 30min</p>
+                          </div>
+                        </div>
+                        <div className="d-flex align-items-center justify-content-between">
+                          <div className="rating m-0">
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star"></i>
+                            <span className="d-inline-block average-rating"><span>4.0</span> (15)</span>
+                          </div>
+                          <div className="all-btn all-category d-flex align-items-center">
+                            <Link to="/checkout" className="btn btn-primary">BUY NOW</Link>
                           </div>
                         </div>
                       </div>
@@ -778,23 +726,23 @@ export const Home = () => {
                     <div className="product">
                       <div className="product-img">
                         <Link to="/course-details">
-                          <img className="img-fluid" alt="" src={Course6} />
+                          <img className="img-fluid" alt="" src={Course2} />
                         </Link>
-                        <div className="price combo">
-                          <h3>FREE</h3>
+                        <div className="price">
+                          <h3>
+                            $400 <span>$99.00</span>
+                          </h3>
                         </div>
                       </div>
                       <div className="product-content">
                         <div className="course-group d-flex">
                           <div className="course-group-img d-flex">
                             <Link to="/instructor/instructor-profile">
-                              <img src={User6} alt="" className="img-fluid" />
+                              <img src={User2} alt="" className="img-fluid" />
                             </Link>
                             <div className="course-name">
                               <h4>
-                                <Link to="/instructor/instructor-profile">
-                                  Stella Johnson
-                                </Link>
+                                <Link to="/instructor/instructor-profile">Jenis R.</Link>
                               </h4>
                               <p>Instructor</p>
                             </div>
@@ -802,9 +750,9 @@ export const Home = () => {
                           <div className="course-share d-flex align-items-center justify-content-center">
                             <Link to="#">
                               <i
-                                onClick={toggleClasssix}
+                                onClick={toggleClasstwo}
                                 className={
-                                  isActivesix
+                                  isActivetwo
                                     ? "fa-regular fa-heart fa-solid"
                                     : "fa-regular fa-heart "
                                 }
@@ -814,42 +762,37 @@ export const Home = () => {
                         </div>
                         <h3 className="title instructor-text">
                           <Link to="/course-details">
-                            C# Developers Double Your Coding Speed with Visual
-                            Studio
+                            Wordpress for Beginners - Master Wordpress Quickly
                           </Link>
                         </h3>
                         <div className="course-info d-flex align-items-center">
                           <div className="rating-img d-flex align-items-center">
                             <img src={Icon1} alt="" />
-                            <p>7+ Lesson</p>
+                            <p>11+ Lesson</p>
                           </div>
                           <div className="course-view d-flex align-items-center">
                             <img src={Icon2} alt="" />
-                            <p>7hr 30min</p>
+                            <p>6hr 30min</p>
                           </div>
                         </div>
                         <div className="d-flex align-items-center justify-content-between">
-
-                          <div className="rating">
-                            <i className="fas fa-star filled me-1" />
-                            <i className="fas fa-star filled me-1" />
-                            <i className="fas fa-star filled me-1" />
-                            <i className="fas fa-star filled me-1" />
-                            <i className="fas fa-star" />
-                            <span className="d-inline-block average-rating">
-                              <span>4.6</span> (15)
-                            </span>
+                          <div className="rating m-0">
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star"></i>
+                            <span className="d-inline-block average-rating"><span>4.0</span> (15)</span>
                           </div>
                           <div className="all-btn all-category d-flex align-items-center">
-                            <Link to="/checkout" className="btn btn-primary">
-                              BUY NOW
-                            </Link>
+                            <Link to="/checkout" className="btn btn-primary">BUY NOW</Link>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+             
               </div>
             </div>
           </div>

@@ -11,13 +11,8 @@ export { default as CertificateIcon } from "../assets/img/certificate-icon.svg";
 export { default as GratuateIcon } from "../assets/img/gratuate-icon.svg";
 
 export { default as Lead1 } from "../assets/img/lead-01.png";
-export { default as Lead2 } from "../assets/img/lead-02.png";
-export { default as Lead3 } from "../assets/img/lead-03.png";
-export { default as Lead4 } from "../assets/img/lead-04.png";
-export { default as Lead5 } from "../assets/img/lead-05.png";
-export { default as Lead6 } from "../assets/img/lead-06.png";
 
-// Testimonials
+// Testimonialsblog
 
 export { default as Qute } from "../assets/img/qute.png";
 export { default as Qute01 } from "../assets/img/qute-01.png";
@@ -512,3 +507,6 @@ export { default as fb } from "../assets/img/icon/fb-icon.svg";
 export { default as google } from "../assets/img/icon/google-icon.svg";
 export { default as github } from "../assets/img/icon/github-icon.svg";
 export { default as twitter } from "../assets/img/icon/twitter-x-icon.svg";
+
+
+export { default as course14 } from "../assets/img/course/course-02.jpg";

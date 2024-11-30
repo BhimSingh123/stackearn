@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Blog1, Blog2, Blog3, Blog5, Blog6, Blog7, Icon22, Icon23, User, User1, User3 } from "../imagepath";
+import { Blog1, Blog2, Blog3, Blog5, Icon22, Icon23, User } from "../imagepath";
 import BlogHeader from "./header";
 import { Footer3 } from "../footer3";
 
@@ -110,7 +110,7 @@ const BlogList = () => {
                    <Link  to="/blog-details">
                     <img
                       className="img-fluid"
-                      src={Blog6}
+                      src={Blog5}
                       alt="Post Image"
                     />
                    </Link> 
@@ -122,10 +122,10 @@ const BlogList = () => {
                         <div className="post-author">
                            <Link  to="/instructor/instructor-profile">
                             <img
-                              src={User1}
+                              src={User}
                               alt="Post Author"
                             /> 
-                            <span>Jenis R.</span>
+                            <span>Ruby Perrin</span>
                            </Link> 
                         </div>
                       </li>
@@ -135,7 +135,7 @@ const BlogList = () => {
                           src={Icon22}
                           alt=""
                         />
-                        May 20, 2021
+                        April 20, 2024
                       </li>
                       <li>
                         <img
@@ -143,14 +143,14 @@ const BlogList = () => {
                           src={Icon23}
                           alt=""
                         />
-                        Programming, Courses
+                        Programming, Web Design
                       </li>
                     </ul>
                   </div>
                 </div>
                 <h3 className="blog-title">
                    <Link  to="/blog-details">
-                    Expand Your Career Opportunities With Python
+                    Learn Webs Applications Development from Experts
                    </Link> 
                 </h3>
                 <div className="blog-content blog-read">
@@ -178,7 +178,7 @@ const BlogList = () => {
                    <Link  to="/blog-details">
                     <img
                       className="img-fluid"
-                      src={Blog7}
+                      src={Blog5}
                       alt="Post Image"
                     />
                    </Link> 
@@ -190,10 +190,10 @@ const BlogList = () => {
                         <div className="post-author">
                            <Link  to="/instructor/instructor-profile">
                             <img
-                              src={User3}
+                              src={User}
                               alt="Post Author"
                             /> 
-                            <span>Rolands R</span>
+                            <span>Ruby Perrin</span>
                            </Link> 
                         </div>
                       </li>
@@ -203,7 +203,7 @@ const BlogList = () => {
                           src={Icon22}
                           alt=""
                         />
-                        Jun 14, 2024
+                        April 20, 2024
                       </li>
                       <li>
                         <img
@@ -218,7 +218,7 @@ const BlogList = () => {
                 </div>
                 <h3 className="blog-title">
                    <Link  to="/blog-details">
-                    Complete PHP Programming Career Guideline
+                    Learn Webs Applications Development from Experts
                    </Link> 
                 </h3>
                 <div className="blog-content blog-read">

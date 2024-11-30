@@ -3,10 +3,7 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import OwlCarousel from "react-owl-carousel";
 import {
-  Course1,
-  Course5,
-  Course7,
-  Course8,
+  course14,
   Course9,
   Icon1,
   Icon2,
@@ -108,7 +105,7 @@ const TrendingCourse = () => {
             <div className="product trend-product">
               <div className="product-img">
                 <Link to="course-details">
-                  <img className="img-fluid" alt="" src={Course7} />
+                  <img className="img-fluid" alt="" src={course14} />
                 </Link>
                 <div className="price">
                   <h3>
@@ -238,7 +235,7 @@ const TrendingCourse = () => {
             <div className="product trend-product">
               <div className="product-img">
                 <Link to="course-details">
-                  <img className="img-fluid" alt="" src={Course5} />
+                  <img className="img-fluid" alt="" src={Course01Icon} />
                 </Link>
                 <div className="price">
                   <h3>

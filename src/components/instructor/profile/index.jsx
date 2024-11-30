@@ -1,6 +1,4 @@
 import React from "react";
-import { InstructorHeader } from "../../instructor/header";
-import Footer from "../../footer";
 import {
   AddressIcon,
   Course10,
@@ -17,44 +15,24 @@ import {
   User2,
 } from "../../imagepath";
 import { Link } from "react-router-dom";
+import Header from "../../header";
+import { Footer3 } from "../../footer3";
+import Footer from "../../footer";
 
 export default function InstructorProfile() {
   return (
+    <>
+    
+<Header/>      
     <div className="main-wrapper">
-      <InstructorHeader activeMenu={"Profile"} />
       {/* Breadcrumb */}
-      <div className="breadcrumb-bar">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12 col-12">
-              <div className="breadcrumb-list">
-                <nav aria-label="breadcrumb" className="page-breadcrumb">
-                  <ol className="breadcrumb">
-                    <li className="breadcrumb-item">
-                      <Link to="/home">Home</Link>
-                    </li>
-                    <li className="breadcrumb-item" aria-current="page">
-                      Courses
-                    </li>
-                    <li className="breadcrumb-item" aria-current="page">
-                      All Courses
-                    </li>
-                    <li className="breadcrumb-item active" aria-current="page">
-                      The Complete Web Developer Course 2.0
-                    </li>
-                  </ol>
-                </nav>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      
       {/* Breadcrumb */}
       {/* Breadcrumb */}
       <div
-        className="page-banner instructor-bg-blk"
+        className="page-banner instructor-bg-blk md-flex align-items-center"
       >
-        <div className="container">
+        <div className="container mt-4">
           <div className="row">
             <div className="col-md-12 col-12">
               <div className="profile-info-blk">
@@ -694,6 +672,10 @@ export default function InstructorProfile() {
       </section>
       {/* Course Content */}
       <Footer />
+      <div className="home-three">
+      <Footer3/>
+      </div>
     </div>
+    </>
   );
 }

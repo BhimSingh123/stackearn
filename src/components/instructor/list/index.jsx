@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { InstructorHeader } from "../../instructor/header";
-import Footer from "../../footer";
 import {
   Icon1,
   Icon2,
@@ -17,11 +15,13 @@ import { Filter, Grid, List, Search } from "react-feather";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Select from "react-select";
+import Header from "../../header";
+import { Footer3 } from "../../footer3";
 export const InstructorList = () => {
   const mobileSidebar = useSelector(
     (state) => state.sidebarSlice.expandMenu
   );
-  const [ setCountry] = useState(null);
+  const [setCountry] = useState(null);
   const options = [
     { label: "Newly published", value: "1" },
     { label: "Angular", value: "2" },
@@ -31,7 +31,7 @@ export const InstructorList = () => {
   const style = {
     control: (baseStyles, state) => ({
       ...baseStyles,
-      backgroundColor:mobileSidebar === 'disabled' ? "white":"#131022",
+      backgroundColor: mobileSidebar === 'disabled' ? "white" : "#131022",
       width: "100%",
       height: "40px",
       color: "black",
@@ -51,11 +51,11 @@ export const InstructorList = () => {
     menuList: (base) => ({ ...base, padding: "0" }),
     option: (provided) => ({
       ...provided,
-      backgroundColor:  mobileSidebar === 'disabled' ? "#fff" : "#000",
-      color:mobileSidebar === 'disabled'? '#000':'#fff',
+      backgroundColor: mobileSidebar === 'disabled' ? "#fff" : "#000",
+      color: mobileSidebar === 'disabled' ? '#000' : '#fff',
       fontSize: "14px",
       "&:hover": {
-        backgroundColor:mobileSidebar === 'disabled'? "#FFDEDA":"#2b2838",
+        backgroundColor: mobileSidebar === 'disabled' ? "#FFDEDA" : "#2b2838",
         // #dddddd
       },
     }),
@@ -65,38 +65,22 @@ export const InstructorList = () => {
     }),
     dropdownIndicator: (base, state) => ({
       ...base,
-      color: mobileSidebar === 'disabled'? "#131022":"#fff",
+      color: mobileSidebar === 'disabled' ? "#131022" : "#fff",
       transform: state.selectProps.menuIsOpen ? "rotate(-180deg)" : "rotate(0)",
       transition: "250ms",
     }),
   };
   return (
     <div className="main-wrapper">
-      <InstructorHeader activeMenu={"List"} />
+      {/* <InstructorHeader activeMenu={"List"} /> */}
       {/* BreadcrumItem */}
-      <div className="breadcrumb-bar">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12 col-12">
-              <div className="breadcrumb-list">
-                <nav aria-label="breadcrumb" className="page-breadcrumb">
-                  <ol className="breadcrumb">
-                    <li className="breadcrumb-item">
-                      <Link to="/home">Home</Link>
-                    </li>
-                    <li className="breadcrumb-item">Pages</li>
-                    <li className="breadcrumb-item">Instructors List</li>
-                  </ol>
-                </nav>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Header />
+
       {/* BreadcrumItem */}
       {/* Page Wrapper */}
-      <div className="page-content">
-        <div className="container">
+
+      <div className="page-content home-slide d-flex align-items-center">
+        <div className="container  mt-5">
           <div className="row">
             <div className="col-lg-9">
               {/* Filter */}
@@ -143,16 +127,16 @@ export const InstructorList = () => {
                           </div>
                           <div className="col-md-6 col-lg-6 col-item">
                             <div className="input-block select-form mb-0">
-                            
+
                               <Select
-                              className=" select"
-                              name="sellist1"
-                              options={options}
-                              defaultValue={options[0]}
-                              placeholder="Select Course"
-                              onChange={setCountry}
-                              styles={style}
-                            ></Select>
+                                className=" select"
+                                name="sellist1"
+                                options={options}
+                                defaultValue={options[0]}
+                                placeholder="Select Course"
+                                onChange={setCountry}
+                                styles={style}
+                              ></Select>
                             </div>
                           </div>
                         </div>
@@ -523,7 +507,7 @@ export const InstructorList = () => {
                       <Link
                         className="page-link"
                         to="#"
-                       
+
                       >
                         <i className="fas fa-angle-left"></i>
                       </Link>
@@ -607,7 +591,7 @@ export const InstructorList = () => {
                           <input
                             type="checkbox"
                             name="select_specialist"
-                          
+
                           />
                           <span className="checkmark"></span> General (2)
                         </label>
@@ -617,7 +601,7 @@ export const InstructorList = () => {
                           <input
                             type="checkbox"
                             name="select_specialist"
-                            
+
                           />
                           <span className="checkmark"></span> IT & Software (2)
                         </label>
@@ -677,7 +661,7 @@ export const InstructorList = () => {
                           <input
                             type="checkbox"
                             name="select_specialist"
-                           
+
                           />
                           <span className="checkmark"></span> Nicole Brown
                         </label>
@@ -712,7 +696,7 @@ export const InstructorList = () => {
                           <input
                             type="radio"
                             name="select_specialist"
-                           
+
                           />
                           <span className="checkmark"></span> Paid (15)
                         </label>
@@ -727,7 +711,10 @@ export const InstructorList = () => {
         </div>
       </div>
       {/* Page Wrapper */}
-      <Footer />
+      <div className="home-three">
+
+        <Footer3 />
+        </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React from "react";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import OwlCarousel from "react-owl-carousel";
-import { Blog1, Blog2, Blog3, Blog4 } from "../../imagepath";
+import { Blog1} from "../../imagepath";
 import { Link } from "react-router-dom";
 
 const Blog = () => {
@@ -58,58 +58,7 @@ const Blog = () => {
       <div className="instructors-widget blog-widget">
         <div className="instructors-img">
           <Link to="blog-list">
-            <img className="img-fluid" alt="" src={Blog2} />
-          </Link>
-        </div>
-        <div className="instructors-content text-center">
-          <h5>
-            <Link to="blog-list">11 Tips to Help You Get New Clients</Link>
-          </h5>
-          <p>Sales Order</p>
-          <div className="student-count d-flex justify-content-center">
-            <i className="fa-solid fa-calendar-days" />
-            <span>May 20, 2024</span>
-          </div>
-        </div>
-      </div>
-      <div className="instructors-widget blog-widget">
-        <div className="instructors-img">
-          <Link to="blog-list">
-            <img className="img-fluid" alt="" src={Blog3} />
-          </Link>
-        </div>
-        <div className="instructors-content text-center">
-          <h5>
-            <Link to="blog-list">An Overworked Newspaper Editor</Link>
-          </h5>
-          <p>Design</p>
-          <div className="student-count d-flex justify-content-center">
-            <i className="fa-solid fa-calendar-days" />
-            <span>May 25, 2024</span>
-          </div>
-        </div>
-      </div>
-      <div className="instructors-widget blog-widget">
-        <div className="instructors-img">
-          <Link to="blog-list">
-            <img className="img-fluid" alt="" src={Blog4} />
-          </Link>
-        </div>
-        <div className="instructors-content text-center">
-          <h5>
-            <Link to="blog-list">A Solution Built for Teachers</Link>
-          </h5>
-          <p>Seo</p>
-          <div className="student-count d-flex justify-content-center">
-            <i className="fa-solid fa-calendar-days" />
-            <span>Jul 15, 2024</span>
-          </div>
-        </div>
-      </div>
-      <div className="instructors-widget blog-widget">
-        <div className="instructors-img">
-          <Link to="blog-list">
-            <img className="img-fluid" alt="" src={Blog2} />
+            <img className="img-fluid" alt="" src={Blog1} />
           </Link>
         </div>
         <div className="instructors-content text-center">
@@ -119,95 +68,165 @@ const Blog = () => {
           <p>Marketing</p>
           <div className="student-count d-flex justify-content-center">
             <i className="fa-solid fa-calendar-days" />
-            <span>Sep 25, 2024</span>
+            <span>Jun 15, 2024</span>
           </div>
         </div>
       </div>
       <div className="instructors-widget blog-widget">
         <div className="instructors-img">
           <Link to="blog-list">
-            <img className="img-fluid" alt="" src={Blog3} />
+            <img className="img-fluid" alt="" src={Blog1} />
           </Link>
         </div>
         <div className="instructors-content text-center">
           <h5>
-            <Link to="blog-list">An Overworked Newspaper Editor</Link>
+            <Link to="blog-list">Attract More Sales And Profits</Link>
           </h5>
           <p>Marketing</p>
           <div className="student-count d-flex justify-content-center">
             <i className="fa-solid fa-calendar-days" />
-            <span>May 25, 2024</span>
+            <span>Jun 15, 2024</span>
           </div>
         </div>
       </div>
+
       <div className="instructors-widget blog-widget">
         <div className="instructors-img">
           <Link to="blog-list">
-            <img className="img-fluid" alt="" src={Blog4} />
+            <img className="img-fluid" alt="" src={Blog1} />
           </Link>
         </div>
         <div className="instructors-content text-center">
           <h5>
-            <Link to="blog-list">A Solution Built for Teachers</Link>
-          </h5>
-          <p>Analysis</p>
-          <div className="student-count d-flex justify-content-center">
-            <i className="fa-solid fa-calendar-days" />
-            <span>May 15, 2024</span>
-          </div>
-        </div>
-      </div>
-      <div className="instructors-widget blog-widget">
-        <div className="instructors-img">
-          <Link to="blog-list">
-            <img className="img-fluid" alt="" src={Blog2} />
-          </Link>
-        </div>
-        <div className="instructors-content text-center">
-          <h5>
-            <Link to="blog-list">11 Tips to Help You Get New Clients</Link>
-          </h5>
-          <p>Development</p>
-          <div className="student-count d-flex justify-content-center">
-            <i className="fa-solid fa-calendar-days" />
-            <span>Jun 20, 2024</span>
-          </div>
-        </div>
-      </div>
-      <div className="instructors-widget blog-widget">
-        <div className="instructors-img">
-          <Link to="blog-list">
-            <img className="img-fluid" alt="" src={Blog3} />
-          </Link>
-        </div>
-        <div className="instructors-content text-center">
-          <h5>
-            <Link to="blog-list">An Overworked Newspaper Editor</Link>
-          </h5>
-          <p>Sales</p>
-          <div className="student-count d-flex justify-content-center">
-            <i className="fa-solid fa-calendar-days" />
-            <span>May 25, 2024</span>
-          </div>
-        </div>
-      </div>
-      <div className="instructors-widget blog-widget">
-        <div className="instructors-img">
-          <Link to="blog-list">
-            <img className="img-fluid" alt="" src={Blog4} />
-          </Link>
-        </div>
-        <div className="instructors-content text-center">
-          <h5>
-            <Link to="blog-list">A Solution Built for Teachers</Link>
+            <Link to="blog-list">Attract More Sales And Profits</Link>
           </h5>
           <p>Marketing</p>
           <div className="student-count d-flex justify-content-center">
             <i className="fa-solid fa-calendar-days" />
-            <span>April 15, 2024</span>
+            <span>Jun 15, 2024</span>
           </div>
         </div>
       </div>
+      <div className="instructors-widget blog-widget">
+        <div className="instructors-img">
+          <Link to="blog-list">
+            <img className="img-fluid" alt="" src={Blog1} />
+          </Link>
+        </div>
+        <div className="instructors-content text-center">
+          <h5>
+            <Link to="blog-list">Attract More Sales And Profits</Link>
+          </h5>
+          <p>Marketing</p>
+          <div className="student-count d-flex justify-content-center">
+            <i className="fa-solid fa-calendar-days" />
+            <span>Jun 15, 2024</span>
+          </div>
+        </div>
+      </div>
+      <div className="instructors-widget blog-widget">
+        <div className="instructors-img">
+          <Link to="blog-list">
+            <img className="img-fluid" alt="" src={Blog1} />
+          </Link>
+        </div>
+        <div className="instructors-content text-center">
+          <h5>
+            <Link to="blog-list">Attract More Sales And Profits</Link>
+          </h5>
+          <p>Marketing</p>
+          <div className="student-count d-flex justify-content-center">
+            <i className="fa-solid fa-calendar-days" />
+            <span>Jun 15, 2024</span>
+          </div>
+        </div>
+      </div>
+      <div className="instructors-widget blog-widget">
+        <div className="instructors-img">
+          <Link to="blog-list">
+            <img className="img-fluid" alt="" src={Blog1} />
+          </Link>
+        </div>
+        <div className="instructors-content text-center">
+          <h5>
+            <Link to="blog-list">Attract More Sales And Profits</Link>
+          </h5>
+          <p>Marketing</p>
+          <div className="student-count d-flex justify-content-center">
+            <i className="fa-solid fa-calendar-days" />
+            <span>Jun 15, 2024</span>
+          </div>
+        </div>
+      </div>
+      <div className="instructors-widget blog-widget">
+        <div className="instructors-img">
+          <Link to="blog-list">
+            <img className="img-fluid" alt="" src={Blog1} />
+          </Link>
+        </div>
+        <div className="instructors-content text-center">
+          <h5>
+            <Link to="blog-list">Attract More Sales And Profits</Link>
+          </h5>
+          <p>Marketing</p>
+          <div className="student-count d-flex justify-content-center">
+            <i className="fa-solid fa-calendar-days" />
+            <span>Jun 15, 2024</span>
+          </div>
+        </div>
+      </div>
+      <div className="instructors-widget blog-widget">
+        <div className="instructors-img">
+          <Link to="blog-list">
+            <img className="img-fluid" alt="" src={Blog1} />
+          </Link>
+        </div>
+        <div className="instructors-content text-center">
+          <h5>
+            <Link to="blog-list">Attract More Sales And Profits</Link>
+          </h5>
+          <p>Marketing</p>
+          <div className="student-count d-flex justify-content-center">
+            <i className="fa-solid fa-calendar-days" />
+            <span>Jun 15, 2024</span>
+          </div>
+        </div>
+      </div>
+      <div className="instructors-widget blog-widget">
+        <div className="instructors-img">
+          <Link to="blog-list">
+            <img className="img-fluid" alt="" src={Blog1} />
+          </Link>
+        </div>
+        <div className="instructors-content text-center">
+          <h5>
+            <Link to="blog-list">Attract More Sales And Profits</Link>
+          </h5>
+          <p>Marketing</p>
+          <div className="student-count d-flex justify-content-center">
+            <i className="fa-solid fa-calendar-days" />
+            <span>Jun 15, 2024</span>
+          </div>
+        </div>
+      </div>
+      <div className="instructors-widget blog-widget">
+        <div className="instructors-img">
+          <Link to="blog-list">
+            <img className="img-fluid" alt="" src={Blog1} />
+          </Link>
+        </div>
+        <div className="instructors-content text-center">
+          <h5>
+            <Link to="blog-list">Attract More Sales And Profits</Link>
+          </h5>
+          <p>Marketing</p>
+          <div className="student-count d-flex justify-content-center">
+            <i className="fa-solid fa-calendar-days" />
+            <span>Jun 15, 2024</span>
+          </div>
+        </div>
+      </div>
+   
     </OwlCarousel>
   );
 };

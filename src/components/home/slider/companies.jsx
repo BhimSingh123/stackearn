@@ -1,6 +1,6 @@
 import React from "react";
 import OwlCarousel from "react-owl-carousel";
-import { Lead1, Lead2, Lead3, Lead4, Lead5, Lead6 } from "../../imagepath";
+import { Lead1} from "../../imagepath";
 
 const Companies = () => {
   var settings = {
@@ -34,31 +34,37 @@ const Companies = () => {
           <img className="img-fluid" alt="" src={Lead1} />
         </div>
       </div>
+     
       <div className="item">
         <div className="lead-img">
-          <img className="img-fluid" alt="" src={Lead2} />
+          <img className="img-fluid" alt="" src={Lead1} />
         </div>
       </div>
+
       <div className="item">
         <div className="lead-img">
-          <img className="img-fluid" alt="" src={Lead3} />
+          <img className="img-fluid" alt="" src={Lead1} />
         </div>
       </div>
+
       <div className="item">
         <div className="lead-img">
-          <img className="img-fluid" alt="" src={Lead4} />
+          <img className="img-fluid" alt="" src={Lead1} />
         </div>
       </div>
+
       <div className="item">
         <div className="lead-img">
-          <img className="img-fluid" alt="" src={Lead5} />
+          <img className="img-fluid" alt="" src={Lead1} />
         </div>
       </div>
+
       <div className="item">
         <div className="lead-img">
-          <img className="img-fluid" alt="" src={Lead6} />
+          <img className="img-fluid" alt="" src={Lead1} />
         </div>
       </div>
+
     </OwlCarousel>
   );
 };
