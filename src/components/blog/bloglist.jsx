@@ -1,37 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Blog1, Blog2, Blog3, Blog5, Icon22, Icon23, User } from "../imagepath";
-import BlogHeader from "./header";
 import { Footer3 } from "../footer3";
+import Header from "../header";
 
 const BlogList = () => {
   return (
     <>
       <div className="main-wrapper">
-        <BlogHeader activeMenu={"List"}/>
-        <div className="breadcrumb-bar">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12 col-12">
-                <div className="breadcrumb-list">
-                  <nav aria-label="breadcrumb" className="page-breadcrumb">
-                    <ol className="breadcrumb">
-                      <li className="breadcrumb-item">
-                         <Link  to="/home">Home </Link> 
-                      </li>
-                      <li className="breadcrumb-item" aria-current="page">
-                        Pages
-                      </li>
-                      <li className="breadcrumb-item" aria-current="page">
-                        Blog List
-                      </li>
-                    </ol>
-                  </nav>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+       <Header/>
         <section className="course-content">
         <div className="container">
           <div className="row">

@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { Blog14, Blog15, Blog16, Blog17, Blog18, Blog19, Icon22, Icon24 } from '../imagepath';
-import BlogHeader from './header';
 import { Footer3 } from '../footer3';
+import Header from '../header';
 const BlogModern = () => {
   return (
     <>
         <div className='main-wrapper'>
-            <BlogHeader activeMenu={"Modern"}/>
+<Header/>
             <section className="course-content">
                 <div className="container">
                     <div className="row">

@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import Footer from '../footer';
 import { Blog1, Blog2, Blog3, BlogBanner, Icon22, Icon23, User } from '../imagepath';
-import BlogHeader from './header';
+import Header from '../header';
+import { Footer3 } from '../footer3';
 
 const BlogDetails = () => {
 
@@ -10,24 +10,7 @@ const BlogDetails = () => {
   return (
     <>
         <div className='main-wrapper'>
-          <BlogHeader activeMenu={"Details"} />
-            <div className="breadcrumb-bar">
-              <div className="container">
-                <div className="row">
-                  <div className="col-md-12 col-12">
-                    <div className="breadcrumb-list">
-                      <nav aria-label="breadcrumb" className="page-breadcrumb">
-                        <ol className="breadcrumb">
-                          <li className="breadcrumb-item"><Link  to="/home">Home</Link> </li>
-                          <li className="breadcrumb-item" aria-current="page">Pages</li>
-                          <li className="breadcrumb-item" aria-current="page">Blog Details</li>
-                        </ol>
-                      </nav>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <Header/>
 
             <section className="course-content">
               <div className="container">
@@ -429,7 +412,7 @@ const BlogDetails = () => {
               </div>
             </section>
 
-            <Footer/>
+            <Footer3/>
 
         </div>
     </>

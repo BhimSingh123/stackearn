@@ -1427,7 +1427,6 @@ export const Home = () => {
 
         {/* Footer */}
         <div className="home-three">
-
         <Footer3 />
         </div>
         {/* /Footer */}
