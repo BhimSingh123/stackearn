@@ -9,16 +9,16 @@ import {
   Icon22,
   Icon23,
 } from "../imagepath";
-import BlogHeader from "./header";
 import { Footer3 } from "../footer3";
+import Header from "../header";
 
 const BlogGrid = () => {
   return (
     <>
       <div className="main-wrapper">
-        <BlogHeader activeMenu={"Grid"}/>
+<Header/>
         <div className="breadcrumb-bar">
-          <div className="container">
+          <div className="container mt-4">
             <div className="row">
               <div className="col-md-12 col-12">
                 <div className="breadcrumb-list">
@@ -686,7 +686,10 @@ const BlogGrid = () => {
             </div>
           </div>
         </section>
+        <div className="home-three">
+
         <Footer3/>
+        </div>
       </div>
     </>
   );

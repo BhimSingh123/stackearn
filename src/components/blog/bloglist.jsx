@@ -10,7 +10,7 @@ const BlogList = () => {
       <div className="main-wrapper">
        <Header/>
         <section className="course-content">
-        <div className="container">
+        <div className="container mt-4">
           <div className="row">
             <div className="col-lg-9 col-md-12">
               {/* Blog Post */}
