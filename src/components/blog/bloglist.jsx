@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Footer from "../footer";
-// import Header from "../header";
 import { Blog1, Blog2, Blog3, Blog5, Blog6, Blog7, Icon22, Icon23, User, User1, User3 } from "../imagepath";
 import BlogHeader from "./header";
+import { Footer3 } from "../footer3";
 
 const BlogList = () => {
   return (
@@ -513,7 +512,8 @@ const BlogList = () => {
           </div>
         </div>
       </section>
-      <Footer/>
+      {/* <Footer/> */}
+      <Footer3/>
       </div>
       
     </>

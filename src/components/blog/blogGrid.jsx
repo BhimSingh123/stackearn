@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Footer from "../footer";
 // import Header from "../header";
 import {
   Blog1,
@@ -16,6 +15,7 @@ import {
   Icon23,
 } from "../imagepath";
 import BlogHeader from "./header";
+import { Footer3 } from "../footer3";
 
 const BlogGrid = () => {
   return (
@@ -638,7 +638,8 @@ const BlogGrid = () => {
             </div>
           </div>
         </section>
-        <Footer />
+        {/* <Footer /> */}
+        <Footer3/>
       </div>
     </>
   );
