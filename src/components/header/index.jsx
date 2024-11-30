@@ -121,7 +121,7 @@ const Header = () => {
                     to="/home"
                     onClick={openMobileSubMenu}
                   >
-                    Home <i className="fas fa-chevron-down" />
+                    Home
                   </Link>
                 
                 </li>
@@ -397,15 +397,11 @@ const Header = () => {
                     <li>
                       <Link to="/blog-grid">Blog Grid</Link>
                     </li>
-                    <li>
-                      <Link to="/blog-masonry">Blog Masonry</Link>
-                    </li>
+                   
                     <li>
                       <Link to="/blog-modern">Blog Modern</Link>
                     </li>
-                    <li>
-                      <Link to="/blog-details">Blog Details</Link>
-                    </li>
+                   
                   </ul>
                 </li>
                 <li className="login-link">

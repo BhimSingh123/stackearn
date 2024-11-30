@@ -112,31 +112,13 @@ const BlogHeader = ({ activeMenu }) => {
                   </div>
                   <ul className="main-nav">
                     <li className="has-submenu">
-                      <Link to="#" className={mobileSubMenu ? "submenu" : ""}>
+                      <Link to="/" className={mobileSubMenu ? "submenu" : ""}>
                         Home{" "}
                         <i
                           className="fas fa-chevron-down"
                           onClick={openMobileSubMenu}
                         ></i>
                       </Link>
-                      <ul
-                        className={
-                          mobileSubMenu ? "submenu submenuShow" : "submenu"
-                        }
-                      >
-                        <li>
-                          <Link to="/home">Home</Link>
-                        </li>
-                        <li>
-                          <Link to="/home2">Home Two</Link>
-                        </li>
-                        <li>
-                          <Link to="/home3">Home Three</Link>
-                        </li>
-                        <li>
-                          <Link to="/home4">Home Four</Link>
-                        </li>
-                      </ul>
                     </li>
                     <li className="has-submenu">
                       <Link to="/instructor/instructor-dashboard">
@@ -714,23 +696,9 @@ const BlogHeader = ({ activeMenu }) => {
                             Blog Grid
                           </Link>
                         </li>
-                        <li
-                          className={activeMenu === "Masonry" ? "active" : ""}
-                        >
-                          <Link to="/blog-masonry" onClick={hideMobileMenu}>
-                            Blog Masonry
-                          </Link>
-                        </li>
                         <li className={activeMenu === "Modern" ? "active" : ""}>
                           <Link to="/blog-modern" onClick={hideMobileMenu}>
                             Blog Modern
-                          </Link>
-                        </li>
-                        <li
-                          className={activeMenu === "Details" ? "active" : ""}
-                        >
-                          <Link to="/blog-details" onClick={hideMobileMenu}>
-                            Blog Details
                           </Link>
                         </li>
                       </ul>

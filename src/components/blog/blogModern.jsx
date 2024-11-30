@@ -1,39 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import Footer from '../footer';
-// import Header from '../header';
 import { Blog14, Blog15, Blog16, Blog17, Blog18, Blog19, Icon22, Icon24 } from '../imagepath';
 import BlogHeader from './header';
-
+import { Footer3 } from '../footer3';
 const BlogModern = () => {
   return (
     <>
         <div className='main-wrapper'>
             <BlogHeader activeMenu={"Modern"}/>
-            <div className="breadcrumb-bar">
-                <div className="container">
-                    <div className="row">
-                    <div className="col-md-12 col-12">
-                        <div className="breadcrumb-list">
-                        <nav aria-label="breadcrumb" className="page-breadcrumb">
-                            <ol className="breadcrumb">
-                            <li className="breadcrumb-item">
-                                <Link to="/home">Home</Link> 
-                            </li>
-                            <li className="breadcrumb-item" aria-current="page">
-                                Pages
-                            </li>
-                            <li className="breadcrumb-item" aria-current="page">
-                                Blog Modern
-                            </li>
-                            </ol>
-                        </nav>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-
             <section className="course-content">
                 <div className="container">
                     <div className="row">
@@ -487,7 +461,7 @@ const BlogModern = () => {
                     </div>
                 </div>
             </section>
-            <Footer/>
+            <Footer3/>
         </div>
     </>
   )

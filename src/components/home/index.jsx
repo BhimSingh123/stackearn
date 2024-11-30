@@ -58,16 +58,8 @@ import {
 } from "../imagepath";
 import { useSelector } from "react-redux";
 import TopCategory from "./slider/topCategory";
-// import TrendingCourse from "./slider/trendingCourse";
-
-// import Loginbg from "../../assets/img/banner.png";
 import Companies from "./slider/companies";
-// import BgBanner1 from "../../assets/img/bg-banner-01.png";
-// import BgBanner2 from "../../assets/img/bg-banner-02.png";
-// import Loginbg from "../../assets/img/banner.png";
-// import UserLove from "../../assets/img/user-love.jpg";
 import Blog from "./slider/blog";
-import Testimonial from "./slider/testimonial";
 import Select from "react-select";
 import { Link } from "react-router-dom";
 import AOS from "aos";
@@ -75,6 +67,7 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 import CountUp from "react-countup";
 import { Footer3 } from "../footer3";
+import Testinomal from "../home3/Testinomal";
 
 const options = [
   { label: "Category", value: "Category" },
@@ -1240,7 +1233,7 @@ export const Home = () => {
           </div>
         </section>
         {/* /Share knowledge */}
-
+{/* 
         <section
           className="section user-love"
         >
@@ -1253,9 +1246,9 @@ export const Home = () => {
             </div>
           </div>
         </section>
+        <Testimonial /> */}
         {/* Testimonial Carousel */}
-        <Testimonial />
-        {/* Testimonial Carousel */}
+        <Testinomal/>
 
         {/* Become a instructor */}
         <section className="section become-instructors aos" data-aos="fade-up">
