@@ -112,7 +112,7 @@ export const Home = () => {
   const style = {
     control: (baseStyles, state) => ({
       ...baseStyles,
-      backgroundColor:  "#FFDEDA",
+      backgroundColor: "#FFDEDA",
       border: state.isFocused ? 0 : 0,
       paddingLeft: "5px",
       paddingTop: "5px",
@@ -132,11 +132,11 @@ export const Home = () => {
     menu: (base) => ({ ...base, marginTop: "2px" }),
     option: (provided) => ({
       ...provided,
-      backgroundColor:  mobileSidebar === 'disabled' ? "#fff" : "#000",
-      color:mobileSidebar === 'disabled'? '#000':'#fff',
+      backgroundColor: mobileSidebar === 'disabled' ? "#fff" : "#000",
+      color: mobileSidebar === 'disabled' ? '#000' : '#fff',
       fontSize: "14px",
       "&:hover": {
-        backgroundColor:mobileSidebar === 'disabled'? "#FFDEDA":"#2b2838",
+        backgroundColor: mobileSidebar === 'disabled' ? "#FFDEDA" : "#2b2838",
       },
     }),
     indicatorSeparator: (base) => ({
@@ -153,12 +153,12 @@ export const Home = () => {
 
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
-    
+
   }, []);
   useEffect(() => {
-    console.log(mobileSidebar,'gg');
-    
-    
+    console.log(mobileSidebar, 'gg');
+
+
   }, [mobileSidebar]);
 
   return (
@@ -450,21 +450,21 @@ export const Home = () => {
                         </div>
                         <div className="d-flex align-items-center justify-content-between">
 
-                        <div className="rating">
-                          <i className="fas fa-star filled me-1" />
-                          <i className="fas fa-star filled me-1" />
-                          <i className="fas fa-star filled me-1" />
-                          <i className="fas fa-star filled me-1" />
-                          <i className="fas fa-star" />
-                          <span className="d-inline-block average-rating">
-                            <span>4.0</span> (15)
-                          </span>
-                        </div>
-                        <div className="all-btn all-category d-flex align-items-center">
-                          <Link to="/checkout" className="btn btn-primary">
-                            BUY NOW
-                          </Link>
-                        </div>
+                          <div className="rating">
+                            <i className="fas fa-star filled me-1" />
+                            <i className="fas fa-star filled me-1" />
+                            <i className="fas fa-star filled me-1" />
+                            <i className="fas fa-star filled me-1" />
+                            <i className="fas fa-star" />
+                            <span className="d-inline-block average-rating">
+                              <span>4.0</span> (15)
+                            </span>
+                          </div>
+                          <div className="all-btn all-category d-flex align-items-center">
+                            <Link to="/checkout" className="btn btn-primary">
+                              BUY NOW
+                            </Link>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -525,18 +525,18 @@ export const Home = () => {
                           </div>
                         </div>
                         <div className="d-flex align-items-center justify-content-between">
-												<div className="rating m-0">							
-													<i className="fas fa-star filled me-1"></i>
-													<i className="fas fa-star filled me-1"></i>
-													<i className="fas fa-star filled me-1"></i>
-													<i className="fas fa-star filled me-1"></i>
-													<i className="fas fa-star"></i>
-													<span className="d-inline-block average-rating"><span>4.0</span> (15)</span>
-												</div>
-												<div className="all-btn all-category d-flex align-items-center">
-													<Link to="/checkout" className="btn btn-primary">BUY NOW</Link>
-												</div>
-											</div>
+                          <div className="rating m-0">
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star filled me-1"></i>
+                            <i className="fas fa-star"></i>
+                            <span className="d-inline-block average-rating"><span>4.0</span> (15)</span>
+                          </div>
+                          <div className="all-btn all-category d-flex align-items-center">
+                            <Link to="/checkout" className="btn btn-primary">BUY NOW</Link>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -597,21 +597,21 @@ export const Home = () => {
                         </div>
                         <div className="d-flex align-items-center justify-content-between">
 
-                        <div className="rating">
-                          <i className="fas fa-star filled me-1" />
-                          <i className="fas fa-star filled me-1" />
-                          <i className="fas fa-star filled me-1" />
-                          <i className="fas fa-star filled me-1" />
-                          <i className="fas fa-star" />
-                          <span className="d-inline-block average-rating">
-                            <span>4.5</span> (15)
-                          </span>
-                        </div>
-                        <div className="all-btn all-category d-flex align-items-center">
-                          <Link to="/checkout" className="btn btn-primary">
-                            BUY NOW
-                          </Link>
-                        </div>
+                          <div className="rating">
+                            <i className="fas fa-star filled me-1" />
+                            <i className="fas fa-star filled me-1" />
+                            <i className="fas fa-star filled me-1" />
+                            <i className="fas fa-star filled me-1" />
+                            <i className="fas fa-star" />
+                            <span className="d-inline-block average-rating">
+                              <span>4.5</span> (15)
+                            </span>
+                          </div>
+                          <div className="all-btn all-category d-flex align-items-center">
+                            <Link to="/checkout" className="btn btn-primary">
+                              BUY NOW
+                            </Link>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -676,21 +676,21 @@ export const Home = () => {
                         </div>
                         <div className="d-flex align-items-center justify-content-between">
 
-                        <div className="rating">
-                          <i className="fas fa-star filled me-1" />
-                          <i className="fas fa-star filled me-1" />
-                          <i className="fas fa-star filled me-1" />
-                          <i className="fas fa-star filled me-1" />
-                          <i className="fas fa-star" />
-                          <span className="d-inline-block average-rating">
-                            <span>4.2</span> (15)
-                          </span>
-                        </div>
-                        <div className="all-btn all-category d-flex align-items-center">
-                          <Link to="/checkout" className="btn btn-primary">
-                            BUY NOW
-                          </Link>
-                        </div>
+                          <div className="rating">
+                            <i className="fas fa-star filled me-1" />
+                            <i className="fas fa-star filled me-1" />
+                            <i className="fas fa-star filled me-1" />
+                            <i className="fas fa-star filled me-1" />
+                            <i className="fas fa-star" />
+                            <span className="d-inline-block average-rating">
+                              <span>4.2</span> (15)
+                            </span>
+                          </div>
+                          <div className="all-btn all-category d-flex align-items-center">
+                            <Link to="/checkout" className="btn btn-primary">
+                              BUY NOW
+                            </Link>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -753,21 +753,21 @@ export const Home = () => {
                         </div>
                         <div className="d-flex align-items-center justify-content-between">
 
-                        <div className="rating">
-                          <i className="fas fa-star filled me-1" />
-                          <i className="fas fa-star filled me-1" />
-                          <i className="fas fa-star filled me-1" />
-                          <i className="fas fa-star filled me-1" />
-                          <i className="fas fa-star" />
-                          <span className="d-inline-block average-rating">
-                            <span>4.0</span> (15)
-                          </span>
-                        </div>
-                        <div className="all-btn all-category d-flex align-items-center">
-                          <Link to="/checkout" className="btn btn-primary">
-                            BUY NOW
-                          </Link>
-                        </div>
+                          <div className="rating">
+                            <i className="fas fa-star filled me-1" />
+                            <i className="fas fa-star filled me-1" />
+                            <i className="fas fa-star filled me-1" />
+                            <i className="fas fa-star filled me-1" />
+                            <i className="fas fa-star" />
+                            <span className="d-inline-block average-rating">
+                              <span>4.0</span> (15)
+                            </span>
+                          </div>
+                          <div className="all-btn all-category d-flex align-items-center">
+                            <Link to="/checkout" className="btn btn-primary">
+                              BUY NOW
+                            </Link>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -830,21 +830,21 @@ export const Home = () => {
                         </div>
                         <div className="d-flex align-items-center justify-content-between">
 
-                        <div className="rating">
-                          <i className="fas fa-star filled me-1" />
-                          <i className="fas fa-star filled me-1" />
-                          <i className="fas fa-star filled me-1" />
-                          <i className="fas fa-star filled me-1" />
-                          <i className="fas fa-star" />
-                          <span className="d-inline-block average-rating">
-                            <span>4.6</span> (15)
-                          </span>
-                        </div>
-                        <div className="all-btn all-category d-flex align-items-center">
-                          <Link to="/checkout" className="btn btn-primary">
-                            BUY NOW
-                          </Link>
-                        </div>
+                          <div className="rating">
+                            <i className="fas fa-star filled me-1" />
+                            <i className="fas fa-star filled me-1" />
+                            <i className="fas fa-star filled me-1" />
+                            <i className="fas fa-star filled me-1" />
+                            <i className="fas fa-star" />
+                            <span className="d-inline-block average-rating">
+                              <span>4.6</span> (15)
+                            </span>
+                          </div>
+                          <div className="all-btn all-category d-flex align-items-center">
+                            <Link to="/checkout" className="btn btn-primary">
+                              BUY NOW
+                            </Link>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -939,239 +939,242 @@ export const Home = () => {
         {/* /Master Skills */}
 
         {/* Trending Course */}
-        <section className="accelerate-cloud-three">
-        <div className="container">
-          <div className="shapes-three-right">
-            <img className="accelerate-one" src={Shape01} alt="" />
-            <img className="accelerate-two" src={Pattern03} alt="" />
-          </div>
-          <div className="shapes-three-left">
-            <img className="accelerate-three" src={Pattern02} alt="" />
-            <img className="accelerate-four" src={Shape02} alt="" />
-            <img className="accelerate-five" src={Pattern04} alt="" />
-          </div>
-          <div
-            className="home-three-head section-header-title"
-            data-aos="fade-up"
-          >
-            <div className="row align-items-center d-flex justify-content-between">
-              <div className="col-lg-6 col-md-12">
-                <div className="home-three-head">
-                  <h2 className="text-white">
-                    Accelerate cloud success with hands-on learning at scaler
-                  </h2>
-                </div>
-              </div>
-              <div className="col-lg-6 col-md-12">
-                <p className="accelerate-three-business">
-                  96% of eLearning for Business customers see improved results
-                  within six months. Whether you’re a team of 10 or 10,000,
-                  faster cloud fluency starts here.
-                </p>
-              </div>
-            </div>
-          </div>
+        <div className="home-three">
 
-          {/* Award Winning */}
-          <div className="award-one">
-            <div className="row align-items-center">
+          <section className="accelerate-cloud-three">
+            <div className="container">
+              <div className="shapes-three-right">
+                <img className="accelerate-one" src={Shape01} alt="" />
+                <img className="accelerate-two" src={Pattern03} alt="" />
+              </div>
+              <div className="shapes-three-left">
+                <img className="accelerate-three" src={Pattern02} alt="" />
+                <img className="accelerate-four" src={Shape02} alt="" />
+                <img className="accelerate-five" src={Pattern04} alt="" />
+              </div>
               <div
-                className="col-xl-6 col-lg-6 col-md-6 col-12"
-                data-aos="fade-right"
+                className="home-three-head section-header-title"
+                data-aos="fade-up"
               >
-                <div className="award-three-images-one">
-                  <img
-                    className="img-fluid"
-                    src={Award01}
-                    alt="image-banner"
-                    title="image-banner"
-                  />
+                <div className="row align-items-center d-flex justify-content-between">
+                  <div className="col-lg-6 col-md-12">
+                    <div className="home-three-head">
+                      <h2 className="text-white">
+                        Accelerate cloud success with hands-on learning at scaler
+                      </h2>
+                    </div>
+                  </div>
+                  <div className="col-lg-6 col-md-12">
+                    <p className="accelerate-three-business">
+                      96% of eLearning for Business customers see improved results
+                      within six months. Whether you’re a team of 10 or 10,000,
+                      faster cloud fluency starts here.
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              <div className="col-xl-6 col-lg-6 col-md-6 col-12">
-                <div className="award-three-content-one">
-                  <div className="award-list-info" data-aos="fade-up">
-                    <div className="award-win-icon">
-                      <img src={AwardSvg} alt="certified" />
-                    </div>
-                    <div className="award-list-content">
-                      <h2>Award Winning Course Management</h2>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Quam dolor fermentum massa viverra congue proin. A
-                        volutpat eget ultrices velit nunc orci. Commodo quis
-                        integer a felis ac vel mauris a morbi. Scelerisque{" "}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="award-list d-flex align-items-center">
-                    <span className="award-icon">
-                      <img src={CheckRound1} alt="" className="img-fluid" />
-                    </span>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </p>
-                  </div>
-                  <div className="award-list d-flex align-items-center">
-                    <span className="award-icon">
-                      <img src={CheckRound1} alt="" className="img-fluid" />
-                    </span>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </p>
-                  </div>
+              {/* Award Winning */}
+              <div className="award-one">
+                <div className="row align-items-center">
                   <div
-                    className="award-list mb-0 d-flex align-items-center"
-                    data-aos="fade-up"
+                    className="col-xl-6 col-lg-6 col-md-6 col-12"
+                    data-aos="fade-right"
                   >
-                    <span className="award-icon">
-                      <img src={CheckRound1} alt="" className="img-fluid" />
-                    </span>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* Award Winning	 */}
-
-          {/* Learn Anything */}
-          <div className="learn-anything">
-            <div className="row align-items-center">
-              <div
-                className="col-xl-6 col-lg-6 col-md-6 col-12"
-                data-aos="fade-up"
-              >
-                <div className="award-three-content-two">
-                  <div className="award-list-info">
-                    <div className="award-win-icon">
-                      <img className="img-fluid" src={Time} alt="certified" />
-                    </div>
-                    <div className="award-list-content">
-                      <h2>Learn anything from anywhere anytime</h2>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Quam dolor fermentum massa viverra congue proin. A
-                        volutpat eget ultrices velit nunc orci. Commodo quis
-                        integer a felis ac vel mauris a morbi. Scelerisque{" "}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="award-list d-flex align-items-center">
-                    <span className="award-icon">
-                      <img src={CheckRound2} alt="" className="img-fluid" />
-                    </span>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </p>
-                  </div>
-                  <div className="award-list d-flex align-items-center">
-                    <span className="award-icon">
-                      <img src={CheckRound2} alt="" className="img-fluid" />
-                    </span>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </p>
-                  </div>
-                  <div className="award-list d-flex align-items-center">
-                    <span className="award-icon">
-                      <img src={CheckRound2} alt="" className="img-fluid" />
-                    </span>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div
-                className="col-xl-6 col-lg-6 col-md-6 col-12"
-                data-aos="fade-right"
-              >
-                <div className="award-three-images-two">
-                  <img
-                    className="img-fluid"
-                    src={LearnAnything}
-                    alt="image-banner"
-                    title="image-banner"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* Learn Anything */}
-
-          {/* Development Career */}
-          <div className="development-carrer">
-            <div className="row align-items-center">
-              <div
-                className="col-xl-6 col-lg-6 col-md-6 col-12"
-                data-aos="fade-right"
-              >
-                <div className="award-three-images-three">
-                  <img
-                    className="img-fluid"
-                    src={Certification}
-                    alt="image-banner"
-                    title="image-banner"
-                  />
-                </div>
-              </div>
-
-              <div
-                className="col-xl-6 col-lg-6 col-md-6 col-12"
-                data-aos="fade-up"
-              >
-                <div className="award-three-content-one">
-                  <div className="award-list-info">
-                    <div className="award-win-icon">
+                    <div className="award-three-images-one">
                       <img
                         className="img-fluid"
-                        src={Winning}
-                        alt="certified"
+                        src={Award01}
+                        alt="image-banner"
+                        title="image-banner"
                       />
-                    </div>
-                    <div className="award-list-content">
-                      <h2>
-                        Certification for solid development of your Carrer
-                      </h2>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Quam dolor fermentum massa viverra congue proin. A
-                        volutpat eget ultrices velit nunc orci. Commodo quis
-                        integer a felis ac vel mauris a morbi. Scelerisque{" "}
-                      </p>
                     </div>
                   </div>
 
-                  <div className="award-list d-flex align-items-center">
-                    <span className="award-icon">
-                      <img src={CheckRound3} alt="" className="img-fluid" />
-                    </span>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </p>
-                  </div>
-                  <div className="award-list d-flex align-items-center">
-                    <span className="award-icon">
-                      <img src={CheckRound3} alt="" className="img-fluid" />
-                    </span>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                    </p>
+                  <div className="col-xl-6 col-lg-6 col-md-6 col-12">
+                    <div className="award-three-content-one">
+                      <div className="award-list-info" data-aos="fade-up">
+                        <div className="award-win-icon">
+                          <img src={AwardSvg} alt="certified" />
+                        </div>
+                        <div className="award-list-content">
+                          <h2>Award Winning Course Management</h2>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Quam dolor fermentum massa viverra congue proin. A
+                            volutpat eget ultrices velit nunc orci. Commodo quis
+                            integer a felis ac vel mauris a morbi. Scelerisque{" "}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="award-list d-flex align-items-center">
+                        <span className="award-icon">
+                          <img src={CheckRound1} alt="" className="img-fluid" />
+                        </span>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                        </p>
+                      </div>
+                      <div className="award-list d-flex align-items-center">
+                        <span className="award-icon">
+                          <img src={CheckRound1} alt="" className="img-fluid" />
+                        </span>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                        </p>
+                      </div>
+                      <div
+                        className="award-list mb-0 d-flex align-items-center"
+                        data-aos="fade-up"
+                      >
+                        <span className="award-icon">
+                          <img src={CheckRound1} alt="" className="img-fluid" />
+                        </span>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+              {/* Award Winning	 */}
+
+              {/* Learn Anything */}
+              <div className="learn-anything">
+                <div className="row align-items-center">
+                  <div
+                    className="col-xl-6 col-lg-6 col-md-6 col-12"
+                    data-aos="fade-up"
+                  >
+                    <div className="award-three-content-two">
+                      <div className="award-list-info">
+                        <div className="award-win-icon">
+                          <img className="img-fluid" src={Time} alt="certified" />
+                        </div>
+                        <div className="award-list-content">
+                          <h2>Learn anything from anywhere anytime</h2>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Quam dolor fermentum massa viverra congue proin. A
+                            volutpat eget ultrices velit nunc orci. Commodo quis
+                            integer a felis ac vel mauris a morbi. Scelerisque{" "}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="award-list d-flex align-items-center">
+                        <span className="award-icon">
+                          <img src={CheckRound2} alt="" className="img-fluid" />
+                        </span>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                        </p>
+                      </div>
+                      <div className="award-list d-flex align-items-center">
+                        <span className="award-icon">
+                          <img src={CheckRound2} alt="" className="img-fluid" />
+                        </span>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                        </p>
+                      </div>
+                      <div className="award-list d-flex align-items-center">
+                        <span className="award-icon">
+                          <img src={CheckRound2} alt="" className="img-fluid" />
+                        </span>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    className="col-xl-6 col-lg-6 col-md-6 col-12"
+                    data-aos="fade-right"
+                  >
+                    <div className="award-three-images-two">
+                      <img
+                        className="img-fluid"
+                        src={LearnAnything}
+                        alt="image-banner"
+                        title="image-banner"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* Learn Anything */}
+
+              {/* Development Career */}
+              <div className="development-carrer">
+                <div className="row align-items-center">
+                  <div
+                    className="col-xl-6 col-lg-6 col-md-6 col-12"
+                    data-aos="fade-right"
+                  >
+                    <div className="award-three-images-three">
+                      <img
+                        className="img-fluid"
+                        src={Certification}
+                        alt="image-banner"
+                        title="image-banner"
+                      />
+                    </div>
+                  </div>
+
+                  <div
+                    className="col-xl-6 col-lg-6 col-md-6 col-12"
+                    data-aos="fade-up"
+                  >
+                    <div className="award-three-content-one">
+                      <div className="award-list-info">
+                        <div className="award-win-icon">
+                          <img
+                            className="img-fluid"
+                            src={Winning}
+                            alt="certified"
+                          />
+                        </div>
+                        <div className="award-list-content">
+                          <h2>
+                            Certification for solid development of your Carrer
+                          </h2>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Quam dolor fermentum massa viverra congue proin. A
+                            volutpat eget ultrices velit nunc orci. Commodo quis
+                            integer a felis ac vel mauris a morbi. Scelerisque{" "}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="award-list d-flex align-items-center">
+                        <span className="award-icon">
+                          <img src={CheckRound3} alt="" className="img-fluid" />
+                        </span>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                        </p>
+                      </div>
+                      <div className="award-list d-flex align-items-center">
+                        <span className="award-icon">
+                          <img src={CheckRound3} alt="" className="img-fluid" />
+                        </span>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* Development Career */}
             </div>
-          </div>
-          {/* Development Career */}
+          </section>
         </div>
-      </section>
         {/* <TrendingCourse /> */}
 
         {/* Trending Course */}
@@ -1233,7 +1236,7 @@ export const Home = () => {
           </div>
         </section>
         {/* /Share knowledge */}
-{/* 
+        {/* 
         <section
           className="section user-love"
         >
@@ -1248,7 +1251,10 @@ export const Home = () => {
         </section>
         <Testimonial /> */}
         {/* Testimonial Carousel */}
-        <Testinomal/>
+        <div className="home-three">
+
+          <Testinomal />
+        </div>
 
         {/* Become a instructor */}
         <section className="section become-instructors aos" data-aos="fade-up">
