@@ -18,6 +18,7 @@ const Header = () => {
   const [navbar, setNavbar] = useState(false);
   // Mobile Menu toggle
   const [mobileSubMenu4, setMobileSubMenu4] = useState(false);
+  const [mobileSubMenu43, setMobileSubMenu43] = useState(false);
   const [mobileSubMenu5, setMobileSubMenu5] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
 const navigate = useNavigate()
@@ -38,6 +39,11 @@ const navigate = useNavigate()
   const openMobileSubMenu4 = (e) => {
     e.preventDefault();
     setMobileSubMenu4(!mobileSubMenu4);
+  };
+ 
+  const openMobileSubMenu43 = (e) => {
+    e.preventDefault();
+    setMobileSubMenu43(!mobileSubMenu43);
   };
   const openMobileSubMenu5 = (e) => {
     e.preventDefault();
@@ -104,13 +110,15 @@ const navigate = useNavigate()
                     Instructor 
                   </Link>
                 </li>
+
                 <li className="has-submenu">
                   <Link to="/gallery" >
                     Gallery 
                   </Link>
                 </li>
+
                 <li className="has-submenu">
-                  <Link to="/services" >
+                  <Link to="/serivces" >
                     Services 
                   </Link>
                 </li>
@@ -199,6 +207,39 @@ const navigate = useNavigate()
                       mobileSubMenu4 ? "submenu submenuShow" : "submenu"
                     }
                   >
+                   
+                    
+                    
+               
+                    <li className="has-submenu">
+                      <Link to="#">
+                        Error
+                        <i
+                          className=""
+                          onClick={openMobileSubMenu43}
+                        ></i>
+                      </Link>
+                      <ul
+                        className={
+                          mobileSubMenu43 ? "submenu submenuShow" : "submenu"
+                        }
+                      >
+                        <li>
+                          <Link to="/come-soon">Coming soon</Link>
+                        </li>
+                        <li>
+                          <Link to="/error-404">404</Link>
+                        </li>
+                        <li>
+                          <Link to="/error-500">500</Link>
+                        </li>
+                        <li>
+                          <Link to="/under-construction">
+                            Under Construction
+                          </Link>
+                        </li>
+                      </ul>
+                    </li>
                     <li>
                       <Link to="/faq">FAQ</Link>
                     </li>
@@ -206,10 +247,16 @@ const navigate = useNavigate()
                       <Link to="/support">Support</Link>
                     </li>
                     <li>
+                      <Link to="/job-category">Category</Link>
+                    </li>
+                    <li>
                       <Link to="/cart">Cart</Link>
                     </li>
                     <li>
                       <Link to="/checkout">Checkout</Link>
+                    </li>
+                    <li>
+                      <Link to="/login">About Us</Link>
                     </li>
                   </ul>
                 </li>

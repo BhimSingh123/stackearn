@@ -27,7 +27,10 @@ function Index() {
                     </div>
                 </div>
             </div>
-            <Footer3 />
+            <div className="home-three">
+
+                <Footer3 />
+            </div>
         </div>
     );
 }
