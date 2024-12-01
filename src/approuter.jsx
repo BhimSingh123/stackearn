@@ -130,6 +130,7 @@ import InstructorQuizDetails from "./components/instructor/instructorQuiz/instru
 import StudentQuizDetails from "./components/student/studentQuiz/studentQuizDetails.jsx";
 import Index from "./components/services/index.jsx";
 import Gallery from "./components/gallery/index.jsx";
+import EventsSection from "./components/pages/EventSection.jsx";
 
 
 const Approuter = () => {
@@ -152,6 +153,8 @@ const Approuter = () => {
         {/* Pages */}
         <Route path="/page-notification" element={<Notification />} />
         <Route path="/pricing-plan" element={<PricingPlan />} />
+        <Route path="/event" element={<EventsSection />} />
+
         <Route path="/pricing-plan2" element={<PricingPlan2 />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/add-course" element={<AddCourse />} />

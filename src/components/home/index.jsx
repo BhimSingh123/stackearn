@@ -58,7 +58,7 @@ import { useEffect } from "react";
 import CountUp from "react-countup";
 import { Footer3 } from "../footer3";
 import Testinomal from "../home3/Testinomal";
-import EventsSection from "./EventSection";
+// import EventsSection from "../pages/EventSection";
 
 const options = [
   { label: "Category", value: "Category" },
@@ -1249,7 +1249,7 @@ export const Home = () => {
           </div>
         </section>
         {/* /Become a instructor */}
-<EventsSection/>
+{/* <EventsSection/> */}
         {/* Blog */}
         <section
           className="section latest-blog"

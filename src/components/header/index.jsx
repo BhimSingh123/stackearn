@@ -119,7 +119,7 @@ const Header = () => {
 
 
                 <li className="has-submenu">
-                  <Link to="/serivces" >
+                  <Link to="/services" >
                     Services
                   </Link>
                 </li>
@@ -164,6 +164,9 @@ const Header = () => {
                     </li>
                     <li>
                       <Link to="/faq">FAQ</Link>
+                    </li>
+                    <li>
+                      <Link to="/event">Event</Link>
                     </li>
                     <li>
                       <Link to="/support">Support</Link>
@@ -215,15 +218,16 @@ const Header = () => {
                       dropdownOpen ? "submenu submenuShow" : "submenu"
                     }
                   >
+                       <li>
+                      <Link to="/student/student-dashboard"> <FaTachometerAlt className="me-2" />
+                        <span>Dashboard</span></Link>
+                    </li>
                     <li>
                       <Link to="/student/student-profile">
                         <FaUserCircle className="me-2" />
                         <span>My Profile</span></Link>
                     </li>
-                    <li>
-                      <Link to="/student/student-dashboard"> <FaTachometerAlt className="me-2" />
-                        <span>Dashboard</span></Link>
-                    </li>
+                 
 
                     <li>
                       <Link to="#"> <FaSignOutAlt className="me-2" />
@@ -244,12 +248,6 @@ const Header = () => {
                   Signin
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link header-login" to="/register">
-                  Signup
-                </Link>
-              </li>
-
             </ul>
             <div className="main-menu-wrapper">
               <div className="menu-header">

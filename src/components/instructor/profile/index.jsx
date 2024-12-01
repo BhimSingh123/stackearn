@@ -1,23 +1,17 @@
 import React from "react";
 import {
   AddressIcon,
-  Course10,
-  Course11,
   CoursesIcon,
   EmailIcon,
-  Icon1,
-  Icon2,
   PhoneIcon,
   ProfileAvatar,
   ReviewIcon,
   TtlStudIcon,
   User1,
-  User2,
 } from "../../imagepath";
 import { Link } from "react-router-dom";
 import Header from "../../header";
 import { Footer3 } from "../../footer3";
-import Footer from "../../footer";
 
 export default function InstructorProfile() {
   return (
@@ -201,7 +195,7 @@ export default function InstructorProfile() {
               {/* Experience Content */}
 
               {/* Courses Content */}
-              <div className="card education-sec">
+              {/* <div className="card education-sec">
                 <div className="card-body pb-0">
                   <h5 className="subs-title">Courses</h5>
                   <div className="row">
@@ -366,7 +360,7 @@ export default function InstructorProfile() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
               {/*Courses Content  */}
 
               {/* Reviews */}
@@ -671,7 +665,6 @@ export default function InstructorProfile() {
         </div>
       </section>
       {/* Course Content */}
-      <Footer />
       <div className="home-three">
       <Footer3/>
       </div>

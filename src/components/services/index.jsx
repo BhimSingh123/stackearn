@@ -12,14 +12,14 @@ function Index() {
                         <div className="row">
                             <div className="col-md-12 col-12">
                                 <div className="breadcrumb-list">
-                                    <h2 className="breadcrumb-title">My Profile</h2>
+                                    <h2 className="breadcrumb-title">My Services</h2>
                                     <nav aria-label="breadcrumb" className="page-breadcrumb">
                                         <ol className="breadcrumb">
                                             <li className="breadcrumb-item">
                                                 <a to="/home">Home</a>
                                             </li>
                                             <li className="breadcrumb-item active" aria-current="page">
-                                                My Profile
+                                                My Services
                                             </li>
                                         </ol>
                                     </nav>
