@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-  import { logo ,
-  User16,
-
-   } from "../imagepath";
+import { Link } from "react-router-dom";
+import { FaTachometerAlt, FaSignOutAlt, FaUserCircle } from "react-icons/fa";
+import { logo, User16 } from "../imagepath";
 import DarkMode from "../common/darkMode";
 
 const Header = () => {
@@ -20,13 +18,14 @@ const Header = () => {
   const [mobileSubMenu4, setMobileSubMenu4] = useState(false);
   const [mobileSubMenu43, setMobileSubMenu43] = useState(false);
   const [mobileSubMenu5, setMobileSubMenu5] = useState(false);
-  const [showProfile, setShowProfile] = useState(false);
-const navigate = useNavigate()
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  console.log("dropdownOpen", dropdownOpen)
   const profileClick = (e) => {
     e.preventDefault();
-    setShowProfile(!showProfile);
-    navigate("/student/student-dashboard")
+    setDropdownOpen(!dropdownOpen);
   };
+
 
   const openMobileMenu = () => {
     document.body?.classList?.add("menu-opened");
@@ -35,12 +34,12 @@ const navigate = useNavigate()
     document.body?.classList?.remove("menu-opened");
   };
 
-  
+
   const openMobileSubMenu4 = (e) => {
     e.preventDefault();
     setMobileSubMenu4(!mobileSubMenu4);
   };
- 
+
   const openMobileSubMenu43 = (e) => {
     e.preventDefault();
     setMobileSubMenu43(!mobileSubMenu43);
@@ -82,6 +81,7 @@ const navigate = useNavigate()
                 <img src={logo} className="img-fluid" alt="Logo" />
               </Link>
             </div>
+
             <div className="main-menu-wrapper">
               <div className="menu-header">
                 <Link to="/home" className="menu-logo">
@@ -103,101 +103,26 @@ const navigate = useNavigate()
                   >
                     Home
                   </Link>
-                
+
                 </li>
                 <li className="has-submenu">
                   <Link to="/instructor/instructor-grid" >
-                    Instructor 
+                    Instructor
                   </Link>
                 </li>
 
                 <li className="has-submenu">
                   <Link to="/gallery" >
-                    Gallery 
+                    Gallery
                   </Link>
                 </li>
 
+
                 <li className="has-submenu">
                   <Link to="/serivces" >
-                    Services 
+                    Services
                   </Link>
                 </li>
-                {/* <li className="has-submenu">
-                  <Link to="/student/students-list" onClick={openMobileSubMenu3}>
-                    Student <i className="fas fa-chevron-down"></i>
-                  </Link>
-                  <ul
-                    className={
-                      mobileSubMenu3
-                        ? "submenu first-submenu submenuShow"
-                        : "submenu first-submenu"
-                    }
-                  >
-                    <li className="has-submenu ">
-                      <Link to="/student/students-list">
-                        Student
-                        <i
-                          // className=""
-                          onClick={openMobileSubMenu32}
-                        ></i>
-                      </Link>
-                      <ul
-                        className={
-                          mobileSubMenu32 ? "submenu submenuShow" : "submenu"
-                        }
-                      >
-                        <li>
-                          <Link to="/student/students-list">List</Link>
-                        </li>
-                        <li>
-                          <Link to="/student/students-grid">Grid</Link>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <Link to="/setting-edit-profile">Student Dashboard</Link>
-                    </li>
-                    <li>
-                      <Link to="/student/setting-student-security">My Profile</Link>
-                    </li>
-                    <li>
-                      <Link to="/student/setting-student-social-profile">
-                        Enrolled Cources
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/student/setting-student-notification">
-                        Wishlist
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/student/setting-student-privacy">Reviews</Link>
-                    </li>
-                    <li>
-                      <Link to="/student/setting-student-accounts">My Quiz Attempts</Link>
-                    </li>
-                    <li>
-                      <Link to="/student/setting-student-referral">Orders</Link>
-                    </li>
-                    <li>
-                      <Link to="/student/setting-student-subscription">
-                        Question and Answer
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/student/setting-student-billing">Refferals</Link>
-                    </li>
-                    <li>
-                      <Link to="/student/setting-student-payment">Message</Link>
-                    </li>
-                    <li>
-                      <Link to="/student/setting-support-tickets">Support Tickets</Link>
-                    </li>
-                    <li>
-                      <Link to="/student/setting-support-tickets">Settings</Link>
-                    </li>
-                  </ul>
-                </li> */}
                 <li className="has-submenu">
                   <Link to="/home" onClick={openMobileSubMenu4}>
                     Pages <i className="fas fa-chevron-down" />
@@ -207,10 +132,7 @@ const navigate = useNavigate()
                       mobileSubMenu4 ? "submenu submenuShow" : "submenu"
                     }
                   >
-                   
-                    
-                    
-               
+
                     <li className="has-submenu">
                       <Link to="#">
                         Error
@@ -247,9 +169,6 @@ const navigate = useNavigate()
                       <Link to="/support">Support</Link>
                     </li>
                     <li>
-                      <Link to="/job-category">Category</Link>
-                    </li>
-                    <li>
                       <Link to="/cart">Cart</Link>
                     </li>
                     <li>
@@ -275,11 +194,42 @@ const navigate = useNavigate()
                     <li>
                       <Link to="/blog-grid">Blog Grid</Link>
                     </li>
-                   
+
                     <li>
                       <Link to="/blog-modern">Blog Modern</Link>
                     </li>
-                   
+
+                  </ul>
+                </li>
+
+                <li className="has-submenu">
+                  <Link to="#" onClick={profileClick}>
+                    <span className="user-img">
+                      <img src={User16} alt="User" className="rounded-circle" />
+                      <span className="status online"></span>
+                    </span>
+                  </Link>
+
+                  <ul
+                    className={
+                      dropdownOpen ? "submenu submenuShow" : "submenu"
+                    }
+                  >
+                    <li>
+                      <Link to="/student/student-profile">
+                        <FaUserCircle className="me-2" />
+                        <span>My Profile</span></Link>
+                    </li>
+                    <li>
+                      <Link to="/student/student-dashboard"> <FaTachometerAlt className="me-2" />
+                        <span>Dashboard</span></Link>
+                    </li>
+
+                    <li>
+                      <Link to="#"> <FaSignOutAlt className="me-2" />
+                        <span>Logout</span></Link>
+                    </li>
+
                   </ul>
                 </li>
                 <li className="login-link">
@@ -288,7 +238,7 @@ const navigate = useNavigate()
               </ul>
             </div>
             <ul className="nav header-navbar-rht">
-              <DarkMode/>
+              <DarkMode />
               <li className="nav-item">
                 <Link className="nav-link header-sign" to="/login">
                   Signin
@@ -299,18 +249,13 @@ const navigate = useNavigate()
                   Signup
                 </Link>
               </li>
-              <li className="nav-item">
-              <div
-                 className="nav-link"
-                  onClick={profileClick}
-                >
-                  <span className="user-img">
-                    <img src={User16} alt="" />
-                    <span className="status online"></span>
-                  </span>
-                </div>
-              </li>
+
             </ul>
+            <div className="main-menu-wrapper">
+              <div className="menu-header">
+
+              </div>
+            </div>
           </div>
         </nav>
       </div>
