@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import StudentSidebar from "../sidebar";
-import StudentHeader from "../header";
 import {
   Icon1,
   Icon2,
@@ -18,7 +17,8 @@ import {
   course08,
 } from "../../imagepath";
 import { Link } from "react-router-dom";
-import Footer from "../../footer";
+import { Footer3 } from "../../footer3";
+import Header from "../../header";
 
 const StudentCourses = () => {
   const [isClassAdded, setIsClassAdded] = useState([false]);
@@ -31,7 +31,7 @@ const StudentCourses = () => {
 
   return (
     <div className="main-wrapper">
-      <StudentHeader activeMenu={"Enrolled Courses"} />
+      <Header activeMenu={"Enrolled Courses"} />
       {/* Breadcrumb */}
       <div className="breadcrumb-bar breadcrumb-bar-info">
         <div className="container">
@@ -1028,7 +1028,10 @@ const StudentCourses = () => {
         </div>
       </div>
       {/* /Page Content */}
-      <Footer />
+<div className="home-three">
+
+      <Footer3/>
+</div>
     </div>
   );
 };

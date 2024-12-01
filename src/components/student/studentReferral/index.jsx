@@ -1,7 +1,5 @@
 import React from "react";
-import StudentHeader from "../header";
 import StudentSidebar from "../sidebar";
-import Footer from "../../footer";
 import {
   User1,
   User13,
@@ -17,11 +15,13 @@ import { Link } from "react-router-dom";
 import { initialSettings } from "../../common/dateRangePicker";
 import DateRangePicker from "react-bootstrap-daterangepicker";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Footer3 } from "../../footer3";
+import Header from "../../header";
 
 const StudentReferral = () => {
   return (
     <div className="main-wrapper">
-      <StudentHeader activeMenu={"Referrals"} />
+      <Header />
       {/* Breadcrumb */}
       <div className="breadcrumb-bar breadcrumb-bar-info">
         <div className="container">
@@ -572,7 +572,7 @@ const StudentReferral = () => {
         </div>
       </div>
       {/* /Page Content */}
-      <Footer />
+      <Footer3/>
     </div>
   );
 };

@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import StudentHeader from "../header";
 import StudentSidebar from "../sidebar";
 import StudentSettingPageHeader from "./settingPageHeader";
+import Header from "../../header";
 
 const StudentSocialProfile = () => {
   return (
     <div className="main-wrapper">
       <>
         {/* Header */}
-        <StudentHeader activeMenu={"Dashboard"} />
+        <Header activeMenu={"Dashboard"} />
         {/* /Header */}
         {/* Breadcrumb */}
         <div className="breadcrumb-bar breadcrumb-bar-info">

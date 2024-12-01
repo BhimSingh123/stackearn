@@ -1,14 +1,14 @@
 import React from "react";
-import StudentHeader from "../header";
 import StudentSidebar from "../sidebar";
-import Footer from "../../footer";
 import { User16 } from "../../imagepath";
 import { Link } from "react-router-dom";
+import { Footer3 } from "../../footer3";
+import Header from "../../header";
 
 const StudentReviews = () => {
   return (
     <div className="main-wrapper">
-      <StudentHeader activeMenu={"Reviews"} />
+      <Header activeMenu={"Reviews"} />
       {/* Breadcrumb */}
       <div className="breadcrumb-bar breadcrumb-bar-info">
         <div className="container">
@@ -239,7 +239,7 @@ const StudentReviews = () => {
         </div>
       </div>
       {/* /Page Content */}
-      <Footer />
+      <Footer3/>
     </div>
   );
 };

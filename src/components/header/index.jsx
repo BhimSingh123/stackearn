@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { logo } from "../imagepath";
+import { Link, useNavigate } from "react-router-dom";
+  import { logo ,
+  User16,
+
+   } from "../imagepath";
 import DarkMode from "../common/darkMode";
 
 const Header = () => {
@@ -14,12 +17,17 @@ const Header = () => {
   // change header background on scroll
   const [navbar, setNavbar] = useState(false);
   // Mobile Menu toggle
-  const [mobileSubMenu3, setMobileSubMenu3] = useState(false);
-  const [mobileSubMenu32, setMobileSubMenu32] = useState(false);
   const [mobileSubMenu4, setMobileSubMenu4] = useState(false);
   const [mobileSubMenu42, setMobileSubMenu42] = useState(false);
   const [mobileSubMenu43, setMobileSubMenu43] = useState(false);
   const [mobileSubMenu5, setMobileSubMenu5] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
+const navigate = useNavigate()
+  const profileClick = (e) => {
+    e.preventDefault();
+    setShowProfile(!showProfile);
+    navigate("/student/student-dashboard")
+  };
 
   const openMobileMenu = () => {
     document.body?.classList?.add("menu-opened");
@@ -28,14 +36,7 @@ const Header = () => {
     document.body?.classList?.remove("menu-opened");
   };
 
-  const openMobileSubMenu3 = (e) => {
-    e.preventDefault();
-    setMobileSubMenu3(!mobileSubMenu3);
-  };
-  const openMobileSubMenu32 = (e) => {
-    e.preventDefault();
-    setMobileSubMenu32(!mobileSubMenu32);
-  };
+  
   const openMobileSubMenu4 = (e) => {
     e.preventDefault();
     setMobileSubMenu4(!mobileSubMenu4);
@@ -113,7 +114,7 @@ const Header = () => {
                     Instructor 
                   </Link>
                 </li>
-                <li className="has-submenu">
+                {/* <li className="has-submenu">
                   <Link to="/student/students-list" onClick={openMobileSubMenu3}>
                     Student <i className="fas fa-chevron-down"></i>
                   </Link>
@@ -188,7 +189,7 @@ const Header = () => {
                       <Link to="/student/setting-support-tickets">Settings</Link>
                     </li>
                   </ul>
-                </li>
+                </li> */}
                 <li className="has-submenu">
                   <Link to="/home" onClick={openMobileSubMenu4}>
                     Pages <i className="fas fa-chevron-down" />
@@ -327,6 +328,17 @@ const Header = () => {
                 <Link className="nav-link header-login" to="/register">
                   Signup
                 </Link>
+              </li>
+              <li className="nav-item">
+              <div
+                 className="nav-link"
+                  onClick={profileClick}
+                >
+                  <span className="user-img">
+                    <img src={User16} alt="" />
+                    <span className="status online"></span>
+                  </span>
+                </div>
               </li>
             </ul>
           </div>

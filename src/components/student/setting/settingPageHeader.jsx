@@ -58,19 +58,6 @@ const StudentSettingPageHeader = () => {
               Linked Accounts
             </Link>
           </li>
-          <li>
-            <Link
-              to="/student/student-notification"
-              className={
-                location.pathname === "/student/student-notification"
-                  ? "active"
-                  : ""
-              }
-            >
-              <i className="bx bx-bell" />
-              Notifications
-            </Link>
-          </li>
         </ul>
       </div>
     </div>

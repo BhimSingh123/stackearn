@@ -26,7 +26,7 @@ export default function StudentSidebar() {
                   <Link to="/student/student-profile">Rolands Richard</Link>
                 </h4>
                 <p>Student</p>
-                
+
               </div>
             </div>
           </div>
@@ -58,13 +58,7 @@ export default function StudentSidebar() {
                   Enrolled Courses
                 </Link>
               </li>
-              <li className={`nav-item ${location.pathname === '/student/student-wishlist' || location.pathname === '/student/student-quiz-details' ? 'active' : ''}`}>
 
-                <Link to="/student/student-wishlist" className="nav-link">
-                  <i className="bx bxs-heart" />
-                  Wishlist
-                </Link>
-              </li>
               <li className={`nav-item ${location.pathname === '/student/student-reviews' ? 'active' : ''}`}>
 
                 <Link to="/student/student-reviews" className="nav-link">
@@ -72,45 +66,19 @@ export default function StudentSidebar() {
                   Reviews
                 </Link>
               </li>
-              <li className={`nav-item ${location.pathname === '/student/student-quiz' ? 'active' : ''}`}>
 
-                <Link to="/student/student-quiz" className="nav-link">
-                  <i className="bx bxs-shapes" />
-                  My Quiz Attempts
-                </Link>
-              </li>
               <li className={`nav-item ${location.pathname === '/student/student-order-history' ? 'active' : ''}`}>
                 <Link to="/student/student-order-history" className="nav-link">
                   <i className="bx bxs-cart" />
                   Order History
                 </Link>
               </li>
-              <li className={`nav-item ${location.pathname === '/student/student-qa' ? 'active' : ''}`}>
 
-                <Link to="/student/student-qa" className="nav-link">
-                  <i className="bx bxs-bookmark-alt" />
-                  Question &amp; Answer
-                </Link>
-              </li>
               <li className={`nav-item ${location.pathname === '/student/student-referral' ? 'active' : ''}`}>
 
                 <Link to="/student/student-referral" className="nav-link">
                   <i className="bx bxs-user-plus" />
                   Referrals
-                </Link>
-              </li>
-              <li className={`nav-item ${location.pathname === '/student/student-messages' ? 'active' : ''}`}>
-                <Link to="/student/student-messages" className="nav-link">
-                  <i className="bx bxs-chat" />
-                  Messages
-                </Link>
-              </li>
-
-              <li className={`nav-item ${location.pathname === '/student/student-ticket' ? 'active' : ''}`}>
-
-                <Link to="/student/student-ticket" className="nav-link">
-                  <i className="bx bxs-coupon" />
-                  Support Tickets
                 </Link>
               </li>
             </ul>

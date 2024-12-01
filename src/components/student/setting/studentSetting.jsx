@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import StudentHeader from "../header";
 import StudentSidebar from "../sidebar";
 import { User16 } from "../../imagepath";
 import StudentSettingPageHeader from "./settingPageHeader";
+import Header from "../../header";
 
 const StudentSetting = () => {
   return (
     <div className="main-wrapper">
       <>
         {/* Header */}
-        <StudentHeader activeMenu={"Settings"} />
+        <Header/>
         {/* /Header */}
         {/* Breadcrumb */}
         <div className="breadcrumb-bar breadcrumb-bar-info">

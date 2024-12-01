@@ -131,6 +131,8 @@ export const Home = () => {
 
   }, [mobileSidebar]);
 
+ 
+
   return (
     <>
       <div className="main-wrapper">
@@ -362,7 +364,7 @@ export const Home = () => {
             </div>
             <div className="course-feature">
               <div className="row">
-              <div className="col-lg-4 col-md-6 d-flex">
+                <div className="col-lg-4 col-md-6 d-flex">
                   <div className="course-box d-flex aos" data-aos="fade-up">
                     <div className="product">
                       <div className="product-img">
@@ -792,7 +794,7 @@ export const Home = () => {
                     </div>
                   </div>
                 </div>
-             
+
               </div>
             </div>
           </div>
@@ -883,7 +885,6 @@ export const Home = () => {
 
         {/* Trending Course */}
         <div className="home-three">
-
           <section className="accelerate-cloud-three">
             <div className="container">
               <div className="shapes-three-right">
@@ -1124,7 +1125,7 @@ export const Home = () => {
 
         {/* Companies */}
         <section className="section lead-companies">
-          <div className="container">
+          <div className="container mt-5">
             <div className="section-header aos" data-aos="fade-up">
               <div className="section-sub-head feature-head text-center">
                 <span>Trusted By</span>
@@ -1427,7 +1428,7 @@ export const Home = () => {
 
         {/* Footer */}
         <div className="home-three">
-        <Footer3 />
+          <Footer3 />
         </div>
         {/* /Footer */}
       </div>

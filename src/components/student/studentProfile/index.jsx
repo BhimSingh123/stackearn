@@ -1,7 +1,7 @@
 import React from 'react'
-import Footer from '../../footer'
-import StudentHeader from '../header'
 import StudentSidebar from '../sidebar'
+import Header from '../../header'
+import { Footer3 } from '../../footer3'
 
 const StudentProfile = () => {
     return (
@@ -9,7 +9,7 @@ const StudentProfile = () => {
             {/* Main Wrapper */}
             <div className="main-wrapper">
                 {/* Header */}
-                <StudentHeader activeMenu={"My Profile"} />
+                <Header />
                 {/* /Header */}
                 {/* Breadcrumb */}
                 <div className="breadcrumb-bar breadcrumb-bar-info">
@@ -103,7 +103,10 @@ const StudentProfile = () => {
                 </div>
                 {/* /Page Content */}
                 {/* Footer */}
-               <Footer/>
+                <div className='home-three'>
+
+               <Footer3/>
+                </div>
                 {/* /Footer */}
             </div>
             {/* /Main Wrapper */}
