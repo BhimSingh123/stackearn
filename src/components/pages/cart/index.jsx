@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Footer from "../../footer";
 import { Course10, Course11, Course12, Icon1, Icon2 } from "../../imagepath";
-import PageHeader from "../header";
+import Header from "../../header";
+import { Footer3 } from "../../footer3";
 
 const Cart = () => {
   return (
     <>
       <div className="main-wrapper">
-        <PageHeader activeMenu="Cart"/>
+        <Header activeMenu="Cart"/>
 
         <div className="breadcrumb-bar">
           <div className="container">
@@ -271,7 +271,7 @@ const Cart = () => {
           </div>
         </section>
 
-        <Footer/>
+        <Footer3/>
       </div>
     </>
   );

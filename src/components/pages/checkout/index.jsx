@@ -1,9 +1,9 @@
 import React from "react";
-import PageHeader from "../header";
 import Select from "react-select";
 import { useState } from "react";
-import Footer from "../../footer";
 import { Link } from "react-router-dom";
+import Header from "../../header";
+import { Footer3 } from "../../footer3";
 
 const Checkout = () => {
 
@@ -43,7 +43,7 @@ const Checkout = () => {
   return (
     <>
       <div className="main-wrapper">
-        <PageHeader activeMenu="Checkout"/>
+        <Header activeMenu="Checkout"/>
 
         <div className="breadcrumb-bar">
           <div className="container">
@@ -363,7 +363,7 @@ const Checkout = () => {
           </div>
         </section>
 
-        <Footer/>
+        <Footer3/>
       </div>
     </>
   );

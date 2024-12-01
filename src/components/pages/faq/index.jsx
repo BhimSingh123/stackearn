@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import PageHeader from "../header";
 import { Link } from "react-router-dom";
-import Footer from "../../footer";
 import { Minus, Plus } from "react-feather";
+import Header from "../../header";
+import { Footer3 } from "../../footer3";
 
 const Faq = () => {
 
@@ -25,7 +25,7 @@ const Faq = () => {
   return (
     <>
       <div className="main-wrapper">
-        <PageHeader activeMenu={"Faq"} />
+        <Header activeMenu={"Faq"} />
 
         <div className="breadcrumb-bar">
           <div className="container">
@@ -268,7 +268,7 @@ const Faq = () => {
           </div>
         </div>
 
-        <Footer/>
+        <Footer3/>
         
       </div>
     </>

@@ -128,6 +128,9 @@ import StudentSetting from "./components/student/setting/studentSetting.jsx";
 import StudentTicket from "./components/student/studentTicket/index.jsx";
 import InstructorQuizDetails from "./components/instructor/instructorQuiz/instructorQuizDetails.jsx";
 import StudentQuizDetails from "./components/student/studentQuiz/studentQuizDetails.jsx";
+import Index from "./components/services/index.jsx";
+import Gallery from "./components/gallery/index.jsx";
+
 
 const Approuter = () => {
   return (
@@ -499,6 +502,11 @@ const Approuter = () => {
         <Route path="/student/student-setting" element={<StudentSetting />} />
         <Route path="/student/student-ticket" element={<StudentTicket />} />
         {/* student routes ends*/}
+
+        <Route path="/gallery" element={<Gallery />} />
+
+        <Route path="/services" element={<Index />} />
+
       </Routes>
     </BrowserRouter>
   );

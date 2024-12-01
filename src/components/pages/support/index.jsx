@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Footer from "../../footer";
-import PageHeader from "../header";
+import Header from "../../header";
+import { Footer3 } from "../../footer3";
 
 const Support = () => {
   return (
     <>
       <div className="main-wrapper">
 
-        <PageHeader activeMenu="Support"/>
+        <Header activeMenu="Support"/>
 
         <div className="breadcrumb-bar">
           <div className="container">
@@ -88,7 +88,7 @@ const Support = () => {
           </div>
         </div>
 
-        <Footer/>
+        <Footer3/>
       </div>
     </>
   );
