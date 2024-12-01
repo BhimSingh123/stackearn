@@ -12434,8 +12434,7 @@ input[type="password"]::-ms-clear {
   margin-bottom: 25px;
   border: 1px solid #e9ecef;
 }
-.plan-box:hover {
-}
+
 .plan-box h4 {
   color: #ff5364;
   margin-bottom: 16px;
@@ -17271,8 +17270,7 @@ input[type="password"]::-ms-clear {
   border: none;
   color: #9f9f9f;
 }
-.chat-cont-right .chat-footer .input-group .btn.msg-send-btn {
-}
+
 .msg-typing {
   width: auto;
   height: 24px;
