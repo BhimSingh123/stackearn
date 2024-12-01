@@ -131,6 +131,8 @@ import StudentQuizDetails from "./components/student/studentQuiz/studentQuizDeta
 import Index from "./components/services/index.jsx";
 import Gallery from "./components/gallery/index.jsx";
 import EventsSection from "./components/pages/EventSection.jsx";
+import Coaching from "./components/services/Coaching.jsx";
+import School from "./components/services/School.jsx";
 
 
 const Approuter = () => {
@@ -509,6 +511,11 @@ const Approuter = () => {
         <Route path="/gallery" element={<Gallery />} />
 
         <Route path="/services" element={<Index />} />
+
+        <Route path="/coaching" element={<Coaching />} />
+
+        <Route path="/school" element={<School />} />
+
 
       </Routes>
     </BrowserRouter>
