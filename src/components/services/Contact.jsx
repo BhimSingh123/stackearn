@@ -19,21 +19,21 @@ function Contact() {
 
                 {/* Right Section (Login Form) */}
 
-                <div className="col-md-6 d-flex align-items-center bg-white p-4">
+                <div className="col-md-6 login-wrapper loginbox  d-flex align-items-center bg-white p-4">
                     <div className="w-100">
-                <h1 className="mb-2">Contact Us </h1>
-                <p className="mb-3">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                        ad minim veniam.
-                    </p>
+                        <h1 className="mb-1">Contact Us </h1>
+                        <p className="mb-1">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                            ad minim veniam.
+                        </p>
                         {/* Logo */}
                         <form>
                             <div className="mb-3">
                                 <label className="form-label">name</label>
                                 <input
                                     type="email"
-                                    className="form-control"
+                                    className="form-control custom-textarea"
                                     placeholder="Enter your name"
                                 />
                             </div>
@@ -41,7 +41,7 @@ function Contact() {
                                 <label className="form-label">Email</label>
                                 <input
                                     type="email"
-                                    className="form-control"
+                                    className="form-control custom-textarea"
                                     placeholder="Enter your email address"
                                 />
                             </div>
@@ -49,8 +49,17 @@ function Contact() {
                                 <label className="form-label">Phone Number</label>
                                 <input
                                     type="email"
-                                    className="form-control"
+                                    className="form-control custom-textarea"
                                     placeholder="Enter your phone number"
+                                />
+                            </div>
+
+                            <div className="mb-3">
+                                <label className="form-label">Subject</label>
+                                <input
+                                    type="text"
+                                    className="form-control custom-textarea"
+                                    placeholder="Enter your subject"
                                 />
                             </div>
                             <div className="mb-3">
@@ -59,12 +68,15 @@ function Contact() {
                                     type="text"
                                     rows={5}
                                     cols={5}
-                                    className="form-control"
+                                    className="form-control custom-textarea"
                                     placeholder="Enter your message"
-                                > </textarea>
+                                ></textarea>
                             </div>
-                            <button type="submit" className="btn btn-primary w-100">
-                                Contact Us              </button>
+                            <div className="d-grid">
+
+                                <button type="submit" className="btn btn-primary btn-start w-100 p-2">
+                                    Contact Us              </button>
+                            </div>
                         </form>
 
                         {/* Social Login */}
