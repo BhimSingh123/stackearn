@@ -1,26 +1,18 @@
 import React from "react";
 import Header from "../../header";
 import { Footer3 } from "../../footer3";
-import { Icon03, Join ,Icon02 ,Icon01 ,Icon04} from "../../imagepath";
+import { Icon03, Join, Icon02, Icon01, Icon04 } from "../../imagepath";
 
 const Support = () => {
   return (
     <>
       <div className="main-wrapper">
 
-        <Header activeMenu="Support"/>
+        <Header activeMenu="Support" />
 
-       
-        <div className="page-banner">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12 col-12">
-                <h1 className="mb-0">Support</h1>
-              </div>
-            </div>
-          </div>
-        </div>
- <section className="section master-skill">
+
+
+        <section className="section master-skill">
           <div className="container">
             <div className="row">
               <div className="col-lg-7 col-md-12">
@@ -147,7 +139,7 @@ const Support = () => {
           </div>
         </div>
 
-        <Footer3/>
+        <Footer3 />
       </div>
     </>
   );
