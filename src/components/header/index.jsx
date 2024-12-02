@@ -262,7 +262,7 @@ const Header = () => {
             <ul className="nav header-navbar-rht">
               <DarkMode />
               <li className="nav-item">
-              <FaShoppingCart size={32} color="#FF8752 mr-2 ml-2" />  
+                <FaShoppingCart size={32} color="#FF8752 mr-2 ml-2" />
               </li>
               <li className="nav-item">
                 <Link className="nav-link header-sign" to="/login">
