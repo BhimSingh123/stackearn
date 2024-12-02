@@ -138,8 +138,10 @@ const Support = () => {
             </div>
           </div>
         </div>
+        <div className="home-three">
 
-        <Footer3 />
+          <Footer3 />
+        </div>
       </div>
     </>
   );
