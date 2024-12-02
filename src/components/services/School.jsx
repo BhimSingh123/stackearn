@@ -31,6 +31,7 @@ import Select from "react-select";
 import LeadingCompanies4 from "../home4/slider/leadingCompanies";
 import CountUp from "react-countup";
 import { Footer3 } from "../footer3";
+import Contact from "./Contact";
 
 function School() {
     const mobileSidebar = useSelector(
@@ -118,7 +119,7 @@ function School() {
     return (<>
         <div className="main-wrapper">
             <Header />
-            <section className="home-slide-five">
+            <section className="home-slide-five bg-![#685f78]">
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-6 col-12">
@@ -654,6 +655,7 @@ function School() {
                     </div>
                 </div>
             </section>
+            <Contact/>
             <div className="home-three">
                 <Footer3 />
             </div>

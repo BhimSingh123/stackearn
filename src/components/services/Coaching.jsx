@@ -18,6 +18,7 @@ import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import React from "react";
+import Contact from "./Contact";
 
 function Coaching() {
 
@@ -324,7 +325,7 @@ function Coaching() {
 
             </div>
 
-          
+            <Contact />
             <div className="home-three">
                 <Footer3 />
             </div>

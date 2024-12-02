@@ -18,6 +18,7 @@ const Header = () => {
   const [mobileSubMenu4, setMobileSubMenu4] = useState(false);
   const [mobileSubMenu43, setMobileSubMenu43] = useState(false);
   const [mobileSubMenu5, setMobileSubMenu5] = useState(false);
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   console.log("dropdownOpen", dropdownOpen)
@@ -26,13 +27,13 @@ const Header = () => {
     setDropdownOpen(!dropdownOpen);
   };
 
-
   const openMobileMenu = () => {
     document.body?.classList?.add("menu-opened");
   };
   const hideMobileMenu = () => {
     document.body?.classList?.remove("menu-opened");
   };
+
 
 
   const openMobileSubMenu4 = (e) => {
@@ -81,7 +82,6 @@ const Header = () => {
                 <img src={logo} className="img-fluid" alt="Logo" />
               </Link>
             </div>
-
             <div className="main-menu-wrapper">
               <div className="menu-header">
                 <Link to="/home" className="menu-logo">
@@ -118,7 +118,6 @@ const Header = () => {
                 </li>
 
 
-               
                 <li className="has-submenu">
                   <Link to="/services" onClick={openMobileSubMenu5}>
                     Services <i className="fas fa-chevron-down" />
@@ -236,7 +235,7 @@ const Header = () => {
                       dropdownOpen ? "submenu submenuShow" : "submenu"
                     }
                   >
-                       <li>
+                    <li>
                       <Link to="/student/student-dashboard"> <FaTachometerAlt className="me-2" />
                         <span>Dashboard</span></Link>
                     </li>
@@ -245,7 +244,7 @@ const Header = () => {
                         <FaUserCircle className="me-2" />
                         <span>My Profile</span></Link>
                     </li>
-                 
+
 
                     <li>
                       <Link to="#"> <FaSignOutAlt className="me-2" />
@@ -266,12 +265,8 @@ const Header = () => {
                   Signin
                 </Link>
               </li>
-            </ul>
-            <div className="main-menu-wrapper">
-              <div className="menu-header">
 
-              </div>
-            </div>
+            </ul>
           </div>
         </nav>
       </div>
