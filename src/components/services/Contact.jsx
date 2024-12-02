@@ -54,7 +54,7 @@ function Contact() {
                                 />
                             </div>
 
-                            <div className="mb-3">
+                            <div className="mb-2">
                                 <label className="form-label">Subject</label>
                                 <input
                                     type="text"
@@ -62,7 +62,7 @@ function Contact() {
                                     placeholder="Enter your subject"
                                 />
                             </div>
-                            <div className="mb-3">
+                            <div className="mb-2">
                                 <label className="form-label">Message</label>
                                 <textarea
                                     type="text"

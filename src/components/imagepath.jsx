@@ -83,7 +83,7 @@ export { default as Skill1 } from "../assets/img/skil-01.png";
 
 // Home 3
 
-export { default as HomeThreeBanner } from "../assets/img/slider/home-three-banner.jpg";
+export { default as HomeThreeBanner } from "../assets/img/slider/home-three-banner-1.jpg";
 
 export { default as HomeSlider } from "../assets/img/slider/home-slider.png";
 

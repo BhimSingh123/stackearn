@@ -196,7 +196,7 @@ const Header = () => {
                       <Link to="/checkout">Checkout</Link>
                     </li>
                     <li>
-                      <Link to="/login">About Us</Link>
+                      <Link to="/about">About Us</Link>
                     </li>
                   </ul>
                 </li>
@@ -265,8 +265,8 @@ const Header = () => {
                 <FaShoppingCart size={32} color="#FF8752 mr-2 ml-2" />
               </li>
               <li className="nav-item">
-                <Link className="nav-link header-sign" to="/login">
-                  Signin
+                <Link className="login-head button" to="/login">
+                  Login
                 </Link>
               </li>
 

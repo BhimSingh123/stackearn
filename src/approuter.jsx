@@ -134,6 +134,9 @@ import EventsSection from "./components/pages/EventSection.jsx";
 import Coaching from "./components/services/Coaching.jsx";
 import School from "./components/services/School.jsx";
 
+import About from "./components/pages/About/index.jsx";
+
+
 
 const Approuter = () => {
   return (
@@ -515,6 +518,8 @@ const Approuter = () => {
         <Route path="/coaching" element={<Coaching />} />
 
         <Route path="/school" element={<School />} />
+        <Route path="/about" element={<About />} />
+
 
 
       </Routes>

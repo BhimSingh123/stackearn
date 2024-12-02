@@ -526,9 +526,7 @@ function School() {
                                     <div className="goals-count-five goals-five-one">
                                         <div className="goals-content-five course-count ms-0">
                                             <h4>
-                                                <span className="d-flex">
-                                                    <CountUp start={0} end={145} delay={1} duration={2} />
-                                                </span>
+                                                <span className="counterUp">145</span>
                                             </h4>
                                             <p className="mb-0">Expert Tutors</p>
                                         </div>

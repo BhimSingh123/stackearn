@@ -2,7 +2,7 @@ import React from "react";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import OwlCarousel from "react-owl-carousel";
-import { LoginImg, logo, NetIcon1, NetIcon2 } from "../../imagepath";
+import { LoginImg, logo } from "../../imagepath";
 import FeatherIcon from "feather-icons-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -185,38 +185,6 @@ const Login = () => {
                     </div>
                   </form>
                 </div>
-              </div>
-              <div className="google-bg text-center">
-                <span>
-                  <Link to="#">Or sign in with</Link>
-                </span>
-                <div className="sign-google">
-                  <ul>
-                    <li>
-                      <Link to="#">
-                        <img
-                          src={NetIcon1}
-                          className="img-fluid"
-                          alt="Logo"
-                        />{" "}
-                        Sign In using Google
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="#">
-                        <img
-                          src={NetIcon2}
-                          className="img-fluid"
-                          alt="Logo"
-                        />
-                        Sign In using Facebook
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-                <p className="mb-0">
-                  New User ? <Link to="/register">Create an Account</Link>
-                </p>
               </div>
             </div>
             {/* /Login */}
