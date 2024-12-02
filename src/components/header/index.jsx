@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FaTachometerAlt, FaSignOutAlt, FaUserCircle } from "react-icons/fa";
 import { logo, User16 } from "../imagepath";
 import DarkMode from "../common/darkMode";
+import { FaShoppingCart } from "react-icons/fa";
 
 const Header = () => {
   useEffect(() => {
@@ -260,6 +261,9 @@ const Header = () => {
             </div>
             <ul className="nav header-navbar-rht">
               <DarkMode />
+              <li className="nav-item">
+              <FaShoppingCart size={32} color="#FF8752 mr-2 ml-2" />  
+              </li>
               <li className="nav-item">
                 <Link className="nav-link header-sign" to="/login">
                   Signin
