@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Header from "../../header";
 import { Footer3 } from "../../footer3";
 import { Icon03, Join ,Icon02 ,Icon01 ,Icon04} from "../../imagepath";
@@ -11,25 +10,6 @@ const Support = () => {
 
         <Header activeMenu="Support"/>
 
-        <div className="breadcrumb-bar">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12 col-12">
-                <div className="breadcrumb-list">
-                  <nav aria-label="breadcrumb" className="page-breadcrumb">
-                    <ol className="breadcrumb">
-                      <li className="breadcrumb-item">
-                        <Link to="/home">Home</Link>
-                      </li>
-                      <li className="breadcrumb-item">Pages</li>
-                      <li className="breadcrumb-item">Support</li>
-                    </ol>
-                  </nav>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
        
         <div className="page-banner">
           <div className="container">
