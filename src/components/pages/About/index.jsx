@@ -62,6 +62,8 @@ function index() {
                     </div>
                 </div>
             </section>
+            <div className= "home-two">
+
             <section className="about-section">
                 <div className="container">
                     <div className="row">
@@ -186,6 +188,7 @@ function index() {
                     </div>
                 </div>
             </section>
+            </div>
 
             <section className="master-skills-sec">
                 <div className="container">

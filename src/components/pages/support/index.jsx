@@ -10,8 +10,7 @@ const Support = () => {
 
         <Header activeMenu="Support" />
 
-
-
+   
         <section className="section master-skill">
           <div className="container">
             <div className="row">
