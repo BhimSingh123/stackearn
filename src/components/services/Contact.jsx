@@ -1,8 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import { LoginImg } from "../imagepath";
+import toast from "react-hot-toast";
+import Listing from "../Api/Listing";
+import PropTypes from "prop-types";
 
-function Contact() {
+function Contact({ datarole }) {
 
+    const [Regs, setRegs] = useState({
+        name: "",
+        email: "",
+        role: datarole,
+        message: "",
+        subject: '',
+        phone_number: ''
+    });
+    const handleInputs = (e) => {
+        const value = e.target.value;
+        const name = e.target.name;
+        setRegs((prevState) => ({ ...prevState, [name]: value }));
+    };
+
+    const [loading, setLoading] = useState(false);
+
+    const handleForms = async (e) => {
+        e.preventDefault();
+        if (loading) return;
+
+        if (!Regs.name || !Regs.email || !Regs.phone_number || !Regs.subject || !Regs.message) {
+            toast.error("Please fill out all fields.");
+            return;
+        }
+
+        setLoading(true);
+        const main = new Listing();
+        try {
+            const response = await main.contact(Regs);
+            console.log("response", response)
+            if (response?.data?.status) {
+                toast.success(response.data.message);
+            } else {
+                toast.error(response.data.message);
+            }
+        } catch (error) {
+            toast.error("Something went wrong, please try again.");
+        } finally {
+            setLoading(false);
+        }
+    };
     return (
         <div className="container my-5">
             <div className="row g-0">
@@ -32,7 +76,10 @@ function Contact() {
                             <div className="mb-3">
                                 <label className="form-label">name</label>
                                 <input
-                                    type="email"
+                                    type="text"
+                                    name="name"
+                                    value={Regs?.name}
+                                    onChange={handleInputs}
                                     className="form-control custom-textarea"
                                     placeholder="Enter your name"
                                 />
@@ -41,6 +88,9 @@ function Contact() {
                                 <label className="form-label">Email</label>
                                 <input
                                     type="email"
+                                    name="email"
+                                    value={Regs?.email}
+                                    onChange={handleInputs}
                                     className="form-control custom-textarea"
                                     placeholder="Enter your email address"
                                 />
@@ -48,7 +98,10 @@ function Contact() {
                             <div className="mb-3">
                                 <label className="form-label">Phone Number</label>
                                 <input
-                                    type="email"
+                                    type="tel"
+                                    name="phone_number"
+                                    value={Regs?.phone_number}
+                                    onChange={handleInputs}
                                     className="form-control custom-textarea"
                                     placeholder="Enter your phone number"
                                 />
@@ -58,6 +111,9 @@ function Contact() {
                                 <label className="form-label">Subject</label>
                                 <input
                                     type="text"
+                                    name="subject"
+                                    value={Regs?.subject}
+                                    onChange={handleInputs}
                                     className="form-control custom-textarea"
                                     placeholder="Enter your subject"
                                 />
@@ -65,17 +121,19 @@ function Contact() {
                             <div className="mb-2">
                                 <label className="form-label">Message</label>
                                 <textarea
-                                    type="text"
                                     rows={5}
                                     cols={5}
+                                    onChange={handleInputs}
+                                    value={Regs?.message}
+                                    name="message"
                                     className="form-control custom-textarea"
                                     placeholder="Enter your message"
                                 ></textarea>
                             </div>
                             <div className="d-grid">
 
-                                <button type="submit" className="btn btn-primary btn-start w-100 p-2">
-                                    Contact Us              </button>
+                                <button type="submit" onClick={handleForms} className="btn btn-primary btn-start w-100 p-2">
+                                    {loading ? "loading.." : "Contact Us"}         </button>
                             </div>
                         </form>
 
@@ -87,5 +145,10 @@ function Contact() {
         </div>
     );
 }
+
+Contact.propTypes = {
+    datarole: PropTypes.string.isRequired, // Ensures datarole is a required string
+  };
+  
 
 export default Contact;

@@ -1,9 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import { Facebook, Linkedin, Twitter, Youtube } from "react-feather";
 import { Link } from "react-router-dom";
 import { logoPng } from "../imagepath";
+import toast from "react-hot-toast";
+import Listing from "../Api/Listing";
 
 export const Footer3 = () => {
+
+  const [Regs, setRegs] = useState({
+    email: "",
+});
+const handleInputs = (e) => {
+    const value = e.target.value;
+    const name = e.target.name;
+    setRegs((prevState) => ({ ...prevState, [name]: value }));
+};
+
+const [loading, setLoading] = useState(false);
+
+const handleForms = async (e) => {
+    e.preventDefault();
+    if (loading) return;
+
+    if ( !Regs.email) {
+        toast.error("Please fill out all fields.");
+        return;
+    }
+
+    setLoading(true);
+    const main = new Listing();
+    try {
+        const response = await main.subscribe(Regs);
+        console.log("response", response)
+        if (response?.data?.status) {
+            toast.success(response.data.message);
+        } else {
+            toast.error(response.data.message);
+        }
+    } catch (error) {
+        toast.error("Something went wrong, please try again.");
+    } finally {
+        setLoading(false);
+    }
+};
   return (
     <footer className="footer footer-three">
       {/* Footer Top */}
@@ -35,11 +74,14 @@ export const Footer3 = () => {
                       {/* <img className="emailSvg" src={EmailSvg} alt="" /> */}
                       <input
                         className="input-newsletter"
-                        type="text"
+                        type="email"
+                        name="email"
+                        value={Regs?.email}
+                        onChange={handleInputs}
                         placeholder="Enter your email here"
                       />
-                      <button className="btn btn-default font-heading icon-send-letter">
-                        Subscribe Now
+                      <button onClick={handleForms} className="btn btn-default font-heading icon-send-letter">
+                       {loading ? "Loading..." : "Subscribe Now"}
                       </button>
                     </form>
                   </div>

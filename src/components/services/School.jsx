@@ -653,7 +653,7 @@ function School() {
                     </div>
                 </div>
             </section>
-            <Contact/>
+            <Contact datarole={"school"}/>
             <div className="home-three">
                 <Footer3 />
             </div>

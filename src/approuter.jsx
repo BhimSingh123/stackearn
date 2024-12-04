@@ -135,6 +135,9 @@ import Coaching from "./components/services/Coaching.jsx";
 import School from "./components/services/School.jsx";
 
 import About from "./components/pages/About/index.jsx";
+import ContactHistory from "./components/Admin/Contact/ContactHistory.jsx";
+import SubscribeHistory from "./components/Admin/Subscribe/SubscribeHistory.js";
+// Admin
 
 
 
@@ -252,7 +255,7 @@ const Approuter = () => {
           path="/instructor/instructor-payouts"
           element={<InstructorPayouts />}
         />
-       
+
         <Route
           path="/instructor/instructor-profile"
           element={<InstructorProfile />}
@@ -448,6 +451,8 @@ const Approuter = () => {
           element={<StudentNewTickets />}
         />
 
+
+
         <Route
           path="/student/setting-support-view-tickets"
           element={<StudentViewTickets />}
@@ -520,8 +525,16 @@ const Approuter = () => {
         <Route path="/school" element={<School />} />
         <Route path="/about" element={<About />} />
 
+        {/* Admin */}
 
-
+        <Route
+          path="/admin/admin-contact"
+          element={<ContactHistory />}
+        />
+ <Route
+          path="/admin/admin-subsribe"
+          element={<SubscribeHistory />}
+        />
       </Routes>
     </BrowserRouter>
   );

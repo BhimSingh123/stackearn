@@ -1,16 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../header";
 import { Footer3 } from "../../footer3";
 import { Icon03, Join, Icon02, Icon01, Icon04 } from "../../imagepath";
+import toast from "react-hot-toast";
+import Listing from "../../Api/Listing";
 
 const Support = () => {
+
+  const [Regs, setRegs] = useState({
+    name: "",
+    email: "",
+    role: 'support',
+    message: "",
+    subject: '',
+    phone_number: ''
+  });
+  const handleInputs = (e) => {
+    const value = e.target.value;
+    const name = e.target.name;
+    setRegs((prevState) => ({ ...prevState, [name]: value }));
+  };
+
+  const [loading, setLoading] = useState(false);
+
+  const handleForms = async (e) => {
+    e.preventDefault();
+    if (loading) return;
+
+    if (!Regs.name || !Regs.email || !Regs.phone_number || !Regs.subject || !Regs.message) {
+      toast.error("Please fill out all fields.");
+      return;
+    }
+
+    setLoading(true);
+    const main = new Listing();
+    try {
+      const response = await main.contact(Regs);
+      console.log("response",response)
+      if (response?.data?.status) {
+        toast.success(response.data.message);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      toast.error("Something went wrong, please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <div className="main-wrapper">
 
         <Header activeMenu="Support" />
 
-   
+
         <section className="section master-skill">
           <div className="container">
             <div className="row">
@@ -101,6 +146,10 @@ const Support = () => {
                       <label>First Name</label>
                       <input
                         type="text"
+                        name="name"
+                        value={Regs?.name}
+                        onChange={handleInputs}
+
                         className="form-control"
                         placeholder="Enter your first Name"
                       />
@@ -108,15 +157,37 @@ const Support = () => {
                     <div className="input-block">
                       <label>Email</label>
                       <input
-                        type="text"
+                        type="email"
+                        name="email"
+                        value={Regs?.email}
+                        onChange={handleInputs}
+
                         className="form-control"
                         placeholder="Enter your email address"
                       />
                     </div>
                     <div className="input-block">
+                      <label>Phone Number</label>
+                      <input
+                        type="tel"
+                        name="phone_number"
+                        value={Regs?.phone_number}
+                        onChange={handleInputs}
+                        className="form-control"
+                        placeholder="Enter your phone number"
+                        pattern="[0-9]{10}"
+                        title="Please enter a valid 10-digit phone number"
+                      />
+
+                    </div>
+                    <div className="input-block">
                       <label>Subject</label>
                       <input
                         type="text"
+                        name="subject"
+                        value={Regs?.subject}
+                        onChange={handleInputs}
+
                         className="form-control"
                         placeholder="Enter your Subject"
                       />
@@ -127,10 +198,19 @@ const Support = () => {
                         className="form-control"
                         placeholder="Write down here"
                         rows={4}
-                        defaultValue={""}
+                        onChange={handleInputs}
+                        value={Regs?.message}
+                        name="message"
                       />
                     </div>
-                    <button className="btn-submit">Submit</button>
+                    <button
+                      className="btn-submit"
+                      onClick={handleForms}
+                      disabled={loading}
+                    >
+                      {loading ? "Loading..." : "Submit"}
+                    </button>
+
                   </form>
                 </div>
               </div>

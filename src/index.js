@@ -22,10 +22,15 @@ import "./assets/icons/feather/css/iconfont.css"
 import Approuter from "./approuter";
 import { Provider } from "react-redux";
 import store from "./components/common/redux/store.jsx";
+import { Toaster } from "react-hot-toast";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>
+    <Toaster
+        position="top-right"
+        reverseOrder={false}
+      />
   <Provider store={store}>
     <Approuter />
     </Provider>

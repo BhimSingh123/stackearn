@@ -421,7 +421,7 @@ function Coaching() {
 
         </div>
 
-        <Contact />
+        <Contact  datarole={"coaching"}/>
         <div className="home-three">
             <Footer3 />
         </div>
