@@ -1,36 +1,14 @@
 import React from "react";
 import StickyBox from "react-sticky-box";
-import { User16 } from "../../imagepath";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 export default function StudentSidebar() {
   const location = useLocation();
-
   return (
     <div className="col-xl-3 col-lg-3 theiaStickySidebar">
       <StickyBox offsetTop={20} offsetBottom={20}>
-        <div className="settings-widget dash-profile">
-          <div className="settings-menu">
-            <div className="profile-bg">
-              <div className="profile-img">
-                <Link to="/student/student-profile">
-                  <img src={User16} alt="Img" />
-                </Link>
-              </div>
-            </div>
-            <div className="profile-group">
-              <div className="profile-name text-center">
-                <h4>
-                  <Link to="/student/student-profile">Rolands Richard</Link>
-                </h4>
-                <p>Student</p>
-
-              </div>
-            </div>
-          </div>
-        </div>
         <div className="settings-widget account-settings">
           <div className="settings-menu">
             <h3>Dashboard</h3>

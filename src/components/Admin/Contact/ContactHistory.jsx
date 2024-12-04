@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import StudentSidebar from "../sidebar";
 import { Link } from "react-router-dom";
 import Listing from "../../Api/Listing";
+import SubscribeHistory from "../Subscribe/SubscribeHistory";
 
 const ContactHistory = () => {
 
@@ -29,14 +30,14 @@ const ContactHistory = () => {
   }, []);
   return (
     <>
-
       {loading ? (
         <></>
       ) : (
-        <div className="main-wrapper">
+        <div className="main-wrapper mb-5">
 
+          <SubscribeHistory title={"Contact History"} />
           {/* Page Content */}
-          <div className="page-content">
+          <div className="page-content mt-5">
             <div className="container">
               <div className="row">
                 {/* sidebar */}

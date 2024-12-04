@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import StudentSidebar from "../sidebar";
 import { Link } from "react-router-dom";
 import Listing from "../../Api/Listing";
+import SubDashboard from "../components/SubDashboard";
 
 const SubscribeHistory = () => {
 
@@ -35,6 +36,8 @@ const SubscribeHistory = () => {
             ) : (
                 <div className="main-wrapper">
 
+<SubDashboard title={"Subscribe History"}/>
+                   
                     {/* Page Content */}
                     <div className="page-content">
                         <div className="container">

@@ -137,6 +137,7 @@ import School from "./components/services/School.jsx";
 import About from "./components/pages/About/index.jsx";
 import ContactHistory from "./components/Admin/Contact/ContactHistory.jsx";
 import SubscribeHistory from "./components/Admin/Subscribe/SubscribeHistory.js";
+import AdminLogin from "./components/Admin/Login/AdminLogin.jsx";
 // Admin
 
 
@@ -531,9 +532,14 @@ const Approuter = () => {
           path="/admin/admin-contact"
           element={<ContactHistory />}
         />
- <Route
+        <Route
           path="/admin/admin-subsribe"
           element={<SubscribeHistory />}
+        />
+
+        <Route
+          path="/admin/admin-login"
+          element={<AdminLogin />}
         />
       </Routes>
     </BrowserRouter>
