@@ -46,7 +46,7 @@ const Header = () => {
 
     window.addEventListener("scroll", changeHeaderBackground);
     return (
-        <header className="header">
+        <header className="header p-3">
             <div className="header-fixed">
                 <nav
                     className={

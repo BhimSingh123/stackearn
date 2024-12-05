@@ -40,7 +40,7 @@ const UserList = () => {
                     <SubDashboard title={"Subscribe History"} />
 
                     {/* Page Content */}
-                    <div className="page-content">
+                    <div className="page-content mt-5">
                         <div className="container">
                             <div className="row">
                                 {/* sidebar */}
