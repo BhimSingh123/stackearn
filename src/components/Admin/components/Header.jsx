@@ -4,6 +4,7 @@ import { FaTachometerAlt, FaSignOutAlt, FaUserCircle } from "react-icons/fa";
 import { logo, User16 } from "../../imagepath";
 
 const Header = () => {
+    // const token  = localstorage?.getItem("Admintoken")
     useEffect(() => {
         document.body?.classList?.remove("menu-opened");
         return () => {

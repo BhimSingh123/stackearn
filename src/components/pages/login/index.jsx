@@ -4,63 +4,106 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 import OwlCarousel from "react-owl-carousel";
 import { LoginImg, logo } from "../../imagepath";
 import FeatherIcon from "feather-icons-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import Listing from "../../Api/Listing";
 
 const Login = () => {
 
   const [passwordType, setPasswordType] = useState("password");
-  const [passwordInput, setPasswordInput] = useState("");
+
+  const [Regs, setRegs] = useState({
+    email: "",
+    password: "",
+    role:"user"
+  });
+  const handleInputs = (e) => {
+    const value = e.target.value;
+    const name = e.target.name;
+    setRegs((prevState) => ({ ...prevState, [name]: value }));
+  };
 
   
-  const handlePasswordChange =(evnt)=>{
-      setPasswordInput(evnt.target.value);
-  }
-  const togglePassword =()=>{
-    if(passwordType==="password")
-    {
-     setPasswordType("text")
-     return;
+  const togglePassword = () => {
+    if (passwordType === "password") {
+      setPasswordType("text")
+      return;
     }
     setPasswordType("password")
   }
 
 
-    var settings = {
-        //autoWidth: true,
-        items: 2,
-        margin: 25,
-        dots: true,
-        nav: true,
-        navText: [
-          '<i className="fas fa-arrow-left"></i>',
-          '<i className="fas fa-arrow-right"></i>',
-        ],
-    
-        loop: true,
-        responsiveClass: true,
-        responsive: {
-          0: {
-            items: 1,
-          },
-          768: {
-            items: 1,
-          },
-          1170: {
-            items: 1,
-          },
-        },
-    };
+  var settings = {
+    //autoWidth: true,
+    items: 2,
+    margin: 25,
+    dots: true,
+    nav: true,
+    navText: [
+      '<i className="fas fa-arrow-left"></i>',
+      '<i className="fas fa-arrow-right"></i>',
+    ],
 
+    loop: true,
+    responsiveClass: true,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      768: {
+        items: 1,
+      },
+      1170: {
+        items: 1,
+      },
+    },
+  };
+
+
+
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+  const handleForms = async (e) => {
+    e.preventDefault();
+    if (loading) return;
+
+    setLoading(true);
+    const main = new Listing();
+    try {
+      const response = await main.login(Regs);
+      console.log("response", response)
+      if (response?.data?.status) {
+        toast.success(response.data.message);
+        setRegs({
+          email: "",
+          password: "",
+          name: "",
+          refral_code: "",
+          role: "",
+          phone_number: ""
+        })
+        navigate("/")
+        localStorage.setItem("token", response?.data?.token);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <>
       <div className="main-wrapper log-wrap">
         <div className="row">
           {/* Login Banner */}
           <div className="col-md-6 login-bg">
-            <OwlCarousel 
-            {...settings}
-            className="owl-carousel login-slide owl-theme">
+            <OwlCarousel
+              {...settings}
+              className="owl-carousel login-slide owl-theme">
               <div className="welcome-login">
                 <div className="login-banner">
                   <img
@@ -140,11 +183,15 @@ const Login = () => {
                     </div>
                   </div>
                   <h1>Sign into Your Account</h1>
-                  <form action="/reactjs/instructor/instructor-dashboard">
+                  <form >
                     <div className="input-block">
                       <label className="form-control-label">Email</label>
                       <input
                         type="email"
+                        name="email"
+                        value={Regs?.email}
+                        onChange={handleInputs}
+
                         className="form-control"
                         placeholder="Enter your email address"
                       />
@@ -152,10 +199,10 @@ const Login = () => {
                     <div className="input-block">
                       <label className="form-control-label">Password</label>
                       <div className="pass-group">
-                      <input type={passwordType} onChange={handlePasswordChange} value={passwordInput} name="password" className="form-control" placeholder="Password" />
-                     <span className="toggle-password feather-eye" onClick={togglePassword}>
-                     { passwordType==="password"? <FeatherIcon icon="eye"/>:<FeatherIcon icon="eye-off"/> }
-                     </span>
+                        <input type={"password"} onChange={handleInputs} value={Regs?.password} name="password" className="form-control" placeholder="Password" />
+                        <span className="toggle-password feather-eye" onClick={togglePassword}>
+                          {passwordType === "password" ? <FeatherIcon icon="eye" /> : <FeatherIcon icon="eye-off" />}
+                        </span>
                       </div>
                     </div>
                     <div className="forgot">
@@ -174,14 +221,13 @@ const Login = () => {
                       </label>
                     </div>
                     <div className="d-grid">
-                      <Link
-
-                        to="/instructor/instructor-dashboard"
+                      <button
+                        onClick={handleForms}
                         className="btn btn-start"
                         type="submit"
                       >
-                        Sign In
-                      </Link>
+                        {loading ? "Loading..." : "Sing In"}
+                      </button>
                     </div>
                   </form>
                 </div>

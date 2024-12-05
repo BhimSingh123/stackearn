@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import OwlCarousel from "react-owl-carousel";
-import { LoginImg, logo, NetIcon1, NetIcon2 } from "../../imagepath";
+import { LoginImg, logo } from "../../imagepath";
 import { useState } from "react";
+import Listing from "../../Api/Listing";
+import toast from "react-hot-toast";
 
 const hasNumber = (value) => {
   return new RegExp(/[0-9]/).test(value);
@@ -22,6 +24,15 @@ const strengthColor = (count) => {
 };
 
 const Register = () => {
+
+  const [Regs, setRegs] = useState({
+    name: "",
+    email: "",
+    role: "user",
+    refral_code: "",
+    password: "",
+    phone_number: ''
+  });
   const [eye, seteye] = useState(true);
   const [password, setPassword] = useState("");
   const [validationError, setValidationError] = useState("");
@@ -35,6 +46,10 @@ const Register = () => {
   const handlePasswordChange = (event) => {
     const newPassword = event.target.value;
     setPassword(newPassword);
+    setRegs((prevRegs) => ({
+      ...prevRegs, // Preserve existing fields
+      password: newPassword // Update only the password
+    }));
     validatePassword(newPassword);
   };
 
@@ -152,6 +167,53 @@ const Register = () => {
     }
   }, [password]);
 
+
+  console.log("Regs", Regs)
+  const handleInputs = (e) => {
+    const value = e.target.value;
+    const name = e.target.name;
+    setRegs((prevState) => ({ ...prevState, [name]: value }));
+  };
+
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+  const handleForms = async (e) => {
+    e.preventDefault();
+    if (loading) return;
+
+    if (!Regs.name || !Regs.email || !Regs.phone_number || !password || !Regs.refral_code) {
+      toast.error("Please fill out all fields.");
+      return;
+    }
+
+    setLoading(true);
+    const main = new Listing();
+    try {
+      const response = await main.singup(Regs);
+      console.log("response", response)
+      if (response?.data?.status) {
+        toast.success(response.data.message);
+        setRegs({
+          email: "",
+          password: "",
+          name: "",
+          refral_code: "",
+          role: "",
+          phone_number: ""
+        })
+        navigate("/login")
+        setPassword("")
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <>
       <div className="main-wrapper log-wrap">
@@ -224,21 +286,55 @@ const Register = () => {
                   </div>
                 </div>
                 <h1>Sign up</h1>
-                <form action="/reactjs/login">
+                <form >
+                  <div className="row">
+                    <div className="col-md-6">
+                      <div className="input-block">
+                        <label className="form-control-label">Full Name</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="name"
+                          value={Regs?.name}
+                          onChange={handleInputs}
+                          placeholder="Enter your Full Name"
+                        />
+                      </div>
+                    </div>
+                    <div className="col-md-6">
+                      <div className="input-block">
+                        <label className="form-control-label">Email</label>
+                        <input
+                          type="email"
+                          name="email"
+                          value={Regs?.email}
+                          onChange={handleInputs}
+                          className="form-control"
+                          placeholder="Enter your email address"
+                        />
+                      </div>
+                    </div>
+                  </div>
                   <div className="input-block">
-                    <label className="form-control-label">Full Name</label>
+                    <label className="form-control-label">Phone Number</label>
                     <input
-                      type="text"
+                      type="number"
+                      name="phone_number"
+                      value={Regs?.phone_number}
+                      onChange={handleInputs}
                       className="form-control"
-                      placeholder="Enter your Full Name"
+                      placeholder="Enter your phone number"
                     />
                   </div>
                   <div className="input-block">
-                    <label className="form-control-label">Email</label>
+                    <label className="form-control-label">Refral Code</label>
                     <input
-                      type="email"
+                      type="text"
+                      name="refral_code"
+                      value={Regs?.refral_code}
+                      onChange={handleInputs}
                       className="form-control"
-                      placeholder="Enter your email address"
+                      placeholder="Enter your refral code"
                     />
                   </div>
                   <div className="input-block">
@@ -246,6 +342,8 @@ const Register = () => {
                     <div className="pass-group" id="passwordInput">
                       <input
                         className="form-control pass-input"
+                        name="password"
+                        value={password}
                         placeholder="Enter your password"
                         type={eye ? "password" : "text"}
                         onChange={handlePasswordChange}
@@ -253,9 +351,8 @@ const Register = () => {
                       {/* <span onClick={onEyeClick} className={`fa toggle-password feather-eye" ${eye ? "fa-eye" : "fa-eye-slash" }`}/> */}
                       <span
                         onClick={onEyeClick}
-                        className={`fa toggle-password feather-eye" ${
-                          eye ? "fa-eye" : "fa-eye-slash"
-                        }`}
+                        className={`fa toggle-password feather-eye" ${eye ? "fa-eye" : "fa-eye-slash"
+                          }`}
                       />
                       <span className="toggle-password feather-eye"></span>
                       <span className="pass-checked">
@@ -265,17 +362,16 @@ const Register = () => {
                     <div
                       id="passwordStrength"
                       style={{ display: "flex" }}
-                      className={`password-strength ${
-                        strength === "poor"
-                          ? "poor-active"
-                          : strength === "weak"
+                      className={`password-strength ${strength === "poor"
+                        ? "poor-active"
+                        : strength === "weak"
                           ? "avg-active"
                           : strength === "strong"
-                          ? "strong-active"
-                          : strength === "heavy"
-                          ? "heavy-active"
-                          : ""
-                      }`}
+                            ? "strong-active"
+                            : strength === "heavy"
+                              ? "heavy-active"
+                              : ""
+                        }`}
                     >
                       <span id="poor" className="active"></span>
                       <span id="weak" className="active"></span>
@@ -299,40 +395,16 @@ const Register = () => {
                     </label>
                   </div>
                   <div className="d-grid">
-                    <Link
-                      to="/login"
+                    <div
                       className="btn btn-primary btn-start"
                       type="submit"
-                      // onClick={() => navigate("/reactjs/login")}
+                      onClick={handleForms}
                     >
-                      Create Account
-                    </Link>
+                      {loading ? "Processing.." : "Create Account"}
+
+                    </div>
                   </div>
                 </form>
-              </div>
-              <div className="google-bg text-center">
-                <span>
-                  <Link to="#">Or sign in with</Link>
-                </span>
-                <div className="sign-google">
-                  <ul>
-                    <li>
-                      <Link to="#">
-                        <img src={NetIcon1} className="img-fluid" alt="Logo" />
-                        Sign In using Google
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="#">
-                        <img src={NetIcon2} className="img-fluid" alt="Logo" />
-                        Sign In using Facebook
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-                <p className="mb-0">
-                  Already have an account? <Link to="/login">Sign in</Link>
-                </p>
               </div>
             </div>
             {/* /Login */}

@@ -59,6 +59,12 @@ export default function StudentSidebar() {
                 </Link>
               </li>
 
+              <li className={`nav-item ${location.pathname === '/admin/admin-user' ? 'active' : ''}`}>
+                <Link to="/admin/admin-user" className="nav-link">
+                  <i className="bx bxs-cart" />
+                  User History
+                </Link>
+              </li>
 
               <li className={`nav-item ${location.pathname === '/student/student-referral' ? 'active' : ''}`}>
 

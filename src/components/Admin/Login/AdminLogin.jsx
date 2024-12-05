@@ -4,18 +4,27 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 import OwlCarousel from "react-owl-carousel";
 import { LoginImg, logo } from "../../imagepath";
 import FeatherIcon from "feather-icons-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import Listing from "../../Api/Listing";
 
-const AdminLogin = () => {
+const Login = () => {
 
     const [passwordType, setPasswordType] = useState("password");
-    const [passwordInput, setPasswordInput] = useState("");
+
+    const [Regs, setRegs] = useState({
+        email: "",
+        password: "",
+        role: "admin"
+    });
+    const handleInputs = (e) => {
+        const value = e.target.value;
+        const name = e.target.name;
+        setRegs((prevState) => ({ ...prevState, [name]: value }));
+    };
 
 
-    const handlePasswordChange = (evnt) => {
-        setPasswordInput(evnt.target.value);
-    }
     const togglePassword = () => {
         if (passwordType === "password") {
             setPasswordType("text")
@@ -51,6 +60,41 @@ const AdminLogin = () => {
         },
     };
 
+
+
+    const [loading, setLoading] = useState(false);
+
+    const navigate = useNavigate();
+    const handleForms = async (e) => {
+        e.preventDefault();
+        if (loading) return;
+
+        setLoading(true);
+        const main = new Listing();
+        try {
+            const response = await main.login(Regs);
+            console.log("response", response)
+            if (response?.data?.status) {
+                toast.success(response.data.message);
+                setRegs({
+                    email: "",
+                    password: "",
+                    name: "",
+                    refral_code: "",
+                    role: "",
+                    phone_number: ""
+                })
+                localStorage.setItem("Admintoken", response?.data?.token);
+                navigate("/admin/admin-dashboard")
+            } else {
+                toast.error(response.data.message);
+            }
+        } catch (error) {
+            toast.error(error?.response?.data?.message);
+        } finally {
+            setLoading(false);
+        }
+    };
     return (
         <>
             <div className="main-wrapper log-wrap">
@@ -134,13 +178,20 @@ const AdminLogin = () => {
                                             className="img-fluid"
                                             alt="Logo"
                                         />
+                                        <div className="back-home">
+                                            <Link to="/home">Back to Home</Link>
+                                        </div>
                                     </div>
                                     <h1>Sign into Your Account</h1>
-                                    <form action="/reactjs/instructor/instructor-dashboard">
+                                    <form >
                                         <div className="input-block">
                                             <label className="form-control-label">Email</label>
                                             <input
                                                 type="email"
+                                                name="email"
+                                                value={Regs?.email}
+                                                onChange={handleInputs}
+
                                                 className="form-control"
                                                 placeholder="Enter your email address"
                                             />
@@ -148,7 +199,7 @@ const AdminLogin = () => {
                                         <div className="input-block">
                                             <label className="form-control-label">Password</label>
                                             <div className="pass-group">
-                                                <input type={passwordType} onChange={handlePasswordChange} value={passwordInput} name="password" className="form-control" placeholder="Password" />
+                                                <input type={"password"} onChange={handleInputs} value={Regs?.password} name="password" className="form-control" placeholder="Password" />
                                                 <span className="toggle-password feather-eye" onClick={togglePassword}>
                                                     {passwordType === "password" ? <FeatherIcon icon="eye" /> : <FeatherIcon icon="eye-off" />}
                                                 </span>
@@ -170,14 +221,13 @@ const AdminLogin = () => {
                                             </label>
                                         </div>
                                         <div className="d-grid">
-                                            <Link
-
-                                                to="/instructor/instructor-dashboard"
+                                            <button
+                                                onClick={handleForms}
                                                 className="btn btn-start"
                                                 type="submit"
                                             >
-                                                Sign In
-                                            </Link>
+                                                {loading ? "Loading..." : "Sing In"}
+                                            </button>
                                         </div>
                                     </form>
                                 </div>
@@ -191,4 +241,4 @@ const AdminLogin = () => {
     );
 };
 
-export default AdminLogin;
+export default Login;

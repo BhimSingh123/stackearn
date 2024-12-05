@@ -6,6 +6,8 @@ import DarkMode from "../common/darkMode";
 import { FaShoppingCart } from "react-icons/fa";
 
 const Header = () => {
+  const token = localStorage?.getItem("token")
+
   useEffect(() => {
     document.body?.classList?.remove("menu-opened");
     return () => {
@@ -222,6 +224,11 @@ const Header = () => {
 
                   </ul>
                 </li>
+              </ul>
+            </div>
+
+            {token ? (
+              <ul className="main-nav">
 
                 <li className="has-submenu">
                   <Link to="#" onClick={profileClick}>
@@ -254,23 +261,23 @@ const Header = () => {
 
                   </ul>
                 </li>
-                <li className="login-link">
-                  <Link to="/login">Login / Signup</Link>
-                </li>
               </ul>
-            </div>
-            <ul className="nav header-navbar-rht">
-              <DarkMode />
-              <li className="nav-item">
-                <FaShoppingCart size={32} color="#FF8752 mr-2 ml-2" />
-              </li>
-              <li className="nav-item">
-                <Link className="login-head button" to="/login">
-                  Login
-                </Link>
-              </li>
+            ) : (
+              <ul className="nav header-navbar-rht">
+                <DarkMode />
+                <li className="nav-item">
+                  <FaShoppingCart size={32} color="#FF8752 mr-2 ml-2" />
+                </li>
+                <li className="nav-item">
+                  <Link className="login-head button" to="/login">
+                    Login
+                  </Link>
+                </li>
 
-            </ul>
+              </ul>
+            )}
+
+
           </div>
         </nav>
       </div>

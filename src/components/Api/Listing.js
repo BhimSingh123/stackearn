@@ -24,12 +24,21 @@ class Listing extends Component {
     async subscribeGet() {
         return Api.get("/subscribe/subscribe-get")
     }
-    async Dashboard() {
-        return Api.get("/api/user-stats",)
+    async singup(data) {
+        return Api.post("/user/signup",data)
     }
 
+    async login(data) {
+        return Api.post("/user/login",data)
+    }
+
+    async adminlogin(data) {
+        return Api.post("/user/admin/login",data)
+    }
+
+
     async userList() {
-        return Api.get("/user/list",)
+        return Api.get("/user/profile",)
     }
 
     async userListId(id) {

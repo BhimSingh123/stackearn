@@ -138,6 +138,8 @@ import About from "./components/pages/About/index.jsx";
 import ContactHistory from "./components/Admin/Contact/ContactHistory.jsx";
 import SubscribeHistory from "./components/Admin/Subscribe/SubscribeHistory.js";
 import AdminLogin from "./components/Admin/Login/AdminLogin.jsx";
+import UserList from "./components/Admin/UserList/UserList.jsx";
+import AdminDashboard from "./components/Admin/AdminDashboard/AdminDashboard.jsx";
 // Admin
 
 
@@ -528,6 +530,11 @@ const Approuter = () => {
 
         {/* Admin */}
 
+
+        <Route
+          path="/admin/admin-dashboard"
+          element={<AdminDashboard />}
+        />
         <Route
           path="/admin/admin-contact"
           element={<ContactHistory />}
@@ -540,6 +547,10 @@ const Approuter = () => {
         <Route
           path="/admin/admin-login"
           element={<AdminLogin />}
+        />
+          <Route
+          path="/admin/admin-user"
+          element={<UserList />}
         />
       </Routes>
     </BrowserRouter>
