@@ -146,7 +146,7 @@ import AdminDashboard from "./components/Admin/AdminDashboard/AdminDashboard.jsx
 
 const Approuter = () => {
   return (
-    <BrowserRouter basename="/react">
+    <BrowserRouter basename="/">
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home />} />
