@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import StudentSidebar from "../sidebar";
 import StudentSettingPageHeader from "./settingPageHeader";
 import toast from "react-hot-toast";
@@ -6,6 +6,7 @@ import Listing from "../../Api/Listing";
 import SubDashboard from "../components/SubDashboard";
 
 const StudentSocialProfile = () => {
+  const [listing, setListing] = useState("");
 
   const [Regs, setRegs] = useState({
     website :"",
@@ -39,6 +40,7 @@ const StudentSocialProfile = () => {
           email: "",
           newPassword: ""
         })
+        ProfileData();
       } else {
         toast.error(response.data.message);
       }
@@ -49,6 +51,39 @@ const StudentSocialProfile = () => {
       setLoading(false);
     }
   }
+
+
+  const ProfileData = async () => {
+    setLoading(true);
+    try {
+      const main = new Listing();
+      const response = await main.userprfileId();
+      console.log("response", response);
+      setListing(response?.data?.social        || {});
+    } catch (error) {
+      console.error("ProfileData error:", error);
+      toast.error("Failed to load profile data.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    ProfileData();
+  }, []);
+
+  useEffect(() => {
+    setRegs((prevState) => ({
+      ...prevState,
+      website: listing?.website || "",
+      linkedin: listing?.linkedin || "",
+      github: listing?.github || "",
+      twitter: listing?.twitter || "",
+      facebook: listing?.facebook || "",
+    }));
+  }, [listing]);
+
+  
   return (
     <div className="main-wrapper">
       <>

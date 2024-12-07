@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import StudentSidebar from "../sidebar";
 import { Link } from "react-router-dom";
 import Listing from "../../Api/Listing";
-import SubscribeHistory from "../Subscribe/SubscribeHistory";
+import SubDashboard from "../components/SubDashboard";
+import DateFormate from "../components/DateFormate";
 
 const List = () => {
 
@@ -34,16 +35,12 @@ const List = () => {
         <></>
       ) : (
         <div className="main-wrapper mb-5">
-
-          <SubscribeHistory title={"Contact History"} />
+          <SubDashboard />
           {/* Page Content */}
           <div className="page-content mt-5">
             <div className="container">
               <div className="row">
-                {/* sidebar */}
                 <StudentSidebar />
-                {/* /Sidebar */}
-                {/* Student Order History */}
                 <div className="col-xl-9 col-lg-9">
                   <div className="settings-widget card-details">
                     <div className="settings-menu p-0">
@@ -61,9 +58,8 @@ const List = () => {
                                   <tr>
                                     <th>S. No.</th>
                                     <th> Date</th>
-                                    <th>Name</th>
+                                    <th>Name & Phone Number</th>
                                     <th>Email</th>
-                                    <th>Phone</th>
                                     <th>Page Name</th>
                                     <th>Subject</th>
                                     <th>Status</th>
@@ -76,16 +72,13 @@ const List = () => {
                                     <tr key={index}>
                                       <td>{index + 1}</td>
                                       <td>
-                                        <span className="title-course">
-                                          {item?.created_at
-                                          }
-                                        </span>
+                                        <DateFormate data={item?.created_at} />
                                       </td>
-                                      <td>{item?.name}</td>
+                                      <td>
+                                        <span style={{ display: "block" }}>{item?.name}</span>
+                                        <span style={{ display: "block" }}>{item?.phone_number}</span>
+                                      </td>
                                       <td>{item?.email}</td>
-                                      <td>{item?.
-                                        phone_number
-                                      }</td>
                                       <td>
                                         {item?.role}
                                       </td>

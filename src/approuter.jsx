@@ -142,11 +142,12 @@ import SubscribeHistory from "./components/Admin/Subscribe/SubscribeHistory.js";
 import AdminLogin from "./components/Admin/Login/AdminLogin.jsx";
 import UserList from "./components/Admin/UserList/UserList.jsx";
 import AdminDashboard from "./components/Admin/AdminDashboard/AdminDashboard.jsx";
-import List from "./components/Admin/ContactList/List.jsx";
 import Setting from "./components/Admin/setting/studentSetting.jsx";
 import AdminChangePassword from "./components/Admin/setting/studentChangePassword.jsx";
 import AdminLinkedAccount from "./components/Admin/setting/studentLinkedAccount.jsx";
 import AdminProfile from "./components/Admin/setting/studentSocialProfile.jsx";
+import ProfileId from "./components/Admin/UserList/ProfileId.js";
+import List from "./components/Admin/ContactList/List.jsx";
 
 
 
@@ -572,6 +573,11 @@ const Approuter = () => {
         <Route
           path="/admin/admin-linked-accounts"
           element={<AdminLinkedAccount />}
+        />
+
+<Route
+          path="/admin/user-profile-Id"
+          element={<ProfileId />}
         />
       </Routes>
     </BrowserRouter>

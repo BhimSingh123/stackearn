@@ -92,10 +92,15 @@ const UserList = () => {
                                                                                 </span>
                                                                             </td>
 
-
                                                                             <td>
-                                                                                <FaRegEye size={24} />
+                                                                                <Link
+                                                                                    to="/admin/user-profile-Id"
+                                                                                    style={{ cursor: 'pointer', textDecoration: 'none' }}
+                                                                                >
+                                                                                    <FaRegEye size={24} />
+                                                                                </Link>
                                                                             </td>
+
 
                                                                         </tr>
                                                                     ))}
