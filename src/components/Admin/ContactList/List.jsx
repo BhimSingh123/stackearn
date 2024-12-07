@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Listing from "../../Api/Listing";
 import SubscribeHistory from "../Subscribe/SubscribeHistory";
 
-const ContactHistory = () => {
+const List = () => {
 
   const [loading, setLoading] = useState(false);
   const [listing, setListing] = useState([]);
@@ -144,4 +144,4 @@ const ContactHistory = () => {
   );
 };
 
-export default ContactHistory;
+export default List;

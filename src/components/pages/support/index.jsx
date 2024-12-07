@@ -36,7 +36,7 @@ const Support = () => {
     const main = new Listing();
     try {
       const response = await main.contact(Regs);
-      console.log("response",response)
+      console.log("response", response)
       if (response?.data?.status) {
         toast.success(response.data.message);
       } else {
@@ -152,6 +152,7 @@ const Support = () => {
 
                         className="form-control"
                         placeholder="Enter your first Name"
+                        required
                       />
                     </div>
                     <div className="input-block">
@@ -164,6 +165,7 @@ const Support = () => {
 
                         className="form-control"
                         placeholder="Enter your email address"
+                        required
                       />
                     </div>
                     <div className="input-block">
@@ -177,6 +179,7 @@ const Support = () => {
                         placeholder="Enter your phone number"
                         pattern="[0-9]{10}"
                         title="Please enter a valid 10-digit phone number"
+                        required
                       />
 
                     </div>
@@ -190,6 +193,7 @@ const Support = () => {
 
                         className="form-control"
                         placeholder="Enter your Subject"
+                        required
                       />
                     </div>
                     <div className="input-block">
@@ -201,6 +205,7 @@ const Support = () => {
                         onChange={handleInputs}
                         value={Regs?.message}
                         name="message"
+                        required
                       />
                     </div>
                     <button

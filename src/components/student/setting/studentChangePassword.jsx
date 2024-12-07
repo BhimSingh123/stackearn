@@ -1,14 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import StudentSidebar from "../sidebar";
 import StudentSettingPageHeader from "./settingPageHeader";
 import Header from "../../header";
+import Listing from "../../Api/Listing";
+import toast from "react-hot-toast";
 const StudentChangePassword = () => {
+
+
+  const [Regs, setRegs] = useState({
+    email: "",
+    newPassword: "",
+  });
+
+  const handleInputs = (e) => {
+    const value = e.target.value;
+    const name = e.target.name;
+    setRegs((prevState) => ({ ...prevState, [name]: value }));
+  };
+
+  const [loading, setLoading] = useState(false);
+
+  async function handleForms(e) {
+    e.preventDefault();
+    if (loading) {
+      return false;
+    }
+    setLoading(true);
+    const main = new Listing();
+    try {
+      const response = await main.resetpassword(Regs);
+      console.log("response", response)
+      if (response?.data) {
+        toast.success(response.data.message);
+        setRegs({
+          email :"",
+          newPassword : ""
+        })
+      } else {
+        toast.error(response.data.message);
+      }
+      setLoading(false);
+    } catch (error) {
+      console.log("error", error);
+      toast.error("invalid Email/password");
+      setLoading(false);
+    }
+  }
   return (
     <div className="main-wrapper">
       <>
         {/* Header */}
-<Header/>
+        <Header />
         {/* /Header */}
         {/* Breadcrumb */}
         <div className="breadcrumb-bar breadcrumb-bar-info">
@@ -61,24 +104,28 @@ const StudentChangePassword = () => {
                           <div className="col-md-6">
                             <div className="input-block">
                               <label className="form-label">
-                                Current Password
+                                Email
                               </label>
-                              <input type="password" className="form-control" />
+                              <input
+                                name="email"
+                                value={Regs?.email}
+                                onChange={handleInputs}
+
+                                type="email" className="form-control" />
                             </div>
                             <div className="input-block">
                               <label className="form-label">New Password</label>
-                              <input type="password" className="form-control" />
-                            </div>
-                            <div className="input-block">
-                              <label className="form-label">
-                                Re-type New Password
-                              </label>
-                              <input type="password" className="form-control" />
+                              <input type="password"
+
+                                name="newPassword"
+                                value={Regs?.newPassword}
+                                onChange={handleInputs}
+                                className="form-control" />
                             </div>
                           </div>
                           <div className="col-md-12">
-                            <button className="btn btn-primary" type="submit">
-                              Reset Password
+                            <button className="btn btn-primary" type="submit" onClick={handleForms}>
+                              {loading ? "Loading.." : "Reset Password"}
                             </button>
                           </div>
                         </div>

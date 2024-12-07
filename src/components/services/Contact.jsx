@@ -82,6 +82,7 @@ function Contact({ datarole }) {
                                     onChange={handleInputs}
                                     className="form-control custom-textarea"
                                     placeholder="Enter your name"
+                                    required
                                 />
                             </div>
                             <div className="mb-3">
@@ -93,6 +94,7 @@ function Contact({ datarole }) {
                                     onChange={handleInputs}
                                     className="form-control custom-textarea"
                                     placeholder="Enter your email address"
+                                    required
                                 />
                             </div>
                             <div className="mb-3">
@@ -104,6 +106,7 @@ function Contact({ datarole }) {
                                     onChange={handleInputs}
                                     className="form-control custom-textarea"
                                     placeholder="Enter your phone number"
+                                    required
                                 />
                             </div>
 
@@ -116,6 +119,7 @@ function Contact({ datarole }) {
                                     onChange={handleInputs}
                                     className="form-control custom-textarea"
                                     placeholder="Enter your subject"
+                                    required
                                 />
                             </div>
                             <div className="mb-2">
@@ -128,6 +132,7 @@ function Contact({ datarole }) {
                                     name="message"
                                     className="form-control custom-textarea"
                                     placeholder="Enter your message"
+                                    required
                                 ></textarea>
                             </div>
                             <div className="d-grid">
@@ -148,7 +153,7 @@ function Contact({ datarole }) {
 
 Contact.propTypes = {
     datarole: PropTypes.string.isRequired, // Ensures datarole is a required string
-  };
-  
+};
+
 
 export default Contact;

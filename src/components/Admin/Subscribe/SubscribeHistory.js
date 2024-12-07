@@ -11,7 +11,7 @@ const SubscribeHistory = () => {
 
     console.log("listing", listing)
 
-    const fetchMarketLists = async () => {
+    const SubscribeList = async () => {
         setLoading(true);
         try {
             const main = new Listing();
@@ -26,7 +26,7 @@ const SubscribeHistory = () => {
     };
 
     useEffect(() => {
-        fetchMarketLists();
+        SubscribeList();
     }, []);
     return (
         <>
@@ -36,8 +36,8 @@ const SubscribeHistory = () => {
             ) : (
                 <div className="main-wrapper">
 
-<SubDashboard title={"Subscribe History"}/>
-                   
+                    <SubDashboard title={"Subscribe History"} />
+
                     {/* Page Content */}
                     <div className="page-content">
                         <div className="container">

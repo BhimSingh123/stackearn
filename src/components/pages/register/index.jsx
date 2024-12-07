@@ -182,7 +182,7 @@ const Register = () => {
     e.preventDefault();
     if (loading) return;
 
-    if (!Regs.name || !Regs.email || !Regs.phone_number || !password || !Regs.refral_code) {
+    if (!Regs.name || !Regs.email || !Regs.phone_number || !password ) {
       toast.error("Please fill out all fields.");
       return;
     }
@@ -280,9 +280,16 @@ const Register = () => {
             <div className="login-wrapper">
               <div className="loginbox">
                 <div className="img-logo">
-                  <img src={logo} className="img-fluid" alt="Logo" />
+                  <Link to="/home">
+
+                    <img
+                      src={logo}
+                      className="img-fluid"
+                      alt="Logo"
+                    />
+                  </Link>
                   <div className="back-home">
-                    <Link to="/home">Back to Home</Link>
+                    <Link to="/login">Login</Link>
                   </div>
                 </div>
                 <h1>Sign up</h1>
@@ -294,6 +301,7 @@ const Register = () => {
                         <input
                           type="text"
                           className="form-control"
+                          required
                           name="name"
                           value={Regs?.name}
                           onChange={handleInputs}
@@ -307,6 +315,7 @@ const Register = () => {
                         <input
                           type="email"
                           name="email"
+                          required
                           value={Regs?.email}
                           onChange={handleInputs}
                           className="form-control"
@@ -320,6 +329,7 @@ const Register = () => {
                     <input
                       type="number"
                       name="phone_number"
+                      required
                       value={Regs?.phone_number}
                       onChange={handleInputs}
                       className="form-control"
@@ -333,6 +343,7 @@ const Register = () => {
                       name="refral_code"
                       value={Regs?.refral_code}
                       onChange={handleInputs}
+                      required
                       className="form-control"
                       placeholder="Enter your refral code"
                     />
@@ -344,6 +355,7 @@ const Register = () => {
                         className="form-control pass-input"
                         name="password"
                         value={password}
+                        required
                         placeholder="Enter your password"
                         type={eye ? "password" : "text"}
                         onChange={handlePasswordChange}

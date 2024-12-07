@@ -135,11 +135,11 @@ import Coaching from "./components/services/Coaching.jsx";
 import School from "./components/services/School.jsx";
 
 import About from "./components/pages/About/index.jsx";
-import ContactHistory from "./components/Admin/Contact/ContactHistory.jsx";
 import SubscribeHistory from "./components/Admin/Subscribe/SubscribeHistory.js";
 import AdminLogin from "./components/Admin/Login/AdminLogin.jsx";
 import UserList from "./components/Admin/UserList/UserList.jsx";
 import AdminDashboard from "./components/Admin/AdminDashboard/AdminDashboard.jsx";
+import List from "./components/Admin/ContactList/List.jsx";
 // Admin
 
 
@@ -532,20 +532,17 @@ const Approuter = () => {
 
 
         <Route
-          path="/admin/admin-dashboard"
+          path="/admin/dashboard"
           element={<AdminDashboard />}
         />
+      <Route path="/admin/admin-contact" element={<List/>} />
         <Route
-          path="/admin/admin-contact"
-          element={<ContactHistory />}
-        />
-        <Route
-          path="/admin/admin-subsribe"
+          path="/admin/subsribe"
           element={<SubscribeHistory />}
         />
 
         <Route
-          path="/admin/admin-login"
+          path="/admin/login"
           element={<AdminLogin />}
         />
           <Route

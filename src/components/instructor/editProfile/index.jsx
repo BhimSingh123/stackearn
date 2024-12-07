@@ -121,7 +121,7 @@ export default function InstructorEditProfile() {
                         <div className="col-lg-6">
                           <div className="input-block">
                             <label className="form-control-label">
-                              Last Name
+                              Last Name aaa
                             </label>
                             <input
                               type="text"
