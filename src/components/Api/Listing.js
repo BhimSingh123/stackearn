@@ -62,11 +62,14 @@ class Listing extends Component {
         return Api.post("/user/user-profile", data)
     }
 
+    async userprfileget() {
+        return Api.get("/user/profile-data")
+    }
+
 
     async userSocialAdd(data) {
         return Api.post("/user/user-social", data)
     }
-
 
 
 
