@@ -35,18 +35,12 @@ export default function StudentSidebar() {
                 </Link>
               </li>
 
-              <li className={`nav-item ${location.pathname === '/student/student-referral' ? 'active' : ''}`}>
 
-                <Link to="/student/student-referral" className="nav-link">
-                  <i className="bx bxs-user-plus" />
-                  Referrals
-                </Link>
-              </li>
             </ul>
             <h3>Account Settings</h3>
             <ul>
-              <li className={`nav-item ${location.pathname === '/student/student-setting' || location.pathname === '/student/student-change-password' || location.pathname === '/student/student-social-profile' || location.pathname === '/student/student-linked-accounts' || location.pathname === '/student/student-notification' ? 'active' : ''}`}>
-                <Link to="/student/student-setting" className="nav-link ">
+              <li className={`nav-item ${location.pathname === '/admin/admin-setting' || location.pathname === '/admin/admin--change-password' || location.pathname === '/admin/admin--social-profile' || location.pathname === '/admin/admin--linked-accounts' || location.pathname === '/admin/admin--notification' ? 'active' : ''}`}>
+                <Link to="/admin/admin-setting" className="nav-link ">
                   <i className="bx bxs-cog" />
                   Settings
                 </Link>

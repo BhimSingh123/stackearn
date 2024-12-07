@@ -63,6 +63,9 @@ class Listing extends Component {
     }
 
 
+    async userSocialAdd(data) {
+        return Api.post("/user/user-social", data)
+    }
 
 
 
