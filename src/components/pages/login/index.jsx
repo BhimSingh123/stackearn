@@ -174,15 +174,15 @@ const Login = () => {
                 <div className="w-100">
                   <div className="img-logo">
                     <Link to="/home">
-                    
-                    <img
-                      src={logo}
-                      className="img-fluid"
-                      alt="Logo"
-                    />
+
+                      <img
+                        src={logo}
+                        className="img-fluid"
+                        alt="Logo"
+                      />
                     </Link>
                     <div className="back-home">
-                      <Link to="/register">Sign Up</Link>
+                      <Link to="/home">Back to Home</Link>
                     </div>
                   </div>
                   <h1>Sign into Your Account</h1>
@@ -218,9 +218,10 @@ const Login = () => {
                     <div className="remember-me">
                       <label className="custom_check mr-2 mb-0 d-inline-flex remember-me">
                         {" "}
-                        Remember me
-                        <input type="checkbox" name="radio" />
-                        <span className="checkmark" />
+                        <Link to="/register">
+                          Do Not Have Account ? Please Sign Up
+                        </Link>
+                        {/* <span className="checkmark" /> */}
                       </label>
                     </div>
                     <div className="d-grid">

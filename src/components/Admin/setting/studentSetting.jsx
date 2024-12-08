@@ -17,7 +17,8 @@ const StudentSetting = () => {
     phone_number: "",
     designation: "",
     bio: "",
-    address: ""
+    address: "",
+    id :""
   });
   const [loading, setLoading] = useState(false);
 
@@ -88,6 +89,8 @@ const StudentSetting = () => {
       designation: listing?.designation || "",
       bio: listing?.bio || "",
       address: listing?.address || "",
+      id:listing?._id || ""
+
     }));
   }, [listing]);
   return (

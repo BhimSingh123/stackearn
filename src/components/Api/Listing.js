@@ -62,8 +62,8 @@ class Listing extends Component {
         return Api.post("/user/user-profile", data)
     }
 
-    async userprfileget() {
-        return Api.get("/user/profile-data")
+    async userprfileget(data) {
+        return Api.post("/user/profile-data" ,data)
     }
 
 
@@ -71,15 +71,13 @@ class Listing extends Component {
         return Api.post("/user/user-social", data)
     }
 
-    async userprfileId() {
-        return Api.get("/user/profile-data")
+    async userprfileId(data) {
+        return Api.post("/user/profile_id" ,data)
     }
 
-    
-
-
-
-
+    async userBankData(data) {
+        return Api.post("/user/bank-data", data)
+    }
 
     render() {
         return (

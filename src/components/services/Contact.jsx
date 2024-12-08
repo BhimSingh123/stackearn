@@ -137,7 +137,7 @@ function Contact({ datarole }) {
                             </div>
                             <div className="d-grid">
 
-                                <button type="submit" onClick={handleForms} className="btn btn-primary btn-start w-100 p-2">
+                                <button type="submit" onClick={handleForms} className="login-head button">
                                     {loading ? "loading.." : "Contact Us"}         </button>
                             </div>
                         </form>

@@ -14,6 +14,7 @@ const StudentSocialProfile = () => {
     github : "",
     facebook : "",
     twitter : "",
+    id:""
   });
 
   const handleInputs = (e) => {
@@ -80,6 +81,7 @@ const StudentSocialProfile = () => {
       github: listing?.github || "",
       twitter: listing?.twitter || "",
       facebook: listing?.facebook || "",
+      id:listing?._id || ""
     }));
   }, [listing]);
 

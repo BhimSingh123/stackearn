@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import StudentHeader from "../header";
 import StudentSidebar from "../sidebar";
 import StudentSettingPageHeader from "./settingPageHeader";
+import AuthLayout from "../../../AuthLayout";
 
 const StudentNotification = () => {
   return (
+    <AuthLayout>
     <div className="main-wrapper">
       <>
         {/* Header */}
@@ -201,6 +203,7 @@ const StudentNotification = () => {
         {/* /Page Content */}
       </>
     </div>
+    </AuthLayout>
   );
 };
 

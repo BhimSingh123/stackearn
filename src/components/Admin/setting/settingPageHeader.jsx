@@ -55,7 +55,7 @@ const StudentSettingPageHeader = () => {
               }
             >
               <i className="bx bx-link" />
-              Linked Accounts
+              Bank Details
             </Link>
           </li>
         </ul>

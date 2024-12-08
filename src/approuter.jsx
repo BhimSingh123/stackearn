@@ -576,7 +576,7 @@ const Approuter = () => {
         />
 
 <Route
-          path="/admin/user-profile-Id"
+          path="/admin/user-profile-Id/:id"
           element={<ProfileId />}
         />
       </Routes>

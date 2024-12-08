@@ -5,6 +5,7 @@ import StudentSettingPageHeader from "./settingPageHeader";
 import Header from "../../header";
 import Listing from "../../Api/Listing";
 import toast from "react-hot-toast";
+import AuthLayout from "../../../AuthLayout";
 const StudentChangePassword = () => {
 
 
@@ -48,6 +49,7 @@ const StudentChangePassword = () => {
     }
   }
   return (
+    <AuthLayout>
     <div className="main-wrapper">
       <>
         {/* Header */}
@@ -141,6 +143,7 @@ const StudentChangePassword = () => {
         {/* /Page Content */}
       </>
     </div>
+    </AuthLayout>
   );
 };
 

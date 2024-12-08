@@ -9,26 +9,34 @@ import {
     TtlStudIcon,
     User1,
 } from "../../imagepath";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import SubDashboard from "../components/SubDashboard";
 import Listing from "../../Api/Listing";
 
 export default function ProfileId() {
+    const { id } = useParams()
 
+    const [Regs, setRegs] = useState({
+        id: id
+    });
+    useEffect(() => (
+        setRegs(id)
+    ), [Regs])
+    console.log("id", id)
     const [loading, setLoading] = useState(false);
     const [listing, setListing] = useState([]);
 
     console.log("listing", listing)
-
     const ProfileData = async () => {
         setLoading(true);
+
         try {
             const main = new Listing();
-            const response = await main.userprfileId();
-            console.log("response", response)
+            const response = await main.userprfileget(Regs);
+            console.log("response", response);
             setListing(response?.data);
         } catch (error) {
-            console.error(error);
+            console.error("Error fetching profile data:", error);
         } finally {
             setLoading(false);
         }
@@ -290,28 +298,60 @@ export default function ProfileId() {
                                     <div className="col-lg-4">
                                         {/* Right Sidebar Tags Label */}
                                         <div className="card overview-sec">
-                                            <div className="card-body overview-sec-body">
-                                                <h5 className="subs-title">Professional Skills</h5>
-                                                <div className="sidebar-tag-labels">
-                                                    <ul className="list-unstyled">
-                                                        <li>
-                                                            <Link to="#" className="">
-                                                                User Interface Design
-                                                            </Link>
-                                                        </li>
-                                                        <li>
-                                                            <Link to="#">Web Development</Link>
-                                                        </li>
-                                                        <li>
-                                                            <Link to="#">Web Design</Link>
-                                                        </li>
-                                                        <li>
-                                                            <Link to="#">UI Design</Link>
-                                                        </li>
-                                                        <li>
-                                                            <Link to="#">Mobile App Design</Link>
-                                                        </li>
-                                                    </ul>
+                                            <div className="card-body">
+                                                <h5 className="subs-title">Bank  Details</h5>
+                                                <div className="contact-info-list">
+                                                    <div className="edu-wrap">
+                                                        <div className="edu-name">
+                                                            <span>
+                                                                <img src={EmailIcon} alt="Address" />
+                                                            </span>
+                                                        </div>
+                                                        <div className="edu-detail">
+                                                            <h6>Account Holder Name </h6>
+                                                            <p>
+                                                                <Link to="#">{listing?.BankData?.BankName
+                                                                }</Link>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="edu-wrap">
+                                                        <div className="edu-name">
+                                                            <span>
+                                                                <img src={AddressIcon} alt="Address" />
+                                                            </span>
+                                                        </div>
+                                                        <div className="edu-detail">
+                                                            <h6>Account Number</h6>
+                                                            <p>{listing?.BankData?.BankNumber}</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="edu-wrap">
+                                                        <div className="edu-name">
+                                                            <span>
+                                                                <img src={AddressIcon} alt="Address" />
+                                                            </span>
+                                                        </div>
+                                                        <div className="edu-detail">
+                                                            <h6>IFSC Code </h6>
+                                                            <p>{listing?.BankData?.IFSC}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="edu-wrap">
+                                                        <div className="edu-name">
+                                                            <span>
+                                                                <img src={PhoneIcon} alt="Address" />
+                                                            </span>
+                                                        </div>
+                                                        <div className="edu-detail">
+                                                            <h6>Branch Name</h6>
+                                                            <p>
+                                                                {" "}
+                                                                <Link to="#">{listing?.BankData?.BranchName} </Link>
+                                                            </p>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

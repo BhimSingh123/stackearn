@@ -55,7 +55,6 @@ const StudentSetting = () => {
   }
   return (
     <AuthLayout>
-
       <div className="main-wrapper">
         <>
           {/* Header */}

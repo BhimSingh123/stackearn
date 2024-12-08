@@ -24,30 +24,41 @@ const Support = () => {
   const [loading, setLoading] = useState(false);
 
   const handleForms = async (e) => {
-    e.preventDefault();
-    if (loading) return;
+    e.preventDefault(); // Prevent the default form submission
 
-    if (!Regs.name || !Regs.email || !Regs.phone_number || !Regs.subject || !Regs.message) {
+    if (loading) return; // Prevent multiple submissions
+
+    // Check if any required field is empty
+    const { name, email, phone_number, subject, message } = Regs;
+    if (!name.trim() || !email.trim() || !phone_number.trim() || !subject.trim() || !message.trim()) {
       toast.error("Please fill out all fields.");
       return;
     }
 
-    setLoading(true);
+    setLoading(true); // Set loading state
     const main = new Listing();
     try {
       const response = await main.contact(Regs);
-      console.log("response", response)
       if (response?.data?.status) {
         toast.success(response.data.message);
+        setRegs({
+          name: "",
+          email: "",
+          role: "support",
+          message: "",
+          subject: "",
+          phone_number: "",
+        }); // Reset the form fields after success
       } else {
         toast.error(response.data.message);
       }
     } catch (error) {
       toast.error("Something went wrong, please try again.");
     } finally {
-      setLoading(false);
+      setLoading(false); // Reset loading state
     }
   };
+
 
   return (
     <>
@@ -141,7 +152,7 @@ const Support = () => {
               <div className="col-lg-6 col-md-8 mx-auto">
                 <div className="support-wrap">
                   <h5>Submit a Request</h5>
-                  <form action="#">
+                  <form onSubmit={handleForms} noValidate>
                     <div className="input-block">
                       <label>First Name</label>
                       <input
@@ -149,7 +160,6 @@ const Support = () => {
                         name="name"
                         value={Regs?.name}
                         onChange={handleInputs}
-
                         className="form-control"
                         placeholder="Enter your first Name"
                         required
@@ -162,7 +172,6 @@ const Support = () => {
                         name="email"
                         value={Regs?.email}
                         onChange={handleInputs}
-
                         className="form-control"
                         placeholder="Enter your email address"
                         required
@@ -181,7 +190,6 @@ const Support = () => {
                         title="Please enter a valid 10-digit phone number"
                         required
                       />
-
                     </div>
                     <div className="input-block">
                       <label>Subject</label>
@@ -190,7 +198,6 @@ const Support = () => {
                         name="subject"
                         value={Regs?.subject}
                         onChange={handleInputs}
-
                         className="form-control"
                         placeholder="Enter your Subject"
                         required
@@ -209,14 +216,14 @@ const Support = () => {
                       />
                     </div>
                     <button
-                      className="btn-submit"
-                      onClick={handleForms}
+                      type="submit"
+                      className="login-head button"
                       disabled={loading}
                     >
                       {loading ? "Loading..." : "Submit"}
                     </button>
-
                   </form>
+
                 </div>
               </div>
             </div>
