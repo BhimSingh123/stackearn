@@ -16,7 +16,7 @@ export default function AuthLayout({ children }) {
         } catch (error) {
             localStorage && localStorage.removeItem("admintoken");
             toast.error("Please log in first.");
-            navigate("/home");
+            navigate("/admin/login");
         }
     }
 
