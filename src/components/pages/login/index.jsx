@@ -16,7 +16,7 @@ const Login = () => {
   const [Regs, setRegs] = useState({
     email: "",
     password: "",
-    role:"user"
+    role: "user"
   });
   const handleInputs = (e) => {
     const value = e.target.value;
@@ -24,7 +24,7 @@ const Login = () => {
     setRegs((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  
+
   const togglePassword = () => {
     if (passwordType === "password") {
       setPasswordType("text")
@@ -173,11 +173,14 @@ const Login = () => {
               <div className="loginbox">
                 <div className="w-100">
                   <div className="img-logo">
-                    <img
-                      src={logo}
-                      className="img-fluid"
-                      alt="Logo"
-                    />
+                    <Link to="/home">
+
+                      <img
+                        src={logo}
+                        className="img-fluid"
+                        alt="Logo"
+                      />
+                    </Link>
                     <div className="back-home">
                       <Link to="/home">Back to Home</Link>
                     </div>
@@ -191,7 +194,7 @@ const Login = () => {
                         name="email"
                         value={Regs?.email}
                         onChange={handleInputs}
-
+                        required
                         className="form-control"
                         placeholder="Enter your email address"
                       />
@@ -199,7 +202,7 @@ const Login = () => {
                     <div className="input-block">
                       <label className="form-control-label">Password</label>
                       <div className="pass-group">
-                        <input type={"password"} onChange={handleInputs} value={Regs?.password} name="password" className="form-control" placeholder="Password" />
+                        <input type={"password"} required onChange={handleInputs} value={Regs?.password} name="password" className="form-control" placeholder="Password" />
                         <span className="toggle-password feather-eye" onClick={togglePassword}>
                           {passwordType === "password" ? <FeatherIcon icon="eye" /> : <FeatherIcon icon="eye-off" />}
                         </span>
@@ -215,9 +218,10 @@ const Login = () => {
                     <div className="remember-me">
                       <label className="custom_check mr-2 mb-0 d-inline-flex remember-me">
                         {" "}
-                        Remember me
-                        <input type="checkbox" name="radio" />
-                        <span className="checkmark" />
+                        <Link to="/register">
+                          Do Not Have Account ? Please Sign Up
+                        </Link>
+                        {/* <span className="checkmark" /> */}
                       </label>
                     </div>
                     <div className="d-grid">

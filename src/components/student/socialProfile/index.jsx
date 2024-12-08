@@ -42,7 +42,7 @@ export default function StudentSocialProfile() {
                         <div className="col-lg-12">
                           <div className="input-block">
                             <label className="form-control-label">
-                              Facebook
+                              Facebook 
                             </label>
                             <input
                               type="text"

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaTachometerAlt, FaSignOutAlt, FaUserCircle } from "react-icons/fa";
 import { logo, User16 } from "../../imagepath";
+import AuthLayout from "../AuthLayout";
 
 const Header = () => {
     // const token  = localstorage?.getItem("Admintoken")
@@ -46,84 +47,87 @@ const Header = () => {
 
     window.addEventListener("scroll", changeHeaderBackground);
     return (
-        <header className="header">
-            <div className="header-fixed">
-                <nav
-                    className={
-                        navbar
-                            ? "navbar navbar-expand-lg header-nav scroll-sticky add-header-bg"
-                            : "navbar navbar-expand-lg header-nav scroll-sticky"
-                    }
-                >
-                    <div className="container">
-                        <div className="navbar-header">
-                            <Link id="mobile_btn" to="/admin/admin-dashboard" onClick={openMobileMenu}>
-                                <span className="bar-icon">
-                                    <span />
-                                    <span />
-                                    <span />
-                                </span>
-                            </Link>
-                            <Link to="/admin/admin-dashboard" className="navbar-brand logo">
-                                <img src={logo} className="img-fluid" alt="Logo" />
-                            </Link>
-                        </div>
-                        <div className="main-menu-wrapper">
-                            <div className="menu-header">
-                                <Link to="/home" className="menu-logo">
+        <AuthLayout>
+
+            <header className="header p-3">
+                <div className="header-fixed">
+                    <nav
+                        className={
+                            navbar
+                                ? "navbar navbar-expand-lg header-nav scroll-sticky add-header-bg"
+                                : "navbar navbar-expand-lg header-nav scroll-sticky"
+                        }
+                    >
+                        <div className="container">
+                            <div className="navbar-header">
+                                <Link id="mobile_btn" to="/admin/admin-dashboard" onClick={openMobileMenu}>
+                                    <span className="bar-icon">
+                                        <span />
+                                        <span />
+                                        <span />
+                                    </span>
+                                </Link>
+                                <Link to="/admin/admin-dashboard" className="navbar-brand logo">
                                     <img src={logo} className="img-fluid" alt="Logo" />
                                 </Link>
-                                <Link
-                                    id="menu_close"
-                                    className="menu-close"
-                                    to="/home"
-                                    onClick={hideMobileMenu}
-                                >
-                                    <i className="fas fa-times" />
-                                </Link>
                             </div>
-                            <ul className="main-nav">
-
-                                <li className="has-submenu">
-                                    <Link to="#" onClick={profileClick}>
-                                        <span className="user-img">
-                                            <img src={User16} alt="User" className="rounded-circle" />
-                                            <span className="status online"></span>
-                                        </span>
+                            <div className="main-menu-wrapper">
+                                <div className="menu-header">
+                                    <Link to="/home" className="menu-logo">
+                                        <img src={logo} className="img-fluid" alt="Logo" />
                                     </Link>
-
-                                    <ul
-                                        className={
-                                            dropdownOpen ? "submenu submenuShow" : "submenu"
-                                        }
+                                    <Link
+                                        id="menu_close"
+                                        className="menu-close"
+                                        to="/home"
+                                        onClick={hideMobileMenu}
                                     >
-                                        <li>
-                                            <Link to="/student/student-dashboard"> <FaTachometerAlt className="me-2" />
-                                                <span>Dashboard</span></Link>
-                                        </li>
-                                        <li>
-                                            <Link to="/student/student-profile">
-                                                <FaUserCircle className="me-2" />
-                                                <span>My Profile</span></Link>
-                                        </li>
+                                        <i className="fas fa-times" />
+                                    </Link>
+                                </div>
+                                <ul className="main-nav">
+
+                                    <li className="has-submenu">
+                                        <Link to="#" onClick={profileClick}>
+                                            <span className="user-img">
+                                                <img src={User16} alt="User" className="rounded-circle" />
+                                                <span className="status online"></span>
+                                            </span>
+                                        </Link>
+
+                                        <ul
+                                            className={
+                                                dropdownOpen ? "submenu submenuShow" : "submenu"
+                                            }
+                                        >
+                                            <li>
+                                                <Link to="/student/student-dashboard"> <FaTachometerAlt className="me-2" />
+                                                    <span>Dashboard</span></Link>
+                                            </li>
+                                            <li>
+                                                <Link to="/student/student-profile">
+                                                    <FaUserCircle className="me-2" />
+                                                    <span>My Profile</span></Link>
+                                            </li>
 
 
-                                        <li>
-                                            <Link to="#"> <FaSignOutAlt className="me-2" />
-                                                <span>Logout</span></Link>
-                                        </li>
+                                            <li>
+                                                <Link to="#"> <FaSignOutAlt className="me-2" />
+                                                    <span>Logout</span></Link>
+                                            </li>
 
-                                    </ul>
-                                </li>
-                                <li className="login-link">
-                                    <Link to="/login">Login / Signup</Link>
-                                </li>
-                            </ul>
+                                        </ul>
+                                    </li>
+                                    <li className="login-link">
+                                        <Link to="/login">Login / Signup</Link>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                </nav>
-            </div>
-        </header>
+                    </nav>
+                </div>
+            </header>
+        </AuthLayout>
     );
 };
 

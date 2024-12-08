@@ -3,6 +3,8 @@ import StudentSidebar from "../sidebar";
 import { Link } from "react-router-dom";
 import Listing from "../../Api/Listing";
 import SubDashboard from "../components/SubDashboard";
+import { FaRegEye } from "react-icons/fa";
+import DateFormate from "../components/DateFormate";
 
 const UserList = () => {
 
@@ -40,18 +42,15 @@ const UserList = () => {
                     <SubDashboard title={"Subscribe History"} />
 
                     {/* Page Content */}
-                    <div className="page-content">
+                    <div className="page-content mt-5">
                         <div className="container">
                             <div className="row">
-                                {/* sidebar */}
                                 <StudentSidebar />
-                                {/* /Sidebar */}
-                                {/* Student Order History */}
                                 <div className="col-xl-9 col-lg-9">
                                     <div className="settings-widget card-details">
                                         <div className="settings-menu p-0">
                                             <div className="profile-heading">
-                                                <h3>Subscribe History</h3>
+                                                <h3>User History</h3>
                                             </div>
                                             <div className="checkout-form">
                                                 {/* Tab Content */}
@@ -66,8 +65,9 @@ const UserList = () => {
                                                                         <th> Date</th>
                                                                         <th> Name</th>
                                                                         <th>Email</th>
-                                                                        <th>Phone Number</th>
                                                                         <th>Status</th>
+                                                                        <th>View</th>
+
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -76,15 +76,31 @@ const UserList = () => {
                                                                         <tr key={index}>
                                                                             <td>{index + 1}</td>
                                                                             <td>
-                                                                                <span className="title-course">
-                                                                                    {item?.created_at
-                                                                                    }
+                                                                                <DateFormate data={item?.created_at} />
+                                                                            </td>
+                                                                            <td>
+                                                                                <span style={{ display: "block" }}>{item?.name}</span>
+                                                                                <span style={{ display: "block" }}>{item?.phone_number}</span>
+                                                                            </td>
+                                                                            <td>{item?.email}</td>
+                                                                            <td>
+                                                                                <span
+                                                                                    className={`btn ${item?.user_status === 'active' ? 'btn-success' : 'btn-danger'
+                                                                                        } text-capitalize rounded-pill px-3 py-1`}
+                                                                                >
+                                                                                    {item?.user_status}
                                                                                 </span>
                                                                             </td>
-                                                                            <td>{item?.name}</td>
-                                                                            <td>{item?.email}</td>
-                                                                            <td>{item?.phone_number}</td>
-                                                                            <td>{item?.user_status}</td>
+
+                                                                            <td>
+                                                                                <Link
+                                                                                    to={`/admin/user-profile-Id/${item?._id}`}
+                                                                                    style={{ cursor: 'pointer', textDecoration: 'none' }}
+                                                                                >
+                                                                                    <FaRegEye size={24} />
+                                                                                </Link>
+
+                                                                            </td>
 
 
                                                                         </tr>
@@ -122,7 +138,6 @@ const UserList = () => {
                                         </div>
                                     </div>
                                 </div>
-                                {/* /Student Order History */}
                             </div>
                         </div>
                     </div>

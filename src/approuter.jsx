@@ -135,12 +135,21 @@ import Coaching from "./components/services/Coaching.jsx";
 import School from "./components/services/School.jsx";
 
 import About from "./components/pages/About/index.jsx";
-import ContactHistory from "./components/Admin/Contact/ContactHistory.jsx";
+
+// Admin
+
 import SubscribeHistory from "./components/Admin/Subscribe/SubscribeHistory.js";
 import AdminLogin from "./components/Admin/Login/AdminLogin.jsx";
 import UserList from "./components/Admin/UserList/UserList.jsx";
 import AdminDashboard from "./components/Admin/AdminDashboard/AdminDashboard.jsx";
-// Admin
+import Setting from "./components/Admin/setting/studentSetting.jsx";
+import AdminChangePassword from "./components/Admin/setting/studentChangePassword.jsx";
+import AdminLinkedAccount from "./components/Admin/setting/studentLinkedAccount.jsx";
+import AdminProfile from "./components/Admin/setting/studentSocialProfile.jsx";
+import ProfileId from "./components/Admin/UserList/ProfileId.js";
+import List from "./components/Admin/ContactList/List.jsx";
+
+
 
 
 
@@ -532,25 +541,43 @@ const Approuter = () => {
 
 
         <Route
-          path="/admin/admin-dashboard"
+          path="/admin/dashboard"
           element={<AdminDashboard />}
         />
+        <Route path="/admin/admin-contact" element={<List />} />
         <Route
-          path="/admin/admin-contact"
-          element={<ContactHistory />}
-        />
-        <Route
-          path="/admin/admin-subsribe"
+          path="/admin/subsribe"
           element={<SubscribeHistory />}
         />
 
         <Route
-          path="/admin/admin-login"
+          path="/admin/login"
           element={<AdminLogin />}
         />
-          <Route
+        <Route
           path="/admin/admin-user"
           element={<UserList />}
+        />
+        <Route path="/admin/admin-setting" element={<Setting />} />
+        <Route path="/student/student-setting" element={<StudentSetting />} />
+
+        <Route
+          path="/admin/admin-change-password"
+          element={<AdminChangePassword />}
+        />
+        <Route
+          path="/admin/admin-social-profile"
+          element={<AdminProfile />}
+        />
+
+        <Route
+          path="/admin/admin-linked-accounts"
+          element={<AdminLinkedAccount />}
+        />
+
+<Route
+          path="/admin/user-profile-Id/:id"
+          element={<ProfileId />}
         />
       </Routes>
     </BrowserRouter>

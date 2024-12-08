@@ -123,7 +123,7 @@ export default function StudentEditProfile() {
                         <div className="col-lg-6">
                           <div className="input-block">
                             <label className="form-control-label">
-                              Last Name
+                              Last Name aa
                             </label>
                             <input
                               type="text"

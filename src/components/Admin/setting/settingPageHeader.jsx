@@ -10,9 +10,9 @@ const StudentSettingPageHeader = () => {
         <ul className="settings-pg-links">
           <li>
             <Link
-              to="/student/student-setting"
+              to="/admin/admin-setting"
               className={
-                location.pathname === "/student/student-setting" ? "active" : ""
+                location.pathname === "/admin/admin-setting" ? "active" : ""
               }
             >
               <i className="bx bx-edit" />
@@ -21,9 +21,9 @@ const StudentSettingPageHeader = () => {
           </li>
           <li>
             <Link
-              to="/student/student-change-password"
+              to="/admin/admin-change-password"
               className={
-                location.pathname === "/student/student-change-password"
+                location.pathname === "/admin/admin-change-password"
                   ? "active"
                   : ""
               }
@@ -34,9 +34,9 @@ const StudentSettingPageHeader = () => {
           </li>
           <li>
             <Link
-              to="/student/student-social-profile"
+              to="/admin/admin-social-profile"
               className={
-                location.pathname === "/student/student-social-profile"
+                location.pathname === "/admin/admin-social-profile"
                   ? "active"
                   : ""
               }
@@ -47,15 +47,15 @@ const StudentSettingPageHeader = () => {
           </li>
           <li>
             <Link
-              to="/student/student-linked-accounts"
+              to="/admin/admin-linked-accounts"
               className={
-                location.pathname === "/student/student-linked-accounts"
+                location.pathname === "/admin/admin-linked-accounts"
                   ? "active"
                   : ""
               }
             >
               <i className="bx bx-link" />
-            Bank Details
+              Bank Details
             </Link>
           </li>
         </ul>

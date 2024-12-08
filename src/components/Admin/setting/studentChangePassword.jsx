@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import StudentSidebar from "../sidebar";
 import StudentSettingPageHeader from "./settingPageHeader";
-import Header from "../../header";
 import Listing from "../../Api/Listing";
 import toast from "react-hot-toast";
-import AuthLayout from "../../../AuthLayout";
+import SubDashboard from "../components/SubDashboard";
 const StudentChangePassword = () => {
 
 
@@ -49,40 +47,13 @@ const StudentChangePassword = () => {
     }
   }
   return (
-    <AuthLayout>
     <div className="main-wrapper">
       <>
         {/* Header */}
-        <Header />
-        {/* /Header */}
-        {/* Breadcrumb */}
-        <div className="breadcrumb-bar breadcrumb-bar-info">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12 col-12">
-                <div className="breadcrumb-list">
-                  <h2 className="breadcrumb-title">Settings</h2>
-                  <nav aria-label="breadcrumb" className="page-breadcrumb">
-                    <ol className="breadcrumb">
-                      <li className="breadcrumb-item">
-                        <Link to="/home">Home</Link>
-                      </li>
-                      <li
-                        className="breadcrumb-item active"
-                        aria-current="page"
-                      >
-                        Change Password
-                      </li>
-                    </ol>
-                  </nav>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* /Breadcrumb */}
+        <SubDashboard title={"Subscribe History"} />
+
         {/* Page Content */}
-        <div className="page-content">
+        <div className="page-content mt-5">
           <div className="container">
             <div className="row">
               {/* sidebar */}
@@ -143,7 +114,6 @@ const StudentChangePassword = () => {
         {/* /Page Content */}
       </>
     </div>
-    </AuthLayout>
   );
 };
 

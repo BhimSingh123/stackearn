@@ -1,31 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import StudentSidebar from "../sidebar";
 import { User16 } from "../../imagepath";
 import StudentSettingPageHeader from "./settingPageHeader";
-import Header from "../../header";
 import AuthLayout from "../../../AuthLayout";
 import Listing from "../../Api/Listing";
 import toast from "react-hot-toast";
+import SubDashboard from "../components/SubDashboard";
 
 const StudentSetting = () => {
-
+  const [listing, setListing] = useState("");
   const [Regs, setRegs] = useState({
     firstname: "",
     lastname: "",
     username: "",
     phone_number: "",
     designation: "",
-    bio: ""
+    bio: "",
+    address: "",
+    id :""
   });
+  const [loading, setLoading] = useState(false);
 
   const handleInputs = (e) => {
-    const value = e.target.value;
-    const name = e.target.name;
+    const { name, value } = e.target;
     setRegs((prevState) => ({ ...prevState, [name]: value }));
   };
-
-  const [loading, setLoading] = useState(false);
 
   async function handleForms(e) {
     e.preventDefault();
@@ -36,58 +36,75 @@ const StudentSetting = () => {
     const main = new Listing();
     try {
       const response = await main.userProfileAdd(Regs);
-      console.log("response", response)
+      console.log("response", response);
       if (response?.data) {
         toast.success(response.data.message);
         setRegs({
-          email: "",
-          newPassword: ""
-        })
+          firstname: "",
+          lastname: "",
+          username: "",
+          phone_number: "",
+          designation: "",
+          bio: "",
+          address: ""
+        });
+        ProfileData();
       } else {
-        toast.error(response.data.message);
+        toast.error(response?.data?.message || "Unexpected error occurred.");
       }
-      setLoading(false);
     } catch (error) {
-      console.log("error", error);
-      toast.error(error);
+      console.error("error", error);
+      toast.error(error?.response?.data?.message || "Something went wrong.");
+    } finally {
       setLoading(false);
     }
   }
+
+  const ProfileData = async () => {
+    setLoading(true);
+    try {
+      const main = new Listing();
+      const response = await main.userprfileId();
+      console.log("response", response);
+      setListing(response?.data?.profile || {});
+    } catch (error) {
+      console.error("ProfileData error:", error);
+      toast.error("Failed to load profile data.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    ProfileData();
+  }, []);
+
+  useEffect(() => {
+    setRegs((prevState) => ({
+      ...prevState,
+      firstname: listing?.firstname || "",
+      lastname: listing?.lastname || "",
+      username: listing?.username || "",
+      phone_number: listing?.phone_number || "",
+      designation: listing?.designation || "",
+      bio: listing?.bio || "",
+      address: listing?.address || "",
+      id:listing?._id || ""
+
+    }));
+  }, [listing]);
   return (
     <AuthLayout>
+
       <div className="main-wrapper">
         <>
           {/* Header */}
-          <Header />
+          <SubDashboard />
           {/* /Header */}
           {/* Breadcrumb */}
-          <div className="breadcrumb-bar breadcrumb-bar-info">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-12 col-12">
-                  <div className="breadcrumb-list">
-                    <h2 className="breadcrumb-title">Settings</h2>
-                    <nav aria-label="breadcrumb" className="page-breadcrumb">
-                      <ol className="breadcrumb">
-                        <li className="breadcrumb-item">
-                          <Link to="/home">Home</Link>
-                        </li>
-                        <li
-                          className="breadcrumb-item active"
-                          aria-current="page"
-                        >
-                          Edit Profile
-                        </li>
-                      </ol>
-                    </nav>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
           {/* /Breadcrumb */}
           {/* Page Content */}
-          <div className="page-content">
+          <div className="page-content mt-5">
             <div className="container">
               <div className="row">
                 {/* sidebar */}
@@ -157,7 +174,6 @@ const StudentSetting = () => {
                                   onChange={handleInputs}
                                   name="firstname"
                                   className="form-control"
-                                  defaultValue="Ronald"
                                 />
                               </div>
                             </div>
@@ -170,7 +186,6 @@ const StudentSetting = () => {
                                   onChange={handleInputs}
                                   name="lastname"
                                   className="form-control"
-                                  defaultValue="Richard"
                                 />
                               </div>
                             </div>
@@ -183,7 +198,6 @@ const StudentSetting = () => {
                                   onChange={handleInputs}
                                   name="username"
                                   className="form-control"
-                                  defaultValue="studentdemo"
                                 />
                               </div>
                             </div>
@@ -196,7 +210,6 @@ const StudentSetting = () => {
                                   onChange={handleInputs}
                                   name="phone_number"
                                   className="form-control"
-                                  defaultValue="90154-91036"
                                 />
                               </div>
                             </div>
@@ -209,7 +222,18 @@ const StudentSetting = () => {
                                   onChange={handleInputs}
                                   name="designation"
                                   className="form-control"
-                                  defaultValue="User Interface Design"
+                                />
+                              </div>
+                            </div>
+                            <div className="col-md-12">
+                              <div className="input-block">
+                                <label className="form-label">Address</label>
+                                <input
+                                  value={Regs?.address}
+                                  onChange={handleInputs}
+                                  name="address"
+                                  className="form-control"
+                                  placeholder="address"
                                 />
                               </div>
                             </div>

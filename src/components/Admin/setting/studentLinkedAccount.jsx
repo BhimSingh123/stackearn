@@ -12,6 +12,8 @@ const StudentLinkedAccounts = () => {
     BankNumber: "",
     BranchName: "",
     IFSC: "",
+    id: ""
+
   });
 
   const [loading, setLoading] = useState(false);
@@ -70,6 +72,7 @@ const StudentLinkedAccounts = () => {
       IFSC: listing?.IFSC || "",
       BranchName: listing?.BranchName || "",
       BankNumber: listing?.BankNumber || "",
+      id: listing?._id || ""
     }));
   }, [listing]);
 
@@ -111,7 +114,7 @@ const StudentLinkedAccounts = () => {
                         <div className="row">
                           <div className="col-md-12">
                             <div className="input-block">
-                              <label className="form-label">Account Holder Name</label>
+                              <label className="form-label">Bank Name</label>
                               <input type="text" className="form-control"
                                 onChange={handleInputs}
                                 value={Regs?.BankName}
