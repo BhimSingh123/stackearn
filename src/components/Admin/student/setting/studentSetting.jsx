@@ -107,6 +107,8 @@ const StudentSetting = () => {
                                 type="text"
                                 className="form-control"
                                 defaultValue="Ronald"
+                                required
+
                               />
                             </div>
                           </div>
