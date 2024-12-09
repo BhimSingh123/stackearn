@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import Listing from "../../Api/Listing";
 import SubDashboard from "../components/SubDashboard";
 import DateFormate from "../components/DateFormate";
+import AuthLayout from "../AuthLayout";
+import LoadingPage from "../../../LoadingPage";
 
 const List = () => {
 
@@ -30,9 +32,11 @@ const List = () => {
     ContactList();
   }, []);
   return (
+    <AuthLayout>
     <>
+
       {loading ? (
-        <></>
+      <LoadingPage/>
       ) : (
         <div className="main-wrapper mb-5">
           <SubDashboard />
@@ -133,6 +137,7 @@ const List = () => {
       )}
 
     </>
+    </AuthLayout>
 
   );
 };

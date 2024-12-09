@@ -100,7 +100,7 @@ const StudentChangePassword = () => {
                       </p>
                     </div>
                     <StudentSettingPageHeader />
-                    <form>
+                    <form onSubmit={handleForms}>
                       <div className="checkout-form settings-wrap">
                         <div className="row">
                           <div className="col-md-6">
@@ -126,7 +126,8 @@ const StudentChangePassword = () => {
                             </div>
                           </div>
                           <div className="col-md-12">
-                            <button className="btn btn-primary" type="submit" onClick={handleForms}>
+                          <button className="login-head button" type="submit" disabled={loading}>
+
                               {loading ? "Loading.." : "Reset Password"}
                             </button>
                           </div>

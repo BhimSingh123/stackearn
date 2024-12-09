@@ -109,7 +109,8 @@ const StudentLinkedAccounts = () => {
                       </p>
                     </div>
                     <StudentSettingPageHeader />
-                    <form>
+                    <form onSubmit={handleForms}>
+
                       <div className="checkout-form settings-wrap">
                         <div className="row">
                           <div className="col-md-12">
@@ -119,6 +120,7 @@ const StudentLinkedAccounts = () => {
                                 onChange={handleInputs}
                                 value={Regs?.BankName}
                                 name="BankName"
+                                required
                               />
                             </div>
                           </div>
@@ -129,6 +131,8 @@ const StudentLinkedAccounts = () => {
                                 onChange={handleInputs}
                                 value={Regs?.BankNumber}
                                 name="BankNumber"
+                                required
+
                               />
                             </div>
                           </div>
@@ -140,6 +144,8 @@ const StudentLinkedAccounts = () => {
                                 onChange={handleInputs}
                                 value={Regs?.BranchName}
                                 name="BranchName"
+                                required
+
 
                               />
                             </div>
@@ -152,12 +158,15 @@ const StudentLinkedAccounts = () => {
                                 onChange={handleInputs}
                                 value={Regs?.IFSC}
                                 name="IFSC"
+                                required
+
                               />
                             </div>
                           </div>
                           <div className="col-md-12">
-                            <button className="btn btn-primary" type="submit" onClick={handleForms}>
-                              {loading ? "Loading..." : "  Save Profile"}
+                          <button className="login-head button" type="submit" disabled={loading}>
+
+                              {loading ? "Loading..." : "Bank Details"}
                             </button>
                           </div>
                         </div>

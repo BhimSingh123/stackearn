@@ -5,6 +5,7 @@ import StudentSettingPageHeader from "./settingPageHeader";
 import Header from "../../header";
 import Listing from "../../Api/Listing";
 import toast from "react-hot-toast";
+import AuthLayout from "../../../AuthLayout";
 
 const StudentLinkedAccounts = () => {
 
@@ -80,6 +81,7 @@ const StudentLinkedAccounts = () => {
     ProfileData();
   }, []);
   return (
+    <AuthLayout>
     <div className="main-wrapper">
       <>
         {/* Header */}
@@ -130,7 +132,7 @@ const StudentLinkedAccounts = () => {
                       </p>
                     </div>
                     <StudentSettingPageHeader />
-                    <form>
+                    <form onSubmit={handleForms}>
                       <div className="checkout-form settings-wrap">
                         <div className="row">
                           <div className="col-md-12">
@@ -177,8 +179,9 @@ const StudentLinkedAccounts = () => {
                             </div>
                           </div>
                           <div className="col-md-12">
-                            <button className="btn btn-primary" type="submit" onClick={handleForms}>
-                              {loading ? "Loading..." : "  Save Profile"}
+                          <button className="login-head button" type="submit" disabled={loading}>
+
+                              {loading ? "Loading..." : "  Save Bank Details"}
                             </button>
                           </div>
                         </div>
@@ -194,6 +197,7 @@ const StudentLinkedAccounts = () => {
         {/* /Page Content */}
       </>
     </div>
+    </AuthLayout>
   );
 };
 

@@ -18,7 +18,7 @@ const StudentSetting = () => {
     designation: "",
     bio: "",
     address: "",
-    id :""
+    id: ""
   });
   const [loading, setLoading] = useState(false);
 
@@ -89,7 +89,7 @@ const StudentSetting = () => {
       designation: listing?.designation || "",
       bio: listing?.bio || "",
       address: listing?.address || "",
-      id:listing?._id || ""
+      id: listing?._id || ""
 
     }));
   }, [listing]);
@@ -122,7 +122,7 @@ const StudentSetting = () => {
                         </p>
                       </div>
                       <StudentSettingPageHeader />
-                      <form>
+                      <form onSubmit={handleForms}>
                         <div className="course-group profile-upload-group mb-0 d-flex">
                           <div className="course-group-img profile-edit-field d-flex align-items-center">
                             <Link
@@ -174,6 +174,7 @@ const StudentSetting = () => {
                                   onChange={handleInputs}
                                   name="firstname"
                                   className="form-control"
+                                  required
                                 />
                               </div>
                             </div>
@@ -186,29 +187,21 @@ const StudentSetting = () => {
                                   onChange={handleInputs}
                                   name="lastname"
                                   className="form-control"
+                                  required
+
                                 />
                               </div>
                             </div>
                             <div className="col-md-6">
                               <div className="input-block">
-                                <label className="form-label">User Name</label>
-                                <input
-                                  type="text"
-                                  value={Regs?.username}
-                                  onChange={handleInputs}
-                                  name="username"
-                                  className="form-control"
-                                />
-                              </div>
-                            </div>
-                            <div className="col-md-6">
-                              <div className="input-block">
-                                <label className="form-label">Phone Number</label>
+                                <label className="form-label">WhatApps Number</label>
                                 <input
                                   type="number"
                                   value={Regs?.phone_number}
                                   onChange={handleInputs}
                                   name="phone_number"
+                                  required
+
                                   className="form-control"
                                 />
                               </div>
@@ -221,6 +214,8 @@ const StudentSetting = () => {
                                   value={Regs?.designation}
                                   onChange={handleInputs}
                                   name="designation"
+                                  required
+
                                   className="form-control"
                                 />
                               </div>
@@ -233,6 +228,8 @@ const StudentSetting = () => {
                                   onChange={handleInputs}
                                   name="address"
                                   className="form-control"
+                                  required
+
                                   placeholder="address"
                                 />
                               </div>
@@ -245,6 +242,8 @@ const StudentSetting = () => {
                                   onChange={handleInputs}
                                   name="bio"
                                   rows={4}
+                                  required
+
                                   className="form-control"
                                   defaultValue={
                                     "Hello! I'm Ronald Richard. I'm passionate about developing innovative software solutions, analyzing classic literature. I aspire to become a software developer, work as an editor. In my free time, I enjoy coding, reading, hiking etc."
@@ -253,8 +252,7 @@ const StudentSetting = () => {
                               </div>
                             </div>
                             <div className="col-md-12">
-                              <button className="btn btn-primary" type="submit" onClick={handleForms}>
-
+                              <button className="login-head button" type="submit" disabled={loading}>
                                 {loading ? "Loading..." : "Update Profile"}
                               </button>
                             </div>

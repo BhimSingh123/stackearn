@@ -152,7 +152,7 @@ const Support = () => {
               <div className="col-lg-6 col-md-8 mx-auto">
                 <div className="support-wrap">
                   <h5>Submit a Request</h5>
-                  <form onSubmit={handleForms} noValidate>
+                  <form onSubmit={handleForms} >
                     <div className="input-block">
                       <label>First Name</label>
                       <input
@@ -215,13 +215,13 @@ const Support = () => {
                         required
                       />
                     </div>
-                    <button
-                      type="submit"
-                      className="login-head button"
-                      disabled={loading}
-                    >
-                      {loading ? "Loading..." : "Submit"}
-                    </button>
+                    <button 
+  className={`login-head button ${loading ? "button-disabled" : ""}`} 
+  type="submit" 
+  disabled={loading}>
+  {loading ? "Loading..." : "Submit"}
+</button>
+
                   </form>
 
                 </div>

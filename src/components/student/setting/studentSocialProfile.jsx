@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import StudentSidebar from "../sidebar";
 import StudentSettingPageHeader from "./settingPageHeader";
@@ -8,7 +8,7 @@ import Listing from "../../Api/Listing";
 import AuthLayout from "../../../AuthLayout";
 
 const StudentSocialProfile = () => {
-
+  const [listing, setListing] = useState("");
   const [Regs, setRegs] = useState({
     website: "",
     linkedin: "",
@@ -51,6 +51,38 @@ const StudentSocialProfile = () => {
       setLoading(false);
     }
   }
+
+
+  const ProfileData = async () => {
+    setLoading(true);
+    try {
+      const main = new Listing();
+      const response = await main.userprfileId();
+      console.log("response", response);
+      setListing(response?.data?.social        || {});
+    } catch (error) {
+      console.error("ProfileData error:", error);
+      toast.error("Failed to load profile data.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    ProfileData();
+  }, []);
+
+  useEffect(() => {
+    setRegs((prevState) => ({
+      ...prevState,
+      website: listing?.website || "",
+      linkedin: listing?.linkedin || "",
+      github: listing?.github || "",
+      twitter: listing?.twitter || "",
+      facebook: listing?.facebook || "",
+      id:listing?._id || ""
+    }));
+  }, [listing]);
   return (
     <AuthLayout>
 
@@ -104,70 +136,76 @@ const StudentSocialProfile = () => {
                         </p>
                       </div>
                       <StudentSettingPageHeader />
-                      <form>
-                        <div className="checkout-form settings-wrap">
-                          <div className="row">
-                            <div className="col-md-12">
-                              <div className="input-block">
-                                <label className="form-label">Website  </label>
-                                <input type="text" className="form-control"
-                                  onChange={handleInputs}
-                                  value={Regs?.website}
-                                  name="website"
-                                />
-                              </div>
-                            </div>
-                            <div className="col-md-12">
-                              <div className="input-block">
-                                <label className="form-label">Github</label>
-                                <input type="text" className="form-control"
-                                  onChange={handleInputs}
-                                  value={Regs?.github}
-                                  name="github"
-                                />
-                              </div>
-                            </div>
-                            <div className="col-md-12">
-                              <div className="input-block">
-                                <label className="form-label">Facebook</label>
-                                <input type="text" className="form-control"
-                                  onChange={handleInputs}
-                                  value={Regs?.facebook}
-                                  name="facebook"
-                                />
-                              </div>
-                            </div>
-                            <div className="col-md-12">
-                              <div className="input-block">
-                                <label className="form-label">Twitter</label>
-                                <input type="text" className="form-control"
-
-                                  onChange={handleInputs}
-                                  value={Regs?.twitter}
-                                  name="twitter"
-
-                                />
-                              </div>
-                            </div>
-                            <div className="col-md-12">
-                              <div className="input-block">
-                                <label className="form-label">Linkedin</label>
-                                <input type="text" className="form-control"
-
-                                  onChange={handleInputs}
-                                  value={Regs?.linkedin}
-                                  name="linkedin"
-                                />
-                              </div>
-                            </div>
-                            <div className="col-md-12">
-                              <button className="btn btn-primary" type="submit" onClick={handleForms}>
-                                {loading ? "Loading..." : "  Save Profile"}
-                              </button>
+                      <form onSubmit={handleForms}>
+                      <div className="checkout-form settings-wrap">
+                        <div className="row">
+                          <div className="col-md-12">
+                            {/* <div className="input-block">
+                              <label className="form-label">Website  </label>
+                              <input type="text" className="form-control"
+                              onChange={handleInputs}
+                              value={Regs?.website}
+                              name="website"
+                              />
+                            </div> */}
+                          </div>
+                          <div className="col-md-12">
+                            <div className="input-block">
+                              <label className="form-label">Instragram</label>
+                              <input type="text" className="form-control" 
+                              onChange={handleInputs}
+                              value={Regs?.github}
+                              name="github"
+                              required
+                              />
                             </div>
                           </div>
+                          <div className="col-md-12">
+                            <div className="input-block">
+                              <label className="form-label">Facebook</label>
+                              <input type="text" className="form-control"
+                               onChange={handleInputs}
+                               value={Regs?.facebook}
+                               name="facebook"
+                              required
+
+                              />
+                            </div>
+                          </div>
+                          <div className="col-md-12">
+                            <div className="input-block">
+                              <label className="form-label">Twitter</label>
+                              <input type="text" className="form-control" 
+                              required
+                              
+                              onChange={handleInputs}
+                              value={Regs?.twitter}
+                              name="twitter"
+                              
+                              />
+                            </div>
+                          </div>
+                          <div className="col-md-12">
+                            <div className="input-block">
+                              <label className="form-label">Linkedin</label>
+                              <input type="text" className="form-control"
+                              required
+                              onChange={handleInputs}
+                              value={Regs?.linkedin}
+                              name="linkedin"
+                              />
+                            </div>
+                          </div>
+                          <div className="col-md-12">
+                          <button className="login-head button" type="submit" disabled={loading}>
+
+
+                            {loading  ? "Loading..." : "  Save Profile"}
+                            </button>
+                          </div>
                         </div>
-                      </form>
+                      </div>
+                    </form>
                     </div>
                   </div>
                 </div>

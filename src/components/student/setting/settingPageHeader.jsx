@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import AuthLayout from "../../../AuthLayout";
-
 const StudentSettingPageHeader = () => {
   const location = useLocation();
   return (
@@ -57,7 +56,7 @@ const StudentSettingPageHeader = () => {
                 }
               >
                 <i className="bx bx-link" />
-                Linked Accounts
+               Bank Details
               </Link>
             </li>
           </ul>

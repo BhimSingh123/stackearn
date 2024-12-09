@@ -1,18 +1,23 @@
 import React from "react";
 import StickyBox from "react-sticky-box";
 import { User16 } from "../../imagepath";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import AuthLayout from "../../../AuthLayout";
 
 // eslint-disable-next-line react/prop-types
 export default function StudentSidebar() {
   const location = useLocation();
-  
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Clear user data from localStorage
+    localStorage.removeItem("token"); // Remove token or any other user-related data
+    navigate("/login");  // Redirect user to the login page after logout
+  };
 
   return (
     <AuthLayout>
-
       <div className="col-xl-3 col-lg-3 theiaStickySidebar">
         <StickyBox offsetTop={20} offsetBottom={20}>
           <div className="settings-widget dash-profile">
@@ -95,10 +100,10 @@ export default function StudentSidebar() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/home" className="nav-link">
+                  <div onClick={handleLogout} className="nav-link">
                     <i className="bx bxs-log-out" />
                     Logout
-                  </Link>
+                  </div>
                 </li>
               </ul>
             </div>

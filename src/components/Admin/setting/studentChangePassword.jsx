@@ -33,8 +33,8 @@ const StudentChangePassword = () => {
       if (response?.data) {
         toast.success(response.data.message);
         setRegs({
-          email :"",
-          newPassword : ""
+          email: "",
+          newPassword: ""
         })
       } else {
         toast.error(response.data.message);
@@ -71,7 +71,7 @@ const StudentChangePassword = () => {
                       </p>
                     </div>
                     <StudentSettingPageHeader />
-                    <form>
+                    <form onSubmit={handleForms}>
                       <div className="checkout-form settings-wrap">
                         <div className="row">
                           <div className="col-md-6">
@@ -83,13 +83,14 @@ const StudentChangePassword = () => {
                                 name="email"
                                 value={Regs?.email}
                                 onChange={handleInputs}
+                                required
 
                                 type="email" className="form-control" />
                             </div>
                             <div className="input-block">
                               <label className="form-label">New Password</label>
                               <input type="password"
-
+                                required
                                 name="newPassword"
                                 value={Regs?.newPassword}
                                 onChange={handleInputs}
@@ -97,7 +98,8 @@ const StudentChangePassword = () => {
                             </div>
                           </div>
                           <div className="col-md-12">
-                            <button className="btn btn-primary" type="submit" onClick={handleForms}>
+                            <button className="login-head button" type="submit" disabled={loading}>
+
                               {loading ? "Loading.." : "Reset Password"}
                             </button>
                           </div>

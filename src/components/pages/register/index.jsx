@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import OwlCarousel from "react-owl-carousel";
 import { LoginImg, logo } from "../../imagepath";
@@ -6,131 +6,98 @@ import { useState } from "react";
 import Listing from "../../Api/Listing";
 import toast from "react-hot-toast";
 
-const hasNumber = (value) => {
-  return new RegExp(/[0-9]/).test(value);
-};
-const hasMixed = (value) => {
-  return new RegExp(/[a-z]/).test(value) && new RegExp(/[A-Z]/).test(value);
-};
-const hasSpecial = (value) => {
-  return new RegExp(/[!#@$%^&*)(+=._-]/).test(value);
-};
-
-const strengthColor = (count) => {
-  if (count < 1) return "poor";
-  if (count < 2) return "weak";
-  if (count < 3) return "strong";
-  if (count < 4) return "heavy";
-};
-
 const Register = () => {
 
+  const navigate = useNavigate();
   const [Regs, setRegs] = useState({
-    name: "",
     email: "",
-    role: "user",
-    refral_code: "",
     password: "",
-    phone_number: ''
+    name: "",
+    refral_code: "",
+    role: "user",
+    phone_number: "",
   });
-  const [eye, seteye] = useState(true);
   const [password, setPassword] = useState("");
-  const [validationError, setValidationError] = useState("");
-  const [strength, setStrength] = useState("");
-  // const [pwdError, setPwdError] = useState("Use 8 or more characters with a mix of letters, numbers & symbols.")
+  const [eye, setEye] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [checkboxChecked, setCheckboxChecked] = useState(false);
+
+  const handleInputs = (e) => {
+    const { name, value } = e.target;
+    setRegs({ ...Regs, [name]: value });
+  };
+
+  const handlePasswordChange = (e) => {
+    const { value } = e.target;
+    setPassword(value);
+    setRegs({ ...Regs, password: value });
+  };
 
   const onEyeClick = () => {
-    seteye(!eye);
+    setEye(!eye);
   };
 
-  const handlePasswordChange = (event) => {
-    const newPassword = event.target.value;
-    setPassword(newPassword);
-    setRegs((prevRegs) => ({
-      ...prevRegs, // Preserve existing fields
-      password: newPassword // Update only the password
-    }));
-    validatePassword(newPassword);
+  const handleCheckboxChange = (e) => {
+    setCheckboxChecked(e.target.checked);
   };
 
-  const validatePassword = (value) => {
-    if (!value) {
-      setValidationError(1);
-    } else if (value.length < 8) {
-      setValidationError(2);
-    } else if (!/[0-9]/.test(value)) {
-      setValidationError(3);
-    } else if (!/[!@#$%^&*()]/.test(value)) {
-      setValidationError(4);
-    } else {
-      setValidationError(5);
-    }
-  };
 
   const messages = () => {
-    if (validationError == 1) {
-      return "";
-    } else if (validationError == 2) {
-      return (
-        <span
-          id="poor"
-          className="active"
-          style={{ fontSize: 12, color: "#DC3545" }}
-        >
-          😠 Weak. Must contain at least 8 characters
-        </span>
-      );
-    } else if (validationError == 3) {
-      return (
-        <span
-          id="weak"
-          className="active"
-          style={{ fontSize: 12, color: "#FFC107" }}
-        >
-          😲 Average. Must contain at least 1 letter or number
-        </span>
-      );
-    } else if (validationError == 4) {
-      return (
-        <span
-          id="strong"
-          className="active"
-          style={{ fontSize: 12, color: "#0D6EFD" }}
-        >
-          🙂 Almost. Must contain special symbol
-        </span>
-      );
-    } else if (validationError == 5) {
-      return (
-        <span
-          id="heavy"
-          className="active"
-          style={{ fontSize: 12, color: "#4BB543" }}
-        >
-          😊 Awesome! You have a secure password.
-        </span>
-      );
+    if (password.length === 0) {
+      return <p className="text-muted">Please Enter Password</p>;
+    } else if (password.length < 4) {
+      return <p className="text-danger">Weak Password</p>;
+    } else if (password.length >= 4 && password.length < 8) {
+      return <p className="text-warning">Average Password</p>;
+    } else {
+      return <p className="text-success">Strong Password</p>;
     }
   };
 
-  const strengthIndicator = (value) => {
-    let strengths = 0;
+  const handleForms = async (e) => {
+    e.preventDefault();
+    if (loading) return;
 
-    if (value.length >= 8) strengths = 1;
-    if (hasNumber(value) && value.length >= 8) strengths = 2;
-    if (hasSpecial(value) && value.length >= 8 && hasNumber(value))
-      strengths = 3;
-    if (
-      hasMixed(value) &&
-      hasSpecial(value) &&
-      value.length >= 8 &&
-      hasNumber(value)
-    )
-      strengths = 3;
-    return strengths;
+    // Validation for required fields
+    if (!Regs.name.trim() || !Regs.email.trim() || !Regs.phone_number.trim() || !Regs.password.trim() || !Regs.refral_code.trim()) {
+      toast.error("Please fill out all fields.");
+      return;
+    }
+
+    if (!checkboxChecked) {
+      toast.error("You must agree to the terms and conditions.");
+      return;
+    }
+
+    setLoading(true);
+    const main = new Listing();
+    try {
+      const response = await main.singup(Regs);
+      console.log("response", response);
+      if (response?.data?.status) {
+        toast.success(response.data.message);
+        setRegs({
+          email: "",
+          password: "",
+          name: "",
+          refral_code: "",
+          role: "user",
+          phone_number: "",
+        });
+        setPassword("");
+        navigate("/login");
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.message || "Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   var settings = {
+    //autoWidth: true,
     items: 2,
     margin: 25,
     dots: true,
@@ -155,65 +122,6 @@ const Register = () => {
     },
   };
 
-  useEffect(() => {
-    if (password) {
-      if (password !== "") {
-        let strength = strengthIndicator(password);
-        let color = strengthColor(strength);
-        setStrength(color);
-      } else {
-        setStrength("");
-      }
-    }
-  }, [password]);
-
-
-  console.log("Regs", Regs)
-  const handleInputs = (e) => {
-    const value = e.target.value;
-    const name = e.target.name;
-    setRegs((prevState) => ({ ...prevState, [name]: value }));
-  };
-
-  const [loading, setLoading] = useState(false);
-
-  const navigate = useNavigate();
-  const handleForms = async (e) => {
-    e.preventDefault();
-    if (loading) return;
-
-    if (!Regs.name || !Regs.email || !Regs.phone_number || !password ) {
-      toast.error("Please fill out all fields.");
-      return;
-    }
-
-    setLoading(true);
-    const main = new Listing();
-    try {
-      const response = await main.singup(Regs);
-      console.log("response", response)
-      if (response?.data?.status) {
-        toast.success(response.data.message);
-        setRegs({
-          email: "",
-          password: "",
-          name: "",
-          refral_code: "",
-          role: "",
-          phone_number: ""
-        })
-        navigate("/login")
-        setPassword("")
-      } else {
-        toast.error(response.data.message);
-      }
-    } catch (error) {
-      toast.error(error?.response?.data?.message);
-
-    } finally {
-      setLoading(false);
-    }
-  };
   return (
     <>
       <div className="main-wrapper log-wrap">
@@ -293,17 +201,18 @@ const Register = () => {
                   </div>
                 </div>
                 <h1>Sign up</h1>
-                <form >
+                <form onSubmit={handleForms}>
                   <div className="row">
                     <div className="col-md-6">
+
                       <div className="input-block">
-                        <label className="form-control-label">Full Name</label>
+                        <label className="form-control-label">Name</label>
                         <input
                           type="text"
                           className="form-control"
                           required
                           name="name"
-                          value={Regs?.name}
+                          value={Regs?.name || ""}
                           onChange={handleInputs}
                           placeholder="Enter your Full Name"
                         />
@@ -314,108 +223,77 @@ const Register = () => {
                         <label className="form-control-label">Email</label>
                         <input
                           type="email"
-                          name="email"
-                          required
-                          value={Regs?.email}
-                          onChange={handleInputs}
                           className="form-control"
-                          placeholder="Enter your email address"
+                          required
+                          name="email"
+                          value={Regs?.email || ""}
+                          onChange={handleInputs}
+                          placeholder="Enter your Email"
                         />
                       </div>
                     </div>
+
                   </div>
+
+
+
                   <div className="input-block">
                     <label className="form-control-label">Phone Number</label>
                     <input
-                      type="number"
-                      name="phone_number"
-                      required
-                      value={Regs?.phone_number}
-                      onChange={handleInputs}
+                      type="text"
                       className="form-control"
-                      placeholder="Enter your phone number"
+                      required
+                      name="phone_number"
+                      value={Regs?.phone_number || ""}
+                      onChange={handleInputs}
+                      placeholder="Enter your Phone Number"
                     />
                   </div>
+
                   <div className="input-block">
-                    <label className="form-control-label">Refral Code</label>
+                    <label className="form-control-label">Referral Code</label>
                     <input
                       type="text"
-                      name="refral_code"
-                      value={Regs?.refral_code}
-                      onChange={handleInputs}
-                      required
                       className="form-control"
-                      placeholder="Enter your refral code"
+                      required
+                      name="refral_code"
+                      value={Regs?.refral_code || ""}
+                      onChange={handleInputs}
+                      placeholder="Enter Referral Code"
                     />
                   </div>
+
                   <div className="input-block">
                     <label className="form-control-label">Password</label>
-                    <div className="pass-group" id="passwordInput">
+                    <div className="pass-group">
                       <input
                         className="form-control pass-input"
                         name="password"
-                        value={password}
+                        value={password || ""}
                         required
                         placeholder="Enter your password"
                         type={eye ? "password" : "text"}
                         onChange={handlePasswordChange}
                       />
-                      {/* <span onClick={onEyeClick} className={`fa toggle-password feather-eye" ${eye ? "fa-eye" : "fa-eye-slash" }`}/> */}
-                      <span
-                        onClick={onEyeClick}
-                        className={`fa toggle-password feather-eye" ${eye ? "fa-eye" : "fa-eye-slash"
-                          }`}
-                      />
-                      <span className="toggle-password feather-eye"></span>
-                      <span className="pass-checked">
-                        <i className="feather-check"></i>
-                      </span>
+                      <span onClick={onEyeClick} className={`fa toggle-password feather-eye ${eye ? "fa-eye" : "fa-eye-slash"}`} />
                     </div>
-                    <div
-                      id="passwordStrength"
-                      style={{ display: "flex" }}
-                      className={`password-strength ${strength === "poor"
-                        ? "poor-active"
-                        : strength === "weak"
-                          ? "avg-active"
-                          : strength === "strong"
-                            ? "strong-active"
-                            : strength === "heavy"
-                              ? "heavy-active"
-                              : ""
-                        }`}
-                    >
-                      <span id="poor" className="active"></span>
-                      <span id="weak" className="active"></span>
-                      <span id="strong" className="active"></span>
-                      <span id="heavy" className="active"></span>
-                    </div>
-                    <div id="passwordInfo">{messages()}</div>
+                    {messages()}
                   </div>
 
-                  <div className="form-check remember-me">
-                    <label className="form-check-label mb-0">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        name="remember"
-                      />
-                      I agree to the&nbsp;
-                      <Link to="/term-condition">Terms of Service</Link>{" "}
-                      and&nbsp;
-                      <Link to="/privacy-policy">Privacy Policy.</Link>
-                    </label>
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      name="agree"
+                      required
+                      onChange={handleCheckboxChange}
+                    />
+                    <label className="form-check-label">I agree to the terms and conditions</label>
                   </div>
-                  <div className="d-grid">
-                    <div
-                      className="btn btn-primary btn-start"
-                      type="submit"
-                      onClick={handleForms}
-                    >
-                      {loading ? "Processing.." : "Create Account"}
 
-                    </div>
-                  </div>
+                  <button className="login-head button" type="submit" disabled={loading}>
+                    {loading ? "Submitting..." : "Register"}
+                  </button>
                 </form>
               </div>
             </div>

@@ -114,26 +114,27 @@ const StudentSocialProfile = () => {
                       </p>
                     </div>
                     <StudentSettingPageHeader />
-                    <form>
+                    <form onSubmit={handleForms}>
                       <div className="checkout-form settings-wrap">
                         <div className="row">
                           <div className="col-md-12">
-                            <div className="input-block">
+                            {/* <div className="input-block">
                               <label className="form-label">Website  </label>
                               <input type="text" className="form-control"
                               onChange={handleInputs}
                               value={Regs?.website}
                               name="website"
                               />
-                            </div>
+                            </div> */}
                           </div>
                           <div className="col-md-12">
                             <div className="input-block">
-                              <label className="form-label">Github</label>
+                              <label className="form-label">Instragram</label>
                               <input type="text" className="form-control" 
                               onChange={handleInputs}
                               value={Regs?.github}
                               name="github"
+                              required
                               />
                             </div>
                           </div>
@@ -144,6 +145,8 @@ const StudentSocialProfile = () => {
                                onChange={handleInputs}
                                value={Regs?.facebook}
                                name="facebook"
+                              required
+
                               />
                             </div>
                           </div>
@@ -151,6 +154,7 @@ const StudentSocialProfile = () => {
                             <div className="input-block">
                               <label className="form-label">Twitter</label>
                               <input type="text" className="form-control" 
+                              required
                               
                               onChange={handleInputs}
                               value={Regs?.twitter}
@@ -163,7 +167,7 @@ const StudentSocialProfile = () => {
                             <div className="input-block">
                               <label className="form-label">Linkedin</label>
                               <input type="text" className="form-control"
-                              
+                              required
                               onChange={handleInputs}
                               value={Regs?.linkedin}
                               name="linkedin"
@@ -171,7 +175,8 @@ const StudentSocialProfile = () => {
                             </div>
                           </div>
                           <div className="col-md-12">
-                            <button className="btn btn-primary" type="submit"  onClick={handleForms}>
+                          <button className="login-head button" type="submit" disabled={loading}>
+
                             {loading  ? "Loading..." : "  Save Profile"}
                             </button>
                           </div>
