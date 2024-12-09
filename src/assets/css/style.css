@@ -6959,16 +6959,29 @@ textarea:focus {
   border-radius: 50%;
 }
 .social-icon-three ul li .feather-facebook-icon:hover {
-  background: #7b1ffe;
+  background: #000000;
 }
 .social-icon-three ul li .feather-twitter-icon:hover {
-  background: #7b1ffe;
+  background: #000000;
 }
 .social-icon-three ul li .feather-linkedin-icon:hover {
-  background: #7b1ffe;
+  background: #000000;
 }
-.social-icon-three ul li .feather-youtube-icon:hover {
-  background: #7b1ffe;
+.social-icon-five ul li .feather-youtube-icon:hover {
+  background: #000000;
+}
+
+.social-icon-five ul li .feather-facebook-icon:hover {
+  background: #000000;
+}
+.social-icon-five ul li .feather-twitter-icon:hover {
+  background: #000000;
+}
+.social-icon-five ul li .feather-linkedin-icon:hover {
+  background: #000000;
+}
+.social-icon-five ul li .feather-youtube-icon:hover {
+  background: #000000;
 }
 .social-icon-three ul li .feather-twitter-icon {
   color: #ffffff;

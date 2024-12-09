@@ -195,13 +195,15 @@ const StudentSetting = () => {
                               <div className="input-block">
                                 <label className="form-label">Support Number</label>
                                 <input
-                                  type="number"
-                                  value={Regs?.phone_number}
-                                  onChange={handleInputs}
-                                  name="phone_number"
-                                  required
-
+                                  type="tel"
                                   className="form-control"
+                                  required
+                                  name="phone_number"
+                                  value={Regs?.phone_number || ""}
+                                  onChange={handleInputs}
+                                  placeholder="Enter your Phone Number"
+                                  pattern="\d{10}"
+                                  maxLength="10"
                                 />
                               </div>
                             </div>

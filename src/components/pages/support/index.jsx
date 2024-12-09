@@ -181,14 +181,14 @@ const Support = () => {
                       <label>Phone Number</label>
                       <input
                         type="tel"
-                        name="phone_number"
-                        value={Regs?.phone_number}
-                        onChange={handleInputs}
                         className="form-control"
-                        placeholder="Enter your phone number"
-                        pattern="[0-9]{10}"
-                        title="Please enter a valid 10-digit phone number"
                         required
+                        name="phone_number"
+                        value={Regs?.phone_number || ""}
+                        onChange={handleInputs}
+                        placeholder="Enter your Phone Number"
+                        pattern="\d{10}"
+                        maxLength="10"
                       />
                     </div>
                     <div className="input-block">
@@ -215,12 +215,12 @@ const Support = () => {
                         required
                       />
                     </div>
-                    <button 
-  className={`login-head button ${loading ? "button-disabled" : ""}`} 
-  type="submit" 
-  disabled={loading}>
-  {loading ? "Loading..." : "Submit"}
-</button>
+                    <button
+                      className={`login-head button ${loading ? "button-disabled" : ""}`}
+                      type="submit"
+                      disabled={loading}>
+                      {loading ? "Loading..." : "Submit"}
+                    </button>
 
                   </form>
 

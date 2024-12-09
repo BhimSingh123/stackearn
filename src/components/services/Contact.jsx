@@ -107,13 +107,16 @@ function Contact({ datarole }) {
                                 <label className="form-label">Phone Number</label>
                                 <input
                                     type="tel"
-                                    name="phone_number"
-                                    value={Regs.phone_number}
-                                    onChange={handleInputs}
                                     className="form-control"
-                                    placeholder="Enter your phone number"
                                     required
+                                    name="phone_number"
+                                    value={Regs?.phone_number || ""}
+                                    onChange={handleInputs}
+                                    placeholder="Enter your Phone Number"
+                                    pattern="\d{10}"
+                                    maxLength="10"
                                 />
+
                             </div>
                             <div className="input-block">
                                 <label className="form-label">Subject</label>
@@ -138,10 +141,10 @@ function Contact({ datarole }) {
                                     placeholder="Enter your message"
                                     required
                                 ></textarea>
-                                
+
                             </div>
                             <div className="d-grid">
-                            <button className="login-head button" type="submit" disabled={loading}>
+                                <button className="login-head button" type="submit" disabled={loading}>
 
                                     {loading ? "Loading..." : "Contact Us"}
                                 </button>

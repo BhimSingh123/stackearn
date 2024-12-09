@@ -293,10 +293,12 @@ const Register = () => {
                     />
                     <label className="form-check-label">I agree to the terms and conditions</label>
                   </div>
+                  <div className="d-grid">
 
                   <button className="login-head button" type="submit" disabled={loading}>
                     {loading ? "Loading..." : "Register"}
                   </button>
+                  </div>
                 </form>
               </div>
             </div>

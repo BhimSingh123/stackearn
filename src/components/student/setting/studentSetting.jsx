@@ -56,7 +56,6 @@ const StudentSetting = () => {
   }
 
   const ProfileData = async () => {
-    setLoading(true);
     try {
       const main = new Listing();
       const response = await main.userprfileId();
@@ -65,8 +64,6 @@ const StudentSetting = () => {
     } catch (error) {
       console.error("ProfileData error:", error);
       toast.error("Failed to load profile data.");
-    } finally {
-      setLoading(false);
     }
   };
 
