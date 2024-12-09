@@ -139,6 +139,7 @@ const StudentLinkedAccounts = () => {
                                 onChange={handleInputs}
                                 value={Regs?.BankName}
                                 name="BankName"
+                                required
                               />
                             </div>
                           </div>
@@ -149,6 +150,8 @@ const StudentLinkedAccounts = () => {
                                 onChange={handleInputs}
                                 value={Regs?.BankNumber}
                                 name="BankNumber"
+                                required
+
                               />
                             </div>
                           </div>
@@ -160,6 +163,8 @@ const StudentLinkedAccounts = () => {
                                 onChange={handleInputs}
                                 value={Regs?.BranchName}
                                 name="BranchName"
+                                required
+
 
                               />
                             </div>
@@ -172,6 +177,8 @@ const StudentLinkedAccounts = () => {
                                 onChange={handleInputs}
                                 value={Regs?.IFSC}
                                 name="IFSC"
+                                required
+
                               />
                             </div>
                           </div>
