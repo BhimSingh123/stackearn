@@ -72,9 +72,9 @@ export default function StudentSidebar() {
                   Settings
                 </Link>
               </li>
-              <li className="nav-item"  onClick={handleLogout}>
+              <li className="nav-item" onClick={handleLogout}>
                 <Link to="#" className="nav-link ">
-                  <i className="bx bxs-log-out" />  
+                  <i className="bx bxs-log-out" />
                   Logout
                 </Link>
               </li>
