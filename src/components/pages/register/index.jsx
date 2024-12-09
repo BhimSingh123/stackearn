@@ -44,7 +44,7 @@ const Register = () => {
 
   const messages = () => {
     if (password.length === 0) {
-      return <p className="text-muted">Please Enter Password</p>;
+      return ;
     } else if (password.length < 4) {
       return <p className="text-danger">Weak Password</p>;
     } else if (password.length >= 4 && password.length < 8) {
@@ -240,14 +240,18 @@ const Register = () => {
                   <div className="input-block">
                     <label className="form-control-label">Phone Number</label>
                     <input
-                      type="text"
-                      className="form-control"
-                      required
-                      name="phone_number"
-                      value={Regs?.phone_number || ""}
-                      onChange={handleInputs}
-                      placeholder="Enter your Phone Number"
-                    />
+  type="tel"
+  className="form-control"
+  required
+  name="phone_number"
+  value={Regs?.phone_number || ""}
+  onChange={handleInputs}
+  placeholder="Enter your Phone Number"
+  pattern="\d{10}"
+  maxLength="10"  
+  title="Phone number must be exactly 10 digits"
+/>
+
                   </div>
 
                   <div className="input-block">
@@ -255,7 +259,6 @@ const Register = () => {
                     <input
                       type="text"
                       className="form-control"
-                      required
                       name="refral_code"
                       value={Regs?.refral_code || ""}
                       onChange={handleInputs}
@@ -275,7 +278,7 @@ const Register = () => {
                         type={eye ? "password" : "text"}
                         onChange={handlePasswordChange}
                       />
-                      <span onClick={onEyeClick} className={`fa toggle-password feather-eye ${eye ? "fa-eye" : "fa-eye-slash"}`} />
+                      <span onClick={onEyeClick} className={`fa toggle-password feather-eye ${eye ? " fa-eye-slash " : "fa-eye"}`} />
                     </div>
                     {messages()}
                   </div>
@@ -292,7 +295,7 @@ const Register = () => {
                   </div>
 
                   <button className="login-head button" type="submit" disabled={loading}>
-                    {loading ? "Submitting..." : "Register"}
+                    {loading ? "Loading..." : "Register"}
                   </button>
                 </form>
               </div>

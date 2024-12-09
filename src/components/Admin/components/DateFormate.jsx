@@ -6,7 +6,8 @@ function DateFormate({data}) {
     return (
 
         <div>
-            {moment(data).format("DD MMM YYYY")}
+         {moment(data).format("DD MMM YYYY, hh:mm A")}
+
 
         </div>
     );

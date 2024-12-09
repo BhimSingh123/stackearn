@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import Listing from "../../Api/Listing";
 import SubDashboard from "../components/SubDashboard";
 import DateFormate from "../components/DateFormate";
-import AuthLayout from "../AuthLayout";
 import LoadingPage from "../../../LoadingPage";
+import AuthLayout from "../AuthLayout";
+import { MdOutlineMessage } from "react-icons/md";
 
 const List = () => {
 
@@ -33,18 +34,17 @@ const List = () => {
   }, []);
   return (
     <AuthLayout>
-    <>
 
-      {loading ? (
-      <LoadingPage/>
-      ) : (
-        <div className="main-wrapper mb-5">
-          <SubDashboard />
-          {/* Page Content */}
-          <div className="page-content mt-5">
-            <div className="container">
-              <div className="row">
-                <StudentSidebar />
+      <div className="main-wrapper mb-5">
+        <SubDashboard />
+        {/* Page Content */}
+        <div className="page-content mt-5">
+          <div className="container">
+            <div className="row">
+              <StudentSidebar />
+              {loading ? (
+                <LoadingPage />
+              ) : (
                 <div className="col-xl-9 col-lg-9">
                   <div className="settings-widget card-details">
                     <div className="settings-menu p-0">
@@ -62,11 +62,15 @@ const List = () => {
                                   <tr>
                                     <th>S. No.</th>
                                     <th> Date</th>
-                                    <th>Name & Phone Number</th>
+                                    <th>Name & Number</th>
                                     <th>Email</th>
                                     <th>Page Name</th>
                                     <th>Subject</th>
+                                    <th>Message</th>
+
                                     <th>Status</th>
+                                    <th>Reply Message</th>
+
                                     <th />
                                   </tr>
                                 </thead>
@@ -90,8 +94,14 @@ const List = () => {
                                         {item?.subject}
                                       </td>
                                       <td>
+                                        {item?.message}
+                                      </td>
+                                      <td>
                                         {item?.contact_status
                                         }
+                                      </td>
+                                      <td>
+                                        <MdOutlineMessage size={24} />
                                       </td>
                                     </tr>
                                   ))}
@@ -128,15 +138,14 @@ const List = () => {
                     </div>
                   </div>
                 </div>
-                {/* /Student Order History */}
-              </div>
+              )}
+              {/* /Student Order History */}
             </div>
           </div>
-          {/* /Page Content */}
         </div>
-      )}
+        {/* /Page Content */}
+      </div>
 
-    </>
     </AuthLayout>
 
   );

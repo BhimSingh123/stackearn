@@ -84,7 +84,7 @@ const Login = () => {
                     role: "",
                     phone_number: ""
                 })
-                localStorage.setItem("admintoken", response?.data?.token);
+                localStorage.setItem("token", response?.data?.token);
                 navigate("/admin/dashboard")
             } else {
                 toast.error(response.data.message);

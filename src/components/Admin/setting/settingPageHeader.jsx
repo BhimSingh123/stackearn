@@ -47,7 +47,7 @@ const StudentSettingPageHeader = () => {
                 Social Profiles
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 to="/admin/admin-linked-accounts"
                 className={
@@ -59,7 +59,7 @@ const StudentSettingPageHeader = () => {
                 <i className="bx bx-link" />
                 Bank Details
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

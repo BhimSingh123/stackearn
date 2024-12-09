@@ -5,6 +5,8 @@ import Listing from "../../Api/Listing";
 import SubDashboard from "../components/SubDashboard";
 import AuthLayout from "../AuthLayout";
 import LoadingPage from "../../../LoadingPage";
+import DateFormate from "../components/DateFormate";
+import { MdOutlineMailOutline } from "react-icons/md";
 
 const SubscribeHistory = () => {
 
@@ -34,21 +36,22 @@ const SubscribeHistory = () => {
         <>
             <AuthLayout>
 
-                {loading ? (
-                    <LoadingPage />
-                ) : (
-                    <div className="main-wrapper">
 
-                        <SubDashboard title={"Subscribe History"} />
+                <div className="main-wrapper">
 
-                        {/* Page Content */}
-                        <div className="page-content">
-                            <div className="container">
-                                <div className="row">
-                                    {/* sidebar */}
-                                    <StudentSidebar />
-                                    {/* /Sidebar */}
-                                    {/* Student Order History */}
+                    <SubDashboard title={"Subscribe History"} />
+
+                    {/* Page Content */}
+                    <div className="page-content">
+                        <div className="container">
+                            <div className="row">
+                                {/* sidebar */}
+                                <StudentSidebar />
+                                {/* /Sidebar */}
+                                {/* Student Order History */}
+                                {loading ? (
+                                    <LoadingPage />
+                                ) : (
                                     <div className="col-xl-9 col-lg-9">
                                         <div className="settings-widget card-details">
                                             <div className="settings-menu p-0">
@@ -68,7 +71,7 @@ const SubscribeHistory = () => {
                                                                             <th> Date</th>
                                                                             <th>Email</th>
                                                                             <th>Status</th>
-                                                                            <th />
+                                                                            <th>Email </th>
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
@@ -77,15 +80,16 @@ const SubscribeHistory = () => {
                                                                             <tr key={index}>
                                                                                 <td>{index + 1}</td>
                                                                                 <td>
-                                                                                    <span className="title-course">
-                                                                                        {item?.created_at
-                                                                                        }
-                                                                                    </span>
+
+                                                                                    <DateFormate data={item?.created_at} />
                                                                                 </td>
                                                                                 <td>{item?.email}</td>
                                                                                 <td>
                                                                                     {item?.status
                                                                                     }
+                                                                                </td>
+                                                                                <td>
+                                                                                    <MdOutlineMailOutline size={24} />
                                                                                 </td>
                                                                             </tr>
                                                                         ))}
@@ -122,13 +126,14 @@ const SubscribeHistory = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    {/* /Student Order History */}
-                                </div>
+                                )}
+
+                                {/* /Student Order History */}
                             </div>
                         </div>
-                        {/* /Page Content */}
                     </div>
-                )}
+                    {/* /Page Content */}
+                </div>
             </AuthLayout>
 
         </>

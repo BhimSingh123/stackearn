@@ -18,7 +18,9 @@ const StudentSetting = () => {
     designation: "",
     bio: "",
     address: "",
-    id: ""
+    id: "", email: "",
+    policy: "",
+    term: ""
   });
   const [loading, setLoading] = useState(false);
 
@@ -61,7 +63,6 @@ const StudentSetting = () => {
   }
 
   const ProfileData = async () => {
-    setLoading(true);
     try {
       const main = new Listing();
       const response = await main.userprfileId();
@@ -70,8 +71,6 @@ const StudentSetting = () => {
     } catch (error) {
       console.error("ProfileData error:", error);
       toast.error("Failed to load profile data.");
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -194,7 +193,7 @@ const StudentSetting = () => {
                             </div>
                             <div className="col-md-6">
                               <div className="input-block">
-                                <label className="form-label">WhatApps Number</label>
+                                <label className="form-label">Support Number</label>
                                 <input
                                   type="number"
                                   value={Regs?.phone_number}
@@ -206,20 +205,22 @@ const StudentSetting = () => {
                                 />
                               </div>
                             </div>
-                            <div className="col-md-12">
+                            <div className="col-md-6">
                               <div className="input-block">
-                                <label className="form-label">Designation</label>
+                                <label className="form-label">Email</label>
                                 <input
-                                  type="text"
-                                  value={Regs?.designation}
+                                  type="email"
+                                  value={Regs?.email}
                                   onChange={handleInputs}
-                                  name="designation"
+                                  name="email"
                                   required
 
                                   className="form-control"
                                 />
                               </div>
+
                             </div>
+
                             <div className="col-md-12">
                               <div className="input-block">
                                 <label className="form-label">Address</label>
@@ -234,13 +235,32 @@ const StudentSetting = () => {
                                 />
                               </div>
                             </div>
+
                             <div className="col-md-12">
                               <div className="input-block">
-                                <label className="form-label">Bio</label>
+                                <label className="form-label">Policy</label>
                                 <textarea
-                                  value={Regs?.bio}
+                                  value={Regs?.policy}
                                   onChange={handleInputs}
-                                  name="bio"
+                                  name="policy"
+                                  rows={4}
+                                  required
+
+                                  className="form-control"
+                                  defaultValue={
+                                    "Hello! I'm Ronald Richard. I'm passionate about developing innovative software solutions, analyzing classic literature. I aspire to become a software developer, work as an editor. In my free time, I enjoy coding, reading, hiking etc."
+                                  }
+                                />
+                              </div>
+                            </div>
+
+                            <div className="col-md-12">
+                              <div className="input-block">
+                                <label className="form-label">Term</label>
+                                <textarea
+                                  value={Regs?.term}
+                                  onChange={handleInputs}
+                                  name="term"
                                   rows={4}
                                   required
 

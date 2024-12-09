@@ -39,18 +39,19 @@ const UserList = () => {
 
             <>
 
-                {loading ? (
-                    <LoadingPage />
-                ) : (
-                    <div className="main-wrapper">
+                <div className="main-wrapper">
 
-                        <SubDashboard title={"Subscribe History"} />
+                    <SubDashboard title={"Subscribe History"} />
 
-                        {/* Page Content */}
-                        <div className="page-content mt-5">
-                            <div className="container">
-                                <div className="row">
-                                    <StudentSidebar />
+                    {/* Page Content */}
+                    <div className="page-content mt-5">
+                        <div className="container">
+                            <div className="row">
+                                <StudentSidebar />
+
+                                {loading ? (
+                                    <LoadingPage />
+                                ) : (
                                     <div className="col-xl-9 col-lg-9">
                                         <div className="settings-widget card-details">
                                             <div className="settings-menu p-0">
@@ -70,6 +71,8 @@ const UserList = () => {
                                                                             <th> Name</th>
                                                                             <th>Join  Date</th>
                                                                             <th>Email</th>
+                                                                            <th>Course Name</th>
+
                                                                             <th>Status</th>
                                                                             <th>View</th>
 
@@ -97,10 +100,12 @@ const UserList = () => {
 
 
                                                                                 <td>{item?.email}</td>
+                                                                                <td>Course NAme</td>
+
                                                                                 <td>
                                                                                     <span
-                                                                                        className={`btn ${item?.user_status === 'active' ? 'btn-success' : 'btn-danger'
-                                                                                            } text-capitalize rounded-pill px-3 py-1`}
+                                                                                        className={`text-sm btn ${item?.user_status === 'active' ? 'btn-success' : 'btn-danger'
+                                                                                            } text-capitalize rounded-pill px-2 py-1`}
                                                                                     >
                                                                                         {item?.user_status}
                                                                                     </span>
@@ -152,12 +157,13 @@ const UserList = () => {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                )}
+
                             </div>
                         </div>
-                        {/* /Page Content */}
                     </div>
-                )}
+                    {/* /Page Content */}
+                </div>
 
             </>
         </AuthLayout>

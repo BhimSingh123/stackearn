@@ -1,20 +1,32 @@
 import React, { useEffect, useState } from "react";
 import {
     AddressIcon,
-    CoursesIcon,
     EmailIcon,
     PhoneIcon,
     ProfileAvatar,
-    ReviewIcon,
-    TtlStudIcon,
 } from "../../imagepath";
+import {
+    User1,
+    User13,
+    User14,
+    User2,
+    User3,
+    User4,
+    User5,
+    User6,
+    User8,
+} from "../../imagepath";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import { initialSettings } from "../../common/dateRangePicker";
+import DateRangePicker from "react-bootstrap-daterangepicker";
 import LoadingPage from "../../../LoadingPage";
 
-import { FaCheck, FaTimes } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import SubDashboard from "../components/SubDashboard";
 import Listing from "../../Api/Listing";
 import AuthLayout from "../AuthLayout";
+import { MdOutlineVerified } from "react-icons/md";
 
 export default function ProfileId() {
     const { id } = useParams()
@@ -70,17 +82,16 @@ export default function ProfileId() {
                                                 <Link to="#" className="profile-info-img">
                                                     <img src={ProfileAvatar} alt="" className="img-fluid" />
                                                 </Link>
-                                                <h4>
+                                                <h4 className="mt-3 mb-2">
                                                     <Link to="#">{listing?.user?.name}</Link>
                                                     <span>Beginner</span>
                                                 </h4>
-                                                <button
-                                                    className={`btn ${status === "active" ? "btn-success" : "btn-danger"}`}  // Conditional button class
-                                                    style={{ display: "flex", alignItems: "center" }}  // To align icon and text
+                                                <p
+                                                    className={` ${status === "active" ? "text-success font-bold" : "text-danger font-bold"}`}  // Conditional button class
                                                 >
                                                     {status === "active" ? (
                                                         <>
-                                                            <FaCheck style={{ marginRight: "8px" }} /> {/* Right icon for active */}
+                                                            <MdOutlineVerified size={18} /> {/* Right icon for active */}
                                                             Active
                                                         </>
                                                     ) : (
@@ -89,30 +100,34 @@ export default function ProfileId() {
                                                             Inactive
                                                         </>
                                                     )}
-                                                </button>
-                                                <ul className="list-unstyled inline-inline profile-info-social">
-                                                    <li className="list-inline-item">
-                                                        <Link to={listing?.social?.facebook}>
-                                                            <i className="fa-brands fa-facebook"></i>
-                                                        </Link>
-                                                    </li>
-                                                    <li className="list-inline-item">
-                                                        <Link to={listing?.social?.twitter}>
-                                                            <i className="fa-brands fa-twitter"></i>
-                                                        </Link>
-                                                    </li>
-                                                    <li className="list-inline-item">
-                                                        <Link to={listing?.social?.github
-                                                        }>
-                                                            <i className="fa-brands fa-instagram"></i>
-                                                        </Link>
-                                                    </li>
-                                                    <li className="list-inline-item">
-                                                        <Link to={listing?.social?.linkedin}>
-                                                            <i className="fa-brands fa-linkedin"></i>
-                                                        </Link>
-                                                    </li>
-                                                </ul>
+                                                </p>
+
+                                                <div className="social-icon-five mt-2">
+                                                    <ul className="nav">
+                                                        <li>
+                                                            <Link to={listing?.social?.twitter} target="_blank" className="twitter-icon">
+                                                                <i className="fab fa-twitter"></i>
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link to={listing?.social?.linkedin} target="_blank" className="linked-icon">
+                                                                <i className="fab fa-linkedin-in"></i>
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link to={listing?.social?.facebook} target="_blank" className="facebook-icon">
+                                                                <i className="fab fa-facebook-f"></i>
+                                                            </Link>
+                                                        </li>
+
+                                                        <li>
+                                                            <Link to={listing?.social?.github} target="_blank" className="youtube-icon">
+                                                                <i className="fa-brands fa-instagram"></i>
+
+                                                            </Link>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -125,6 +140,520 @@ export default function ProfileId() {
                                     <div className="row">
                                         <div className="col-lg-8">
                                             {/* Overview */}
+                                            <div className="">
+                                                <div className="settings-widget card-details">
+                                                    <div className="settings-menu p-0">
+                                                        <div className="profile-heading">
+                                                            <h3>Referrals</h3>
+                                                        </div>
+                                                        <div className="checkout-form pb-0">
+                                                            <div className="row">
+                                                                <div className="col-xl-3 col-sm-6">
+                                                                    <div className="card refer-card">
+                                                                        <div className="card-body">
+                                                                            <h6>Net Earnings</h6>
+                                                                            <h3>$12,000</h3>
+                                                                            <p>Earning this month</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="col-xl-3 col-sm-6">
+                                                                    <div className="card refer-card">
+                                                                        <div className="card-body">
+                                                                            <h6>Balance</h6>
+                                                                            <h3>$15,000</h3>
+                                                                            <p>In the Wallet</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="col-xl-3 col-sm-6">
+                                                                    <div className="card refer-card">
+                                                                        <div className="card-body">
+                                                                            <h6>Avg Deal Size</h6>
+                                                                            <h3>$2,000</h3>
+                                                                            <p>Earning this month</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="col-xl-3 col-sm-6">
+                                                                    <div className="card refer-card">
+                                                                        <div className="card-body">
+                                                                            <h6>No of Referrals</h6>
+                                                                            <h3>10</h3>
+                                                                            <p>In this month</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div className="row">
+                                                                <div className="col-xl-6 d-flex">
+                                                                    <div className="card link-box flex-fill">
+                                                                        <div className="card-body">
+                                                                            <h5>Your Referral Link</h5>
+                                                                            <p>
+                                                                                You can earn easily money by copy and share the
+                                                                                below link to your friends
+                                                                            </p>
+                                                                            <div className="input-block">
+                                                                                <input
+                                                                                    type="text"
+                                                                                    className="form-control"
+                                                                                    defaultValue="https://dreamslmscourse.com/reffer/?refid=345re667877k9"
+                                                                                />
+                                                                            </div>
+                                                                            <Link to="#">Copy link</Link>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="col-xl-6 d-flex">
+                                                                    <div className="card link-box flex-fill">
+                                                                        <div className="card-body">
+                                                                            <h5>Withdraw Money</h5>
+                                                                            <ul>
+                                                                                <li>
+                                                                                    Withdraw money securily to your bank account.{" "}
+                                                                                </li>
+                                                                                <li>
+                                                                                    Commision is $25 per transaction under $10,000
+                                                                                </li>
+                                                                            </ul>
+                                                                            <Link to="#">Withdraw Money</Link>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="settings-widget card-details">
+                                                    <div className="settings-menu p-0">
+                                                        <div className="profile-heading d-flex align-items-center justify-content-between">
+                                                            <h3>Referred Users</h3>
+                                                            <div className="icon-form mb-0">
+                                                                <span className="form-icon">
+                                                                    <i className="bx bx-calendar-edit" />
+                                                                </span>
+                                                                <DateRangePicker initialSettings={initialSettings}>
+                                                                    <input
+                                                                        type="text"
+                                                                        className="form-control bookingrange"
+                                                                    />
+                                                                </DateRangePicker>
+                                                            </div>
+                                                        </div>
+                                                        <div className="checkout-form">
+                                                            <div className="table-responsive custom-table">
+                                                                <table className="table table-nowrap mb-0">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Referred ID</th>
+                                                                            <th>Referrals</th>
+                                                                            <th>URL</th>
+                                                                            <th />
+                                                                            <th>Visits</th>
+                                                                            <th>Total Earned</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>09341</td>
+                                                                            <td>
+                                                                                <h2 className="table-avatar d-flex align-items-center">
+                                                                                    <Link
+                                                                                        to="/student/student-profile"
+                                                                                        className="avatar"
+                                                                                    >
+                                                                                        <img
+                                                                                            className="avatar-img"
+                                                                                            src={User2}
+                                                                                            alt="User Image"
+                                                                                        />
+                                                                                    </Link>
+                                                                                    <Link to="/student/student-profile">
+                                                                                        Thompson Hicks
+                                                                                    </Link>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className="text-wrap">
+                                                                                    https://dreamslmscourse.com/reffer/?refid=345re667877k9
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <OverlayTrigger
+                                                                                    placement="top"
+                                                                                    overlay={<Tooltip id="copy-tooltip">Copy</Tooltip>}
+                                                                                >
+                                                                                    <Link to="#" className="action-icon">
+                                                                                        <i className="bx bx-paste" />
+                                                                                    </Link>
+                                                                                </OverlayTrigger>
+                                                                            </td>
+                                                                            <td>10</td>
+                                                                            <td>$45.00</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>09342</td>
+                                                                            <td>
+                                                                                <h2 className="table-avatar d-flex align-items-center">
+                                                                                    <Link
+                                                                                        to="/student/student-profile"
+                                                                                        className="avatar"
+                                                                                    >
+                                                                                        <img
+                                                                                            className="avatar-img"
+                                                                                            src={User4}
+                                                                                            alt="User Image"
+                                                                                        />
+                                                                                    </Link>
+                                                                                    <Link to="/student/student-profile">
+                                                                                        Jennifer Tovar
+                                                                                    </Link>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className="text-wrap">
+                                                                                    https://dreamslmscourse.com/reffer/?refid=345re667877k9
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <OverlayTrigger
+                                                                                    placement="top"
+                                                                                    overlay={<Tooltip id="copy-tooltip">Copy</Tooltip>}
+                                                                                >
+                                                                                    <Link to="#" className="action-icon">
+                                                                                        <i className="bx bx-paste" />
+                                                                                    </Link>
+                                                                                </OverlayTrigger>
+                                                                            </td>
+                                                                            <td>15</td>
+                                                                            <td>$75.00</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>09343</td>
+                                                                            <td>
+                                                                                <h2 className="table-avatar d-flex align-items-center">
+                                                                                    <Link
+                                                                                        to="/student/student-profile"
+                                                                                        className="avatar"
+                                                                                    >
+                                                                                        <img
+                                                                                            className="avatar-img"
+                                                                                            src={User3}
+                                                                                            alt="User Image"
+                                                                                        />
+                                                                                    </Link>
+                                                                                    <Link to="/student/student-profile">
+                                                                                        James Schulte
+                                                                                    </Link>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className="text-wrap">
+                                                                                    https://dreamslmscourse.com/reffer/?refid=345re667877k9
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <OverlayTrigger
+                                                                                    placement="top"
+                                                                                    overlay={<Tooltip id="copy-tooltip">Copy</Tooltip>}
+                                                                                >
+                                                                                    <Link to="#" className="action-icon">
+                                                                                        <i className="bx bx-paste" />
+                                                                                    </Link>
+                                                                                </OverlayTrigger>
+                                                                            </td>
+                                                                            <td>20</td>
+                                                                            <td>$100.00</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>09344</td>
+                                                                            <td>
+                                                                                <h2 className="table-avatar d-flex align-items-center">
+                                                                                    <Link
+                                                                                        to="/student/student-profile"
+                                                                                        className="avatar"
+                                                                                    >
+                                                                                        <img
+                                                                                            className="avatar-img"
+                                                                                            src={User1}
+                                                                                            alt="User Image"
+                                                                                        />
+                                                                                    </Link>
+                                                                                    <Link to="/student/student-profile">
+                                                                                        Kristy Cardona
+                                                                                    </Link>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className="text-wrap">
+                                                                                    https://dreamslmscourse.com/reffer/?refid=345re667877k9
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <OverlayTrigger
+                                                                                    placement="top"
+                                                                                    overlay={<Tooltip id="copy-tooltip">Copy</Tooltip>}
+                                                                                >
+                                                                                    <Link to="#" className="action-icon">
+                                                                                        <i className="bx bx-paste" />
+                                                                                    </Link>
+                                                                                </OverlayTrigger>
+                                                                            </td>
+                                                                            <td>1</td>
+                                                                            <td>$44.00</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>09345</td>
+                                                                            <td>
+                                                                                <h2 className="table-avatar d-flex align-items-center">
+                                                                                    <Link
+                                                                                        to="/student/student-profile"
+                                                                                        className="avatar"
+                                                                                    >
+                                                                                        <img
+                                                                                            className="avatar-img"
+                                                                                            src={User14}
+                                                                                            alt="User Image"
+                                                                                        />
+                                                                                    </Link>
+                                                                                    <Link to="/student/student-profile">
+                                                                                        William Aragon
+                                                                                    </Link>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className="text-wrap">
+                                                                                    https://dreamslmscourse.com/reffer/?refid=345re667877k9
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <OverlayTrigger
+                                                                                    placement="top"
+                                                                                    overlay={<Tooltip id="copy-tooltip">Copy</Tooltip>}
+                                                                                >
+                                                                                    <Link to="#" className="action-icon">
+                                                                                        <i className="bx bx-paste" />
+                                                                                    </Link>
+                                                                                </OverlayTrigger>
+                                                                            </td>
+                                                                            <td>5</td>
+                                                                            <td>$25.00</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>09346</td>
+                                                                            <td>
+                                                                                <h2 className="table-avatar d-flex align-items-center">
+                                                                                    <Link
+                                                                                        to="/student/student-profile"
+                                                                                        className="avatar"
+                                                                                    >
+                                                                                        <img
+                                                                                            className="avatar-img"
+                                                                                            src={User8}
+                                                                                            alt="User Image"
+                                                                                        />
+                                                                                    </Link>
+                                                                                    <Link to="/student/student-profile">
+                                                                                        Shirley Lis
+                                                                                    </Link>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className="text-wrap">
+                                                                                    https://dreamslmscourse.com/reffer/?refid=345re667877k9
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <OverlayTrigger
+                                                                                    placement="top"
+                                                                                    overlay={<Tooltip id="copy-tooltip">Copy</Tooltip>}
+                                                                                >
+                                                                                    <Link to="#" className="action-icon">
+                                                                                        <i className="bx bx-paste" />
+                                                                                    </Link>
+                                                                                </OverlayTrigger>
+                                                                            </td>
+                                                                            <td>500</td>
+                                                                            <td>$160.00</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>09347</td>
+                                                                            <td>
+                                                                                <h2 className="table-avatar d-flex align-items-center">
+                                                                                    <Link
+                                                                                        to="/student/student-profile"
+                                                                                        className="avatar"
+                                                                                    >
+                                                                                        <img
+                                                                                            className="avatar-img"
+                                                                                            src={User2}
+                                                                                            alt="User Image"
+                                                                                        />
+                                                                                    </Link>
+                                                                                    <Link to="/student/student-profile">
+                                                                                        John Brewer
+                                                                                    </Link>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className="text-wrap">
+                                                                                    https://dreamslmscourse.com/reffer/?refid=345re667877k9
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <OverlayTrigger
+                                                                                    placement="top"
+                                                                                    overlay={<Tooltip id="copy-tooltip">Copy</Tooltip>}
+                                                                                >
+                                                                                    <Link to="#" className="action-icon">
+                                                                                        <i className="bx bx-paste" />
+                                                                                    </Link>
+                                                                                </OverlayTrigger>
+                                                                            </td>
+                                                                            <td>187</td>
+                                                                            <td>$150.00</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>09348</td>
+                                                                            <td>
+                                                                                <h2 className="table-avatar d-flex align-items-center">
+                                                                                    <Link
+                                                                                        to="/student/student-profile"
+                                                                                        className="avatar"
+                                                                                    >
+                                                                                        <img
+                                                                                            className="avatar-img"
+                                                                                            src={User5}
+                                                                                            alt="User Image"
+                                                                                        />
+                                                                                    </Link>
+                                                                                    <Link to="/student/student-profile">
+                                                                                        Doris Hughes
+                                                                                    </Link>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className="text-wrap">
+                                                                                    https://dreamslmscourse.com/reffer/?refid=345re667877k9
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <OverlayTrigger
+                                                                                    placement="top"
+                                                                                    overlay={<Tooltip id="copy-tooltip">Copy</Tooltip>}
+                                                                                >
+                                                                                    <Link to="#" className="action-icon">
+                                                                                        <i className="bx bx-paste" />
+                                                                                    </Link>
+                                                                                </OverlayTrigger>
+                                                                            </td>
+                                                                            <td>10</td>
+                                                                            <td>$45.00</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>09349</td>
+                                                                            <td>
+                                                                                <h2 className="table-avatar d-flex align-items-center">
+                                                                                    <Link
+                                                                                        to="/student/student-profile"
+                                                                                        className="avatar"
+                                                                                    >
+                                                                                        <img
+                                                                                            className="avatar-img"
+                                                                                            src={User13}
+                                                                                            alt="User Image"
+                                                                                        />
+                                                                                    </Link>
+                                                                                    <Link to="/student/student-profile">
+                                                                                        Arthur Nalley
+                                                                                    </Link>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className="text-wrap">
+                                                                                    https://dreamslmscourse.com/reffer/?refid=345re667877k9
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <OverlayTrigger
+                                                                                    placement="top"
+                                                                                    overlay={<Tooltip id="copy-tooltip">Copy</Tooltip>}
+                                                                                >
+                                                                                    <Link to="#" className="action-icon">
+                                                                                        <i className="bx bx-paste" />
+                                                                                    </Link>
+                                                                                </OverlayTrigger>
+                                                                            </td>
+                                                                            <td>15</td>
+                                                                            <td>$10.00</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>09350</td>
+                                                                            <td>
+                                                                                <h2 className="table-avatar d-flex align-items-center">
+                                                                                    <Link
+                                                                                        to="/student/student-profile"
+                                                                                        className="avatar"
+                                                                                    >
+                                                                                        <img
+                                                                                            className="avatar-img"
+                                                                                            src={User6}
+                                                                                            alt="User Image"
+                                                                                        />
+                                                                                    </Link>
+                                                                                    <Link to="/student/student-profile">
+                                                                                        Sarah Martinez
+                                                                                    </Link>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className="text-wrap">
+                                                                                    https://dreamslmscourse.com/reffer/?refid=345re667877k9
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <OverlayTrigger
+                                                                                    placement="top"
+                                                                                    overlay={<Tooltip id="copy-tooltip">Copy</Tooltip>}
+                                                                                >
+                                                                                    <Link to="#" className="action-icon">
+                                                                                        <i className="bx bx-paste" />
+                                                                                    </Link>
+                                                                                </OverlayTrigger>
+                                                                            </td>
+                                                                            <td>98</td>
+                                                                            <td>$10.00</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="dash-pagination">
+                                                    <div className="row align-items-center">
+                                                        <div className="col-6">
+                                                            <p>Page 1 of 2</p>
+                                                        </div>
+                                                        <div className="col-6">
+                                                            <ul className="pagination">
+                                                                <li className="active">
+                                                                    <Link to="#">1</Link>
+                                                                </li>
+                                                                <li>
+                                                                    <Link to="#">2</Link>
+                                                                </li>
+                                                                <li>
+                                                                    <Link to="#">
+                                                                        <i className="bx bx-chevron-right" />
+                                                                    </Link>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div className="card overview-sec">
                                                 <div className="card-body">
                                                     <h5 className="subs-title">About Me</h5>
@@ -136,7 +665,7 @@ export default function ProfileId() {
                                             {/* Overview */}
 
                                             {/* Education Content */}
-                                            <div className="card education-sec">
+                                            {/* <div className="card education-sec">
                                                 <div className="card-body">
                                                     <h5 className="subs-title">Designation
                                                     </h5>
@@ -149,7 +678,7 @@ export default function ProfileId() {
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> */}
                                             {/* Education Content */}
 
                                             {/* Experience Content */}
@@ -376,7 +905,7 @@ export default function ProfileId() {
                                             {/* Right Sidebar Tags Label */}
 
                                             {/* Right Sidebar Profile Overview */}
-                                            <div className="card overview-sec">
+                                            {/* <div className="card overview-sec">
                                                 <div className="card-body">
                                                     <h5 className="subs-title">Profile Overview</h5>
                                                     <div className="rating-grp">
@@ -426,7 +955,7 @@ export default function ProfileId() {
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> */}
                                             {/* Right Sidebar Profile Overview */}
 
                                             {/* Right Contact Details */}

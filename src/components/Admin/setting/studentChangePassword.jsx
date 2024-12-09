@@ -84,7 +84,6 @@ const StudentChangePassword = () => {
                                 value={Regs?.email}
                                 onChange={handleInputs}
                                 required
-
                                 type="email" className="form-control" />
                             </div>
                             <div className="input-block">

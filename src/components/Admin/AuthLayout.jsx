@@ -14,7 +14,7 @@ export default function AuthLayout({ children }) {
             const response = await main.profileVerify({ signal });
             console.log("response",response)
         } catch (error) {
-            localStorage && localStorage.removeItem("admintoken");
+            localStorage && localStorage.removeItem("token");
             toast.error("Please log in first.");
             navigate("/admin/login");
         }

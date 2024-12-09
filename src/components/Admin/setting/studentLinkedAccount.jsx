@@ -26,7 +26,6 @@ const StudentLinkedAccounts = () => {
 
   // Fetch user profile data
   const ProfileData = async () => {
-    setLoading(true);
     try {
       const main = new Listing();
       const response = await main.userprfileId();
@@ -35,8 +34,6 @@ const StudentLinkedAccounts = () => {
     } catch (error) {
       console.error("ProfileData error:", error);
       toast.error("Failed to load profile data.");
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -59,9 +56,7 @@ const StudentLinkedAccounts = () => {
     } catch (error) {
       console.error("Form submission error:", error);
       toast.error("An error occurred while saving the profile.");
-    } finally {
-      setLoading(false);
-    }
+    } 
   }
 
   // Update form fields when listing changes
