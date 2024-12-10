@@ -10,23 +10,24 @@ import toast from "react-hot-toast";
 
 const StudentSetting = () => {
   const [listing, setListing] = useState("");
-
   const [Regs, setRegs] = useState({
     firstname: "",
     lastname: "",
     username: "",
     phone_number: "",
     designation: "",
-    bio: ""
+    bio: "",
+    address: "",
+    id: "", email: "",
+    policy: "",
+    term: ""
   });
+  const [loading, setLoading] = useState(false);
 
   const handleInputs = (e) => {
-    const value = e.target.value;
-    const name = e.target.name;
+    const { name, value } = e.target;
     setRegs((prevState) => ({ ...prevState, [name]: value }));
   };
-
-  const [loading, setLoading] = useState(false);
 
   async function handleForms(e) {
     e.preventDefault();
@@ -37,20 +38,26 @@ const StudentSetting = () => {
     const main = new Listing();
     try {
       const response = await main.userProfileAdd(Regs);
-      console.log("response", response)
+      console.log("response", response);
       if (response?.data) {
         toast.success(response.data.message);
         setRegs({
-          email: "",
-          newPassword: ""
-        })
+          firstname: "",
+          lastname: "",
+          username: "",
+          phone_number: "",
+          designation: "",
+          bio: "",
+          address: ""
+        });
+        ProfileData();
       } else {
-        toast.error(response.data.message);
+        toast.error(response?.data?.message || "Unexpected error occurred.");
       }
-      setLoading(false);
     } catch (error) {
-      console.log("error", error);
-      toast.error(error);
+      console.error("error", error);
+      toast.error(error?.response?.data?.message || "Something went wrong.");
+    } finally {
       setLoading(false);
     }
   }
@@ -60,7 +67,7 @@ const StudentSetting = () => {
       const main = new Listing();
       const response = await main.userprfileId();
       console.log("response", response);
-      setListing(response?.data?.profile || {});
+      setListing(response?.data || {});
     } catch (error) {
       console.error("ProfileData error:", error);
       toast.error("Failed to load profile data.");
@@ -71,17 +78,20 @@ const StudentSetting = () => {
     ProfileData();
   }, []);
 
+  console.log("listing", listing)
+
   useEffect(() => {
     setRegs((prevState) => ({
       ...prevState,
-      firstname: listing?.firstname || "",
-      lastname: listing?.lastname || "",
-      username: listing?.username || "",
-      phone_number: listing?.phone_number || "",
-      designation: listing?.designation || "",
-      bio: listing?.bio || "",
-      address: listing?.address || "",
-      id: listing?._id || ""
+      firstname: listing?.profile?.firstname || listing?.user?.name || "",
+      lastname: listing?.profile?.lastname || "",
+      username: listing?.profile?.username || "",
+      email: listing?.user?.email || "",
+      phone_number: listing?.profile?.phone_number || listing?.user?.phone_number || "",
+      designation: listing?.profile?.designation || "",
+      bio: listing?.profile?.bio || "",
+      address: listing?.profile?.address || "",
+      id: listing?.profile?._id || ""
 
     }));
   }, [listing]);
@@ -211,28 +221,21 @@ const StudentSetting = () => {
                               <div className="input-block">
                                 <label className="form-label">WhatApps Number</label>
                                 <input
-                                  type="number"
+                                  type="text"
                                   value={Regs?.phone_number}
-                                  onChange={handleInputs}
+                                  onChange={(e) => {
+                                    const value = e.target.value;
+                                    if (value.length <= 10 && /^[0-9]*$/.test(value)) {
+                                      handleInputs(e);
+                                    }
+                                  }}
                                   name="phone_number"
                                   required
-
+                                  maxLength="10"
                                   className="form-control"
+                                  placeholder="Enter a 10-digit phone number"
                                 />
-                              </div>
-                            </div>
-                            <div className="col-md-12">
-                              <div className="input-block">
-                                <label className="form-label">Designation</label>
-                                <input
-                                  type="text"
-                                  value={Regs?.designation}
-                                  onChange={handleInputs}
-                                  name="designation"
-                                  required
 
-                                  className="form-control"
-                                />
                               </div>
                             </div>
                             <div className="col-md-12">
@@ -270,6 +273,7 @@ const StudentSetting = () => {
                               <button className="login-head button" type="submit" disabled={loading}>
                                 {loading ? "Loading..." : "Update Profile"}
                               </button>
+
                             </div>
                           </div>
                         </div>

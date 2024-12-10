@@ -90,6 +90,13 @@ useEffect(() => {
                 </Link>
               </li>
 
+              <li className={`nav-item ${location.pathname === '/admin/instructor' ? 'active' : ''}`}>
+                <Link to="/admin/instructor" className="nav-link">
+                  <i className="bx bxs-cart" />
+                  Instructor History
+                </Link>
+              </li>
+
 
             </ul>
             <h3>Account Settings</h3>

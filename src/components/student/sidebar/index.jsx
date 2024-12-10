@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import StickyBox from "react-sticky-box";
 import { User16 } from "../../imagepath";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import AuthLayout from "../../../AuthLayout";
+import Listing from "../../Api/Listing";
+import toast from "react-hot-toast";
 
 // eslint-disable-next-line react/prop-types
 export default function StudentSidebar() {
@@ -15,6 +17,30 @@ export default function StudentSidebar() {
     localStorage.removeItem("token"); // Remove token or any other user-related data
     navigate("/login");  // Redirect user to the login page after logout
   };
+  const [listing, setListing] = useState("");
+
+  console.log(listing)
+  const fetchData = async (signal) => {
+    try {
+        const main = new Listing();
+        const response = await main.profileVerify({ signal });
+        console.log("response",response)
+        setListing(response?.data?.data)
+    } catch (error) {
+        localStorage && localStorage.removeItem("token");
+        toast.error("Please log in first.");
+        navigate("/login");
+    }
+}
+
+
+useEffect(() => {
+    const controller = new AbortController();
+    const { signal } = controller;
+    fetchData(signal);
+    return () => controller.abort();
+}, []);
+
 
   return (
     <AuthLayout>
@@ -32,9 +58,10 @@ export default function StudentSidebar() {
               <div className="profile-group">
                 <div className="profile-name text-center">
                   <h4>
-                    <Link to="/student/student-profile">Rolands Richard</Link>
+                    <Link to="/student/student-profile">{listing?.name}</Link>
                   </h4>
-                  <p>Student</p>
+                  <p>{listing?.email}</p>
+                  <p>{listing?.role}</p>
 
                 </div>
               </div>

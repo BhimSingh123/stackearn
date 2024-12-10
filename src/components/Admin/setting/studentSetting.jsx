@@ -67,7 +67,7 @@ const StudentSetting = () => {
       const main = new Listing();
       const response = await main.userprfileId();
       console.log("response", response);
-      setListing(response?.data?.profile || {});
+      setListing(response?.data || {});
     } catch (error) {
       console.error("ProfileData error:", error);
       toast.error("Failed to load profile data.");
@@ -78,17 +78,20 @@ const StudentSetting = () => {
     ProfileData();
   }, []);
 
+  console.log("listing",listing)
+
   useEffect(() => {
     setRegs((prevState) => ({
       ...prevState,
-      firstname: listing?.firstname || "",
-      lastname: listing?.lastname || "",
-      username: listing?.username || "",
-      phone_number: listing?.phone_number || "",
-      designation: listing?.designation || "",
-      bio: listing?.bio || "",
-      address: listing?.address || "",
-      id: listing?._id || ""
+      firstname: listing?.profile?.firstname || listing?.user?.name || "",
+      lastname: listing?.profile?.lastname || "",
+      username: listing?.profile?.username || "",
+      email: listing?.user?.email || "",
+      phone_number: listing?.profile?.phone_number || listing?.user?.phone_number || "",
+      designation: listing?.profile?.designation || "",
+      bio: listing?.profile?.bio || "",
+      address: listing?.profile?.address || "",
+      id: listing?.profile?._id || ""
 
     }));
   }, [listing]);

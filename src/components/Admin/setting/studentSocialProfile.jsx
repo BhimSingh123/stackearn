@@ -9,12 +9,12 @@ const StudentSocialProfile = () => {
   const [listing, setListing] = useState("");
 
   const [Regs, setRegs] = useState({
-    website :"",
-    linkedin : "",
-    github : "",
-    facebook : "",
-    twitter : "",
-    id:""
+    website: "",
+    linkedin: "",
+    github: "",
+    facebook: "",
+    twitter: "",
+    id: ""
   });
 
   const handleInputs = (e) => {
@@ -55,17 +55,14 @@ const StudentSocialProfile = () => {
 
 
   const ProfileData = async () => {
-    setLoading(true);
     try {
       const main = new Listing();
       const response = await main.userprfileId();
       console.log("response", response);
-      setListing(response?.data?.social        || {});
+      setListing(response?.data?.social || {});
     } catch (error) {
       console.error("ProfileData error:", error);
       toast.error("Failed to load profile data.");
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -81,11 +78,11 @@ const StudentSocialProfile = () => {
       github: listing?.github || "",
       twitter: listing?.twitter || "",
       facebook: listing?.facebook || "",
-      id:listing?._id || ""
+      id: listing?._id || ""
     }));
   }, [listing]);
 
-  
+
   return (
     <div className="main-wrapper">
       <>
@@ -93,7 +90,7 @@ const StudentSocialProfile = () => {
         <SubDashboard activeMenu={"Dashboard"} />
         {/* /Header */}
         {/* Breadcrumb */}
-      
+
         {/* /Breadcrumb */}
         {/* Page Content */}
         <div className="page-content mt-5">
@@ -130,11 +127,11 @@ const StudentSocialProfile = () => {
                           <div className="col-md-12">
                             <div className="input-block">
                               <label className="form-label">Instragram</label>
-                              <input type="text" className="form-control" 
-                              onChange={handleInputs}
-                              value={Regs?.github}
-                              name="github"
-                              required
+                              <input type="text" className="form-control"
+                                onChange={handleInputs}
+                                value={Regs?.github}
+                                name="github"
+                                required
                               />
                             </div>
                           </div>
@@ -142,10 +139,10 @@ const StudentSocialProfile = () => {
                             <div className="input-block">
                               <label className="form-label">Facebook</label>
                               <input type="text" className="form-control"
-                               onChange={handleInputs}
-                               value={Regs?.facebook}
-                               name="facebook"
-                              required
+                                onChange={handleInputs}
+                                value={Regs?.facebook}
+                                name="facebook"
+                                required
 
                               />
                             </div>
@@ -153,13 +150,13 @@ const StudentSocialProfile = () => {
                           <div className="col-md-12">
                             <div className="input-block">
                               <label className="form-label">Twitter</label>
-                              <input type="text" className="form-control" 
-                              required
-                              
-                              onChange={handleInputs}
-                              value={Regs?.twitter}
-                              name="twitter"
-                              
+                              <input type="text" className="form-control"
+                                required
+
+                                onChange={handleInputs}
+                                value={Regs?.twitter}
+                                name="twitter"
+
                               />
                             </div>
                           </div>
@@ -167,17 +164,17 @@ const StudentSocialProfile = () => {
                             <div className="input-block">
                               <label className="form-label">Linkedin</label>
                               <input type="text" className="form-control"
-                              required
-                              onChange={handleInputs}
-                              value={Regs?.linkedin}
-                              name="linkedin"
+                                required
+                                onChange={handleInputs}
+                                value={Regs?.linkedin}
+                                name="linkedin"
                               />
                             </div>
                           </div>
                           <div className="col-md-12">
-                          <button className="login-head button" type="submit" disabled={loading}>
+                            <button className="login-head button" type="submit" disabled={loading}>
 
-                            {loading  ? "Loading..." : "  Save Profile"}
+                              {loading ? "Loading..." : "  Save Profile"}
                             </button>
                           </div>
                         </div>

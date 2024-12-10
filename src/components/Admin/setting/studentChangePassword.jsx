@@ -4,12 +4,11 @@ import StudentSettingPageHeader from "./settingPageHeader";
 import Listing from "../../Api/Listing";
 import toast from "react-hot-toast";
 import SubDashboard from "../components/SubDashboard";
+
 const StudentChangePassword = () => {
-
-
   const [Regs, setRegs] = useState({
-    email: "",
     newPassword: "",
+    confirmPassword: "",
   });
 
   const handleInputs = (e) => {
@@ -25,95 +24,103 @@ const StudentChangePassword = () => {
     if (loading) {
       return false;
     }
+
+    if (Regs.newPassword !== Regs.confirmPassword) {
+      toast.error("Passwords do not match!");
+      return;
+    }
+
     setLoading(true);
     const main = new Listing();
     try {
-      const response = await main.resetpassword(Regs);
-      console.log("response", response)
+      const response = await main.resetpassword({ password: Regs.newPassword });
+      console.log("response", response);
       if (response?.data) {
         toast.success(response.data.message);
         setRegs({
-          email: "",
-          newPassword: ""
-        })
+          newPassword: "",
+          confirmPassword: "",
+        });
       } else {
         toast.error(response.data.message);
       }
       setLoading(false);
     } catch (error) {
       console.log("error", error);
-      toast.error("invalid Email/password");
+      toast.error("An error occurred while resetting the password.");
       setLoading(false);
     }
   }
+
   return (
     <div className="main-wrapper">
-      <>
-        {/* Header */}
-        <SubDashboard title={"Subscribe History"} />
-
-        {/* Page Content */}
-        <div className="page-content mt-5">
-          <div className="container">
-            <div className="row">
-              {/* sidebar */}
-              <StudentSidebar />
-              {/* /Sidebar */}
-              {/* Student Settings */}
-              <div className="col-xl-9 col-lg-9">
-                <div className="settings-widget card-details">
-                  <div className="settings-menu p-0">
-                    <div className="profile-heading">
-                      <h3>Settings</h3>
-                      <p>
-                        You have full control to manage your own account
-                        settings
-                      </p>
-                    </div>
-                    <StudentSettingPageHeader />
-                    <form onSubmit={handleForms}>
-                      <div className="checkout-form settings-wrap">
-                        <div className="row">
-                          <div className="col-md-6">
-                            <div className="input-block">
-                              <label className="form-label">
-                                Email
-                              </label>
-                              <input
-                                name="email"
-                                value={Regs?.email}
-                                onChange={handleInputs}
-                                required
-                                type="email" className="form-control" />
-                            </div>
-                            <div className="input-block">
-                              <label className="form-label">New Password</label>
-                              <input type="password"
-                                required
-                                name="newPassword"
-                                value={Regs?.newPassword}
-                                onChange={handleInputs}
-                                className="form-control" />
-                            </div>
+      <SubDashboard title={"Subscribe History"} />
+      <div className="page-content mt-5">
+        <div className="container">
+          <div className="row">
+            <StudentSidebar />
+            <div className="col-xl-9 col-lg-9">
+              <div className="settings-widget card-details">
+                <div className="settings-menu p-0">
+                  <div className="profile-heading">
+                    <h3>Settings</h3>
+                    <p>
+                      You have full control to manage your own account
+                      settings
+                    </p>
+                  </div>
+                  <StudentSettingPageHeader />
+                  <form onSubmit={handleForms}>
+                    <div className="checkout-form settings-wrap">
+                      <div className="row">
+                        <div className="col-md-6">
+                          <div className="input-block">
+                            <label className="form-label">New Password</label>
+                            <input
+                              type="password"
+                              required
+                              name="newPassword"
+                              value={Regs?.newPassword}
+                              onChange={handleInputs}
+                              className="form-control"
+                              minLength="8"
+                              maxLength="10"
+                            />
                           </div>
-                          <div className="col-md-12">
-                            <button className="login-head button" type="submit" disabled={loading}>
-
-                              {loading ? "Loading.." : "Reset Password"}
-                            </button>
+                          <div className="input-block">
+                            <label className="form-label">
+                              Confirm Password
+                            </label>
+                            <input
+                              type="password"
+                              required
+                              name="confirmPassword"
+                              value={Regs?.confirmPassword}
+                              onChange={handleInputs}
+                              className="form-control"
+                              minLength="8"
+                              maxLength="10"
+                            />
                           </div>
                         </div>
+                        <div className="col-md-12">
+                          <button
+                            className="login-head button"
+                            type="submit"
+                            disabled={loading}
+                          >
+                            {loading ? "Loading.." : "Reset Password"}
+                          </button>
+                        </div>
                       </div>
-                    </form>
-                  </div>
+                    </div>
+                  </form>
                 </div>
               </div>
-              {/* /Student Settings */}
             </div>
           </div>
         </div>
-        {/* /Page Content */}
-      </>
+      </div>
     </div>
   );
 };

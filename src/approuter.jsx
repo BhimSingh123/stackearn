@@ -148,6 +148,8 @@ import AdminLinkedAccount from "./components/Admin/setting/studentLinkedAccount.
 import AdminProfile from "./components/Admin/setting/studentSocialProfile.jsx";
 import ProfileId from "./components/Admin/UserList/ProfileId.js";
 import List from "./components/Admin/ContactList/List.jsx";
+import Instrtour from "./components/Admin/Instrutor/Instrtour.jsx";
+import AddInstrtour from "./components/Admin/Instrutor/AddInstrtour.jsx";
 
 
 
@@ -579,6 +581,10 @@ const Approuter = () => {
           path="/admin/user-profile-Id/:id"
           element={<ProfileId />}
         />
+
+        <Route path="/admin/instructor" element={<Instrtour/>} />
+        <Route path="/admin/add/instructor" element={<AddInstrtour/>} />
+
       </Routes>
     </BrowserRouter>
   );
