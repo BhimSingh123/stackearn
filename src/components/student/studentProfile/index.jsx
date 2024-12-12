@@ -90,7 +90,7 @@ const StudentProfile = () => {
                                                                 <h5 className="card-title">Personal Details</h5>
                                                                 <div className="contact-info">
                                                                     <h6>First Name</h6>
-                                                                    <p>{listing?.profile?.firstname || "N/A"}</p>
+                                                                    <p>{listing?.profile?.firstname || listing?.user?.name || "N/A"}</p>
                                                                 </div>
                                                                 <div className="contact-info">
                                                                     <h6>Last Name</h6>

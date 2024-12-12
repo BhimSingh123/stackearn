@@ -70,6 +70,7 @@ const StudentLinkedAccounts = () => {
       IFSC: listing?.IFSC || "",
       BranchName: listing?.BranchName || "",
       BankNumber: listing?.BankNumber || "",
+      _id :listing?._id || ""
     }));
   }, [listing]);
 
