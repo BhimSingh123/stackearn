@@ -2,28 +2,24 @@ import React, { useState } from "react";
 import AuthLayout from "../AuthLayout";
 import SubDashboard from "../components/SubDashboard";
 import StudentSidebar from "../sidebar";
+import { Link } from "react-router-dom";
+import { User16 } from "../../imagepath";
 
 function AddInstructor() {
   const [instructorDetails, setInstructorDetails] = useState({
     firstName: "",
     lastName: "",
-    userName: "",
+    designation: "",
+    lessions: "",
+    students: "",
+    Skills: "",
     email: "",
     phoneNumber: "",
     address: "",
     profileImage: "",  // For profile image
     bio: "",            // For bio
     gender: "",         // Gender
-    bankName: "",
-    branchName: "",
-    accountNumber: "",
-    ifscCode: "",
-    socialLinks: {
-      linkedin: "",
-      twitter: "",
-      facebook: "",
-      instagram: "",
-    },
+    rating: ""
   });
 
   const handleInputChange = (e) => {
@@ -34,13 +30,6 @@ function AddInstructor() {
     }));
   };
 
-  const handleSocialInputChange = (e) => {
-    const { name, value } = e.target;
-    setInstructorDetails((prevState) => ({
-      ...prevState,
-      socialLinks: { ...prevState.socialLinks, [name]: value },
-    }));
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -71,6 +60,42 @@ function AddInstructor() {
                     <form onSubmit={handleSubmit}>
                       <div className="checkout-form settings-wrap">
                         <div className="row">
+                          <div className="course-group profile-upload-group mb-3 d-flex ">
+                            <div className="course-group-img profile-edit-field d-flex align-items-center">
+                              <Link
+                                to="/student/student-profile"
+                                className="profile-pic"
+                              >
+                                <img src={User16} alt="Img" className="img-fluid" />
+                              </Link>
+                              <div className="profile-upload-head">
+                                <h4>
+                                  <Link to="/student/student-profile">Your avatar</Link>
+                                </h4>
+                                <p>
+                                  PNG or JPG no bigger than 800px width and height
+                                </p>
+                                <div className="new-employee-field">
+                                  <div className="d-flex align-items-center mt-2">
+                                    <div className="image-upload mb-0">
+                                      <input type="file" />
+                                      <div className="image-uploads">
+                                        <i className="bx bx-cloud-upload" />
+                                      </div>
+                                    </div>
+                                    <div className="img-delete">
+                                      <Link
+                                        to="#"
+                                        className="delete-icon"
+                                      >
+                                        <i className="bx bx-trash" />
+                                      </Link>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                           {/* First Name */}
                           <div className="col-md-6">
                             <div className="input-block">
@@ -104,11 +129,53 @@ function AddInstructor() {
                           {/* User Name */}
                           <div className="col-md-6">
                             <div className="input-block">
-                              <label className="form-label">User Name</label>
+                              <label className="form-label">Designation</label>
                               <input
                                 type="text"
-                                name="userName"
-                                value={instructorDetails.userName}
+                                name="designation"
+                                value={instructorDetails.designation}
+                                onChange={handleInputChange}
+                                className="form-control"
+                                required
+                              />
+                            </div>
+                          </div>
+
+                          <div className="col-md-6">
+                            <div className="input-block">
+                              <label className="form-label">Lessions</label>
+                              <input
+                                type="text"
+                                name="lessions"
+                                value={instructorDetails.lessions}
+                                onChange={handleInputChange}
+                                className="form-control"
+                                required
+                              />
+                            </div>
+                          </div>
+
+                          <div className="col-md-6">
+                            <div className="input-block">
+                              <label className="form-label">Students</label>
+                              <input
+                                type="text"
+                                name="students"
+                                value={instructorDetails.students}
+                                onChange={handleInputChange}
+                                className="form-control"
+                                required
+                              />
+                            </div>
+                          </div>
+
+                          <div className="col-md-6">
+                            <div className="input-block">
+                              <label className="form-label">Skills</label>
+                              <input
+                                type="text"
+                                name="Skills"
+                                value={instructorDetails.Skills}
                                 onChange={handleInputChange}
                                 className="form-control"
                                 required
@@ -146,6 +213,37 @@ function AddInstructor() {
                             </div>
                           </div>
 
+                          <div className="col-md-6">
+                            <div className="input-block">
+                              <label className="form-label">Rating</label>
+                              <input
+                                type="text"
+                                name="rating"
+                                value={instructorDetails.rating}
+                                onChange={handleInputChange}
+                                className="form-control"
+                                required
+                              />
+                            </div>
+                          </div>
+
+                          <div className="col-md-6">
+                            <div className="input-block">
+                              <label className="form-label">Gender</label>
+                              <select
+                                name="gender"
+                                value={instructorDetails.gender}
+                                onChange={handleInputChange}
+                                className="form-control"
+                              >
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                              </select>
+                            </div>
+                          </div>
+
                           {/* Address */}
                           <div className="col-md-12">
                             <div className="input-block">
@@ -157,19 +255,6 @@ function AddInstructor() {
                                 onChange={handleInputChange}
                                 className="form-control"
                                 required
-                              />
-                            </div>
-                          </div>
-
-                          {/* Profile Image */}
-                          <div className="col-md-12">
-                            <div className="input-block">
-                              <label className="form-label">Profile Image</label>
-                              <input
-                                type="file"
-                                name="profileImage"
-                                onChange={(e) => setInstructorDetails({ ...instructorDetails, profileImage: e.target.files[0] })}
-                                className="form-control"
                               />
                             </div>
                           </div>
@@ -189,134 +274,8 @@ function AddInstructor() {
                           </div>
 
                           {/* Gender */}
-                          <div className="col-md-6">
-                            <div className="input-block">
-                              <label className="form-label">Gender</label>
-                              <select
-                                name="gender"
-                                value={instructorDetails.gender}
-                                onChange={handleInputChange}
-                                className="form-control"
-                              >
-                                <option value="">Select Gender</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                                <option value="Other">Other</option>
-                              </select>
-                            </div>
-                          </div>
 
-                          {/* Bank Details */}
-                          <div className="col-md-6">
-                            <div className="input-block">
-                              <label className="form-label">Bank Name</label>
-                              <input
-                                type="text"
-                                name="bankName"
-                                value={instructorDetails.bankName}
-                                onChange={handleInputChange}
-                                className="form-control"
-                                required
-                              />
-                            </div>
-                          </div>
 
-                          <div className="col-md-6">
-                            <div className="input-block">
-                              <label className="form-label">Branch Name</label>
-                              <input
-                                type="text"
-                                name="branchName"
-                                value={instructorDetails.branchName}
-                                onChange={handleInputChange}
-                                className="form-control"
-                                required
-                              />
-                            </div>
-                          </div>
-
-                          <div className="col-md-6">
-                            <div className="input-block">
-                              <label className="form-label">Account Number</label>
-                              <input
-                                type="text"
-                                name="accountNumber"
-                                value={instructorDetails.accountNumber}
-                                onChange={handleInputChange}
-                                className="form-control"
-                                required
-                              />
-                            </div>
-                          </div>
-
-                          <div className="col-md-6">
-                            <div className="input-block">
-                              <label className="form-label">IFSC Code</label>
-                              <input
-                                type="text"
-                                name="ifscCode"
-                                value={instructorDetails.ifscCode}
-                                onChange={handleInputChange}
-                                className="form-control"
-                                required
-                              />
-                            </div>
-                          </div>
-
-                          {/* Social Links */}
-                          <div className="col-md-6">
-                            <div className="input-block">
-                              <label className="form-label">LinkedIn</label>
-                              <input
-                                type="url"
-                                name="linkedin"
-                                value={instructorDetails.socialLinks.linkedin}
-                                onChange={handleSocialInputChange}
-                                className="form-control"
-                              />
-                            </div>
-                          </div>
-
-                          <div className="col-md-6">
-                            <div className="input-block">
-                              <label className="form-label">Twitter</label>
-                              <input
-                                type="url"
-                                name="twitter"
-                                value={instructorDetails.socialLinks.twitter}
-                                onChange={handleSocialInputChange}
-                                className="form-control"
-                              />
-                            </div>
-                          </div>
-
-                          <div className="col-md-6">
-                            <div className="input-block">
-                              <label className="form-label">Facebook</label>
-                              <input
-                                type="url"
-                                name="facebook"
-                                value={instructorDetails.socialLinks.facebook}
-                                onChange={handleSocialInputChange}
-                                className="form-control"
-                              />
-                            </div>
-                          </div>
-
-                          <div className="col-md-6">
-                            <div className="input-block">
-                              <label className="form-label">Instagram</label>
-                              <input
-                                type="url"
-                                name="instagram"
-                                value={instructorDetails.socialLinks.instagram}
-                                onChange={handleSocialInputChange}
-                                className="form-control"
-                              />
-                            </div>
-                          </div>
-
-                          {/* Submit Button */}
                           <div className="col-md-12">
                             <button className="btn btn-success" type="submit">
                               Add Instructor
