@@ -15,30 +15,34 @@ export default function StudentSidebar() {
     navigate("/admin/login");  // Redirect user to the login page after logout
   };
   const [listing, setListing] = useState("");
+  const [profile, setprofile] = useState("");
+
 
   console.log(listing)
   const fetchData = async (signal) => {
     try {
-        const main = new Listing();
-        const response = await main.profileVerify({ signal });
-        console.log("response",response)
-        setListing(response?.data?.data)
+      const main = new Listing();
+      const response = await main.profileVerify({ signal });
+      console.log("response", response)
+      setListing(response?.data?.data)
+      setprofile(response?.data?.profileData
+      )
     } catch (error) {
-        localStorage && localStorage.removeItem("token");
-        toast.error("Please log in first.");
-        navigate("/admin/login");
+      localStorage && localStorage.removeItem("token");
+      toast.error("Please log in first.");
+      navigate("/admin/login");
     }
-}
+  }
 
 
-useEffect(() => {
+  useEffect(() => {
     const controller = new AbortController();
     const { signal } = controller;
     fetchData(signal);
     return () => controller.abort();
-}, []);
+  }, []);
 
- 
+
   return (
     <div className="col-xl-3 col-lg-3 theiaStickySidebar">
       <StickyBox offsetTop={20} offsetBottom={20}>
@@ -55,7 +59,12 @@ useEffect(() => {
             <div className="profile-group">
               <div className="profile-name text-center">
                 <h4>
-                  <Link to="/admin/admin-setting">{listing?.name}</Link>
+                  <Link to="/admin/admin-setting">
+                    {profile?.firstname && profile?.lastname
+                      ? `${profile.firstname} ${profile.lastname}`
+                      : listing?.name}
+                  </Link>
+
                 </h4>
                 <p>{listing?.email}</p>
                 <p>{listing?.role}</p>

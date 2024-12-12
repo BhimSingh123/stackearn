@@ -54,6 +54,10 @@ class Listing extends Component {
         return Api.post("/user/reset-password", data)
     }
 
+    async DeleteUsers(data) {
+        return Api.post("/user/delete", data)
+    }
+
     async userProfile(data) {
         return Api.post("/user/profile", data)
     }
@@ -77,6 +81,10 @@ class Listing extends Component {
 
     async userBankData(data) {
         return Api.post("/user/bank-data", data)
+    }
+
+    async Instrutor(data) {
+        return Api.post("/instrutor/instrutor_post", data)
     }
 
     render() {

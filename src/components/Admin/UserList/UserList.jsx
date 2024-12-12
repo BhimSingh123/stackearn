@@ -8,6 +8,7 @@ import DateFormate from "../components/DateFormate";
 import LoadingPage from "../../../LoadingPage";
 import AuthLayout from "../AuthLayout";
 import { FaUser } from "react-icons/fa";
+import Delete from "../components/Delete";
 
 const UserList = () => {
 
@@ -80,7 +81,6 @@ const UserList = () => {
                                                                     </thead>
                                                                     <tbody>
                                                                         {listing && listing?.map((item, index) => (
-
                                                                             <tr key={index}>
                                                                                 <td>{index + 1}</td>
                                                                                 <td>
@@ -110,16 +110,22 @@ const UserList = () => {
                                                                                         {item?.user_status}
                                                                                     </span>
                                                                                 </td>
-
                                                                                 <td>
-                                                                                    <Link
-                                                                                        to={`/admin/user-profile-Id/${item?._id}`}
-                                                                                        style={{ cursor: 'pointer', textDecoration: 'none' }}
-                                                                                    >
-                                                                                        <FaRegEye size={24} />
-                                                                                    </Link>
+                                                                                    <div className="d-flex align-items-center justify-content-start gap-3">
+                                                                                        {/* View Link */}
+                                                                                        <Link
+                                                                                            to={`/admin/user-profile-Id/${item?._id}`}
+                                                                                            className="text-decoration-none"
+                                                                                        >
+                                                                                            <FaRegEye size={24} className="text-primary" />
+                                                                                        </Link>
 
+                                                                                        {/* Delete Button */}
+                                                                                        <Delete step={1} Id={item?._id} />
+                                                                                    </div>
                                                                                 </td>
+
+
 
 
                                                                             </tr>

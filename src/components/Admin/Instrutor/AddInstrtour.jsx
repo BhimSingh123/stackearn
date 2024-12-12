@@ -4,6 +4,8 @@ import SubDashboard from "../components/SubDashboard";
 import StudentSidebar from "../sidebar";
 import { Link } from "react-router-dom";
 import { User16 } from "../../imagepath";
+import toast from "react-hot-toast";
+import Listing from "../../Api/Listing";
 
 function AddInstructor() {
   const [instructorDetails, setInstructorDetails] = useState({
@@ -29,14 +31,39 @@ function AddInstructor() {
       [name]: value,
     }));
   };
+const[loading ,setLoading] = useState(false);
 
-
-  const handleSubmit = (e) => {
+  async function handleForms(e) {
     e.preventDefault();
-    console.log(instructorDetails);
-    // You can add form submission logic here
-  };
-
+    if (loading) {
+      return false;
+    }
+    setLoading(true);
+    const main = new Listing();
+    try {
+      const response = await main.Instrutor(instructorDetails);
+      console.log("response", response);
+      if (response?.data) {
+        toast.success(response.data.message);
+        setInstructorDetails({
+          firstname: "",
+          lastname: "",
+          username: "",
+          phone_number: "",
+          designation: "",
+          bio: "",
+          address: ""
+        });
+      } else {
+        toast.error(response?.data?.message || "Unexpected error occurred.");
+      }
+    } catch (error) {
+      console.error("error", error);
+      toast.error(error?.response?.data?.message || "Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
+  }
   return (
     <AuthLayout>
       <div className="main-wrapper">
@@ -57,7 +84,7 @@ function AddInstructor() {
                     </div>
 
                     {/* Add Instructor Form */}
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleForms}>
                       <div className="checkout-form settings-wrap">
                         <div className="row">
                           <div className="course-group profile-upload-group mb-3 d-flex ">
