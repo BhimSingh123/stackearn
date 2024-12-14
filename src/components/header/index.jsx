@@ -24,7 +24,6 @@ const Header = () => {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  console.log("dropdownOpen", dropdownOpen)
   const profileClick = (e) => {
     e.preventDefault();
     setDropdownOpen(!dropdownOpen);

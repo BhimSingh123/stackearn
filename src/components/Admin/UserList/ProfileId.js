@@ -37,18 +37,15 @@ export default function ProfileId() {
     useEffect(() => (
         setRegs(id)
     ), [Regs])
-    console.log("id", id)
     const [loading, setLoading] = useState(false);
     const [listing, setListing] = useState([]);
 
-    console.log("listing", listing)
     const ProfileData = async () => {
         setLoading(true);
 
         try {
             const main = new Listing();
             const response = await main.userprfileget(Regs);
-            console.log("response", response);
             setListing(response?.data);
         } catch (error) {
             console.error("Error fetching profile data:", error);

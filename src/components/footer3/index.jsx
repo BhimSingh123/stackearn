@@ -31,7 +31,6 @@ const handleForms = async (e) => {
     const main = new Listing();
     try {
         const response = await main.subscribe(Regs);
-        console.log("response", response)
         if (response?.data?.status) {
             toast.success(response.data.message);
         } else {

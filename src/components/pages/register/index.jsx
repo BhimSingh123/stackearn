@@ -73,7 +73,6 @@ const Register = () => {
     const main = new Listing();
     try {
       const response = await main.singup(Regs);
-      console.log("response", response);
       if (response?.data?.status) {
         toast.success(response.data.message);
         setRegs({

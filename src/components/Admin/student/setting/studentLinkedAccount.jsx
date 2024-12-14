@@ -28,7 +28,6 @@ const StudentLinkedAccounts = () => {
     try {
       const main = new Listing();
       const response = await main.userprfileId();
-      console.log("Profile response:", response);
       setListing(response?.data?.Bank || {});
     } catch (error) {
       console.error("ProfileData error:", error);
@@ -47,7 +46,6 @@ const StudentLinkedAccounts = () => {
     const main = new Listing();
     try {
       const response = await main.userBankData(Regs);
-      console.log("Response:", response);
       if (response?.data) {
         toast.success(response.data.message);
         ProfileData(); // Refresh profile data after successful submission

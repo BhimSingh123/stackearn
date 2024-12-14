@@ -18,12 +18,10 @@ export default function StudentSidebar() {
   const [profile, setprofile] = useState("");
 
 
-  console.log(listing)
   const fetchData = async (signal) => {
     try {
       const main = new Listing();
       const response = await main.profileVerify({ signal });
-      console.log("response", response)
       setListing(response?.data?.data)
       setprofile(response?.data?.profileData
       )

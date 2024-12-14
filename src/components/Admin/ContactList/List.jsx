@@ -13,14 +13,12 @@ const List = () => {
   const [loading, setLoading] = useState(false);
   const [listing, setListing] = useState([]);
 
-  console.log("listing", listing)
 
   const ContactList = async () => {
     setLoading(true);
     try {
       const main = new Listing();
       const response = await main.ContactGet();
-      console.log("response", response)
       setListing(response?.data?.data?.contactget);
     } catch (error) {
       console.error(error);

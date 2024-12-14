@@ -34,7 +34,6 @@ const StudentSocialProfile = () => {
     const main = new Listing();
     try {
       const response = await main.userSocialAdd(Regs);
-      console.log("response", response)
       if (response?.data) {
         toast.success(response.data.message);
         setRegs({
@@ -57,7 +56,6 @@ const StudentSocialProfile = () => {
     try {
       const main = new Listing();
       const response = await main.userprfileId();
-      console.log("response", response);
       setListing(response?.data?.social        || {});
     } catch (error) {
       console.error("ProfileData error:", error);

@@ -35,7 +35,6 @@ const StudentChangePassword = () => {
     const main = new Listing();
     try {
       const response = await main.resetpassword({ newPassword: Regs.newPassword });
-      console.log("response", response);
       if (response?.data) {
         toast.success(response.data.message);
         setRegs({

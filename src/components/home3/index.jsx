@@ -149,7 +149,6 @@ export const Home3 = () => {
 
   const updateToggle = (id) => {
     setToggle(id);
-    console.log(id);
   };
 
   useEffect(() => {

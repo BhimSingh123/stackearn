@@ -38,7 +38,6 @@ const StudentSetting = () => {
     const main = new Listing();
     try {
       const response = await main.userProfileAdd(Regs);
-      console.log("response", response);
       if (response?.data) {
         toast.success(response.data.message);
         setRegs({
@@ -66,7 +65,6 @@ const StudentSetting = () => {
     try {
       const main = new Listing();
       const response = await main.userprfileId();
-      console.log("response", response);
       setListing(response?.data || {});
     } catch (error) {
       console.error("ProfileData error:", error);
@@ -78,7 +76,6 @@ const StudentSetting = () => {
     ProfileData();
   }, []);
 
-  console.log("listing",listing)
 
   useEffect(() => {
     setRegs((prevState) => ({

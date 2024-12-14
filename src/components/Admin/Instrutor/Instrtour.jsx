@@ -8,21 +8,20 @@ import DateFormate from "../components/DateFormate";
 import LoadingPage from "../../../LoadingPage";
 import AuthLayout from "../AuthLayout";
 import { FaUser } from "react-icons/fa";
+import Delete from "../components/Delete";
 
 const Instrtour = () => {
 
     const [loading, setLoading] = useState(false);
     const [listing, setListing] = useState([]);
 
-    console.log("listing", listing)
 
     const fetchMarketLists = async () => {
         setLoading(true);
         try {
             const main = new Listing();
-            const response = await main.userList();
-            console.log("response", response)
-            setListing(response?.data?.data?.users
+            const response = await main.InstrutorGet();
+            setListing(response?.data?.data?.Instructorget  
             );
         } catch (error) {
             console.error(error);
@@ -74,7 +73,6 @@ const Instrtour = () => {
                                                                         <th> Name</th>
                                                                         <th>Join  Date</th>
                                                                         <th>Email</th>
-                                                                        <th>Course Name</th>
 
                                                                         <th>Status</th>
                                                                         <th>View</th>
@@ -103,8 +101,6 @@ const Instrtour = () => {
 
 
                                                                             <td>{item?.email}</td>
-                                                                            <td>Course NAme</td>
-
                                                                             <td>
                                                                                 <span
                                                                                     className={`text-sm btn ${item?.user_status === 'active' ? 'btn-success' : 'btn-danger'
@@ -116,11 +112,12 @@ const Instrtour = () => {
 
                                                                             <td>
                                                                                 <Link
-                                                                                    to={`/admin/user-profile-Id/${item?._id}`}
+                                                                                    to={`/admin/add/instructor/${item?._id}`}
                                                                                     style={{ cursor: 'pointer', textDecoration: 'none' }}
                                                                                 >
                                                                                     <FaRegEye size={24} />
                                                                                 </Link>
+                                                                                <Delete step={2} Id={item?._id} />
 
                                                                             </td>
 

@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom'
 const StudentProfile = () => {
 
     const [listing, setListing] = useState("");
-    console.log("listing", listing)
     const [loading, setLoading] = useState(false);
 
     const ProfileData = async () => {
@@ -18,7 +17,6 @@ const StudentProfile = () => {
         try {
             const main = new Listing();
             const response = await main.userprfileId();
-            console.log("Profile response:", response);
             setListing(response?.data || {});
         } catch (error) {
             console.error("ProfileData error:", error);

@@ -31,7 +31,7 @@ function AddInstructor() {
       [name]: value,
     }));
   };
-const[loading ,setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   async function handleForms(e) {
     e.preventDefault();
@@ -42,17 +42,22 @@ const[loading ,setLoading] = useState(false);
     const main = new Listing();
     try {
       const response = await main.Instrutor(instructorDetails);
-      console.log("response", response);
       if (response?.data) {
         toast.success(response.data.message);
         setInstructorDetails({
-          firstname: "",
-          lastname: "",
-          username: "",
-          phone_number: "",
+          firstName: "",
+          lastName: "",
           designation: "",
-          bio: "",
-          address: ""
+          lessions: "",
+          students: "",
+          Skills: "",
+          email: "",
+          phoneNumber: "",
+          address: "",
+          profileImage: "",  // For profile image
+          bio: "",            // For bio
+          gender: "",         // Gender
+          rating: ""
         });
       } else {
         toast.error(response?.data?.message || "Unexpected error occurred.");
@@ -64,6 +69,8 @@ const[loading ,setLoading] = useState(false);
       setLoading(false);
     }
   }
+
+
   return (
     <AuthLayout>
       <div className="main-wrapper">
@@ -229,13 +236,17 @@ const[loading ,setLoading] = useState(false);
                           <div className="col-md-6">
                             <div className="input-block">
                               <label className="form-label">Phone Number</label>
+
                               <input
-                                type="text"
-                                name="phoneNumber"
-                                value={instructorDetails.phoneNumber}
-                                onChange={handleInputChange}
+                                type="tel"
                                 className="form-control"
                                 required
+                                name="phoneNumber"
+                                value={instructorDetails?.phoneNumber || ""}
+                                onChange={handleInputChange}
+                                placeholder="Enter your Phone Number"
+                                pattern="\d{10}"
+                                maxLength="10"
                               />
                             </div>
                           </div>

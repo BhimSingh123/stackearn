@@ -87,6 +87,24 @@ class Listing extends Component {
         return Api.post("/instrutor/instrutor_post", data)
     }
 
+    
+    async InstrutorGet() {
+        return Api.get("/instrutor/instrutor_get")
+    }
+
+    async InstrutorGetId(Id) {
+        return Api.get(`/instrutor/instrutor_get/${Id}`)
+    }
+    
+    async InstrutorUpdate(data) {
+        return Api.post("/instrutor/instrutor_update" , data)
+    }
+
+    
+    async InstrutorDelete(data) {
+        return Api.post("/instrutor/instrutor_delete", data)
+    }
+
     render() {
         return (
             <div>

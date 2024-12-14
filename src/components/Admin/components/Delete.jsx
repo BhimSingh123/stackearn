@@ -4,20 +4,19 @@ import PropTypes from "prop-types";
 import toast from "react-hot-toast";
 import Listing from "../../Api/Listing";
 
-export default function Delete({ step, Id, PackageGet }) {
+export default function Delete({ step, Id }) {
     const [isOpen, setIsOpen] = useState(false);
     const [loading, setLoading] = useState(false);
 
     const toggleModal = () => setIsOpen(!isOpen);
 
-    const handlePackageDelete = async () => {
+    const handleinstrorDelete = async () => {
         setLoading(true);
         try {
             const main = new Listing();
-            const res = await main.packageDelete({ Id });
+            const res = await main.InstrutorDelete({ Id });
             if (res?.data?.status) {
                 toast.success(res.data.message);
-                PackageGet();
                 toggleModal();
             } else {
                 toast.error(res.data?.message || "Something went wrong.");
@@ -52,7 +51,7 @@ export default function Delete({ step, Id, PackageGet }) {
     const handleClick = (e) => {
         e.preventDefault();
         if (step === 1) handleUserDelete();
-        else if (step === 2) handlePackageDelete();
+        else if (step === 2) handleinstrorDelete();
         else console.warn("Invalid step");
     };
 
@@ -87,7 +86,7 @@ export default function Delete({ step, Id, PackageGet }) {
                             <div className="modal-body">
                                 <p>
                                     Are you sure you want to delete this{" "}
-                                    {step === 1 ? "package" : "user"}?
+                                    ?
                                 </p>
                                 <p className="text-danger">
                                     (This action cannot be undone.)

@@ -150,6 +150,7 @@ import ProfileId from "./components/Admin/UserList/ProfileId.js";
 import List from "./components/Admin/ContactList/List.jsx";
 import Instrtour from "./components/Admin/Instrutor/Instrtour.jsx";
 import AddInstrtour from "./components/Admin/Instrutor/AddInstrtour.jsx";
+import ViewProfile from "./components/Admin/Instrutor/ViewProfile.jsx";
 
 
 
@@ -584,6 +585,9 @@ const Approuter = () => {
 
         <Route path="/admin/instructor" element={<Instrtour/>} />
         <Route path="/admin/add/instructor" element={<AddInstrtour/>} />
+
+        <Route path="/admin/add/instructor/:Id" element={<ViewProfile/>} />
+
 
       </Routes>
     </BrowserRouter>

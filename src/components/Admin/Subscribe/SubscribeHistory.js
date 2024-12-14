@@ -13,14 +13,12 @@ const SubscribeHistory = () => {
     const [loading, setLoading] = useState(false);
     const [listing, setListing] = useState([]);
 
-    console.log("listing", listing)
 
     const SubscribeList = async () => {
         setLoading(true);
         try {
             const main = new Listing();
             const response = await main.subscribeGet();
-            console.log("response", response)
             setListing(response?.data?.data?.subscribedata);
         } catch (error) {
             console.error(error);
