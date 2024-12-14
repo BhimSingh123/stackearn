@@ -83,21 +83,21 @@ const UserList = () => {
                                                                                 <td>{index + 1}</td>
                                                                                 <td>
                                                                                     <div className="d-flex align-items-center">
-                                                                                    <h2 className="table-avatar d-flex align-items-center">
-                                                                                    <Link to={`/admin/user-profile-Id/${item?._id}`}
-                                                                                        className="avatar"
-                                                                                    >
-                                                                                        <img
-                                                                                            className="avatar-img"
-                                                                                            src={User2}
-                                                                                            alt="User Image"
-                                                                                        />
-                                                                                    </Link>
-                                                                                    <Link to={`/admin/user-profile-Id/${item?._id}`}>
-                                                                                    {item?.name}
-                                                                                    </Link>
-                                                                                </h2>
-                                                                                </div>
+                                                                                        <h2 className="table-avatar d-flex align-items-center">
+                                                                                            <Link to={`/admin/user-profile-Id/${item?._id}`}
+                                                                                                className="avatar"
+                                                                                            >
+                                                                                                <img
+                                                                                                    className="avatar-img"
+                                                                                                    src={User2}
+                                                                                                    alt="User Image"
+                                                                                                />
+                                                                                            </Link>
+                                                                                            <Link to={`/admin/user-profile-Id/${item?._id}`}>
+                                                                                                {item?.name}
+                                                                                            </Link>
+                                                                                        </h2>
+                                                                                    </div>
                                                                                 </td>
                                                                                 <td>
                                                                                     <DateFormate data={item?.created_at} />
