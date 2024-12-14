@@ -83,7 +83,7 @@ class Listing extends Component {
         return Api.post("/user/bank-data", data)
     }
 
-    async Instrutor(data) {
+    async CreateInstructor(data) {
         return Api.post("/instrutor/instrutor_post", data)
     }
 
@@ -96,7 +96,7 @@ class Listing extends Component {
         return Api.get(`/instrutor/instrutor_get/${Id}`)
     }
     
-    async InstrutorUpdate(data) {
+    async UpdateInstructor(data) {
         return Api.post("/instrutor/instrutor_update" , data)
     }
 

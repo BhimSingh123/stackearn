@@ -7,8 +7,9 @@ import { FaRegEye } from "react-icons/fa";
 import DateFormate from "../components/DateFormate";
 import LoadingPage from "../../../LoadingPage";
 import AuthLayout from "../AuthLayout";
-import { FaUser } from "react-icons/fa";
+import { MdEdit } from "react-icons/md";
 import Delete from "../components/Delete";
+import { User2 } from "../../imagepath";
 
 const Instrtour = () => {
 
@@ -21,7 +22,7 @@ const Instrtour = () => {
         try {
             const main = new Listing();
             const response = await main.InstrutorGet();
-            setListing(response?.data?.data?.Instructorget  
+            setListing(response?.data?.data?.Instructorget
             );
         } catch (error) {
             console.error(error);
@@ -37,8 +38,8 @@ const Instrtour = () => {
         <AuthLayout>
             <div className="main-wrapper">
 
-                <SubDashboard title={"Subscribe History"} />
-              
+                <SubDashboard title={"instructor History"} />
+
                 {/* Page Content */}
                 <div className="page-content mt-5">
                     <div className="container">
@@ -51,15 +52,16 @@ const Instrtour = () => {
                                 <div className="col-xl-9 col-lg-9">
                                     <div className="settings-widget card-details">
                                         <div className="settings-menu p-0">
-                                            <div className="profile-heading flex justify-between item-center">
-                                                <h3>User History</h3>
+                                            <div className="profile-heading d-flex justify-content-between align-items-center">
+                                                <h3>Instructor History</h3>
                                                 <Link
-                    className="btn btn-primary"
-                    to="/admin/add/instructor"
-                >
-                    Add Instructor
-                </Link>
+                                                    className="btn btn-primary"
+                                                    to="/admin/add/instructor"
+                                                >
+                                                    Add Instructor
+                                                </Link>
                                             </div>
+
                                             <div className="checkout-form">
                                                 {/* Tab Content */}
                                                 <div className="tab-content">
@@ -73,10 +75,7 @@ const Instrtour = () => {
                                                                         <th> Name</th>
                                                                         <th>Join  Date</th>
                                                                         <th>Email</th>
-
-                                                                        <th>Status</th>
                                                                         <th>View</th>
-
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -86,13 +85,20 @@ const Instrtour = () => {
                                                                             <td>{index + 1}</td>
                                                                             <td>
                                                                                 <div className="d-flex align-items-center">
-                                                                                    <div className="d-flex justify-content-center align-items-center rounded-circle bg-light mr-3" style={{ width: '40px', height: '40px' }}>
-                                                                                        <FaUser className="text-secondary" style={{ fontSize: '20px' }} />
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <span className="d-block text-capitalize">{item?.name}</span>
-                                                                                        <span className="d-block">{item?.phone_number}</span>
-                                                                                    </div>
+                                                                                    <h2 className="table-avatar d-flex align-items-center">
+                                                                                    <Link to={`/admin/add/instructor/${item?._id}`}
+                                                                                        className="avatar"
+                                                                                    >
+                                                                                        <img
+                                                                                            className="avatar-img"
+                                                                                            src={User2}
+                                                                                            alt="User Image"
+                                                                                        />
+                                                                                    </Link>
+                                                                                    <Link to={`/admin/add/instructor/${item?._id}`}>
+                                                                                    {item?.firstName}
+                                                                                    </Link>
+                                                                                </h2>
                                                                                 </div>
                                                                             </td>
                                                                             <td>
@@ -101,25 +107,30 @@ const Instrtour = () => {
 
 
                                                                             <td>{item?.email}</td>
+                                                                         
                                                                             <td>
-                                                                                <span
-                                                                                    className={`text-sm btn ${item?.user_status === 'active' ? 'btn-success' : 'btn-danger'
-                                                                                        } text-capitalize rounded-pill px-2 py-1`}
-                                                                                >
-                                                                                    {item?.user_status}
-                                                                                </span>
+                                                                                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                                                                    {/* View Action */}
+                                                                                    <Link
+                                                                                        to={`/admin/add/instructor/${item?._id}`}
+                                                                                        style={{ cursor: 'pointer', textDecoration: 'none', color: 'inherit' }}
+                                                                                    >
+                                                                                        <FaRegEye size={24} title="View Instructor" />
+                                                                                    </Link>
+
+                                                                                    {/* Update Action */}
+                                                                                    <Link
+                                                                                        to={`/admin/update/instructor/${item?._id}`}
+                                                                                        style={{ cursor: 'pointer', textDecoration: 'none', color: 'inherit' }}
+                                                                                    >
+                                                                                        <MdEdit size={24} title="Edit Instructor" />
+                                                                                    </Link>
+
+                                                                                    {/* Delete Action */}
+                                                                                    <Delete step={2} Id={item?._id} title="Delete Instructor" fetchMarketLists={fetchMarketLists} />
+                                                                                </div>
                                                                             </td>
 
-                                                                            <td>
-                                                                                <Link
-                                                                                    to={`/admin/add/instructor/${item?._id}`}
-                                                                                    style={{ cursor: 'pointer', textDecoration: 'none' }}
-                                                                                >
-                                                                                    <FaRegEye size={24} />
-                                                                                </Link>
-                                                                                <Delete step={2} Id={item?._id} />
-
-                                                                            </td>
 
 
                                                                         </tr>

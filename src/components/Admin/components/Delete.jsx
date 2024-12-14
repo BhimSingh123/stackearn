@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import toast from "react-hot-toast";
 import Listing from "../../Api/Listing";
 
-export default function Delete({ step, Id }) {
+export default function Delete({ step, Id ,fetchMarketLists }) {
     const [isOpen, setIsOpen] = useState(false);
     const [loading, setLoading] = useState(false);
 
@@ -17,6 +17,7 @@ export default function Delete({ step, Id }) {
             const res = await main.InstrutorDelete({ Id });
             if (res?.data?.status) {
                 toast.success(res.data.message);
+                fetchMarketLists();
                 toggleModal();
             } else {
                 toast.error(res.data?.message || "Something went wrong.");
@@ -37,6 +38,8 @@ export default function Delete({ step, Id }) {
             if (res?.data?.status) {
                 toast.success(res.data.message);
                 toggleModal();
+                fetchMarketLists();
+
             } else {
                 toast.error(res.data?.message || "Something went wrong.");
             }
@@ -119,5 +122,5 @@ export default function Delete({ step, Id }) {
 Delete.propTypes = {
     step: PropTypes.number.isRequired,
     Id: PropTypes.string.isRequired,
-    PackageGet: PropTypes.func.isRequired,
+    fetchMarketLists: PropTypes.func.isRequired,
 };

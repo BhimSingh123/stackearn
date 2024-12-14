@@ -588,6 +588,9 @@ const Approuter = () => {
 
         <Route path="/admin/add/instructor/:Id" element={<ViewProfile/>} />
 
+        <Route path="/admin/update/instructor/:Id" element={<AddInstrtour/>} />
+
+
 
       </Routes>
     </BrowserRouter>

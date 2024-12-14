@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AuthLayout from "../AuthLayout";
 import SubDashboard from "../components/SubDashboard";
 import StudentSidebar from "../sidebar";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { User16 } from "../../imagepath";
 import toast from "react-hot-toast";
 import Listing from "../../Api/Listing";
 
 function AddInstructor() {
+  const { Id } = useParams(); // Fetch ID from route
+  const [loading, setLoading] = useState(false);
   const [instructorDetails, setInstructorDetails] = useState({
     firstName: "",
     lastName: "",
@@ -18,12 +20,14 @@ function AddInstructor() {
     email: "",
     phoneNumber: "",
     address: "",
-    profileImage: "",  // For profile image
-    bio: "",            // For bio
-    gender: "",         // Gender
-    rating: ""
+    profileImage: "",
+    bio: "",
+    gender: "",
+    rating: "",
+    Id :Id
   });
 
+  // Handle input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setInstructorDetails((prevState) => ({
@@ -31,44 +35,80 @@ function AddInstructor() {
       [name]: value,
     }));
   };
-  const [loading, setLoading] = useState(false);
 
-  async function handleForms(e) {
-    e.preventDefault();
-    if (loading) {
-      return false;
+  // Fetch instructor data for editing
+  const fetchInstructorData = async () => {
+    setLoading(true);
+    try {
+      const main = new Listing();
+      const response = await main.InstrutorGetId(Id); // Fetch instructor by ID
+      if (response?.data?.data) {
+        setInstructorDetails(response.data.data);
+      } else {
+        toast.error("Failed to fetch instructor details.");
+      }
+    } catch (error) {
+      console.error("Error fetching instructor data:", error);
+      toast.error("Unable to load instructor data.");
+    } finally {
+      setLoading(false);
     }
+  };
+
+  // Handle form submission for add/edit
+  const handleForms = async (e) => {
+    e.preventDefault();
+    if (loading) return;
+
     setLoading(true);
     const main = new Listing();
+
     try {
-      const response = await main.Instrutor(instructorDetails);
+      let response;
+      if (Id) {
+        // Edit API call
+        response = await main.UpdateInstructor( instructorDetails);
+      } else {
+        // Add API call
+        response = await main.CreateInstructor(instructorDetails);
+      }
+
       if (response?.data) {
-        toast.success(response.data.message);
-        setInstructorDetails({
-          firstName: "",
-          lastName: "",
-          designation: "",
-          lessions: "",
-          students: "",
-          Skills: "",
-          email: "",
-          phoneNumber: "",
-          address: "",
-          profileImage: "",  // For profile image
-          bio: "",            // For bio
-          gender: "",         // Gender
-          rating: ""
-        });
+        toast.success(response.data.message || "Operation successful");
+        if (!Id) {
+          // Clear form for new instructor
+          setInstructorDetails({
+            firstName: "",
+            lastName: "",
+            designation: "",
+            lessions: "",
+            students: "",
+            Skills: "",
+            email: "",
+            phoneNumber: "",
+            address: "",
+            profileImage: "",
+            bio: "",
+            gender: "",
+            rating: "",
+
+          });
+        }
       } else {
         toast.error(response?.data?.message || "Unexpected error occurred.");
       }
     } catch (error) {
-      console.error("error", error);
+      console.error("Error submitting form:", error);
       toast.error(error?.response?.data?.message || "Something went wrong.");
     } finally {
       setLoading(false);
     }
-  }
+  };
+
+  // Fetch data for edit mode
+  useEffect(() => {
+    if (Id) fetchInstructorData();
+  }, [Id]);
 
 
   return (

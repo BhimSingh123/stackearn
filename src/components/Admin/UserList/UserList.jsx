@@ -7,8 +7,8 @@ import { FaRegEye } from "react-icons/fa";
 import DateFormate from "../components/DateFormate";
 import LoadingPage from "../../../LoadingPage";
 import AuthLayout from "../AuthLayout";
-import { FaUser } from "react-icons/fa";
 import Delete from "../components/Delete";
+import { User2 } from "../../imagepath";
 
 const UserList = () => {
 
@@ -83,14 +83,21 @@ const UserList = () => {
                                                                                 <td>{index + 1}</td>
                                                                                 <td>
                                                                                     <div className="d-flex align-items-center">
-                                                                                        <div className="d-flex justify-content-center align-items-center rounded-circle bg-light mr-3" style={{ width: '40px', height: '40px' }}>
-                                                                                            <FaUser className="text-secondary" style={{ fontSize: '20px' }} />
-                                                                                        </div>
-                                                                                        <div>
-                                                                                            <span className="d-block text-capitalize">{item?.name}</span>
-                                                                                            <span className="d-block">{item?.phone_number}</span>
-                                                                                        </div>
-                                                                                    </div>
+                                                                                    <h2 className="table-avatar d-flex align-items-center">
+                                                                                    <Link to={`/admin/user-profile-Id/${item?._id}`}
+                                                                                        className="avatar"
+                                                                                    >
+                                                                                        <img
+                                                                                            className="avatar-img"
+                                                                                            src={User2}
+                                                                                            alt="User Image"
+                                                                                        />
+                                                                                    </Link>
+                                                                                    <Link to={`/admin/user-profile-Id/${item?._id}`}>
+                                                                                    {item?.name}
+                                                                                    </Link>
+                                                                                </h2>
+                                                                                </div>
                                                                                 </td>
                                                                                 <td>
                                                                                     <DateFormate data={item?.created_at} />
