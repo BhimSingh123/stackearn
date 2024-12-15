@@ -174,10 +174,10 @@ const Login = () => {
                     </button>
                   </div>
                   <div className="remember-me text-center mt-3">
-                  <Link to="/register" className="mr-3 ml-2">
-  <span style={{ marginRight: "5px" }}>Do Not Have Account? Please</span>
-  <span className="forgot-link">Sign Up</span>
-</Link>
+                    <Link to="/register" className="mr-3 ml-2">
+                      <span style={{ marginRight: "5px" }}>Do Not Have Account? Please</span>
+                      <span className="forgot-link">Sign Up</span>
+                    </Link>
 
                   </div>
 
