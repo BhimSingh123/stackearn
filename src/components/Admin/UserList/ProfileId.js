@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import {
     AddressIcon,
+    CoursesIcon,
     EmailIcon,
     PhoneIcon,
     ProfileAvatar,
+    ReviewIcon,
+    TtlStudIcon,
 } from "../../imagepath";
 import {
     User1,
@@ -99,32 +102,7 @@ export default function ProfileId() {
                                                     )}
                                                 </p>
 
-                                                <div className="social-icon-five mt-2">
-                                                    <ul className="nav">
-                                                        <li>
-                                                            <Link to={listing?.social?.twitter} target="_blank" className="twitter-icon">
-                                                                <i className="fab fa-twitter"></i>
-                                                            </Link>
-                                                        </li>
-                                                        <li>
-                                                            <Link to={listing?.social?.linkedin} target="_blank" className="linked-icon">
-                                                                <i className="fab fa-linkedin-in"></i>
-                                                            </Link>
-                                                        </li>
-                                                        <li>
-                                                            <Link to={listing?.social?.facebook} target="_blank" className="facebook-icon">
-                                                                <i className="fab fa-facebook-f"></i>
-                                                            </Link>
-                                                        </li>
 
-                                                        <li>
-                                                            <Link to={listing?.social?.github} target="_blank" className="youtube-icon">
-                                                                <i className="fa-brands fa-instagram"></i>
-
-                                                            </Link>
-                                                        </li>
-                                                    </ul>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -843,121 +821,6 @@ export default function ProfileId() {
                                             {/* Right Sidebar Tags Label */}
                                             <div className="card overview-sec">
                                                 <div className="card-body">
-                                                    <h5 className="subs-title">Bank  Details</h5>
-                                                    <div className="contact-info-list">
-                                                        <div className="edu-wrap">
-                                                            <div className="edu-name">
-                                                                <span>
-                                                                    <img src={EmailIcon} alt="Address" />
-                                                                </span>
-                                                            </div>
-                                                            <div className="edu-detail">
-                                                                <h6>Account Holder Name </h6>
-                                                                <p>
-                                                                    <Link to="#">{listing?.BankData?.BankName
-                                                                    }</Link>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="edu-wrap">
-                                                            <div className="edu-name">
-                                                                <span>
-                                                                    <img src={AddressIcon} alt="Address" />
-                                                                </span>
-                                                            </div>
-                                                            <div className="edu-detail">
-                                                                <h6>Account Number</h6>
-                                                                <p>{listing?.BankData?.BankNumber}</p>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="edu-wrap">
-                                                            <div className="edu-name">
-                                                                <span>
-                                                                    <img src={AddressIcon} alt="Address" />
-                                                                </span>
-                                                            </div>
-                                                            <div className="edu-detail">
-                                                                <h6>IFSC Code </h6>
-                                                                <p>{listing?.BankData?.IFSC}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="edu-wrap">
-                                                            <div className="edu-name">
-                                                                <span>
-                                                                    <img src={PhoneIcon} alt="Address" />
-                                                                </span>
-                                                            </div>
-                                                            <div className="edu-detail">
-                                                                <h6>Branch Name</h6>
-                                                                <p>
-                                                                    {" "}
-                                                                    <Link to="#">{listing?.BankData?.BranchName} </Link>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {/* Right Sidebar Tags Label */}
-
-                                            {/* Right Sidebar Profile Overview */}
-                                            {/* <div className="card overview-sec">
-                                                <div className="card-body">
-                                                    <h5 className="subs-title">Profile Overview</h5>
-                                                    <div className="rating-grp">
-                                                        <div className="rating">
-                                                            <i className="fas fa-star filled"></i>
-                                                            <i className="fas fa-star filled"></i>
-                                                            <i className="fas fa-star filled"></i>
-                                                            <i className="fas fa-star filled"></i>
-                                                            <i className="fas fa-star"></i>
-                                                            <span className="d-inline-block average-rating">
-                                                                <span>4.0</span> (15)
-                                                            </span>
-                                                        </div>
-                                                        <div className="course-share d-flex align-items-center justify-content-center">
-                                                            <Link to="#rate">
-                                                                <i className="fa-regular fa-heart"></i>
-                                                            </Link>
-                                                        </div>
-                                                    </div>
-                                                    <div className="profile-overview-list">
-                                                        <div className="list-grp-blk d-flex">
-                                                            <div className="flex-shrink-0">
-                                                                <img src={CoursesIcon} alt="Courses" />
-                                                            </div>
-                                                            <div className="list-content-blk flex-grow-1 ms-3">
-                                                                <h5>32</h5>
-                                                                <p>Courses</p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="list-grp-blk d-flex">
-                                                            <div className="flex-shrink-0">
-                                                                <img src={TtlStudIcon} alt="Total Students" />
-                                                            </div>
-                                                            <div className="list-content-blk flex-grow-1 ms-3">
-                                                                <h5>11,604</h5>
-                                                                <p>Total Students</p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="list-grp-blk d-flex">
-                                                            <div className="flex-shrink-0">
-                                                                <img src={ReviewIcon} alt="Reviews" />
-                                                            </div>
-                                                            <div className="list-content-blk flex-grow-1 ms-3">
-                                                                <h5>12,230</h5>
-                                                                <p>Reviews</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> */}
-                                            {/* Right Sidebar Profile Overview */}
-
-                                            {/* Right Contact Details */}
-                                            <div className="card overview-sec">
-                                                <div className="card-body">
                                                     <h5 className="subs-title">Contact Details</h5>
                                                     <div className="contact-info-list">
                                                         <div className="edu-wrap">
@@ -1017,6 +880,154 @@ export default function ProfileId() {
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div className="card overview-sec">
+                                                <div className="card-body">
+                                                    <h5 className="subs-title">Bank  Details</h5>
+                                                    <div className="contact-info-list">
+                                                        <div className="edu-wrap">
+                                                            <div className="edu-name">
+                                                                <span>
+                                                                    <img src={EmailIcon} alt="Address" />
+                                                                </span>
+                                                            </div>
+                                                            <div className="edu-detail">
+                                                                <h6>Account Holder Name </h6>
+                                                                <p>
+                                                                    <Link to="#">{listing?.BankData?.BankName
+                                                                    }</Link>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div className="edu-wrap">
+                                                            <div className="edu-name">
+                                                                <span>
+                                                                    <img src={AddressIcon} alt="Address" />
+                                                                </span>
+                                                            </div>
+                                                            <div className="edu-detail">
+                                                                <h6>Account Number</h6>
+                                                                <p>{listing?.BankData?.BankNumber}</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="edu-wrap">
+                                                            <div className="edu-name">
+                                                                <span>
+                                                                    <img src={AddressIcon} alt="Address" />
+                                                                </span>
+                                                            </div>
+                                                            <div className="edu-detail">
+                                                                <h6>IFSC Code </h6>
+                                                                <p>{listing?.BankData?.IFSC}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div className="edu-wrap">
+                                                            <div className="edu-name">
+                                                                <span>
+                                                                    <img src={PhoneIcon} alt="Address" />
+                                                                </span>
+                                                            </div>
+                                                            <div className="edu-detail">
+                                                                <h6>Branch Name</h6>
+                                                                <p>
+                                                                    {" "}
+                                                                    <Link to="#">{listing?.BankData?.BranchName} </Link>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {/* Right Sidebar Tags Label */}
+
+                                            {/* Right Sidebar Profile Overview */}
+                                            <div className="card overview-sec">
+                                                <div className="card-body">
+                                                    <h5 className="subs-title">Profile Overview</h5>
+                                                    <div className="rating-grp">
+                                                        <div className="rating">
+                                                            <i className="fas fa-star filled"></i>
+                                                            <i className="fas fa-star filled"></i>
+                                                            <i className="fas fa-star filled"></i>
+                                                            <i className="fas fa-star filled"></i>
+                                                            <i className="fas fa-star"></i>
+                                                            <span className="d-inline-block average-rating">
+                                                                <span>4.0</span> (15)
+                                                            </span>
+                                                        </div>
+                                                        <div className="course-share d-flex align-items-center justify-content-center">
+                                                            <Link to="#rate">
+                                                                <i className="fa-regular fa-heart"></i>
+                                                            </Link>
+                                                        </div>
+                                                    </div>
+                                                    <div className="profile-overview-list">
+                                                        <div className="list-grp-blk d-flex">
+                                                            <div className="flex-shrink-0">
+                                                                <img src={CoursesIcon} alt="Courses" />
+                                                            </div>
+                                                            <div className="list-content-blk flex-grow-1 ms-3">
+                                                                <h5>32</h5>
+                                                                <p>Courses</p>
+                                                            </div>
+                                                        </div>
+                                                        <div className="list-grp-blk d-flex">
+                                                            <div className="flex-shrink-0">
+                                                                <img src={TtlStudIcon} alt="Total Students" />
+                                                            </div>
+                                                            <div className="list-content-blk flex-grow-1 ms-3">
+                                                                <h5>11,604</h5>
+                                                                <p>Total Students</p>
+                                                            </div>
+                                                        </div>
+                                                        <div className="list-grp-blk d-flex">
+                                                            <div className="flex-shrink-0">
+                                                                <img src={ReviewIcon} alt="Reviews" />
+                                                            </div>
+                                                            <div className="list-content-blk flex-grow-1 ms-3">
+                                                                <h5>12,230</h5>
+                                                                <p>Reviews</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {/* Right Sidebar Profile Overview */}
+                                            <div className="card overview-sec">
+                                                <div className="card-body">
+                                                    <h5 className="subs-title">Contact Details</h5>
+                                                    <div className="contact-info-list">
+                                                        <div className="social-icon-five mt-2">
+                                                            <ul className="nav">
+                                                                <li>
+                                                                    <Link to={listing?.social?.twitter} target="_blank" className="twitter-icon">
+                                                                        <i className="fab fa-twitter"></i>
+                                                                    </Link>
+                                                                </li>
+                                                                <li>
+                                                                    <Link to={listing?.social?.linkedin} target="_blank" className="linked-icon">
+                                                                        <i className="fab fa-linkedin-in"></i>
+                                                                    </Link>
+                                                                </li>
+                                                                <li>
+                                                                    <Link to={listing?.social?.facebook} target="_blank" className="facebook-icon">
+                                                                        <i className="fab fa-facebook-f"></i>
+                                                                    </Link>
+                                                                </li>
+
+                                                                <li>
+                                                                    <Link to={listing?.social?.github} target="_blank" className="youtube-icon">
+                                                                        <i className="fa-brands fa-instagram"></i>
+
+                                                                    </Link>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {/* Right Contact Details */}
+
                                             {/* Right Contact Details */}
                                         </div>
                                     </div>

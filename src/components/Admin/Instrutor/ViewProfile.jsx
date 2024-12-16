@@ -59,7 +59,7 @@ const{Id} =useParams();
                                         <div className="settings-widget card-details mb-0">
                                             <div className="settings-menu p-0">
                                                 <div className="profile-heading">
-                                                    <h3>My Profile</h3>
+                                                    <h3>Instructor Profile</h3>
                                                 </div>
                                              
 
@@ -149,7 +149,14 @@ const{Id} =useParams();
                                                                     </p>
                                                                 </div>
                                                             </div>
-
+                                                            <div className="col-sm-6">
+                                                                <div className="contact-info mb-0">
+                                                                    <h6>Skill</h6>
+                                                                    <p>
+                                                                        {listing?.Skill}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
                                                            
                                                         </div>
                                                     </div>

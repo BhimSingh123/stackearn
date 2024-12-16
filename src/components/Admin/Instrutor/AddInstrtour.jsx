@@ -16,7 +16,7 @@ function AddInstructor() {
     designation: "",
     lessions: "",
     students: "",
-    Skills: "",
+    Skill: "",
     email: "",
     phoneNumber: "",
     address: "",
@@ -24,7 +24,7 @@ function AddInstructor() {
     bio: "",
     gender: "",
     rating: "",
-    Id :Id
+    Id: Id
   });
 
   // Handle input changes
@@ -67,7 +67,7 @@ function AddInstructor() {
       let response;
       if (Id) {
         // Edit API call
-        response = await main.UpdateInstructor( instructorDetails);
+        response = await main.UpdateInstructor(instructorDetails);
       } else {
         // Add API call
         response = await main.CreateInstructor(instructorDetails);
@@ -83,7 +83,7 @@ function AddInstructor() {
             designation: "",
             lessions: "",
             students: "",
-            Skills: "",
+            Skill: "",
             email: "",
             phoneNumber: "",
             address: "",
@@ -97,8 +97,11 @@ function AddInstructor() {
       } else {
         toast.error(response?.data?.message || "Unexpected error occurred.");
       }
+
+      setLoading(false);
     } catch (error) {
       console.error("Error submitting form:", error);
+      setLoading(false);
       toast.error(error?.response?.data?.message || "Something went wrong.");
     } finally {
       setLoading(false);
@@ -245,11 +248,11 @@ function AddInstructor() {
 
                           <div className="col-md-6">
                             <div className="input-block">
-                              <label className="form-label">Skills</label>
+                              <label className="form-label">Skill</label>
                               <input
                                 type="text"
-                                name="Skills"
-                                value={instructorDetails.Skills}
+                                name="Skill"
+                                value={instructorDetails.Skill}
                                 onChange={handleInputChange}
                                 className="form-control"
                                 required
@@ -295,13 +298,17 @@ function AddInstructor() {
                             <div className="input-block">
                               <label className="form-label">Rating</label>
                               <input
-                                type="text"
+                                type="number"
                                 name="rating"
                                 value={instructorDetails.rating}
                                 onChange={handleInputChange}
                                 className="form-control"
                                 required
+                                max="5"  // Maximum value of 5 digits
+                                min="0"      // Optional: minimum value, for example, 0
                               />
+
+
                             </div>
                           </div>
 
@@ -356,7 +363,7 @@ function AddInstructor() {
 
                           <div className="col-md-12">
                             <button className="btn btn-success" type="submit">
-                              Add Instructor
+                              {loading ? "Loading.." : "Add Instructor"}
                             </button>
                           </div>
                         </div>

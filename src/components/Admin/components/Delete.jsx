@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import toast from "react-hot-toast";
 import Listing from "../../Api/Listing";
 
-export default function Delete({ step, Id ,fetchMarketLists }) {
+export default function Delete({ step, Id, fetchMarketLists }) {
     const [isOpen, setIsOpen] = useState(false);
     const [loading, setLoading] = useState(false);
 
@@ -61,11 +61,11 @@ export default function Delete({ step, Id ,fetchMarketLists }) {
     return (
         <div>
             {/* Delete Button */}
-            <div
-                onClick={toggleModal}
-            >
-                <MdDelete size={20} className="text-red-600 hover:text-red-700" />
+            <div onClick={toggleModal} className=" ">
+                <MdDelete size={24} className="pointer-data"/>
             </div>
+
+
 
             {/* Modal */}
             {isOpen && (

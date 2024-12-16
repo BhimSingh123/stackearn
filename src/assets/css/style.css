@@ -6206,6 +6206,24 @@ body.home-three :-ms-input-placeholder {
   -webkit-transition: all 0.4s ease;
   border-radius: 10px;
 }
+.pointer-data {
+  cursor: pointer;
+  color: black; /* default color */
+}
+
+.pointer-data:hover {
+  color: red; /* hover color */
+}
+
+.pointer-eye{
+  cursor: pointer;
+  color: black; /* default color */
+}
+
+.pointer-eye:hover {
+  color: blue; /* hover color */
+}
+
 .trending-bg-two {
   background: #69ffdb;
   border: 1px solid #f4f4f4;
@@ -13243,7 +13261,8 @@ input[type="password"]::-ms-clear {
 }
 .page-content {
   background: #fafafa;
-  padding: 60px 0 60px;
+  /* padding: 60px 0 60px; */
+  padding: 27px 0 23px;
 }
 .instructor-page-content {
   padding: 60px 0 30px;

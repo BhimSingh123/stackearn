@@ -109,7 +109,7 @@ const UserList = () => {
 
                                                                                 <td>
                                                                                     <span
-                                                                                        className={`text-sm btn ${item?.user_status === 'active' ? 'btn-success' : 'btn-danger'
+                                                                                        className={`text-sm  ${item?.user_status === 'active' ? 'text-success' : 'text-danger'
                                                                                             } text-capitalize rounded-pill px-2 py-1`}
                                                                                     >
                                                                                         {item?.user_status}
@@ -120,13 +120,12 @@ const UserList = () => {
                                                                                         {/* View Link */}
                                                                                         <Link
                                                                                             to={`/admin/user-profile-Id/${item?._id}`}
-                                                                                            className="text-decoration-none"
                                                                                         >
-                                                                                            <FaRegEye size={24} className="text-primary" />
+                                                                                            <FaRegEye size={24} className="pointer-eye" />
                                                                                         </Link>
 
                                                                                         {/* Delete Button */}
-                                                                                        <Delete step={1} Id={item?._id} />
+                                                                                        <Delete step={1} Id={item?._id} fetchMarketLists={fetchMarketLists}/>
                                                                                     </div>
                                                                                 </td>
 

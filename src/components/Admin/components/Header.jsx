@@ -42,7 +42,7 @@ const Header = () => {
     return (
         <AuthLayout>
 
-            <header className="header p-3">
+            <header className="header p-0">
                 <div className="header-fixed">
                     <nav
                         className={

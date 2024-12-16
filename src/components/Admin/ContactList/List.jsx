@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Listing from "../../Api/Listing";
 import SubDashboard from "../components/SubDashboard";
 import DateFormate from "../components/DateFormate";
+import MessagePopup from "../components/MessagePopup"
 import LoadingPage from "../../../LoadingPage";
 import AuthLayout from "../AuthLayout";
 import { MdOutlineMessage } from "react-icons/md";
@@ -65,11 +66,8 @@ const List = () => {
                                     <th>Page Name</th>
                                     <th>Subject</th>
                                     <th>Message</th>
-
                                     <th>Status</th>
-                                    <th>Reply Message</th>
-
-                                    <th />
+                                    <th>Comment</th>
                                   </tr>
                                 </thead>
                                 <tbody>
@@ -89,18 +87,20 @@ const List = () => {
                                         {item?.role}
                                       </td>
                                       <td>
-                                        {item?.subject}
+                                        <MessagePopup message={item?.subject} wordLimit={5} />
                                       </td>
                                       <td>
-                                        {item?.message}
+                                        <MessagePopup message={item?.message} wordLimit={5} />
+
                                       </td>
                                       <td>
                                         {item?.contact_status
                                         }
                                       </td>
-                                      <td>
+                                      <td className="text-center hover:text-blue-500">
                                         <MdOutlineMessage size={24} />
                                       </td>
+
                                     </tr>
                                   ))}
 

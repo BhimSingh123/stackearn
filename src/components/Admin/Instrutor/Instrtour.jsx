@@ -38,7 +38,7 @@ const Instrtour = () => {
         <AuthLayout>
             <div className="main-wrapper">
 
-                <SubDashboard title={"instructor History"} />
+                <SubDashboard title={"instructor History"}  className="p-3"/>
 
                 {/* Page Content */}
                 <div className="page-content mt-5">
@@ -86,44 +86,44 @@ const Instrtour = () => {
                                                                             <td>
                                                                                 <div className="d-flex align-items-center">
                                                                                     <h2 className="table-avatar d-flex align-items-center">
-                                                                                    <Link to={`/admin/add/instructor/${item?._id}`}
-                                                                                        className="avatar"
-                                                                                    >
-                                                                                        <img
-                                                                                            className="avatar-img"
-                                                                                            src={User2}
-                                                                                            alt="User Image"
-                                                                                        />
-                                                                                    </Link>
-                                                                                    <Link to={`/admin/add/instructor/${item?._id}`}>
-                                                                                    {item?.firstName}
-                                                                                    </Link>
-                                                                                </h2>
+                                                                                        <Link to={`/admin/add/instructor/${item?._id}`}
+                                                                                            className="avatar"
+                                                                                        >
+                                                                                            <img
+                                                                                                className="avatar-img"
+                                                                                                src={User2}
+                                                                                                alt="User Image"
+                                                                                            />
+                                                                                        </Link>
+                                                                                        <Link to={`/admin/add/instructor/${item?._id}`}>
+                                                                                            {item?.firstName}
+                                                                                            <span className="d-flex"> {item?.phoneNumber}</span>
+                                                                                        </Link>
+                                                                                    </h2>
                                                                                 </div>
                                                                             </td>
                                                                             <td>
-                                                                                <DateFormate data={item?.created_at} />
+
+                                                                                <DateFormate data={item?.createdAt} />
                                                                             </td>
 
 
                                                                             <td>{item?.email}</td>
-                                                                         
+
                                                                             <td>
                                                                                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                                                                                     {/* View Action */}
                                                                                     <Link
                                                                                         to={`/admin/add/instructor/${item?._id}`}
-                                                                                        style={{ cursor: 'pointer', textDecoration: 'none', color: 'inherit' }}
                                                                                     >
-                                                                                        <FaRegEye size={24} title="View Instructor" />
+                                                                                        <FaRegEye size={24} title="View Instructor" className="pointer-eye" />
                                                                                     </Link>
 
                                                                                     {/* Update Action */}
                                                                                     <Link
                                                                                         to={`/admin/update/instructor/${item?._id}`}
-                                                                                        style={{ cursor: 'pointer', textDecoration: 'none', color: 'inherit' }}
                                                                                     >
-                                                                                        <MdEdit size={24} title="Edit Instructor" />
+                                                                                        <MdEdit size={24} title="Edit Instructor" className="pointer-eye" />
                                                                                     </Link>
 
                                                                                     {/* Delete Action */}
