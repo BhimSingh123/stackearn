@@ -653,14 +653,12 @@ function School() {
                     </div>
                 </div>
             </section>
-            <div className="mb-4">
-
-            <Contact datarole={"school"}/>
+            <div className="p-7">
+                <Contact datarole={"school"} />
             </div>
             <div className="mt-5">
-
-          <Footer4/>
-</div>
+                <Footer4 />
+            </div>
         </div>
 
     </>);

@@ -421,8 +421,12 @@ function Coaching() {
 
         </div>
 
-        <Contact  datarole={"coaching"}/>
-       <Footer4/>
+        <div className="p-2 m-5">
+            <Contact datarole={"coaching"} />
+        </div>
+        <div className="mt-5">
+        <Footer4 />
+        </div>
     </>);
 }
 

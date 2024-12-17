@@ -132,7 +132,7 @@ function Contact({ datarole }) {
                             <div className="input-block">
                                 <label className="form-label">Message</label>
                                 <textarea
-                                    rows={5}
+                                    rows={3}
                                     name="message"
                                     value={Regs.message}
                                     onChange={handleInputs}
