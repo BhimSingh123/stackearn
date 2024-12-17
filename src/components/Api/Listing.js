@@ -105,6 +105,29 @@ class Listing extends Component {
         return Api.post("/instrutor/instrutor_delete", data)
     }
 
+
+    async CreateCourse(data) {
+        return Api.post("/course/course_post", data)
+    }
+
+    async courseGet() {
+        return Api.get("/course/course_get")
+    }
+
+    async CourseGetId(Id) {
+        return Api.get(`/course/course_get/${Id}`)
+    }
+
+    async Updatecourse(data) {
+        return Api.post("/course/course_update" , data)
+    }
+
+    
+    async courseDelete(data) {
+        return Api.post("/course/course_delete", data)
+    }
+
+
     render() {
         return (
             <div>

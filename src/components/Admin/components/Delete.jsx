@@ -51,10 +51,35 @@ export default function Delete({ step, Id, fetchMarketLists }) {
         }
     };
 
+    
+    const handleCourseDelete = async () => {
+        setLoading(true);
+        try {
+            const main = new Listing();
+            const res = await main.courseDelete({ Id });
+            if (res?.data?.status) {
+                toast.success(res.data.message);
+                toggleModal();
+                fetchMarketLists();
+
+            } else {
+                toast.error(res.data?.message );
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            toast.error(error?.response?.data?.message );
+        } finally {
+            setLoading(false);
+        }
+    };
+
+
     const handleClick = (e) => {
         e.preventDefault();
         if (step === 1) handleUserDelete();
         else if (step === 2) handleinstrorDelete();
+        else if (step === 3) handleCourseDelete();
+
         else console.warn("Invalid step");
     };
 
@@ -87,12 +112,9 @@ export default function Delete({ step, Id, fetchMarketLists }) {
                                 ></button>
                             </div>
                             <div className="modal-body">
-                                <p>
+                                <p className="text-black text-[17px]">
                                     Are you sure you want to delete this{" "}
                                     ?
-                                </p>
-                                <p className="text-danger">
-                                    (This action cannot be undone.)
                                 </p>
                             </div>
                             <div className="modal-footer">

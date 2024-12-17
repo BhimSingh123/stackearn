@@ -104,7 +104,13 @@ export default function StudentSidebar() {
                 </Link>
               </li>
 
-
+              <li className={`nav-item ${location.pathname === '/admin/course-list' ? 'active' : ''}`}>
+                <Link to="/admin/course-list" className="nav-link">
+                  <i className="bx bxs-cart" />
+                 Course History
+                </Link>
+              </li>
+              
             </ul>
             <h3>Account Settings</h3>
             <ul>

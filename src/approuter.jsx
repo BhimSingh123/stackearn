@@ -151,6 +151,10 @@ import List from "./components/Admin/ContactList/List.jsx";
 import Instrtour from "./components/Admin/Instrutor/Instrtour.jsx";
 import AddInstrtour from "./components/Admin/Instrutor/AddInstrtour.jsx";
 import ViewProfile from "./components/Admin/Instrutor/ViewProfile.jsx";
+import AddCourses from "./components/Admin/addCourse/index.jsx";
+import CourseLists from "./components/Admin/addCourse/Courses.jsx";
+
+
 
 
 
@@ -578,18 +582,21 @@ const Approuter = () => {
           element={<AdminLinkedAccount />}
         />
 
-<Route
+        <Route
           path="/admin/user-profile-Id/:id"
           element={<ProfileId />}
         />
 
-        <Route path="/admin/instructor" element={<Instrtour/>} />
-        <Route path="/admin/add/instructor" element={<AddInstrtour/>} />
+        <Route path="/admin/instructor" element={<Instrtour />} />
+        <Route path="/admin/add/instructor" element={<AddInstrtour />} />
 
-        <Route path="/admin/add/instructor/:Id" element={<ViewProfile/>} />
+        <Route path="/admin/add/instructor/:Id" element={<ViewProfile />} />
 
-        <Route path="/admin/update/instructor/:Id" element={<AddInstrtour/>} />
+        <Route path="/admin/update/instructor/:Id" element={<AddInstrtour />} />
 
+        <Route path="/admin/add-course" element={<AddCourses />} />
+        <Route path="/admin/update-course/:Id" element={<AddCourses />} />
+        <Route path="/admin/course-list" element={<CourseLists />} />
 
 
       </Routes>
