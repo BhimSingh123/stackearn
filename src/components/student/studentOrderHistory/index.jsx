@@ -1,8 +1,8 @@
 import React from "react";
 import StudentSidebar from "../sidebar";
 import { Link } from "react-router-dom";
-import { Footer3 } from "../../footer3";
 import Header from "../../header";
+import { Footer4 } from "../../footer4";
 
 const StudentOrderHistory = () => {
   return (
@@ -373,7 +373,7 @@ const StudentOrderHistory = () => {
         </div>
       </div>
       {/* /Page Content */}
-      <Footer3 />
+      <Footer4/>
     </div>
   );
 };

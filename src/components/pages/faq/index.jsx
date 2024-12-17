@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Minus, Plus } from "react-feather";
 import Header from "../../header";
-import { Footer3 } from "../../footer3";
+import { Footer4 } from "../../footer4";
 
 const Faq = () => {
 
@@ -268,7 +268,7 @@ const Faq = () => {
           </div>
         </div>
 
-        <Footer3/>
+        <Footer4/>
         
       </div>
     </>

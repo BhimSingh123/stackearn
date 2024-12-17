@@ -15,8 +15,8 @@ import { Link } from "react-router-dom";
 import { initialSettings } from "../../common/dateRangePicker";
 import DateRangePicker from "react-bootstrap-daterangepicker";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
-import { Footer3 } from "../../footer3";
 import Header from "../../header";
+import { Footer4 } from "../../footer4";
 
 const StudentReferral = () => {
   return (
@@ -572,7 +572,7 @@ const StudentReferral = () => {
         </div>
       </div>
       {/* /Page Content */}
-      <Footer3/>
+      <Footer4/>
     </div>
   );
 };

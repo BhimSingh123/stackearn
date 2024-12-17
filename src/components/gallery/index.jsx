@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Footer3 } from "../footer3";
 import Header from "../header";
 import Select from "react-select";
 
@@ -23,6 +22,7 @@ import {
   } from "../imagepath";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { Footer4 } from "../footer4";
 
 function Index() {
     const mobileSidebar = useSelector(
@@ -425,9 +425,7 @@ const options = [
                     </div>
                 </section>
             </div>
-            <div className="home-three">
-                <Footer3 />
-            </div>
+            <Footer4/>
         </div>
     );
 }

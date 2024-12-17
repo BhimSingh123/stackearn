@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Footer3 } from "../footer3";
 import Header from "../header";
 import Select from "react-select";
 import { TopCategories2 } from "../home3/slider/topCategories";
@@ -24,6 +23,7 @@ import "aos/dist/aos.css";
 import React from "react";
 import Contact from "./Contact";
 import CountUp from "react-countup";
+import { Footer4 } from "../footer4";
 
 function Coaching() {
 
@@ -422,9 +422,7 @@ function Coaching() {
         </div>
 
         <Contact  datarole={"coaching"}/>
-        <div className="home-three">
-            <Footer3 />
-        </div>
+       <Footer4/>
     </>);
 }
 

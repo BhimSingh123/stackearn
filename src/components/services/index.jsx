@@ -1,4 +1,3 @@
-import { Footer3 } from "../footer3";
 import React, { useEffect, useState } from "react";
 
 import Header from "../header";
@@ -14,6 +13,7 @@ import {
     shape3,
     shape4,
 } from "../imagepath";
+import { Footer4 } from "../footer4";
 function Index() {
     const options = [
         { label: "Select Category", value: "Category" },
@@ -608,9 +608,7 @@ function Index() {
                     </div>
                 </div>
             </section>
-            <div className="home-three">
-                <Footer3 />
-            </div>
+            <Footer4/>
         </div>
     </>);
 }

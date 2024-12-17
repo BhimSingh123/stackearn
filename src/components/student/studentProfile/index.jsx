@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import StudentSidebar from '../sidebar'
 import Header from '../../header'
-import { Footer3 } from '../../footer3'
 import Listing from '../../Api/Listing'
 import AuthLayout from '../../../AuthLayout'
 import LoadingPage from '../../../LoadingPage'
 import { Link } from 'react-router-dom'
+import { Footer4 } from '../../footer4'
 
 const StudentProfile = () => {
 
@@ -343,10 +343,7 @@ const StudentProfile = () => {
                     </div>
                     {/* /Page Content */}
                     {/* Footer */}
-                    <div className='home-three'>
-
-                        <Footer3 />
-                    </div>
+                    <Footer4/>
                     {/* /Footer */}
                 </div>
                 {/* Main Wrapper */}

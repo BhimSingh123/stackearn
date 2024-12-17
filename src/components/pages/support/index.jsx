@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Header from "../../header";
-import { Footer3 } from "../../footer3";
 import { Icon03, Join, Icon02, Icon01, Icon04 } from "../../imagepath";
 import toast from "react-hot-toast";
 import Listing from "../../Api/Listing";
+import { Footer4 } from "../../footer4";
 
 const Support = () => {
 
@@ -229,10 +229,7 @@ const Support = () => {
             </div>
           </div>
         </div>
-        <div className="home-three">
-
-          <Footer3 />
-        </div>
+        <Footer4/>
       </div>
     </>
   );

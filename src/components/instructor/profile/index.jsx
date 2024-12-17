@@ -11,7 +11,7 @@ import {
 } from "../../imagepath";
 import { Link } from "react-router-dom";
 import Header from "../../header";
-import { Footer3 } from "../../footer3";
+import { Footer4 } from "../../footer4";
 
 export default function InstructorProfile() {
   return (
@@ -665,9 +665,7 @@ export default function InstructorProfile() {
         </div>
       </section>
       {/* Course Content */}
-      <div className="home-three">
-      <Footer3/>
-      </div>
+      <Footer4/>
     </div>
     </>
   );

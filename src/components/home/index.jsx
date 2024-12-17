@@ -56,8 +56,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import CountUp from "react-countup";
-import { Footer3 } from "../footer3";
 import Testinomal from "../home3/Testinomal";
+import { Footer4 } from "../footer4";
 // import EventsSection from "../pages/EventSection";
 
 const options = [
@@ -1428,9 +1428,11 @@ export const Home = () => {
         {/* /Blog */}
 
         {/* Footer */}
-        <div className="home-three">
+        {/* <div className="home-three">
           <Footer3 />
-        </div>
+        </div> */}
+
+        <Footer4/>
         {/* /Footer */}
       </div>
     </>

@@ -2,8 +2,8 @@ import React from "react";
 import StudentSidebar from "../sidebar";
 import { User16 } from "../../imagepath";
 import { Link } from "react-router-dom";
-import { Footer3 } from "../../footer3";
 import Header from "../../header";
+import { Footer4 } from "../../footer4";
 
 const StudentReviews = () => {
   return (
@@ -239,7 +239,7 @@ const StudentReviews = () => {
         </div>
       </div>
       {/* /Page Content */}
-      <Footer3/>
+      <Footer4/>
     </div>
   );
 };

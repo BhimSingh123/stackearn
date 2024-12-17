@@ -9,14 +9,14 @@ import {
   Icon22,
   Icon23,
 } from "../imagepath";
-import { Footer3 } from "../footer3";
 import Header from "../header";
+import { Footer4 } from "../footer4";
 
 const BlogGrid = () => {
   return (
     <>
       <div className="main-wrapper">
-<Header/>
+        <Header />
         <div className="breadcrumb-bar">
           <div className="container mt-4">
             <div className="row">
@@ -440,7 +440,7 @@ const BlogGrid = () => {
                     </div>
                     {/* /Blog Post */}
                   </div>
-                
+
                 </div>
                 {/* Blog pagination */}
                 <div className="row">
@@ -686,10 +686,7 @@ const BlogGrid = () => {
             </div>
           </div>
         </section>
-        <div className="home-three">
-
-        <Footer3/>
-        </div>
+        <Footer4 />
       </div>
     </>
   );

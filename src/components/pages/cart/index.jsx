@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Course10, Course11, Course12, Icon1, Icon2 } from "../../imagepath";
 import Header from "../../header";
-import { Footer3 } from "../../footer3";
+import { Footer4 } from "../../footer4";
 
 const Cart = () => {
   return (
@@ -271,7 +271,7 @@ const Cart = () => {
           </div>
         </section>
 
-        <Footer3/>
+        <Footer4/>
       </div>
     </>
   );

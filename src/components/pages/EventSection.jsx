@@ -1,7 +1,7 @@
 import React from 'react';
-import { Footer3 } from '../footer3';
 import Header from '../header';
 import { Link } from 'react-router-dom';
+import { Footer4 } from '../footer4';
 
 const events = [
   {
@@ -139,10 +139,7 @@ const EventsSection = () => {
           </div>
         </div>
       </section>
-      <div className='home-three'>
-
-        <Footer3 />
-      </div>
+     <Footer4/>
     </div>
 
   );

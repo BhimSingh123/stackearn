@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { CountFour, HomeRightBottom, Skill1, CountTwo, CountOne, CountThree, Skills03, Skills01, Skills02, SkillsIcon02, SkillsIcon01, SkillsIcon03, MapUser } from "../../imagepath";
-import { Footer3 } from "../../footer3";
 import Header from "../../header";
 import CountUp from "react-countup";
+import { Footer4 } from "../../footer4";
 
 function index() {
     return (<>
@@ -62,122 +62,123 @@ function index() {
                     </div>
                 </div>
             </section>
-            <div className= "home-two">
+            <div className="home-two">
 
-            <section className="about-section">
-                <div className="container">
-                    <div className="row">
-                        <div
-                            className="col-lg-6 wow fadeInLeft order-lg-1 order-xs-2 order-sm-2"
-                            data-aos="fade-up"
-                        >
-                            <div className="header-two-title">
-                                <p className="tagline">Learn with DreamLMS</p>
-                                <h2 className="mb-0">
-                                    Get Trained By Experts & Professionals around the World
-                                </h2>
-                            </div>
-                            <div className="header-two-title">
-                                <p className="about-text">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Quam dolor fermentum massa viverra congue proin. A volutpat
-                                    eget ultrices velit nunc orci. Commodo quis integer a felis
-                                    ac vel mauris a morbi. Scelerisque nunc accumsan elementum
-                                    aenean nisl lacinia. Congue enim aliquet ac vitae turpis.
-                                    Neque, bibendum imperdiet sed ullamcorper morbi amet.
-                                    Facilisi odio amet, nunc quam ut nulla purus adipiscing
-                                    pharetra.
-                                </p>
-                                <div className="about-button more-details">
-                                    <Link to="/course-list" className="discover-btn">
-                                        Learn more <i className="fas fa-arrow-right ms-2"></i>
-                                    </Link>
+                <section className="about-section">
+                    <div className="container">
+                        <div className="row">
+                            <div
+                                className="col-lg-6 wow fadeInLeft order-lg-1 order-xs-2 order-sm-2"
+                                data-aos="fade-up"
+                            >
+                                <div className="header-two-title">
+                                    <p className="tagline">Learn with DreamLMS</p>
+                                    <h2 className="mb-0">
+                                        Get Trained By Experts & Professionals around the World
+                                    </h2>
+                                </div>
+                                <div className="header-two-title">
+                                    <p className="about-text">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                        Quam dolor fermentum massa viverra congue proin. A volutpat
+                                        eget ultrices velit nunc orci. Commodo quis integer a felis
+                                        ac vel mauris a morbi. Scelerisque nunc accumsan elementum
+                                        aenean nisl lacinia. Congue enim aliquet ac vitae turpis.
+                                        Neque, bibendum imperdiet sed ullamcorper morbi amet.
+                                        Facilisi odio amet, nunc quam ut nulla purus adipiscing
+                                        pharetra.
+                                    </p>
+                                    <div className="about-button more-details">
+                                        <Link to="/course-list" className="discover-btn">
+                                            Learn more <i className="fas fa-arrow-right ms-2"></i>
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div className="col-lg-6 order-lg-2 order-xs-1 order-sm-1">
-                            <div className="stylist-gallery">
-                                <div className="row">
-                                    <div
-                                        className="col-lg-6 col-md-6 col-sm-12 col-12"
-                                        data-aos="fade-down"
-                                    >
-                                        <div className="about-image count-one d-flex align-items-center justify-content-center flex-fill project-details">
-                                            <div className="about-count">
-                                                <div className="course-img">
-                                                    <img src={CountOne} alt="" />
-                                                </div>
-                                                <div className="count-content-three course-count ms-0">
-                                                    <h4>
-                                                        <span className="d-flex">
-                                                            <CountUp start={0} end={10} delay={1} duration={4} />K
-                                                        </span>
-                                                    </h4>
-                                                    <p className="mb-0">Online Courses</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div
-                                        className="col-lg-6 col-md-6 col-sm-12 col-12"
-                                        data-aos="fade-down"
-                                    >
-                                        <div className="about-image count-two d-flex align-items-center justify-content-center flex-fill project-details">
-                                            <div className="about-count">
-                                                <div className="course-img">
-                                                    <img src={CountTwo} alt="" />
-                                                </div>
-                                                <div className="count-content-three course-count ms-0">
-                                                    <h4>
-                                                        <span className="d-flex">
-                                                            <CountUp start={0} end={215} delay={1} />+
-                                                            +
-                                                        </span>
-                                                    </h4>
-                                                    <p className="mb-0">Expert Tutors</p>
+                            <div className="col-lg-6 order-lg-2 order-xs-1 order-sm-1">
+                                <div className="stylist-gallery">
+                                    <div className="row">
+                                        <div
+                                            className="col-lg-6 col-md-6 col-sm-12 col-12"
+                                            data-aos="fade-down"
+                                        >
+                                            <div className="about-image count-one d-flex align-items-center justify-content-center flex-fill project-details">
+                                                <div className="about-count">
+                                                    <div className="course-img">
+                                                        <img src={CountOne} alt="" />
+                                                    </div>
+                                                    <div className="count-content-three course-count ms-0">
+                                                        <h4>
+                                                            <span className="d-flex">
+                                                                <CountUp start={0} end={10} delay={1} duration={4} />K
+                                                            </span>
+                                                        </h4>
+                                                        <p className="mb-0">Online Courses</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div
-                                        className="col-lg-6 col-md-6 col-sm-12 col-12"
-                                        data-aos="fade-right"
-                                        data-wow-delay="1.5"
-                                    >
-                                        <div className="about-image count-three d-flex align-items-center justify-content-center flex-fill project-details">
-                                            <div className="about-count">
-                                                <div className="course-img">
-                                                    <img src={CountThree} alt="" />
-                                                </div>
-                                                <div className="count-content-three course-count ms-0">
-                                                    <h4>
-                                                        <span className="d-flex">
-                                                            <CountUp start={0} end={10} delay={1} duration={4} />K
-                                                        </span>
-                                                    </h4>
-                                                    <p className="mb-0">Ceritified Courses</p>
+                                        <div
+                                            className="col-lg-6 col-md-6 col-sm-12 col-12"
+                                            data-aos="fade-down"
+                                        >
+                                            <div className="about-image count-two d-flex align-items-center justify-content-center flex-fill project-details">
+                                                <div className="about-count">
+                                                    <div className="course-img">
+                                                        <img src={CountTwo} alt="" />
+                                                    </div>
+                                                    <div className="count-content-three course-count ms-0">
+                                                        <h4>
+                                                            <span className="d-flex">
+                                                                <CountUp start={0} end={215} delay={1} />+
+                                                                +
+                                                            </span>
+                                                        </h4>
+                                                        <p className="mb-0">Expert Tutors</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div
-                                        className="col-lg-6 col-md-6 col-sm-12 col-12"
-                                        data-aos="fade-left"
-                                        data-wow-delay="0.5"
-                                    >
-                                        <div className="about-image count-four d-flex align-items-center justify-content-center flex-fill project-details">
-                                            <div className="about-count">
-                                                <div className="course-img">
-                                                    <img src={CountFour} alt="" />
+                                        <div
+                                            className="col-lg-6 col-md-6 col-sm-12 col-12"
+                                            data-aos="fade-right"
+                                            data-wow-delay="1.5"
+                                        >
+                                            <div className="about-image count-three d-flex align-items-center justify-content-center flex-fill project-details">
+                                                <div className="about-count">
+                                                    <div className="course-img">
+                                                        <img src={CountThree} alt="" />
+                                                    </div>
+                                                    <div className="count-content-three course-count ms-0">
+                                                        <h4>
+                                                            <span className="d-flex">
+                                                                <CountUp start={0} end={10} delay={1} duration={4} />K
+                                                            </span>
+                                                        </h4>
+                                                        <p className="mb-0">Ceritified Courses</p>
+                                                    </div>
                                                 </div>
-                                                <div className="count-content-three course-count ms-0">
-                                                    <h4>
-                                                        <span className="d-flex">
-                                                            <CountUp start={0} end={10} delay={1} duration={4} />K
-                                                        </span>
-                                                    </h4>
-                                                    <p className="mb-0">Online Students</p>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className="col-lg-6 col-md-6 col-sm-12 col-12"
+                                            data-aos="fade-left"
+                                            data-wow-delay="0.5"
+                                        >
+                                            <div className="about-image count-four d-flex align-items-center justify-content-center flex-fill project-details">
+                                                <div className="about-count">
+                                                    <div className="course-img">
+                                                        <img src={CountFour} alt="" />
+                                                    </div>
+                                                    <div className="count-content-three course-count ms-0">
+                                                        <h4>
+                                                            <span className="d-flex">
+                                                                <CountUp start={0} end={10} delay={1} duration={4} />K
+                                                            </span>
+                                                        </h4>
+                                                        <p className="mb-0">Online Students</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -186,8 +187,7 @@ function index() {
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
             </div>
 
             <section className="master-skills-sec">
@@ -389,10 +389,7 @@ function index() {
                     </div>
                 </div>
             </section>
-            <div className="home-three">
-
-                <Footer3 />
-            </div>
+            <Footer4 />
         </div>
     </>);
 }

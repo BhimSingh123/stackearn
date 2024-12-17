@@ -30,8 +30,8 @@ import {
 import Select from "react-select";
 import LeadingCompanies4 from "../home4/slider/leadingCompanies";
 import CountUp from "react-countup";
-import { Footer3 } from "../footer3";
 import Contact from "./Contact";
+import { Footer4 } from "../footer4";
 
 function School() {
     const mobileSidebar = useSelector(
@@ -653,10 +653,14 @@ function School() {
                     </div>
                 </div>
             </section>
+            <div className="mb-4">
+
             <Contact datarole={"school"}/>
-            <div className="home-three">
-                <Footer3 />
             </div>
+            <div className="mt-5">
+
+          <Footer4/>
+</div>
         </div>
 
     </>);

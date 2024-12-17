@@ -11,6 +11,7 @@ import Listing from "../../Api/Listing";
 import LoadingPage from "../../../LoadingPage";
 import Delete from "../components/Delete";
 import { MdModeEditOutline } from "react-icons/md";
+import SubDashboard from "../components/SubDashboard";
 
 
 const Courses = () => {
@@ -42,7 +43,9 @@ const Courses = () => {
 
       <div className="main-wrapper">
         {/* Page Content */}
-        <div className="page-content">
+        <SubDashboard title={"instructor History"}  className="p-3"/>
+
+        <div className="page-content  mt-[10px]">
           <div className="container">
             <div className="row">
               {/* sidebar */}

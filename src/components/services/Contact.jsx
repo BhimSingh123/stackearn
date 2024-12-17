@@ -56,8 +56,8 @@ function Contact({ datarole }) {
     };
 
     return (
-        <div className="container my-5">
-            <div className="row g-0">
+        <div className="container">
+            <div className="row">
                 {/* Left Section */}
                 <div className="col-md-6 d-flex flex-column align-items-center justify-content-center bg-light text-center p-4">
                     <img src={LoginImg} alt="Login Banner" className="img-fluid mb-2" />
@@ -68,7 +68,6 @@ function Contact({ datarole }) {
                         ad minim veniam.
                     </p>
                 </div>
-
                 {/* Right Section */}
                 <div className="col-md-6 login-wrapper loginbox d-flex align-items-center bg-white p-4">
                     <div className="w-100">
@@ -143,7 +142,7 @@ function Contact({ datarole }) {
                                 ></textarea>
 
                             </div>
-                            <div className="d-grid">
+                            <div className="d-grid mb-[10px]">
                                 <button className="login-head button" type="submit" disabled={loading}>
 
                                     {loading ? "Loading..." : "Contact Us"}

@@ -1,11 +1,49 @@
-import React from "react";
+import React, {  useState } from "react";
 import { MapPin } from "react-feather";
 import { Link } from "react-router-dom";
 import { FooterLeft, FooterRight, logoFiveSvg } from "../imagepath";
+import toast from "react-hot-toast";
+import Listing from "../Api/Listing";
 
 export const Footer4 = () => {
+
+  const [Regs, setRegs] = useState({
+    email: "",
+});
+const handleInputs = (e) => {
+    const value = e.target.value;
+    const name = e.target.name;
+    setRegs((prevState) => ({ ...prevState, [name]: value }));
+};
+
+const [loading, setLoading] = useState(false);
+
+const handleForms = async (e) => {
+    e.preventDefault();
+    if (loading) return;
+
+    if ( !Regs.email) {
+        toast.error("Please fill out all fields.");
+        return;
+    }
+
+    setLoading(true);
+    const main = new Listing();
+    try {
+        const response = await main.subscribe(Regs);
+        if (response?.data?.status) {
+            toast.success(response.data.message);
+        } else {
+            toast.error(response.data.message);
+        }
+    } catch (error) {
+        toast.error("Something went wrong, please try again.");
+    } finally {
+        setLoading(false);
+    }
+};
   return (
-    <footer className="footer footer-five">
+    <footer className="footer footer-five mt-4">
       {/* Footer Top */}
       <div className="footer-top-five">
         <div className="container">
@@ -102,12 +140,15 @@ export const Footer4 = () => {
                   <form>
                     <div className="input-block mb-0">
                       <input
-                        type="text"
+                         type="email"
+                         name="email"
+                         value={Regs?.email}
+                         onChange={handleInputs}
                         className="form-control"
                         placeholder="Enter Your Email Address"
                       />
-                      <button type="submit" className="btn btn-one">
-                        Subscribe
+                      <button type="submit" className="btn btn-one" onClick={handleForms}>
+                      {loading ? "Loading..." : "Subscribe Now"}
                       </button>
                     </div>
                   </form>
@@ -153,6 +194,7 @@ export const Footer4 = () => {
                   <p>&copy; 2023 DreamsLMS. All rights reserved.</p>
                 </div>
               </div>
+
               <div className="col-md-4">
                 <div className="social-icon-five">
                   <ul className="nav">

@@ -17,7 +17,7 @@ import {
 import { useSelector } from "react-redux";
 import Select from "react-select";
 import Header from "../../header";
-import { Footer3 } from "../../footer3";
+import { Footer4 } from "../../footer4";
 
 export default function InstructorGrid() {
   const mobileSidebar = useSelector(
@@ -682,10 +682,8 @@ export default function InstructorGrid() {
       </div>
       {/* Page Wrapper */}
       {/* <Footer /> */}
-      <div className="home-three">
 
-<Footer3 />
-</div>
+<Footer4 />
     </div>
     </>
   );
