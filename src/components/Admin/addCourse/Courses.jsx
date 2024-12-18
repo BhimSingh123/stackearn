@@ -92,8 +92,8 @@ const Courses = () => {
                                           </Link>
                                           <div className="price">
                                             <h3>
-                                              ${course.price}{" "}
-                                              <span>${course.originalPrice || "99.00"}</span>
+                                              ${course.discountPrice }
+                                              <span>${course.price ||"0"}</span>
                                             </h3>
                                           </div>
                                         </div>

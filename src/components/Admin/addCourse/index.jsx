@@ -7,18 +7,18 @@ import toast from "react-hot-toast";
 import Listing from "../../Api/Listing";
 
 const AddCourse = () => {
-  const [category, setCategory] = useState(null);
-  const [level, setLevel] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [lectures, setLectures] = useState([]);
 
   const { Id } = useParams();
 
   const [courseDetails, setCourseDetails] = useState({
     title: "",
     description: "",
-    category: category || "",
+    category: "",
     price: "",
-    level: level || "",
+    discountPrice: "",
+    level: "",
     courseImage: "",
     duration: "",
     Id: Id,
@@ -45,20 +45,23 @@ const AddCourse = () => {
     }));
   };
 
-  const handleCategoryChange = (selectedOption) => {
-    setCategory(selectedOption);
-    setCourseDetails((prevState) => ({
-      ...prevState,
-      category: selectedOption?.value || "",
-    }));
+  const handleLectureChange = (index, field, value) => {
+    const updatedLectures = [...lectures];
+    updatedLectures[index][field] = value;
+    setLectures(updatedLectures);
   };
 
-  const handleLevelChange = (selectedOption) => {
-    setLevel(selectedOption);
-    setCourseDetails((prevState) => ({
-      ...prevState,
-      level: selectedOption?.value || "",
-    }));
+  const addLecture = () => {
+    setLectures((prevLectures) => [
+      ...prevLectures,
+      // { name: "", subtitle: "", video: null },
+      { name: "", subtitle: "" },
+
+    ]);
+  };
+
+  const removeLecture = (index) => {
+    setLectures((prevLectures) => prevLectures.filter((_, i) => i !== index));
   };
 
   const fetchCourseData = async () => {
@@ -68,6 +71,9 @@ const AddCourse = () => {
       const response = await main.CourseGetId(Id);
       if (response?.data?.data) {
         setCourseDetails(response.data.data);
+        if (response.data.data.lectures) {
+          setLectures(response.data.data.lectures);
+        }
       } else {
         toast.error("Failed to fetch course details.");
       }
@@ -87,9 +93,10 @@ const AddCourse = () => {
     const main = new Listing();
 
     try {
+      const payload = { ...courseDetails, lectures };
       const response = Id
-        ? await main.Updatecourse(courseDetails)
-        : await main.CreateCourse(courseDetails);
+        ? await main.Updatecourse(payload)
+        : await main.CreateCourse(payload);
 
       if (response?.data) {
         toast.success(response.data.message || "Operation successful");
@@ -99,10 +106,12 @@ const AddCourse = () => {
             description: "",
             category: "",
             price: "",
+            discountPrice: "",
             level: "",
             courseImage: "",
             duration: "",
           });
+          setLectures([]);
         }
       } else {
         toast.error(response?.data?.message || "Unexpected error occurred.");
@@ -126,7 +135,7 @@ const AddCourse = () => {
         <section className="page-content course-sec mt-5">
           <div className="container">
             <div className="row">
-                <StudentSidebar />
+              <StudentSidebar />
               <div className="col-md-9">
                 <div className="card shadow">
                   <div className="card-header bg-primary text-white">
@@ -134,6 +143,7 @@ const AddCourse = () => {
                   </div>
                   <div className="card-body">
                     <form onSubmit={handleSubmit}>
+                      {/* Course Title */}
                       <div className="mb-3">
                         <label className="form-label">Course Title</label>
                         <input
@@ -147,6 +157,7 @@ const AddCourse = () => {
                         />
                       </div>
 
+                      {/* Description */}
                       <div className="mb-3">
                         <label className="form-label">Description</label>
                         <textarea
@@ -160,12 +171,19 @@ const AddCourse = () => {
                         />
                       </div>
 
+                      {/* Category */}
                       <div className="mb-3">
                         <label className="form-label">Category</label>
                         <select
-                          value={category?.value || ""}
-                          onChange={(e) => handleCategoryChange({ value: e.target.value, label: e.target.options[e.target.selectedIndex].text })}
+                          value={courseDetails?.category || ""}
+                          onChange={(e) =>
+                            setCourseDetails((prevState) => ({
+                              ...prevState,
+                              category: e.target.value,
+                            }))
+                          }
                           className="form-select"
+                          required
                         >
                           <option value="" disabled>
                             Select category
@@ -178,12 +196,19 @@ const AddCourse = () => {
                         </select>
                       </div>
 
+                      {/* Level */}
                       <div className="mb-3">
                         <label className="form-label">Level</label>
                         <select
-                          value={level?.value || ""}
-                          onChange={(e) => handleLevelChange({ value: e.target.value, label: e.target.options[e.target.selectedIndex].text })}
+                          value={courseDetails?.level || ""}
+                          onChange={(e) =>
+                            setCourseDetails((prevState) => ({
+                              ...prevState,
+                              level: e.target.value,
+                            }))
+                          }
                           className="form-select"
+                          required
                         >
                           <option value="" disabled>
                             Select level
@@ -196,6 +221,7 @@ const AddCourse = () => {
                         </select>
                       </div>
 
+                      {/* Price */}
                       <div className="mb-3">
                         <label className="form-label">Price</label>
                         <input
@@ -209,18 +235,20 @@ const AddCourse = () => {
                         />
                       </div>
 
+                      {/* Discount Price */}
                       <div className="mb-3">
-                        <label className="form-label">courseImage</label>
+                        <label className="form-label">Discount Price</label>
                         <input
-                          type="file"
+                          type="number"
                           className="form-control"
-                          name="courseImage"
-                          value={courseDetails.courseImage}
+                          name="discountPrice"
+                          value={courseDetails.discountPrice}
                           onChange={handleInputChange}
-                          placeholder="Enter course Image"
+                          placeholder="Enter discount price"
                         />
                       </div>
 
+                      {/* Duration */}
                       <div className="mb-3">
                         <label className="form-label">Duration (in hours)</label>
                         <input
@@ -234,13 +262,107 @@ const AddCourse = () => {
                         />
                       </div>
 
-                      <div className="text-end">
+                      {/* Lectures Section */}
+                      <div className="mb-3">
+                        <label className="form-label">Lectures</label>
+                        {lectures.map((lecture, index) => (
+                          <div key={index} className="mb-3 border p-3">
+                            <div className="mb-2">
+                              <label className="form-label">Lecture Name</label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                value={lecture.name}
+                                onChange={(e) =>
+                                  handleLectureChange(
+                                    index,
+                                    "name",
+                                    e.target.value
+                                  )
+                                }
+                                placeholder="Enter lecture name"
+                                required
+                              />
+                            </div>
+                            <div className="mb-2">
+                              <label className="form-label">Subtitle</label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                value={lecture.subtitle}
+                                onChange={(e) =>
+                                  handleLectureChange(
+                                    index,
+                                    "subtitle",
+                                    e.target.value
+                                  )
+                                }
+                                placeholder="Enter lecture subtitle"
+                              />
+                            </div>
+                            {/* <div className="mb-2">
+                              <label className="form-label">Video</label>
+                              <input
+                                type="file"
+                                className="form-control"
+                                onChange={(e) =>
+                                  handleLectureChange(
+                                    index,
+                                    "video",
+                                    e.target.files[0]
+                                  )
+                                }
+                              />
+                            </div> */}
+                            <button
+                              type="button"
+                              className="btn btn-danger"
+                              onClick={() => removeLecture(index)}
+                            >
+                              Remove Lecture
+                            </button>
+                          </div>
+                        ))}
+                        <div className="mb-3 d-flex justify-content-end">
+                          <button
+                            type="button"
+                            className="btn btn-secondary"
+                            onClick={addLecture}
+                          >
+                            Add More Lecture
+                          </button>
+                        </div>
+
+                      </div>
+
+                      {/* Course Image */}
+                      {/* <div className="mb-3">
+                        <label className="form-label">Course Image</label>
+                        <input
+                          type="file"
+                          className="form-control"
+                          name="courseImage"
+                          onChange={(e) =>
+                            setCourseDetails((prevState) => ({
+                              ...prevState,
+                              courseImage: e.target.files[0],
+                            }))
+                          }
+                        />
+                      </div> */}
+
+                      {/* Submit Button */}
+                      <div className="mt-4">
                         <button
                           type="submit"
                           className="btn btn-primary"
                           disabled={loading}
                         >
-                          {loading ? "Processing..." : Id ? "Update" : "Add"}
+                          {loading
+                            ? "Saving..."
+                            : Id
+                              ? "Update Course"
+                              : "Add Course"}
                         </button>
                       </div>
                     </form>
