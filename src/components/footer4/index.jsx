@@ -1,9 +1,10 @@
 import React, {  useState } from "react";
 import { MapPin } from "react-feather";
 import { Link } from "react-router-dom";
-import { FooterLeft, FooterRight, logoFiveSvg } from "../imagepath";
+import {  FooterLeft, FooterRight, logoFiveSvg } from "../imagepath";
 import toast from "react-hot-toast";
 import Listing from "../Api/Listing";
+import { MdOutlineMail } from "react-icons/md";
 
 export const Footer4 = () => {
 
@@ -73,21 +74,25 @@ const handleForms = async (e) => {
                     </span>
                     +19 123-456-7890
                   </p>
+                  <p className="mb-3 mt-2 d-flex align-items-center">
+  <MdOutlineMail className="me-2 phone-icon" />
+  <span>stacklearn@gmail.com</span>
+</p>
+
+
                 </div>
               </div>
               {/* Footer Widget */}
             </div>
 
-            <div className="col-lg-2 col-md-3 col-sm-12">
+            <div className="col-lg-4 col-md-6 col-sm-12 ">
               {/* Footer Widget */}
               <div className="footer-menu footer-menu-five">
                 <h2 className="footer-title footer-title-five">
-                  <i className="fa-sharp fa-solid fa-dash"></i>For Instructor
+                  <i className="fa-sharp fa-solid fa-dash"></i>Quick Links
                 </h2>
                 <ul>
-                  <li>
-                    <Link to="/instructor/instructor-profile">Profile</Link>
-                  </li>
+                 
                   <li>
                     <Link to="/login">Login</Link>
                   </li>
@@ -95,40 +100,19 @@ const handleForms = async (e) => {
                     <Link to="/register">Register</Link>
                   </li>
                   <li>
-                    <Link to="/instructor/instructor-list">Instructor</Link>
+                    <Link to="/deposit-instructor-dashboard"> Support</Link>
                   </li>
                   <li>
-                    <Link to="/deposit-instructor-dashboard"> Dashboard</Link>
+                    <Link to="/deposit-instructor-dashboard"> Privacy Policy</Link>
+                  </li>
+                  <li>
+                    <Link to="/instructor/instructor-profile">Term & condition</Link>
                   </li>
                 </ul>
               </div>
               {/* Footer Widget */}
             </div>
 
-            <div className="col-lg-2 col-md-3 col-sm-12">
-              {/* Footer Widget */}
-              <div className="footer-menu footer-menu-five">
-                <h2 className="footer-title footer-title-five">For Student</h2>
-                <ul>
-                  <li>
-                    <Link to="/student/students-profile">Profile</Link>
-                  </li>
-                  <li>
-                    <Link to="/login">Login</Link>
-                  </li>
-                  <li>
-                    <Link to="/register">Register</Link>
-                  </li>
-                  <li>
-                    <Link to="/student/students-list">Student</Link>
-                  </li>
-                  <li>
-                    <Link to="/deposit-student-dashboard"> Dashboard</Link>
-                  </li>
-                </ul>
-              </div>
-              {/* Footer Widget */}
-            </div>
 
             <div className="col-lg-4 col-md-6 col-sm-6 col-12">
               <h2 className="footer-title footer-title-five">
@@ -148,7 +132,7 @@ const handleForms = async (e) => {
                         placeholder="Enter Your Email Address"
                       />
                       <button type="submit" className="btn btn-one" onClick={handleForms}>
-                      {loading ? "Loading..." : "Subscribe Now"}
+                      {loading ? "Loading..." : "Subscribe"}
                       </button>
                     </div>
                   </form>
@@ -191,7 +175,7 @@ const handleForms = async (e) => {
               </div>
               <div className="col-md-4">
                 <div className="copyright-text">
-                  <p>&copy; 2023 DreamsLMS. All rights reserved.</p>
+                  <p>&copy; 2024 StackLearn. All rights reserved.</p>
                 </div>
               </div>
 

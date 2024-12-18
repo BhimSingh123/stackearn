@@ -12,9 +12,18 @@ import {
   Shape02,
   Pattern03,
   Pattern04,
+  FeaturedCourse1,
+  FeaturedCourse2,
+  FeaturedCourse3,
+  FeaturedCourse4,
+  FeaturedCourse5,
+  FeaturedCourse6,
+  User1,
+  User3,
+  User4,
+  User6,
   Shape01,
   Time,
-  User2,
   Winning,
 } from "../imagepath";
 import {
@@ -22,14 +31,12 @@ import {
   Become1,
   Become2,
   CertificateIcon,
-  Course2,
   CourseIcon,
   GratuateIcon,
   Icon01,
   Icon02,
   Icon03,
   Icon04,
-  Icon1,
   Icon10,
   Icon12,
   Icon13,
@@ -38,7 +45,6 @@ import {
   Icon16,
   Icon17,
   Icon18,
-  Icon2,
   Icon7,
   Icon8,
   Icon9,
@@ -58,7 +64,6 @@ import { useEffect } from "react";
 import CountUp from "react-countup";
 import Testinomal from "../home3/Testinomal";
 import { Footer4 } from "../footer4";
-// import EventsSection from "../pages/EventSection";
 
 const options = [
   { label: "Category", value: "Category" },
@@ -70,14 +75,10 @@ const options = [
 
 export const Home = () => {
   const [setValue] = useState(null);
-  const [isActivetwo, setIsActive] = useState(false);
   const mobileSidebar = useSelector(
     (state) => state.sidebarSlice.expandMenu
   );
-  const toggleClasstwo = () => {
-    setIsActive(!isActivetwo);
-  };
-
+ 
   const formatValue = (value) => `${Math.floor(value)}`;
 
   const style = {
@@ -132,7 +133,10 @@ export const Home = () => {
 
   }, [mobileSidebar]);
 
- 
+  const [toggle, setToggle] = useState(1);
+  const updateToggle = (id) => {
+    setToggle(id);
+  };
 
   return (
     <>
@@ -343,7 +347,7 @@ export const Home = () => {
         {/* Top Category with Owl Carousel */}
 
         {/* What's new Featured Course */}
-        <section className="section new-course">
+        {/* <section className="section new-course">
           <div className="container">
             <div className="section-header aos" data-aos="fade-up">
               <div className="section-sub-head">
@@ -799,6 +803,3468 @@ export const Home = () => {
               </div>
             </div>
           </div>
+        </section> */}
+
+        <section className="featured-section-five">
+          <div className="container">
+            <div className="header-five-title text-center" data-aos="fade-down">
+              <h2>Featured Courses</h2>
+              <p>Pick Your Favourite Course</p>
+            </div>
+            <div className="row">
+              <div className="featured-courses-five-tab">
+                <div className="tab-content">
+                  <div className="nav tablist-five" role="tablist">
+                    <Link
+                      className={toggle === 1 ? "nav-tab active" : "nav-tab"}
+                      data-bs-toggle="tab"
+                      to="#ux-design-tab"
+                      role="tab"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        updateToggle(1);
+                      }}
+                    >
+                      UI/UX Design
+                    </Link>
+
+                    <Link
+                      className={toggle === 2 ? "nav-tab active" : "nav-tab"}
+                      data-bs-toggle="tab"
+                      to="#development-tab"
+                      role="tab"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        updateToggle(2);
+                      }}
+                    >
+                      Development
+                    </Link>
+
+                    <Link
+                      className={toggle === 3 ? "nav-tab active" : "nav-tab"}
+                      data-bs-toggle="tab"
+                      to="#marketing-tab"
+                      role="tab"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        updateToggle(3);
+                      }}
+                    >
+                      Marketing
+                    </Link>
+
+                    <Link
+                      className={toggle === 4 ? "nav-tab active" : "nav-tab"}
+                      data-bs-toggle="tab"
+                      to="#business-tab"
+                      role="tab"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        updateToggle(4);
+                      }}
+                    >
+                      Business
+                    </Link>
+
+                    <Link
+                      className={toggle === 5 ? "nav-tab active" : "nav-tab"}
+                      data-bs-toggle="tab"
+                      to="#technology-tab"
+                      role="tab"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        updateToggle(5);
+                      }}
+                    >
+                      Technology
+                    </Link>
+
+                    <Link
+                      className={toggle === 6 ? "nav-tab active" : "nav-tab"}
+                      data-bs-toggle="tab"
+                      to="#all-category-tab"
+                      role="tab"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        updateToggle(6);
+                      }}
+                    >
+                      All Category
+                    </Link>
+                  </div>
+
+                  <div className="tab-content">
+                    {/* UI Design */}
+                    <div
+                      className={
+                        toggle === 1
+                          ? "tab-pane fade active show"
+                          : "tab-pane fade"
+                      }
+                      id="ux-design-tab"
+                    >
+                      <div className="ux-design-five">
+                        <div className="row">
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse1}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Cristofer Nolen
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse2}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse3}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User3}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Russell T. Johnson
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse4}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User4}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse5}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User6}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Russell T. Johnson
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse6}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+                        </div>
+                      </div>
+                    </div>
+                    {/* UI Design */}
+
+                    {/* Development */}
+                    <div
+                      className={
+                        toggle === 2
+                          ? "tab-pane fade active show"
+                          : "tab-pane fade"
+                      }
+                      id="development-tab"
+                    >
+                      <div className="ux-design-five">
+                        <div className="row">
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse6}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse5}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse4}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse3}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse2}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse1}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+                        </div>
+                      </div>
+                    </div>
+                    {/* Development */}
+
+                    {/* Marketing */}
+                    <div
+                      className={
+                        toggle === 3
+                          ? "tab-pane fade active show"
+                          : "tab-pane fade"
+                      }
+                      id="marketing-tab"
+                    >
+                      <div className="ux-design-five">
+                        <div className="row">
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse1}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse2}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse3}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse4}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse5}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse6}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+                        </div>
+                      </div>
+                    </div>
+                    {/* Marketing */}
+
+                    {/* Business */}
+                    <div
+                      className={
+                        toggle === 4
+                          ? "tab-pane fade active show"
+                          : "tab-pane fade"
+                      }
+                      id="business-tab"
+                    >
+                      <div className="ux-design-five">
+                        <div className="row">
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse6}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse5}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse4}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse3}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse2}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse1}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+                        </div>
+                      </div>
+                    </div>
+                    {/* Business */}
+
+                    {/* Technology */}
+                    <div
+                      className={
+                        toggle === 5
+                          ? "tab-pane fade active show"
+                          : "tab-pane fade"
+                      }
+                      id="technology-tab"
+                    >
+                      <div className="ux-design-five">
+                        <div className="row">
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse1}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse2}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse3}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse4}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse5}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse6}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+                        </div>
+                      </div>
+                    </div>
+                    {/* Technology*/}
+
+                    {/* All Category*/}
+                    <div
+                      className={
+                        toggle === 6
+                          ? "tab-pane fade active show"
+                          : "tab-pane fade"
+                      }
+                      id="all-category-tab"
+                    >
+                      <div className="ux-design-five">
+                        <div className="row">
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse6}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse5}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse4}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse3}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse2}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+
+                          {/* Col */}
+                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div className="course-box-five">
+                              <div className="product-five">
+                                {/* Product image*/}
+                                <div className="product-img-five">
+                                  <Link to="/course-details">
+                                    <img
+                                      className="img-fluid"
+                                      alt=""
+                                      src={FeaturedCourse1}
+                                    />
+                                  </Link>
+                                  <div className="heart-five">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-heart"></i>
+                                    </Link>
+                                  </div>
+                                </div>
+                                {/* Product image*/}
+
+                                {/* Product Content*/}
+                                <div className="product-content-five">
+                                  <div className="course-group-five">
+                                    <div className="course-group-img-five">
+                                      <Link to="/course-details">
+                                        <img
+                                          src={User1}
+                                          alt=""
+                                          className="img-fluid"
+                                        />
+                                      </Link>
+                                      <h6>
+                                        <Link to="/course-details">
+                                          Nicole Brown
+                                        </Link>
+                                      </h6>
+                                    </div>
+                                    <div className="course-share-five">
+                                      <div className="rating">
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star filled"></i>
+                                        <i className="fas fa-star"></i>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h3 className="product-five-title">
+                                    <Link to="/course-details">
+                                      The Complete Web Developer PHP framework
+                                      Course 2.0
+                                    </Link>
+                                  </h3>
+                                  <div className="info-five-middle">
+                                    <div className="course-view-five">
+                                      <span className="me-2">
+                                        <Link to="#">
+                                          <i className="fa-regular fa-clockss"></i>
+                                        </Link>
+                                      </span>
+                                      <p>8hr 30min</p>
+                                    </div>
+                                    <div className="rating-img">
+                                      <span className="me-2">
+                                        <i className="fa-solid fa-book-open"></i>
+                                      </span>
+                                      <p>10+ Lesson</p>
+                                    </div>
+                                  </div>
+                                  <div className="price-five-group">
+                                    <p>Graphic</p>
+                                    <h3>$300.00</h3>
+                                  </div>
+                                </div>
+                                {/* Product Content*/}
+                              </div>
+                              {/* Ovelay button */}
+                              <div className="joing-course-ovelay">
+                                <Link
+                                  to="/course-details"
+                                  className="joing-course-btn"
+                                >
+                                  Join Course
+                                </Link>
+                              </div>
+                              {/* Ovelay button */}
+                            </div>
+                          </div>
+                          {/* Col */}
+                        </div>
+                      </div>
+                    </div>
+                    {/* All Category*/}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
         {/* What's new Featured Course */}
 
@@ -1249,7 +4715,7 @@ export const Home = () => {
           </div>
         </section>
         {/* /Become a instructor */}
-{/* <EventsSection/> */}
+        {/* <EventsSection/> */}
         {/* Blog */}
         <section
           className="section latest-blog"
@@ -1432,7 +4898,7 @@ export const Home = () => {
           <Footer3 />
         </div> */}
 
-        <Footer4/>
+        <Footer4 />
         {/* /Footer */}
       </div>
     </>

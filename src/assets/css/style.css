@@ -9695,7 +9695,8 @@ textarea:focus {
 
 .footer-five {
   position: relative;
-  background: #2d0160;
+  /* background: #2d0160; */
+  background: #071136;
   padding: 60px 0 30px;
 }
 .footer-top-five {
