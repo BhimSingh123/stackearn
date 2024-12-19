@@ -886,7 +886,7 @@ export const Home = () => {
                                     </div>
                                   </div>
                                   <h3 className="product-five-title">
-                                    <Link to={`/course-details/${item?._id}`}>
+                                    <Link to={`/course-details/${item?._id}`} className="data-limit">
                                      {item?.description}
                                     </Link>
                                   </h3>

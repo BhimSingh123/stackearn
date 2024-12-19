@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Header from "../header";
-import Select from "react-select";
 import { useSelector } from "react-redux";
-import { Icon22, Icon24 } from "../imagepath";
+import { FeaturedCourse5, User1 } from "../imagepath";
 import { Link } from "react-router-dom";
-
-import { HomeMain, shape1, shape2, shape3, shape4 } from "../imagepath";
+import { HomeMain } from "../imagepath";
 import { Footer4 } from "../footer4";
 import Listing from "../Api/Listing";
 import LoadingPage from "../../LoadingPage";
@@ -31,11 +29,6 @@ function Index() {
     fetchMarketLists();
   }, []);
 
-  const options = [
-    { label: "Select Category", value: "Category" },
-    { label: "Category One", value: "Category1" },
-    { label: "Category Two", value: "Category2" },
-  ];
 
   const mobileSidebar = useSelector((state) => state.sidebarSlice.expandMenu);
 
@@ -46,47 +39,7 @@ function Index() {
     };
   }, []);
 
-  const [setValue] = useState(null);
 
-  const style = {
-    control: (baseStyles, state) => ({
-      ...baseStyles,
-      backgroundColor: mobileSidebar === "disabled" ? "white" : "#2b2838",
-      border: state.isFocused ? 0 : 0,
-      paddingLeft: "5px",
-      marginTop: "1px",
-      boxShadow: state.isFocused ? 0 : 0,
-      borderRadius: state.isSelected ? "0" : "10px",
-      fontSize: "14px",
-      "&:hover": {
-        border: state.isFocused ? 0 : 0,
-        color: "black",
-      },
-      outline: "none",
-    }),
-    menu: (base) => ({ ...base, marginTop: "2px" }),
-    option: (provided) => ({
-      ...provided,
-      backgroundColor: mobileSidebar === "disabled" ? "#fff" : "#000",
-      color: mobileSidebar === "disabled" ? "#000" : "#fff",
-      fontSize: "14px",
-      "&:hover": {
-        backgroundColor: mobileSidebar === "disabled" ? "#FFDEDA" : "#2b2838",
-      },
-    }),
-    indicatorSeparator: (base) => ({
-      ...base,
-      display: "none",
-    }),
-    dropdownIndicator: (base, state) => ({
-      ...base,
-      color: "black",
-      transform: state.selectProps.menuIsOpen
-        ? "rotate(-180deg)"
-        : "rotate(0)",
-      transition: "250ms",
-    }),
-  };
 
   return (
     <>
@@ -102,72 +55,118 @@ function Index() {
           {/* Banner Section */}
         </section>
 
-        <section className="course-content">
-          <div className="container mt-4">
+        <section className="featured-section-five">
+          <div className="container">
             <div className="row">
-              {loading ? (
-                <LoadingPage />
-              ) : (
-                <div className="col-lg-12 col-md-12">
-                  <div className="row">
-                    {listing.map((item, index) => (
-                      <div className="col-md-4 col-sm-12" key={index}>
-                        {/* Blog Post */}
-                        <div className="blog grid-modern">
-                          <div className="blog-image">
-                            <Link to={`/course-details/${item?._id}`}>
-                              <img
-                                className="img-fluid"
-                                src={item?.courseImage || ""}
-                                alt={item?.title || "Course Image"}
-                              />
-                            </Link>
-                          </div>
-                          <div className="blog-modern-box">
-                            <h3 className="blog-title">
-                              <Link to={`/course-details/${item?._id}`}>
-                                {item?.title || "Course Title"}
-                              </Link>
-                            </h3>
-                            <div className="blog-info clearfix mb-0">
-                              <div className="post-left">
-                                <ul>
-                                  <li>
-                                    <img
-                                      className="img-fluid"
-                                      src={Icon22}
-                                      alt=""
-                                    />
-                                    {item?.createdAt}
-                                  </li>
-                                  <li>
-                                    <img
-                                      className="img-fluid"
-                                      src={Icon24}
-                                      alt=""
-                                    />
-                                    {item?.category || "General Category"}
-                                  </li>
-                                </ul>
+              <div className="featured-courses-five-tab">
+                {loading ? (
+                  <LoadingPage />
+                ) : (
+
+                  <div className="ux-design-five">
+                    <div className="row">
+                      {/* Col */}
+                      {listing && listing?.map((item, index) => (
+
+                        <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12" key={index}>
+                          <div className="course-box-five">
+                            <div className="product-five">
+                              {/* Product image*/}
+                              <div className="product-img-five">
+                                <Link to={`/course-details/${item?._id}`}>
+
+                                  <img
+                                    className="img-fluid"
+                                    alt=""
+                                    src={item?.courseImage || FeaturedCourse5}
+                                  />
+                                </Link>
+                                <div className="heart-five">
+                                  <Link to="#">
+                                    <i className="fa-regular fa-heart"></i>
+                                  </Link>
+                                </div>
                               </div>
+                              {/* Product image*/}
+
+                              {/* Product Content*/}
+                              <div className="product-content-five">
+                                <div className="course-group-five">
+                                  <div className="course-group-img-five">
+                                    <Link to={`/course-details/${item?._id}`}>
+                                      <img
+                                        src={item?.InstrutorId?.profileImage || User1}
+                                        alt=""
+                                        className="img-fluid"
+                                      />
+                                    </Link>
+                                    <h6>
+                                      <Link to={`/course-details/${item?._id}`}>
+                                        {item?.InstrutorId?.firstName}
+                                      </Link>
+                                    </h6>
+                                  </div>
+                                  <div className="course-share-five">
+                                    <div className="rating">
+                                      {Array.from({ length: 5 }).map((_, index) => (
+                                        <i
+                                          key={index}
+                                          className={`fas fa-star ${index < item?.InstrutorId?.rating ? "filled" : ""}`}
+                                        ></i>
+                                      ))}
+                                      <span className="d-inline-block average-rating">
+                                        <span>{item?.InstrutorId?.rating}</span>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <h3 className="product-five-title ">
+                                  <Link to={`/course-details/${item?._id}`} className="data-limit">
+                                    {item?.description}
+                                  </Link>
+                                </h3>
+                                <div className="info-five-middle">
+                                  <div className="course-view-five">
+                                    <span className="me-2">
+                                      <Link to="#">
+                                        <i className="fa-regular fa-clockss"></i>
+                                      </Link>
+                                    </span>
+                                    <p>{item?.InstrutorId?.designation}</p>
+                                  </div>
+                                  <div className="rating-img">
+                                    <span className="me-2">
+                                      <i className="fa-solid fa-book-open"></i>
+                                    </span>
+                                    <p>{item?.InstrutorId?.lessions} Lesson</p>
+                                  </div>
+                                </div>
+                                <div className="price-five-group">
+                                  <p>{item?.title}</p>
+                                  <h3>{item?.price}</h3>
+                                </div>
+                              </div>
+                              {/* Product Content*/}
                             </div>
+                            {/* Ovelay button */}
+                            <div className="joing-course-ovelay">
+                              <Link
+                                to={`/course-details/${item?._id}`}
+                                className="joing-course-btn"
+                              >
+                                Join Course
+                              </Link>
+                            </div>
+                            {/* Ovelay button */}
                           </div>
                         </div>
-                        {/* /Blog Post */}
-                      </div>
-                    ))}
-                  </div>
-                  {/* Blog pagination */}
-                  <div className="row">
-                    <div className="col-md-12">
-                      <ul className="pagination lms-page">
-                        {/* Pagination */}
-                      </ul>
+                      ))}
+                      {/* Col */}
                     </div>
                   </div>
-                  {/* /Blog pagination */}
-                </div>
-              )}
+                )}
+                {/* All Category*/}
+              </div>
             </div>
           </div>
         </section>
