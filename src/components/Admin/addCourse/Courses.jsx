@@ -38,6 +38,8 @@ const Courses = () => {
     fetchMarketLists();
   }, []);
 
+
+ 
   return (
     <AuthLayout>
 

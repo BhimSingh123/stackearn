@@ -21,6 +21,7 @@ const AddCourse = () => {
     level: "",
     courseImage: "",
     duration: "",
+    InstrutorId : "",
     Id: Id,
   });
 
@@ -128,6 +129,29 @@ const AddCourse = () => {
     if (Id) fetchCourseData();
   }, [Id]);
 
+
+  const [insturor, setinstrutor] = useState([]);
+
+
+  const fetchInstrorLists = async () => {
+      setLoading(true);
+      try {
+          const main = new Listing();
+          const response = await main.InstrutorGet();
+          setinstrutor(response?.data?.data?.Instructorget
+          );
+      } catch (error) {
+          console.error(error);
+      } finally {
+          setLoading(false);
+      }
+  };
+
+  useEffect(() => {
+    fetchInstrorLists();
+  }, []);
+
+
   return (
     <AuthLayout>
       <div className="main-wrapper">
@@ -216,6 +240,31 @@ const AddCourse = () => {
                           {levelOptions.map((option) => (
                             <option key={option.value} value={option.value}>
                               {option.label}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+
+                      <div className="mb-3">
+                        <label className="form-label">Instructor </label>
+                        <select
+                          value={courseDetails?.InstrutorId || ""}
+                          onChange={(e) =>
+                            setCourseDetails((prevState) => ({
+                              ...prevState,
+                              InstrutorId: e.target.value,
+                            }))
+                          }
+                          className="form-select"
+                          required
+                        >
+                          <option value="" disabled>
+                            Select Instrutor
+                          </option>
+                          {insturor.map((option) => (
+                            <option key={option._id} value={option._id} >
+                              {option.firstName}
                             </option>
                           ))}
                         </select>
@@ -329,7 +378,7 @@ const AddCourse = () => {
                             className="btn btn-secondary"
                             onClick={addLecture}
                           >
-                            Add More Lecture
+                            Add Lecture
                           </button>
                         </div>
 
