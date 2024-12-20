@@ -127,7 +127,13 @@ class Listing extends Component {
         return Api.post("/course/course_delete", data)
     }
 
+    async AddCard(data){
+        return Api.post("/payment/create", data)
+    }
 
+    async PaymentSave(data){
+        return Api.post("/payment/verify-payment", data)
+    }
     render() {
         return (
             <div>

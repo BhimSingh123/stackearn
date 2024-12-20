@@ -5,10 +5,105 @@ import { Chapter, Chart, Cloud, Icon1, Icon2, Import, Key, Mobile, People, Play,
 import { Link } from 'react-router-dom';
 import FeatherIcon from "feather-icons-react";
 import PropTypes from "prop-types";
+import { useRazorpay } from "react-razorpay";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import Listing from "../../../Api/Listing";
+const DetailsContent = ({ item }) => {
+  const { Razorpay } = useRazorpay();
+  const RAZOPAY_KEY = process.env.REACT_APP_RAZOPAY_KEY;
+  console.log("RAZOPAY_KEY", process.env.REACT_APP_RAZOPAY_KEY)
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+  const handleSubmit = async () => {
+    setLoading(true);
+    const main = new Listing();
+    const record = new FormData();
+    record.append("amount", item?.discountPrice);
+    record.append("currency", "INR");
+    record.append("receipt", "receipt#1");
+    try {
+      const res = await main.AddCard(record);
+      if (res && res.data && res.data.orderId) {
+        const options = {
+          key: RAZOPAY_KEY,
+          amount: item?.discountPrice,
+          currency: "INR",
+          name: "Your Company Name",
+          description: "Payment for services",
+          order_id: res.data.orderId,
+          handler: function (response) {
+            toast.success("Payment Successful");
+            localStorage.setItem("response", JSON.stringify(response));
+            savePaymentDetails(
+              response.razorpay_order_id,
+              response.razorpay_payment_id,
+              "success"
+            ); // Pass 'success'
+            navigate(`/success/${response.razorpay_payment_id}`);
+          },
+          prefill: {
+            name: "Customer Name",
+            email: "customer@example.com",
+            contact: "1234567890",
+          },
+          notes: {
+            address: "Razorpay Corporate Office",
+          },
+          theme: {
+            color: "#F37254",
+          },
+        };
 
-const DetailsContent = ({item}) => {
+        const rzp = new Razorpay(options);
+        rzp.on("payment.failed", function (response) {
+          const error = response.error;
+          const orderId = error?.metadata?.order_id;
+          const paymentId = error?.metadata?.payment_id;
+          if (orderId && paymentId) {
+            savePaymentDetails(orderId, paymentId, "failed");
+            navigate(`/cancel/${paymentId}`);
+            // Pass 'failed'
+          } else {
+            console.error("Failed to retrieve Razorpay order or payment ID");
+          }
+        });
+        rzp.open();
+      } else {
+        toast.error(res.data.message || "Failed to create order");
+      }
+    } catch (error) {
+      toast.error("Error creating order");
+      console.error("Order creation error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    const [open, setOpen] = useState(false);
+  const savePaymentDetails = async (orderId, paymentId, payment_status) => {
+    setLoading(true);
+    try {
+      const main = new Listing();
+      const formdata = new FormData();
+      formdata.append("order_id", orderId);
+      formdata.append("payment_id", paymentId);
+      formdata.append("amount", item?.discountPrice);
+      formdata.append("currency", "INR");
+      formdata.append("payment_status", payment_status); // Include payment status
+      const response = await main.PaymentSave(formdata);
+
+      if (response?.data?.status) {
+        toast.success(response.data.message);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.data?.message || "An error occurred");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -87,33 +182,33 @@ const DetailsContent = ({item}) => {
                       <h6>{item?.lectures?.length} Lectures 10:56:11</h6>
                     </div>
                   </div>
-                  {item?.lectures?.map((item ,index)=>(
+                  {item?.lectures?.map((item, index) => (
 
-                  <div className="course-card" key={index}>
-                    <h6 className="cou-title">
-                      <Link className="collapsed" data-bs-toggle="collapse" to="#collapseOne" aria-expanded={open} onClick={()=> setOpen(!open)} aria-controls="example-collapse-text">
-                   {item?.name}
-                      </Link>
-                    </h6>
-                    
-                    <div id="collapseOne" className="card-collapse collapse"  >
-                      <ul>
-                        <li>
-                          <p>
-                            <img src={item?.video || Play} alt="" className="me-2"/>
-                             {item?.subtitle}
-                          </p>
-                          <div>
-                            <Link to="#">Preview</Link>
-                            <span>02:53</span>
-                          </div>
-                        </li>
-                       </ul>
+                    <div className="course-card" key={index}>
+                      <h6 className="cou-title">
+                        <Link className="collapsed" data-bs-toggle="collapse" to="#collapseOne" aria-expanded={open} onClick={() => setOpen(!open)} aria-controls="example-collapse-text">
+                          {item?.name}
+                        </Link>
+                      </h6>
+
+                      <div id="collapseOne" className="card-collapse collapse"  >
+                        <ul>
+                          <li>
+                            <p>
+                              <img src={item?.video || Play} alt="" className="me-2" />
+                              {item?.subtitle}
+                            </p>
+                            <div>
+                              <Link to="#">Preview</Link>
+                              <span>02:53</span>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+
                     </div>
-                    
-                  </div>
                   ))}
-              
+
                 </div>
               </div>
               {/* /Course Content */}
@@ -140,15 +235,15 @@ const DetailsContent = ({item}) => {
                       </div>
                     </div>
                     <div className="rating">
-                            {Array.from({ length: 5 }).map((_, index) => (
-                              <i
-                                key={index}
-                                className={`fas fa-star ${index < item?.InstrutorId?.rating ? "filled" : ""}`}
-                              ></i>
-                            ))}
-                            <span className="d-inline-block average-rating">
-                              <span>{item?.InstrutorId?.rating} Instructor Rating</span>
-                            </span>
+                      {Array.from({ length: 5 }).map((_, index) => (
+                        <i
+                          key={index}
+                          className={`fas fa-star ${index < item?.InstrutorId?.rating ? "filled" : ""}`}
+                        ></i>
+                      ))}
+                      <span className="d-inline-block average-rating">
+                        <span>{item?.InstrutorId?.rating} Instructor Rating</span>
+                      </span>
                     </div>
                   </div>
                   <div className="course-info d-flex align-items-center">
@@ -170,7 +265,7 @@ const DetailsContent = ({item}) => {
                     </div>
                   </div>
                   <p>
-                  {item?.InstrutorId?.bio}
+                    {item?.InstrutorId?.bio}
                   </p>
                 </div>
               </div>
@@ -217,8 +312,8 @@ const DetailsContent = ({item}) => {
                   </p>
                   <Link to="#" className=" btn-reply">
                     {/* <i className="feather-corner-up-left" /> */}
-                    <FeatherIcon icon="corner-up-left"/>
-                     Reply
+                    <FeatherIcon icon="corner-up-left" />
+                    Reply
                   </Link>
                 </div>
               </div>
@@ -302,7 +397,7 @@ const DetailsContent = ({item}) => {
                               to="/course-wishlist"
                               className=" btn btn-wish w-100"
                             >
-                              <i className="feather icon-heart me-2" /> 
+                              <i className="feather icon-heart me-2" />
                               Add to Wishlist
                             </Link>
                           </div>
@@ -311,17 +406,17 @@ const DetailsContent = ({item}) => {
                               to="#"
                               className="btn btn-wish w-100"
                             >
-                              <i className="feather icon-share-2 me-2" /> 
+                              <i className="feather icon-share-2 me-2" />
                               Share
                             </Link>
                           </div>
                         </div>
-                        <Link
-                          to="/checkout"
+                        <div
+                          onClick={handleSubmit}
                           className="btn btn-enroll w-100"
                         >
-                          Enroll Now
-                        </Link>
+                          {loading ? ("Loading...") : ("Enroll Now")}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -449,7 +544,7 @@ const DetailsContent = ({item}) => {
 
 
 DetailsContent.propTypes = {
-    item: PropTypes.string.isRequired, // Ensures datarole is a required string
+  item: PropTypes.string.isRequired, // Ensures datarole is a required string
 };
 
 export default DetailsContent;

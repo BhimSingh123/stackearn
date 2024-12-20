@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import Header from "../../header";
 import { Footer4 } from "../../footer4";
 
+
+
 const Checkout = () => {
 
     const [value] = useState(null);
@@ -40,6 +42,8 @@ const Checkout = () => {
       ];
 
       
+      
+ 
   return (
     <>
       <div className="main-wrapper">
