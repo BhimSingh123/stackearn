@@ -110,7 +110,14 @@ export default function StudentSidebar() {
                  Course History
                 </Link>
               </li>
-              
+
+              <li className={`nav-item ${location.pathname === '/admin/payment-list' ? 'active' : ''}`}>
+                <Link to="/admin/payment-list" className="nav-link">
+                  <i className="bx bxs-cart" />
+                 Payment History
+                </Link>
+              </li>
+                    
             </ul>
             <h3>Account Settings</h3>
             <ul>

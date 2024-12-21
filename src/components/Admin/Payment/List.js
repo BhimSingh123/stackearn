@@ -15,12 +15,12 @@ const List = () => {
   const [listing, setListing] = useState([]);
 
 
-  const ContactList = async () => {
+  const PaymentLisitng = async () => {
     setLoading(true);
     try {
       const main = new Listing();
-      const response = await main.ContactGet();
-      setListing(response?.data?.data?.contactget);
+      const response = await main.PaymentList();
+      setListing(response?.data?.data);
     } catch (error) {
       console.error(error);
     } finally {
@@ -29,7 +29,7 @@ const List = () => {
   };
 
   useEffect(() => {
-    ContactList();
+    PaymentLisitng();
   }, []);
   return (
     <AuthLayout>
@@ -61,13 +61,13 @@ const List = () => {
                                   <tr>
                                     <th>S. No.</th>
                                     <th> Date</th>
-                                    <th>Name & Number</th>
-                                    <th>Email</th>
-                                    <th>Page Name</th>
-                                    <th>Subject</th>
-                                    <th>Message</th>
+                                    <th>Order Id</th>
+                                    <th>Payment Id</th>
+                                    <th>Username </th>
+                                    <th>Course Name</th>
                                     <th>Status</th>
-                                    <th>Comment</th>
+                                    <th>Amount</th>
+                                    <th>Currency</th>
                                   </tr>
                                 </thead>
                                 <tbody>

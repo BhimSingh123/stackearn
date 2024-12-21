@@ -153,9 +153,7 @@ import AddInstrtour from "./components/Admin/Instrutor/AddInstrtour.jsx";
 import ViewProfile from "./components/Admin/Instrutor/ViewProfile.jsx";
 import AddCourses from "./components/Admin/addCourse/index.jsx";
 import CourseLists from "./components/Admin/addCourse/Courses.jsx";
-
-
-
+import PaymentList from "./components/Admin/Payment/List.js"
 
 
 
@@ -597,6 +595,8 @@ const Approuter = () => {
         <Route path="/admin/add-course" element={<AddCourses />} />
         <Route path="/admin/update-course/:Id" element={<AddCourses />} />
         <Route path="/admin/course-list" element={<CourseLists />} />
+        <Route path="/admin/payment-list" element={<PaymentList />} />
+
 
 
       </Routes>
