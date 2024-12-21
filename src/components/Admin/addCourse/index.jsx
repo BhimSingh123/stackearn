@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import AuthLayout from "../AuthLayout";
 import SubDashboard from "../components/SubDashboard";
 import StudentSidebar from "../sidebar";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import Listing from "../../Api/Listing";
 
 const AddCourse = () => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [lectures, setLectures] = useState([]);
 
@@ -21,7 +22,7 @@ const AddCourse = () => {
     level: "",
     courseImage: "",
     duration: "",
-    InstrutorId : "",
+    InstrutorId: "",
     Id: Id,
   });
 
@@ -46,23 +47,41 @@ const AddCourse = () => {
     }));
   };
 
+  const addLecture = () => {
+    setLectures((prevLectures) => [
+      ...prevLectures,
+      { title: "", subtitles: [{ subtitle: "", videoLink: "" }] },
+    ]);
+  };
+
+  const removeLecture = (lectureIndex) => {
+    setLectures((prevLectures) =>
+      prevLectures.filter((_, index) => index !== lectureIndex)
+    );
+  };
+
   const handleLectureChange = (index, field, value) => {
     const updatedLectures = [...lectures];
     updatedLectures[index][field] = value;
     setLectures(updatedLectures);
   };
 
-  const addLecture = () => {
-    setLectures((prevLectures) => [
-      ...prevLectures,
-      // { name: "", subtitle: "", video: null },
-      { name: "", subtitle: "" },
-
-    ]);
+  const addSubtitle = (lectureIndex) => {
+    const updatedLectures = [...lectures];
+    updatedLectures[lectureIndex]?.subtitles?.push({ subtitle: "", videoLink: "" });
+    setLectures(updatedLectures);
   };
 
-  const removeLecture = (index) => {
-    setLectures((prevLectures) => prevLectures.filter((_, i) => i !== index));
+  const removeSubtitle = (lectureIndex, subtitleIndex) => {
+    const updatedLectures = [...lectures];
+    updatedLectures[lectureIndex].subtitles.splice(subtitleIndex, 1);
+    setLectures(updatedLectures);
+  };
+
+  const handleSubtitleChange = (lectureIndex, subtitleIndex, field, value) => {
+    const updatedLectures = [...lectures];
+    updatedLectures[lectureIndex].subtitles[subtitleIndex][field] = value;
+    setLectures(updatedLectures);
   };
 
   const fetchCourseData = async () => {
@@ -71,6 +90,7 @@ const AddCourse = () => {
       const main = new Listing();
       const response = await main.CourseGetId(Id);
       if (response?.data?.data) {
+        console.log("response.data.data",response.data.data)
         setCourseDetails(response.data.data);
         if (response.data.data.lectures) {
           setLectures(response.data.data.lectures);
@@ -100,6 +120,7 @@ const AddCourse = () => {
         : await main.CreateCourse(payload);
 
       if (response?.data) {
+        navigate("/admin/course-list")
         toast.success(response.data.message || "Operation successful");
         if (!Id) {
           setCourseDetails({
@@ -134,17 +155,17 @@ const AddCourse = () => {
 
 
   const fetchInstrorLists = async () => {
-      setLoading(true);
-      try {
-          const main = new Listing();
-          const response = await main.InstrutorGet();
-          setinstrutor(response?.data?.data?.Instructorget
-          );
-      } catch (error) {
-          console.error(error);
-      } finally {
-          setLoading(false);
-      }
+    setLoading(true);
+    try {
+      const main = new Listing();
+      const response = await main.InstrutorGet();
+      setinstrutor(response?.data?.data?.Instructorget
+      );
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -312,67 +333,107 @@ const AddCourse = () => {
                       </div>
 
                       {/* Lectures Section */}
+
+
                       <div className="mb-3">
                         <label className="form-label">Lectures</label>
-                        {lectures.map((lecture, index) => (
-                          <div key={index} className="mb-3 border p-3">
+                        {lectures?.map((lecture, lectureIndex) => (
+                          <div key={lectureIndex} className="mb-3 border p-3">
                             <div className="mb-2">
-                              <label className="form-label">Lecture Name</label>
+                              <label className="form-label">Lecture Title</label>
                               <input
                                 type="text"
                                 className="form-control"
-                                value={lecture.name}
+                                value={lecture.title}
                                 onChange={(e) =>
                                   handleLectureChange(
-                                    index,
-                                    "name",
+                                    lectureIndex,
+                                    "title",
                                     e.target.value
                                   )
                                 }
-                                placeholder="Enter lecture name"
+                                placeholder="Enter lecture title"
                                 required
                               />
                             </div>
-                            <div className="mb-2">
-                              <label className="form-label">Subtitle</label>
-                              <input
-                                type="text"
-                                className="form-control"
-                                value={lecture.subtitle}
-                                onChange={(e) =>
-                                  handleLectureChange(
-                                    index,
-                                    "subtitle",
-                                    e.target.value
-                                  )
-                                }
-                                placeholder="Enter lecture subtitle"
-                              />
+                            {lecture?.subtitles?.map(
+                              (subtitle, subtitleIndex) => (
+                                <div key={subtitleIndex} className="mb-3">
+                                  <label className="form-label">
+                                    Subtitle
+                                  </label>
+                                  <input
+                                    type="text"
+                                    className="form-control"
+                                    value={subtitle.subtitle}
+                                    onChange={(e) =>
+                                      handleSubtitleChange(
+                                        lectureIndex,
+                                        subtitleIndex,
+                                        "subtitle",
+                                        e.target.value
+                                      )
+                                    }
+                                    placeholder="Enter subtitle"
+                                    required
+                                  />
+                                  <label className="form-label">
+                                    Video Link
+                                  </label>
+                                  <input
+                                    type="text"
+                                    className="form-control"
+                                    value={subtitle.videoLink}
+                                    onChange={(e) =>
+                                      handleSubtitleChange(
+                                        lectureIndex,
+                                        subtitleIndex,
+                                        "videoLink",
+                                        e.target.value
+                                      )
+                                    }
+                                    placeholder="Enter video link"
+                                  />
+                                  <div className="d-flex justify-content-end mt-3">
+                                    <button
+                                      type="button"
+                                      className="btn btn-danger mt-2"
+                                      onClick={() =>
+                                        removeSubtitle(
+                                          lectureIndex,
+                                          subtitleIndex
+                                        )
+                                      }
+                                    >
+                                      Remove Subtitle
+                                    </button>
+                                  </div>
+
+
+                                </div>
+                              )
+                            )}
+                            <div className="d-flex justify-content-between align-items-center mt-3">
+                              <button
+                                type="button"
+                                className="btn btn-secondary"
+                                onClick={() => addSubtitle(lectureIndex)}
+                              >
+                                Add Subtitle
+                              </button>
+                              <button
+                                type="button"
+                                className="btn btn-danger"
+                                onClick={() => removeLecture(lectureIndex)}
+                              >
+                                Remove Lecture
+                              </button>
                             </div>
-                            {/* <div className="mb-2">
-                              <label className="form-label">Video</label>
-                              <input
-                                type="file"
-                                className="form-control"
-                                onChange={(e) =>
-                                  handleLectureChange(
-                                    index,
-                                    "video",
-                                    e.target.files[0]
-                                  )
-                                }
-                              />
-                            </div> */}
-                            <button
-                              type="button"
-                              className="btn btn-danger"
-                              onClick={() => removeLecture(index)}
-                            >
-                              Remove Lecture
-                            </button>
+
+
                           </div>
                         ))}
-                        <div className="mb-3 d-flex justify-content-end">
+                        <div className="d-flex justify-content-end mt-3">
                           <button
                             type="button"
                             className="btn btn-secondary"
@@ -382,10 +443,10 @@ const AddCourse = () => {
                           </button>
                         </div>
 
-                      </div>
 
+                      </div>
                       {/* Course Image */}
-                      {/* <div className="mb-3">
+                      <div className="mb-3">
                         <label className="form-label">Course Image</label>
                         <input
                           type="file"
@@ -398,20 +459,18 @@ const AddCourse = () => {
                             }))
                           }
                         />
-                      </div> */}
+                      </div>
 
                       {/* Submit Button */}
                       <div className="mt-4">
                         <button
                           type="submit"
-                          className="btn btn-primary"
+                          className="btn btn-primary cursor-pointer"
                           disabled={loading}
                         >
-                          {loading
-                            ? "Saving..."
-                            : Id
-                              ? "Update Course"
-                              : "Add Course"}
+                          {Id
+                            ? "Update Course"
+                            : "Add Course"}
                         </button>
                       </div>
                     </form>

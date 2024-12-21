@@ -127,12 +127,15 @@ class Listing extends Component {
         return Api.post("/course/course_delete", data)
     }
 
-    async AddCard(data){
+    async PaymentAdd(data){
         return Api.post("/payment/create", data)
     }
 
     async PaymentSave(data){
         return Api.post("/payment/verify-payment", data)
+    }
+    async PaymentList(){
+        return Api.get("/payment/paymentget")
     }
     render() {
         return (
