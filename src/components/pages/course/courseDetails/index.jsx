@@ -40,7 +40,7 @@ const CourseDetails = () => {
 
   const { Razorpay } = useRazorpay();
   const RAZOPAY_KEY = process.env.REACT_APP_RAZOPAY_KEY;
-  // console.log("RAZOPAY_KEY", process.env.REACT_APP_RAZOPAY_KEY)
+  console.log("RAZOPAY_KEY", process.env.REACT_APP_RAZOPAY_KEY)
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const handleSubmit = () => {
@@ -50,6 +50,7 @@ const CourseDetails = () => {
     record.append("amount", courseDetails?.discountPrice);
     record.append("currency", "INR");
     record.append("receipt", "aa");
+  
     main.PaymentAdd(record)
       .then((res) => {
         if (res && res.data && res.data.orderId) {
@@ -109,6 +110,7 @@ const CourseDetails = () => {
         setLoading(false);
       });
   };
+  
   
 
   const savePaymentDetails = async (orderId, paymentId, payment_status) => {
