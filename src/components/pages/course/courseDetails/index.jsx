@@ -9,6 +9,7 @@ import { Footer4 } from "../../../footer4";
 import { Chapter, Chart, Cloud, Icon1, Icon2, Import, Key, Mobile, People, Play, Teacher, Timer2, User1, Users, Video, Video2 } from "../../../imagepath";
 import FeatherIcon from "feather-icons-react";
 import { useRazorpay } from "react-razorpay";
+import { FaRupeeSign } from "react-icons/fa";
 const CourseDetails = () => {
   const { Id } = useParams();
   const [loading, setLoading] = useState(false);
@@ -50,7 +51,7 @@ const CourseDetails = () => {
     record.append("amount", courseDetails?.discountPrice);
     record.append("currency", "INR");
     record.append("receipt", "aa");
-  
+
     main.PaymentAdd(record)
       .then((res) => {
         if (res && res.data && res.data.orderId) {
@@ -83,13 +84,13 @@ const CourseDetails = () => {
               color: "#F37254",
             },
           };
-  
+
           const rzp = new Razorpay(options);
           rzp.on("payment.failed", function (response) {
             const error = response.error;
             const orderId = error?.metadata?.order_id;
             const paymentId = error?.metadata?.payment_id;
-  
+
             if (orderId && paymentId) {
               savePaymentDetails(orderId, paymentId, "failed");
               navigate(`/cancel/${paymentId}`);
@@ -110,8 +111,8 @@ const CourseDetails = () => {
         setLoading(false);
       });
   };
-  
-  
+
+
 
   const savePaymentDetails = async (orderId, paymentId, payment_status) => {
     setLoading(true);
@@ -155,11 +156,11 @@ const CourseDetails = () => {
                       <li className="breadcrumb-courseDetails" aria-current="page">
                         Courses
                       </li>
-                      <li className="breadcrumb-courseDetails" aria-current="page">
+                      <li className="breadcrumb-courseDetails gap-2" aria-current="page">
                         All Courses
                       </li>
-                      <li className="breadcrumb-courseDetails" aria-current="page">
-                      {courseDetails?.title}
+                      <li className="breadcrumb-courseDetails gap-2" aria-current="page">
+                        {courseDetails?.title}
                       </li>
                     </ol>
                   </nav>
@@ -201,15 +202,12 @@ const CourseDetails = () => {
                             className={`fas fa-star ${index < courseDetails?.InstrutorId?.rating ? "filled" : ""}`}
                           ></i>
                         ))}
-                        <span className="d-inline-block average-rating">
-                          <span>{courseDetails?.InstrutorId?.rating} Instructor Rating</span>
-                        </span>
                       </div>
                     </div>
-                    <span className="web-badge mb-3">{courseDetails?.title}</span>
+                    <span className="web-badge mb-3" style={{ textTransform: "capitalize" }}>{courseDetails?.category}</span>
                   </div>
                   <h2>{courseDetails?.title}</h2>
-                  <p>
+                  <p className="data-limit">
                     {courseDetails?.description}
                   </p>
                   <div className="course-info d-flex align-courseDetailss-center border-bottom-0 m-0 p-0">
@@ -219,9 +217,9 @@ const CourseDetails = () => {
                     </div>
                     <div className="cou-info">
                       <img src={Timer} alt="" />
-                      <p>{courseDetails?.duration}</p>
+                      <p>{courseDetails?.duration} Duration</p>
                     </div>
-                    <div className="cou-info">
+                    <div className="cou-info ">
                       <img src={People} alt="" />
                       <p>{courseDetails?.InstrutorId?.students} students enrolled</p>
                     </div>
@@ -233,19 +231,19 @@ const CourseDetails = () => {
         )}
 
 
-<section className="page-content course-sec">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8">
-              {/* Overview */}
-              <div className="card overview-sec">
-                <div className="card-body">
-                  <h5 className="subs-title">Overview</h5>
-                  <h6>Course Description</h6>
-                  <p>
-                    {courseDetails?.description}
-                  </p>
-                  {/* <p>
+        <section className="page-content course-sec">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-8">
+                {/* Overview */}
+                <div className="card overview-sec">
+                  <div className="card-body">
+                    <h5 className="subs-title">Overview</h5>
+                    <h6>Course Description</h6>
+                    <p className="">
+                      {courseDetails?.description}
+                    </p>
+                    {/* <p>
                     Lorem Ipsum is simply dummy text of the printing and
                     typesetting industry. Lorem Ipsum has been the industry&apos;s
                     standard dummy text ever since the 1500s, when an unknown
@@ -294,375 +292,369 @@ const CourseDetails = () => {
                       No previous Adobe XD skills are needed.
                     </li>
                   </ul> */}
-                </div>
-              </div>
-              {/* /Overview */}
-              {/* Course Content */}
-              <div className="card content-sec">
-                <div className="card-body">
-                  <div className="row">
-                    <div className="col-sm-6">
-                      <h5 className="subs-title">Course Content</h5>
-                    </div>
-                    <div className="col-sm-6 text-sm-end">
-                      <h6>{courseDetails?.lectures?.length} Lectures 10:56:11</h6>
-                    </div>
                   </div>
-                  {courseDetails?.lectures?.map((courseDetails, index) => (
-
-                    <div className="course-card" key={index}>
-                      <h6 className="cou-title">
-                        <Link className="collapsed" data-bs-toggle="collapse" to="#collapseOne" aria-expanded={open} onClick={() => setOpen(!open)} aria-controls="example-collapse-text">
-                          {courseDetails?.name}
-                        </Link>
-                      </h6>
-
-                      <div id="collapseOne" className="card-collapse collapse"  >
-                        <ul>
-                          <li>
-                            <p>
-                              <img src={courseDetails?.video || Play} alt="" className="me-2" />
-                              {courseDetails?.subtitle}
-                            </p>
-                            <div>
-                              <Link to="#">Preview</Link>
-                              <span>02:53</span>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-
-                    </div>
-                  ))}
-
                 </div>
-              </div>
-              {/* /Course Content */}
-              {/* Instructor */}
-              <div className="card instructor-sec">
-                <div className="card-body">
-                  <h5 className="subs-title">About the instructor</h5>
-                  <div className="instructor-wrap">
-                    <div className="about-instructor">
-                      <div className="abt-instructor-img">
-                        <Link to="/instructor/instructor-profile">
-                          <img
-                            src={courseDetails?.InstrutorId?.profileImage || User1}
-                            alt="img"
-                            className="img-fluid"
-                          />
-                        </Link>
-                      </div>
-                      <div className="instructor-detail">
-                        <h5>
-                          <Link to="/instructor/instructor-profile">{courseDetails?.InstrutorId?.firstName} {courseDetails?.InstrutorId?.lastName}</Link>
-                        </h5>
-                        <p>{courseDetails?.InstrutorId?.designation}</p>
-                      </div>
-                    </div>
-                    <div className="rating">
-                      {Array.from({ length: 5 }).map((_, index) => (
-                        <i
-                          key={index}
-                          className={`fas fa-star ${index < courseDetails?.InstrutorId?.rating ? "filled" : ""}`}
-                        ></i>
-                      ))}
-                      <span className="d-inline-block average-rating">
-                        <span>{courseDetails?.InstrutorId?.rating} Instructor Rating</span>
-                      </span>
-                    </div>
-                  </div>
-                  <div className="course-info d-flex align-courseDetailss-center">
-                    <div className="cou-info">
-                      <img src={Play} alt="" />
-                      <p>5 Courses</p>
-                    </div>
-                    <div className="cou-info">
-                      <img src={Icon1} alt="" />
-                      <p>{courseDetails?.InstrutorId?.lessions} Lesson</p>
-                    </div>
-                    <div className="cou-info">
-                      <img src={Icon2} alt="" />
-                      <p>9hr 30min</p>
-                    </div>
-                    <div className="cou-info">
-                      <img src={People} alt="" />
-                      <p>{courseDetails?.InstrutorId?.students} students enrolled</p>
-                    </div>
-                  </div>
-                  <p>
-                    {courseDetails?.InstrutorId?.bio}
-                  </p>
-                </div>
-              </div>
-              {/* /Instructor */}
-              {/* Reviews */}
-              <div className="card review-sec">
-                <div className="card-body">
-                  <h5 className="subs-title">Reviews</h5>
-                  <div className="instructor-wrap">
-                    <div className="about-instructor">
-                      <div className="abt-instructor-img">
-                        <Link to="instructor-profile">
-                          <img
-                            src={User1}
-                            alt="img"
-                            className="img-fluid"
-                          />
-                        </Link>
-                      </div>
-                      <div className="instructor-detail">
-                        <h5>
-                          <Link to="/instructor/instructor-profile">Nicole Brown</Link>
-                        </h5>
-                        <p>UX/UI Designer</p>
-                      </div>
-                    </div>
-                    <div className="rating">
-                      <i className="fas fa-star filled me-1" />
-                      <i className="fas fa-star filled me-1" />
-                      <i className="fas fa-star filled me-1" />
-                      <i className="fas fa-star filled me-1" />
-                      <i className="fas fa-star me-1" />
-                      <span className="d-inline-block average-rating">
-                        4.5 Instructor Rating
-                      </span>
-                    </div>
-                  </div>
-                  <p className="rev-info">
-                    “ This is the second Photoshop course I have completed with
-                    Cristian. Worth every penny and recommend it highly. To get
-                    the most out of this course, its best to to take the
-                    Beginner to Advanced course first. The sound and video
-                    quality is of a good standard. Thank you Cristian. “
-                  </p>
-                  <Link to="#" className=" btn-reply">
-                    {/* <i className="feather-corner-up-left" /> */}
-                    <FeatherIcon icon="corner-up-left" />
-                    Reply
-                  </Link>
-                </div>
-              </div>
-              {/* /Reviews */}
-              {/* Comment */}
-              <div className="card comment-sec">
-                <div className="card-body">
-                  <h5 className="subs-title">Post A comment</h5>
-                  <form action='#'>
+                {/* /Overview */}
+                {/* Course Content */}
+                <div className="card content-sec">
+                  <div className="card-body">
                     <div className="row">
-                      <div className="col-md-6">
-                        <div className="input-block">
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Full Name"
-                          />
-                        </div>
+                      <div className="col-sm-6">
+                        <h5 className="subs-title">Course Content</h5>
                       </div>
-                      <div className="col-md-6">
-                        <div className="input-block">
-                          <input
-                            type="email"
-                            className="form-control"
-                            placeholder="Email"
-                          />
-                        </div>
+                      <div className="col-sm-6 text-sm-end">
+                        <h6>{courseDetails?.lectures?.length} Lectures</h6>
                       </div>
                     </div>
-                    <div className="input-block">
-                      <input
-                        type="email"
-                        className="form-control"
-                        placeholder="Subject"
-                      />
-                    </div>
-                    <div className="input-block">
-                      <textarea
-                        rows={4}
-                        className="form-control"
-                        placeholder="Your Comments"
-                        defaultValue={""}
-                      />
-                    </div>
-                    <div className="submit-section">
-                      <button className=" submit-btn" type="submit">
-                        Submit
-                      </button>
-                    </div>
-                  </form>
+                    {courseDetails?.lectures?.map((lecture, index) => (
+                      <div className="course-card" key={index}>
+                        <h6 className="cou-title">
+                          <Link
+                            className="collapsed"
+                            data-bs-toggle="collapse"
+                            to="#collapseOne"
+                            aria-expanded={open}
+                            onClick={() => setOpen(!open)}
+                            aria-controls="example-collapse-text"
+                          >
+                            {lecture?.title}
+                          </Link>
+                        </h6>
+
+                        {/* Loop through subtitles for each lecture */}
+                        {lecture?.subtitles?.map((subtitle, subIndex) => (
+                          <div id="collapseOne" className="card-collapse collapse" key={subIndex}>
+                            <ul>
+                              <li>
+                                <p>
+                                  <img src={Play} alt="" className="me-2" />
+                                  {subtitle?.subtitle}
+                                </p>
+                                {/* <div>
+                                  <Link to="#">Preview</Link>
+                                  <span>02:53</span>
+                                </div> */}
+                              </li>
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    ))}
+
+
+                  </div>
                 </div>
+                {/* /Course Content */}
+                {/* Instructor */}
+                <div className="card instructor-sec">
+                  <div className="card-body">
+                    <h5 className="subs-title">About the instructor</h5>
+                    <div className="instructor-wrap">
+                      <div className="about-instructor">
+                        <div className="abt-instructor-img">
+                          <Link to="/instructor/instructor-profile">
+                            <img
+                              src={courseDetails?.InstrutorId?.profileImage || User1}
+                              alt="img"
+                              className="img-fluid"
+                            />
+                          </Link>
+                        </div>
+                        <div className="instructor-detail">
+                          <h5>
+                            <Link to="/instructor/instructor-profile">{courseDetails?.InstrutorId?.firstName} {courseDetails?.InstrutorId?.lastName}</Link>
+                          </h5>
+                          <p>{courseDetails?.InstrutorId?.designation}</p>
+                        </div>
+                      </div>
+                      <div className="rating">
+                        {Array.from({ length: 5 }).map((_, index) => (
+                          <i
+                            key={index}
+                            className={`fas fa-star ${index < courseDetails?.InstrutorId?.rating ? "filled" : ""}`}
+                          ></i>
+                        ))}
+                        <span className="d-inline-block average-rating">
+                          <span>{courseDetails?.InstrutorId?.rating} Instructor Rating</span>
+                        </span>
+                      </div>
+                    </div>
+                    <div className="course-info d-flex align-courseDetailss-center">
+                      <div className="cou-info">
+                        <img src={Play} alt="" />
+                        <p>5 Courses</p>
+                      </div>
+                      <div className="cou-info">
+                        <img src={Icon1} alt="" />
+                        <p>{courseDetails?.InstrutorId?.lessions} Lesson</p>
+                      </div>
+                      <div className="cou-info">
+                        <img src={Icon2} alt="" />
+                        <p>9hr 30min</p>
+                      </div>
+                      <div className="cou-info">
+                        <img src={People} alt="" />
+                        <p>{courseDetails?.InstrutorId?.students} students enrolled</p>
+                      </div>
+                    </div>
+                    <p>
+                      {courseDetails?.InstrutorId?.bio}
+                    </p>
+                  </div>
+                </div>
+                {/* /Instructor */}
+                {/* Reviews */}
+                <div className="card review-sec">
+                  <div className="card-body">
+                    <h5 className="subs-title">Reviews</h5>
+                    <div className="instructor-wrap">
+                      <div className="about-instructor">
+                        <div className="abt-instructor-img">
+                          <Link to="instructor-profile">
+                            <img
+                              src={User1}
+                              alt="img"
+                              className="img-fluid"
+                            />
+                          </Link>
+                        </div>
+                        <div className="instructor-detail">
+                          <h5>
+                            <Link to="/instructor/instructor-profile">Nicole Brown</Link>
+                          </h5>
+                          <p>UX/UI Designer</p>
+                        </div>
+                      </div>
+                      <div className="rating">
+                        <i className="fas fa-star filled me-1" />
+                        <i className="fas fa-star filled me-1" />
+                        <i className="fas fa-star filled me-1" />
+                        <i className="fas fa-star filled me-1" />
+                        <i className="fas fa-star me-1" />
+                        <span className="d-inline-block average-rating">
+                          4.5 Instructor Rating
+                        </span>
+                      </div>
+                    </div>
+                    <p className="rev-info">
+                      “ This is the second Photoshop course I have completed with
+                      Cristian. Worth every penny and recommend it highly. To get
+                      the most out of this course, its best to to take the
+                      Beginner to Advanced course first. The sound and video
+                      quality is of a good standard. Thank you Cristian. “
+                    </p>
+                    <Link to="#" className=" btn-reply">
+                      {/* <i className="feather-corner-up-left" /> */}
+                      <FeatherIcon icon="corner-up-left" />
+                      Reply
+                    </Link>
+                  </div>
+                </div>
+                {/* /Reviews */}
+                {/* Comment */}
+                <div className="card comment-sec">
+                  <div className="card-body">
+                    <h5 className="subs-title">Post A comment</h5>
+                    <form action='#'>
+                      <div className="row">
+                        <div className="col-md-6">
+                          <div className="input-block">
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="Full Name"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-md-6">
+                          <div className="input-block">
+                            <input
+                              type="email"
+                              className="form-control"
+                              placeholder="Email"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="input-block">
+                        <input
+                          type="email"
+                          className="form-control"
+                          placeholder="Subject"
+                        />
+                      </div>
+                      <div className="input-block">
+                        <textarea
+                          rows={4}
+                          className="form-control"
+                          placeholder="Your Comments"
+                          defaultValue={""}
+                        />
+                      </div>
+                      <div className="submit-section">
+                        <button className=" submit-btn" type="submit">
+                          Submit
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                {/* /Comment */}
               </div>
-              {/* /Comment */}
-            </div>
-            <div className="col-lg-4">
-              <div className="sidebar-sec">
-                {/* Video */}
-                <div className="video-sec vid-bg">
-                  <div className="card">
-                    <div className="card-body">
-                      <Link
-                        to="https://www.youtube.com/embed/1trvO6dqQUI"
-                        className="video-thumbnail"
-                        data-fancybox=""
-                      >
-                        <div className="play-icon">
-                          <i className="fa-solid fa-play" />
-                        </div>
-                        <img className="" src={Video} alt="" />
-                      </Link>
-                      <div className="video-details">
-                        <div className="course-fee">
-                          <h2>FREE</h2>
-                          <p>
-                            <span>{courseDetails?.discountPrice}</span> {courseDetails?.price}
-                          </p>
-                        </div>
-                        <div className="row gx-2">
-                          <div className="col-md-6 addHeart">
-                            <Link
-                              to="/course-wishlist"
-                              className=" btn btn-wish w-100"
-                            >
-                              <i className="feather icon-heart me-2" />
-                              Add to Wishlist
-                            </Link>
-                          </div>
-                          <div className="col-md-6 addHeart">
-                            <Link
-                              to="#"
-                              className="btn btn-wish w-100"
-                            >
-                              <i className="feather icon-share-2 me-2" />
-                              Share
-                            </Link>
-                          </div>
-                        </div>
-                        <div
-                          onClick={handleSubmit}
-                          className="btn btn-enroll w-100"
+              <div className="col-lg-4">
+                <div className="sidebar-sec">
+                  {/* Video */}
+                  <div className="video-sec vid-bg">
+                    <div className="card">
+                      <div className="card-body">
+                        <Link
+                          to="https://www.youtube.com/embed/1trvO6dqQUI"
+                          className="video-thumbnail"
+                          data-fancybox=""
                         >
-                          {loading ? ("Loading...") : ("Enroll Now")}
+                          <div className="play-icon">
+                            <i className="fa-solid fa-play" />
+                          </div>
+                          <img className="" src={Video} alt="" />
+                        </Link>
+                        <div className="video-details">
+                          <div className="course-fee  d-flex justify-content-between align-items-center">
+                            <p>
+
+                              <span>  <FaRupeeSign size={12} /> {courseDetails?.price}</span>
+                            </p>
+                            <span>
+
+                              <FaRupeeSign size={12} />
+                              {courseDetails?.discountPrice}
+                            </span>
+                          </div>
+                          <div
+                            onClick={handleSubmit}
+                            className="btn btn-enroll w-100"
+                          >
+                            {loading ? ("Loading...") : ("Enroll Now")}
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                {/* /Video */}
-                {/* Include */}
-                <div className="card include-sec">
-                  <div className="card-body">
-                    <div className="cat-title">
-                      <h4>Includes</h4>
+                  {/* /Video */}
+                  {/* Include */}
+                  <div className="card include-sec">
+                    <div className="card-body">
+                      <div className="cat-title">
+                        <h4>Includes</h4>
+                      </div>
+                      <ul>
+                        <li>
+                          <img
+                            src={Import}
+                            className="me-2"
+                            alt=""
+                          />{" "}
+                          11 hours on-demand video
+                        </li>
+                        <li>
+                          <img
+                            src={Play}
+                            className="me-2"
+                            alt=""
+                          />{" "}
+                          69 downloadable resources
+                        </li>
+                        <li>
+                          <img
+                            src={Key}
+                            className="me-2"
+                            alt=""
+                          />{" "}
+                          Full lifetime access
+                        </li>
+                        <li>
+                          <img
+                            src={Mobile}
+                            className="me-2"
+                            alt=""
+                          />{" "}
+                          Access on mobile and TV
+                        </li>
+                        <li>
+                          <img
+                            src={Cloud}
+                            className="me-2"
+                            alt=""
+                          />{" "}
+                          Assignments
+                        </li>
+                        <li>
+                          <img
+                            src={Teacher}
+                            className="me-2"
+                            alt=""
+                          />{" "}
+                          Certificate of Completion
+                        </li>
+                      </ul>
                     </div>
-                    <ul>
-                      <li>
-                        <img
-                          src={Import}
-                          className="me-2"
-                          alt=""
-                        />{" "}
-                        11 hours on-demand video
-                      </li>
-                      <li>
-                        <img
-                          src={Play}
-                          className="me-2"
-                          alt=""
-                        />{" "}
-                        69 downloadable resources
-                      </li>
-                      <li>
-                        <img
-                          src={Key}
-                          className="me-2"
-                          alt=""
-                        />{" "}
-                        Full lifetime access
-                      </li>
-                      <li>
-                        <img
-                          src={Mobile}
-                          className="me-2"
-                          alt=""
-                        />{" "}
-                        Access on mobile and TV
-                      </li>
-                      <li>
-                        <img
-                          src={Cloud}
-                          className="me-2"
-                          alt=""
-                        />{" "}
-                        Assignments
-                      </li>
-                      <li>
-                        <img
-                          src={Teacher}
-                          className="me-2"
-                          alt=""
-                        />{" "}
-                        Certificate of Completion
-                      </li>
-                    </ul>
                   </div>
-                </div>
-                {/* /Include */}
-                {/* Features */}
-                <div className="card feature-sec">
-                  <div className="card-body">
-                    <div className="cat-title">
-                      <h4>Includes</h4>
+                  {/* /Include */}
+                  {/* Features */}
+                  <div className="card feature-sec">
+                    <div className="card-body">
+                      <div className="cat-title">
+                        <h4>Includes</h4>
+                      </div>
+                      <ul>
+                        <li>
+                          <img
+                            src={Users}
+                            className="me-2"
+                            alt=""
+                          />{" "}
+                          Enrolled: <span>{courseDetails?.InstrutorId?.students} students</span>
+                        </li>
+                        <li>
+                          <img
+                            src={Timer2}
+                            className="me-2"
+                            alt=""
+                          />{" "}
+                          Duration: <span>20 hours</span>
+                        </li>
+                        <li>
+                          <img
+                            src={Chapter}
+                            className="me-2"
+                            alt=""
+                          />{" "}
+                          Chapters: <span>{courseDetails?.lectures?.length}</span>
+                        </li>
+                        <li>
+                          <img
+                            src={Video2}
+                            className="me-2"
+                            alt=""
+                          />{" "}
+                          Video:<span> 12 hours</span>
+                        </li>
+                        <li>
+                          <img
+                            src={Chart}
+                            className="me-2"
+                            alt=""
+                          />{" "}
+                          Level: <span>{courseDetails?.level}</span>
+                        </li>
+                      </ul>
                     </div>
-                    <ul>
-                      <li>
-                        <img
-                          src={Users}
-                          className="me-2"
-                          alt=""
-                        />{" "}
-                        Enrolled: <span>{courseDetails?.InstrutorId?.students} students</span>
-                      </li>
-                      <li>
-                        <img
-                          src={Timer2}
-                          className="me-2"
-                          alt=""
-                        />{" "}
-                        Duration: <span>20 hours</span>
-                      </li>
-                      <li>
-                        <img
-                          src={Chapter}
-                          className="me-2"
-                          alt=""
-                        />{" "}
-                        Chapters: <span>{courseDetails?.lectures?.length}</span>
-                      </li>
-                      <li>
-                        <img
-                          src={Video2}
-                          className="me-2"
-                          alt=""
-                        />{" "}
-                        Video:<span> 12 hours</span>
-                      </li>
-                      <li>
-                        <img
-                          src={Chart}
-                          className="me-2"
-                          alt=""
-                        />{" "}
-                        Level: <span>{courseDetails?.level}</span>
-                      </li>
-                    </ul>
                   </div>
+                  {/* /Features */}
                 </div>
-                {/* /Features */}
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
         <Footer4 />
 

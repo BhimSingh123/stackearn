@@ -101,7 +101,7 @@ export default function InstructorGrid() {
                   {/* Instructor List */}
                   {listing && listing?.map((item, index) => (
 
-                    <div className="col-lg-3 col-md-6 d-flex" key={index}>
+                    <div className="col-lg-3 col-md-6  d-flex" key={index}>
                       <div className="instructor-box flex-fill">
                         <div className="instructor-img">
                           <img className="img-fluid" alt="" src={User11 || item?.profileImage} />

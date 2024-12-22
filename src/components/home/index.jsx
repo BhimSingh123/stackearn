@@ -12,7 +12,6 @@ import {
   Shape02,
   Pattern03,
   Pattern04,
-  User1,
   Shape01,
   Time,
   Winning,
@@ -57,6 +56,7 @@ import CountUp from "react-countup";
 import Testinomal from "../home3/Testinomal";
 import { Footer4 } from "../footer4";
 import Listing from "../Api/Listing";
+import { FaRupeeSign } from "react-icons/fa";
 
 const options = [
   { label: "Category", value: "Category" },
@@ -71,7 +71,7 @@ export const Home = () => {
   const mobileSidebar = useSelector(
     (state) => state.sidebarSlice.expandMenu
   );
- 
+
   const formatValue = (value) => `${Math.floor(value)}`;
 
   const style = {
@@ -131,7 +131,7 @@ export const Home = () => {
   const [loading, setLoading] = useState(false);
   const [listing, setListing] = useState([]);
 
-  console.log("listing", listing ,loading)
+  console.log("listing", listing, loading)
 
   const fetchMarketLists = async () => {
     setLoading(true);
@@ -827,109 +827,113 @@ export const Home = () => {
             </div>
             <div className="row">
               <div className="featured-courses-five-tab">
-                  
-                      <div className="ux-design-five">
-                        <div className="row">
-                          {/* Col */}
-                          {listing && listing?.map((item,index)=>(
 
-                          <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12" key={index}>
-                            <div className="course-box-five">
-                              <div className="product-five">
-                                {/* Product image*/}
-                                <div className="product-img-five">
-                                <Link to={`/course-details/${item?._id}`}>
+                <div className="ux-design-five">
+                  <div className="row">
+                    {/* Col */}
+                    {listing && listing?.map((item, index) => (
+                      <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12" key={index}>
+                        <div className="course-box-five">
+                          <div className="product-five">
+                            {/* Product image*/}
+                            <div className="product-img-five">
+                              <Link to={`/course-details/${item?._id}`}>
 
-                                    <img
-                                      className="img-fluid"
-                                      alt=""
-  src={item?.courseImage ||FeaturedCourse5 }
-                                    />
-                                  </Link>
-                                  <div className="heart-five">
-                                    <Link to="#">
-                                      <i className="fa-regular fa-heart"></i>
-                                    </Link>
-                                  </div>
-                                </div>
-                                {/* Product image*/}
-
-                                {/* Product Content*/}
-                                <div className="product-content-five">
-                                  <div className="course-group-five">
-                                    <div className="course-group-img-five">
-                                      <Link to={`/course-details/${item?._id}`}>
-                                        <img
-                                          src={item?.InstrutorId?.profileImage || User1}
-                                          alt=""
-                                          className="img-fluid"
-                                        />
-                                      </Link>
-                                      <h6>
-                                        <Link to={`/course-details/${item?._id}`}>
-                                      {item?.InstrutorId?.firstName }
-                                        </Link>
-                                      </h6>
-                                    </div>
-                                    <div className="course-share-five">
-                                    <div className="rating">
-                            {Array.from({ length: 5 }).map((_, index) => (
-                              <i
-                                key={index}
-                                className={`fas fa-star ${index < item?.InstrutorId?.rating ? "filled" : ""}`}
-                              ></i>
-                            ))}
-                            <span className="d-inline-block average-rating">
-                              <span>{item?.InstrutorId?.rating}</span>
-                            </span>
-                          </div>
-                                    </div>
-                                  </div>
-                                  <h3 className="product-five-title">
-                                    <Link to={`/course-details/${item?._id}`} className="data-limit">
-                                     {item?.description}
-                                    </Link>
-                                  </h3>
-                                  <div className="info-five-middle">
-                                    <div className="course-view-five">
-                                      <span className="me-2">
-                                        <Link to="#">
-                                          <i className="fa-regular fa-clockss"></i>
-                                        </Link>
-                                      </span>
-                                      <p>{item?.InstrutorId?.designation}</p>
-                                    </div>
-                                    <div className="rating-img">
-                                      <span className="me-2">
-                                        <i className="fa-solid fa-book-open"></i>
-                                      </span>
-                                      <p>{item?.InstrutorId?.lessions} Lesson</p>
-                                    </div>
-                                  </div>
-                                  <div className="price-five-group">
-                                    <p>{item?.title}</p>
-                                    <h3>{item?.price}</h3>
-                                  </div>
-                                </div>
-                                {/* Product Content*/}
-                              </div>
-                              {/* Ovelay button */}
-                              <div className="joing-course-ovelay">
-                                <Link
-                                  to={`/course-details/${item?._id}`}
-                                  className="joing-course-btn"
-                                >
-                                  Join Course
+                                <img
+                                  className="img-fluid"
+                                  alt=""
+                                  src={item?.courseImage || FeaturedCourse5}
+                                />
+                              </Link>
+                              <div className="heart-five">
+                                <Link to="#">
+                                  <i className="fa-regular fa-heart"></i>
                                 </Link>
                               </div>
-                              {/* Ovelay button */}
                             </div>
+                            {/* Product image*/}
+
+                            {/* Product Content*/}
+                            <div className="product-content-five">
+                              <div className="course-group-five">
+                                <div className="course-group-img-five">
+                                  {/* <Link to={`/course-details/${item?._id}`}>
+                                    <img
+                                      src={item?.InstrutorId?.profileImage || User1}
+                                      alt=""
+                                      className="img-fluid"
+                                    />
+                                  </Link> */}
+                                  <h6>
+                                    <Link to={`/course-details/${item?._id}`}>
+                                      {item?.title}
+                                    </Link>
+                                  </h6>
+                                </div>
+                                <div className="course-share-five">
+                                  <div className="rating">
+                                    {Array.from({ length: 5 }).map((_, index) => (
+                                      <i
+                                        key={index}
+                                        className={`fas fa-star ${index < item?.InstrutorId?.rating ? "filled" : ""}`}
+                                      ></i>
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
+                              <h3 className="product-five-title">
+                                <Link to={`/course-details/${item?._id}`} className="data-limit">
+                                  {item?.description}
+                                </Link>
+                              </h3>
+                              <div className="info-five-middle">
+                                <div className="course-view-five">
+                                  <span className="me-2">
+                                    <Link to="#">
+                                      <i className="fa-regular fa-clockss"></i>
+                                    </Link>
+                                  </span>
+                                  <p style={{ textTransform: "capitalize" }}>{item?.category}</p>
+
+                                </div>
+                                <div className="rating-img">
+                                  <span className="me-2">
+                                    <i className="fa-solid fa-book-open"></i>
+                                  </span>
+                                  <p>{item?.InstrutorId?.lessions} Lesson</p>
+                                </div>
+                              </div>
+                              <div className="course-view-five d-flex justify-content-between align-items-center ">
+                              <span className="me-3" style={{ textDecoration: "line-through" }}>
+  <FaRupeeSign size={12} className="gap-1" /> {item?.price}
+</span>
+
+                                <span className="d-flex align-items-center">
+                                  <FaRupeeSign size={12} className="gap-1" />
+                                  <span >{item?.discountPrice}</span>
+                                </span>
+                              </div>
+
+                            </div>
+                            {/* Product Content*/}
                           </div>
-                          ))}
-                          {/* Col */}
+                          {/* Ovelay button */}
+                          <div className="joing-course-ovelay">
+                            <Link
+                              to={`/course-details/${item?._id}`}
+                              className="joing-course-btn"
+                            >
+                              Join Course
+                            </Link>
+                          </div>
+                          {/* Ovelay button */}
                         </div>
                       </div>
-                    {/* All Category*/}
+                    ))}
+                    {/* Col */}
+                  </div>
+                </div>
+                {/* All Category*/}
               </div>
             </div>
           </div>

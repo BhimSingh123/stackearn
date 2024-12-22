@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import StudentSidebar from "../sidebar";
 import {
   Icon1,
-  Icon2,
+  People,
   course02,
 } from "../../imagepath";
 import { Link } from "react-router-dom";
@@ -12,6 +12,7 @@ import LoadingPage from "../../../LoadingPage";
 import Delete from "../components/Delete";
 import { MdModeEditOutline } from "react-icons/md";
 import SubDashboard from "../components/SubDashboard";
+import { FaRupeeSign } from "react-icons/fa";
 
 
 const Courses = () => {
@@ -94,8 +95,8 @@ const Courses = () => {
                                           </Link>
                                           <div className="price">
                                             <h3>
-                                              ${course.discountPrice }
-                                              <span>${course.price ||"0"}</span>
+                                              <FaRupeeSign size={12}/>{course.discountPrice }
+                                              <span className="gap-3">  <FaRupeeSign size={12}/> {course.price ||"0"}</span>
                                             </h3>
                                           </div>
                                         </div>
@@ -116,8 +117,8 @@ const Courses = () => {
                                               <p>{course.lessons || "0"}+ Lessons</p>
                                             </div>
                                             <div className="course-view d-flex align-items-center">
-                                              <img src={Icon2} alt="Duration Icon" />
-                                              <p>{course.duration || "0hr"} Duration</p>
+                                               <img src={People} alt="" />
+                                              <p>{course.duration || "0hr"}</p>
                                             </div>
                                           </div>
                                           <div className="rating mb-0">

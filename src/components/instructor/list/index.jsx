@@ -102,26 +102,35 @@ export const InstructorList = () => {
                 <div className="row">
                   {/* Instructor List */}
                   {listing && listing?.map((item, index) => (
-                    <div className="col-lg-6 d-flex" key={index}>
+                    <div className="col-lg-12 d-flex" key={index}>
                       <div className="instructor-list flex-fill">
-                        <div className="instructor-img">
+                        <div className="instructor-img text-center">
                           <Link to="/instructor/instructor-profile">
                             <img className="img-fluid" alt="" src={User11} />
                           </Link>
+                          <div className="d-flex flex-column">
+                            <h5 className="d-block d-md-none">
+                              {item?.firstName} {item?.lastName}
+                            </h5>
+                            <h6 className="d-block d-md-none">
+                              {item?.designation}
+                            </h6>
+                          </div>
+
                         </div>
+
                         <div className="instructor-content">
-                          <h5>
+                          <h5 className="d-none d-md-block">
                             {item?.firstName} {item?.lastName}
                           </h5>
-                          <h6>Instructor</h6>
+                          <h6 className="d-none d-md-block">
+                            {item?.designation}
+                          </h6>
+
                           <div className="instructor-info">
                             <div className="rating-img d-flex align-items-center">
                               <img src={Icon1} className="me-1" alt="" />
                               <p>{item?.lessions} Lesson</p>
-                            </div>
-                            <div className="course-view d-flex align-items-center ms-0">
-                              {/* <img src={Icon2} className="me-1" alt="" /> */}
-                              <p>{item?.designation}</p>
                             </div>
                             <div className="rating-img d-flex align-items-center">
                               <img src={UserIconSvg} className="me-1" alt="" />
@@ -134,9 +143,6 @@ export const InstructorList = () => {
                                   className={`fas fa-star ${index < item?.rating ? "filled" : ""}`}
                                 ></i>
                               ))}
-                              <span className="d-inline-block average-rating">
-                                <span>{item?.rating}</span>
-                              </span>
                             </div>
                             <Link to="#rate" className="rating-count">
                               <i className="fa-regular fa-heart"></i>

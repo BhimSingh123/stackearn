@@ -24,6 +24,7 @@ const AddCourse = () => {
     duration: "",
     InstrutorId: "",
     Id: Id,
+    courseVideo :""
   });
 
   const categoryOptions = [
@@ -132,6 +133,7 @@ const AddCourse = () => {
             level: "",
             courseImage: "",
             duration: "",
+            courseVideo:"",
           });
           setLectures([]);
         }
@@ -293,7 +295,7 @@ const AddCourse = () => {
 
                       {/* Price */}
                       <div className="mb-3">
-                        <label className="form-label">Price</label>
+                        <label className="form-label">Base Price</label>
                         <input
                           type="number"
                           className="form-control"
@@ -307,14 +309,14 @@ const AddCourse = () => {
 
                       {/* Discount Price */}
                       <div className="mb-3">
-                        <label className="form-label">Discount Price</label>
+                        <label className="form-label">Sale Price</label>
                         <input
                           type="number"
                           className="form-control"
                           name="discountPrice"
                           value={courseDetails.discountPrice}
                           onChange={handleInputChange}
-                          placeholder="Enter discount price"
+                          placeholder="Enter Sale price"
                         />
                       </div>
 
@@ -461,6 +463,21 @@ const AddCourse = () => {
                         />
                       </div>
 
+
+                      <div className="mb-3">
+                        <label className="form-label">Course Video</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="courseVideo"
+                          onChange={(e) =>
+                            setCourseDetails((prevState) => ({
+                              ...prevState,
+                              courseVideo: e.target.files[0],
+                            }))
+                          }
+                        />
+                      </div>
                       {/* Submit Button */}
                       <div className="mt-4">
                         <button
