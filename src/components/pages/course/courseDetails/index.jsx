@@ -34,9 +34,7 @@ const CourseDetails = () => {
     }
   };
 
-  useEffect(() => {
-    if (Id) fetchCourseData();
-  }, [Id]);
+
 
 
   const { Razorpay } = useRazorpay();
@@ -139,6 +137,83 @@ const CourseDetails = () => {
   };
 
 
+  const [Postreview, setPostReview] = useState({
+    name: "",
+    email: "",
+    message: "",
+    subject: "",
+    courseId: Id,
+  });
+
+  // Handle input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setPostReview((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleForms = async (e) => {
+    e.preventDefault();
+    if (loading) return;
+
+    setLoading(true);
+    const main = new Listing();
+
+    try {
+      const response = await main.ReviewSave(Postreview);
+      if (response?.data?.status === true) {
+        toast.success(response.data.message || "Operation successful");
+        if (!Id) {
+          // Clear form for new instructor
+          setPostReview({
+            name: "",
+            email: "",
+            courseId: "",
+            subject: "",
+            message: "",
+          });
+        }
+      } else {
+        toast.error(response?.data?.message || "Unexpected error occurred.");
+      }
+
+      setLoading(false);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setLoading(false);
+      toast.error(error?.response?.data?.message || "Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
+  };
+  const [content, setContent] = useState("")
+  console.log("content", content)
+  const handleBlog = async () => {
+    setLoading(true);
+    try {
+      const main = new Listing();
+      const res = await main.ReviewCourse({ courseId: Id });
+      if (res?.data?.status) {
+        setContent(res?.data?.data)
+        toast.success(res.data.message);
+
+      } else {
+        toast.error(res.data?.message);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error(error?.response?.data?.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (Id) fetchCourseData();
+    handleBlog();
+  }, [Id]);
   return (
     <>
       <div className="main-wrapper">
@@ -420,34 +495,21 @@ const CourseDetails = () => {
                         </div>
                         <div className="instructor-detail">
                           <h5>
-                            <Link to="/instructor/instructor-profile">Nicole Brown</Link>
+                            <Link to="/instructor/instructor-profile">{content?.name}</Link>
                           </h5>
-                          <p>UX/UI Designer</p>
+                          <p>{content?.email}</p>
                         </div>
                       </div>
                       <div className="rating">
-                        <i className="fas fa-star filled me-1" />
-                        <i className="fas fa-star filled me-1" />
-                        <i className="fas fa-star filled me-1" />
-                        <i className="fas fa-star filled me-1" />
-                        <i className="fas fa-star me-1" />
-                        <span className="d-inline-block average-rating">
-                          4.5 Instructor Rating
+                        <span className="text-black">
+                          {content?.courseId?.title}
                         </span>
                       </div>
                     </div>
                     <p className="rev-info">
-                      “ This is the second Photoshop course I have completed with
-                      Cristian. Worth every penny and recommend it highly. To get
-                      the most out of this course, its best to to take the
-                      Beginner to Advanced course first. The sound and video
-                      quality is of a good standard. Thank you Cristian. “
+                      {content?.message}
                     </p>
-                    <Link to="#" className=" btn-reply">
-                      {/* <i className="feather-corner-up-left" /> */}
-                      <FeatherIcon icon="corner-up-left" />
-                      Reply
-                    </Link>
+                    
                   </div>
                 </div>
                 {/* /Reviews */}
@@ -460,6 +522,9 @@ const CourseDetails = () => {
                         <div className="col-md-6">
                           <div className="input-block">
                             <input
+                              name="name"
+                              value={Postreview?.name}
+                              onChange={handleInputChange}
                               type="text"
                               className="form-control"
                               placeholder="Full Name"
@@ -470,6 +535,9 @@ const CourseDetails = () => {
                           <div className="input-block">
                             <input
                               type="email"
+                              name="email"
+                              value={Postreview?.email}
+                              onChange={handleInputChange}
                               className="form-control"
                               placeholder="Email"
                             />
@@ -478,7 +546,10 @@ const CourseDetails = () => {
                       </div>
                       <div className="input-block">
                         <input
-                          type="email"
+                          type="text"
+                          name="subject"
+                          value={Postreview?.subject}
+                          onChange={handleInputChange}
                           className="form-control"
                           placeholder="Subject"
                         />
@@ -486,13 +557,16 @@ const CourseDetails = () => {
                       <div className="input-block">
                         <textarea
                           rows={4}
+                          name="message"
+                          value={Postreview?.message}
+                          onChange={handleInputChange}
                           className="form-control"
                           placeholder="Your Comments"
                           defaultValue={""}
                         />
                       </div>
                       <div className="submit-section">
-                        <button className=" submit-btn" type="submit">
+                        <button className=" submit-btn" type="submit" onClick={handleForms}>
                           Submit
                         </button>
                       </div>

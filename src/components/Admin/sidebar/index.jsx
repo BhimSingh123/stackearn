@@ -107,17 +107,31 @@ export default function StudentSidebar() {
               <li className={`nav-item ${location.pathname === '/admin/course-list' ? 'active' : ''}`}>
                 <Link to="/admin/course-list" className="nav-link">
                   <i className="bx bxs-cart" />
-                 Course History
+                  Course History
                 </Link>
               </li>
 
               <li className={`nav-item ${location.pathname === '/admin/payment-list' ? 'active' : ''}`}>
                 <Link to="/admin/payment-list" className="nav-link">
                   <i className="bx bxs-cart" />
-                 Payment History
+                  Payment History
                 </Link>
               </li>
-                    
+
+
+
+              <li className={`nav-item ${location.pathname === '/admin/review-list' ? 'active' : ''}`}>
+                <Link to="/admin/review-list" className="nav-link">
+                  <i className="bx bxs-cart" />
+                  Review History
+                </Link>
+              </li>
+              <li className={`nav-item ${location.pathname === '/admin/blog-list' ? 'active' : ''}`}>
+                <Link to="/admin/blog-list" className="nav-link">
+                  <i className="bx bxs-cart" />
+                  Blog History
+                </Link>
+              </li>
             </ul>
             <h3>Account Settings</h3>
             <ul>

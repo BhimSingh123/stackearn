@@ -51,7 +51,7 @@ export default function Delete({ step, Id, fetchMarketLists }) {
         }
     };
 
-    
+
     const handleCourseDelete = async () => {
         setLoading(true);
         try {
@@ -63,15 +63,37 @@ export default function Delete({ step, Id, fetchMarketLists }) {
                 fetchMarketLists();
 
             } else {
-                toast.error(res.data?.message );
+                toast.error(res.data?.message);
             }
         } catch (error) {
             console.error("Error:", error);
-            toast.error(error?.response?.data?.message );
+            toast.error(error?.response?.data?.message);
         } finally {
             setLoading(false);
         }
     };
+
+    const handleBlogDelete = async () => {
+        setLoading(true);
+        try {
+            const main = new Listing();
+            const res = await main.BlogDelete({ Id });
+            if (res?.data?.status) {
+                toast.success(res.data.message);
+                toggleModal();
+                fetchMarketLists();
+
+            } else {
+                toast.error(res.data?.message);
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            toast.error(error?.response?.data?.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
 
 
     const handleClick = (e) => {
@@ -79,6 +101,8 @@ export default function Delete({ step, Id, fetchMarketLists }) {
         if (step === 1) handleUserDelete();
         else if (step === 2) handleinstrorDelete();
         else if (step === 3) handleCourseDelete();
+        else if (step === 4) handleBlogDelete();
+
 
         else console.warn("Invalid step");
     };
@@ -87,7 +111,7 @@ export default function Delete({ step, Id, fetchMarketLists }) {
         <div>
             {/* Delete Button */}
             <div onClick={toggleModal} className=" ">
-                <MdDelete size={24} className="pointer-data"/>
+                <MdDelete size={24} className="pointer-data" />
             </div>
 
 

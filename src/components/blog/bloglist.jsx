@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Blog1, Blog2, Blog3, Blog5, Icon22, Icon23, User } from "../imagepath";
 import Header from "../header";
 import { Footer4 } from "../footer4";
+import Listing from "../Api/Listing";
+import LoadingPage from "../../LoadingPage";
 
 const BlogList = () => {
+  const [loading, setLoading] = useState(false);
+  const [listing, setListing] = useState([]);
+  console.log("listing", listing)
+  const fetchBlogList = async () => {
+    setLoading(true);
+    try {
+      const main = new Listing();
+      const response = await main.BlogGet();
+      console.log("response", response)
+      setListing(response?.data?.data
+      );
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchBlogList();
+  }, []);
   return (
     <>
       <div className="main-wrapper">
@@ -13,209 +36,43 @@ const BlogList = () => {
           <div className="container mt-4">
             <div className="row">
               <div className="col-lg-9 col-md-12">
-                {/* Blog Post */}
-                <div className="blog">
-                  <div className="blog-image">
-                    <Link to="/blog-details">
-                      <img
-                        className="img-fluid"
-                        src={Blog5}
-                        alt="Post Image"
-                      />
-                    </Link>
-                  </div>
-                  <div className="blog-info clearfix">
-                    <div className="post-left">
-                      <ul>
-                        <li>
-                          <div className="post-author">
-                            <Link to="/instructor/instructor-profile">
-                              <img
-                                src={User}
-                                alt="Post Author"
-                              />
-                              <span>Ruby Perrin</span>
-                            </Link>
-                          </div>
-                        </li>
-                        <li>
+                {loading ? (<LoadingPage />) : (
+                  (listing && listing?.map((item, index) => (
+
+                    <div className="blog">
+                      <div className="blog-image">
+                        <Link to={`/blog-details/${item?._id}`}>
                           <img
                             className="img-fluid"
-                            src={Icon22}
-                            alt=""
+                            src={Blog5 || item?.Image}
+                            alt="Post Image"
                           />
-                          April 20, 2024
-                        </li>
-                        <li>
-                          <img
-                            className="img-fluid"
-                            src={Icon23}
-                            alt=""
-                          />
-                          Programming, Web Design
-                        </li>
-                      </ul>
+                        </Link>
+                      </div>
+
+                      <h3 className="blog-title">
+                        <Link to={`/blog-details/${item?._id}`}>
+                          {item?.title}
+                        </Link>
+                      </h3>
+                      <div className="blog-content blog-read">
+                        <div
+                          className="data-limit"
+                          dangerouslySetInnerHTML={{ __html: item.content }}
+                          style={{ marginTop: "1rem" }}
+                        />
+                        <Link
+                          to={`/blog-details/${item?._id}`}
+                          className="read-more btn btn-primary"
+                        >
+                          Read More
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                  <h3 className="blog-title">
-                    <Link to="/blog-details">
-                      Learn Webs Applications Development from Experts
-                    </Link>
-                  </h3>
-                  <div className="blog-content blog-read">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                      Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In
-                      nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed
-                      pretium, ligula sollicitudin laoreet viverra, tortor libero
-                      sodales leo, eget blandit nunc tortor eu nibh. Nullam
-                      mollis. Ut justo. Suspendisse potenti. Sed egestas, ante et
-                      vulputate volutpat, eros pede […]
-                    </p>
-                    <Link
-                      to="/blog-details"
-                      className="read-more btn btn-primary"
-                    >
-                      Read More
-                    </Link>
-                  </div>
-                </div>
-                {/* /Blog Post */}
+                  )))
+                )}
                 {/* Blog Post */}
-                <div className="blog">
-                  <div className="blog-image">
-                    <Link to="/blog-details">
-                      <img
-                        className="img-fluid"
-                        src={Blog5}
-                        alt="Post Image"
-                      />
-                    </Link>
-                  </div>
-                  <div className="blog-info clearfix">
-                    <div className="post-left">
-                      <ul>
-                        <li>
-                          <div className="post-author">
-                            <Link to="/instructor/instructor-profile">
-                              <img
-                                src={User}
-                                alt="Post Author"
-                              />
-                              <span>Ruby Perrin</span>
-                            </Link>
-                          </div>
-                        </li>
-                        <li>
-                          <img
-                            className="img-fluid"
-                            src={Icon22}
-                            alt=""
-                          />
-                          April 20, 2024
-                        </li>
-                        <li>
-                          <img
-                            className="img-fluid"
-                            src={Icon23}
-                            alt=""
-                          />
-                          Programming, Web Design
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <h3 className="blog-title">
-                    <Link to="/blog-details">
-                      Learn Webs Applications Development from Experts
-                    </Link>
-                  </h3>
-                  <div className="blog-content blog-read">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                      Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In
-                      nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed
-                      pretium, ligula sollicitudin laoreet viverra, tortor libero
-                      sodales leo, eget blandit nunc tortor eu nibh. Nullam
-                      mollis. Ut justo. Suspendisse potenti. Sed egestas, ante et
-                      vulputate volutpat, eros pede […]
-                    </p>
-                    <Link
-                      to="/blog-details"
-                      className="read-more btn btn-primary"
-                    >
-                      Read More
-                    </Link>
-                  </div>
-                </div>
-                {/* /Blog Post */}
-                {/* Blog Post */}
-                <div className="blog">
-                  <div className="blog-image">
-                    <Link to="/blog-details">
-                      <img
-                        className="img-fluid"
-                        src={Blog5}
-                        alt="Post Image"
-                      />
-                    </Link>
-                  </div>
-                  <div className="blog-info clearfix">
-                    <div className="post-left">
-                      <ul>
-                        <li>
-                          <div className="post-author">
-                            <Link to="/instructor/instructor-profile">
-                              <img
-                                src={User}
-                                alt="Post Author"
-                              />
-                              <span>Ruby Perrin</span>
-                            </Link>
-                          </div>
-                        </li>
-                        <li>
-                          <img
-                            className="img-fluid"
-                            src={Icon22}
-                            alt=""
-                          />
-                          April 20, 2024
-                        </li>
-                        <li>
-                          <img
-                            className="img-fluid"
-                            src={Icon23}
-                            alt=""
-                          />
-                          Programming, Web Design
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <h3 className="blog-title">
-                    <Link to="/blog-details">
-                      Learn Webs Applications Development from Experts
-                    </Link>
-                  </h3>
-                  <div className="blog-content blog-read">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                      Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In
-                      nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed
-                      pretium, ligula sollicitudin laoreet viverra, tortor libero
-                      sodales leo, eget blandit nunc tortor eu nibh. Nullam
-                      mollis. Ut justo. Suspendisse potenti. Sed egestas, ante et
-                      vulputate volutpat, eros pede […]
-                    </p>
-                    <Link
-                      to="/blog-details"
-                      className="read-more btn btn-primary"
-                    >
-                      Read More
-                    </Link>
-                  </div>
-                </div>
+
                 {/* /Blog Post */}
                 {/* Blog pagination */}
                 <div className="row">

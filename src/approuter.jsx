@@ -154,6 +154,12 @@ import ViewProfile from "./components/Admin/Instrutor/ViewProfile.jsx";
 import AddCourses from "./components/Admin/addCourse/index.jsx";
 import CourseLists from "./components/Admin/addCourse/Courses.jsx";
 import PaymentList from "./components/Admin/Payment/List.js"
+import ReviewLists from "./components/Admin/ReviewList/ReviewList.jsx"
+import BlogView from "./components/Admin/BlogAdd/BlogView.jsx"
+import BlogAdd from "./components/Admin/BlogAdd/AddBlog.jsx"
+
+
+
 
 
 
@@ -173,7 +179,7 @@ const Approuter = () => {
         <Route path="/blog-grid" element={<BlogGrid />} />
         <Route path="/blog-masonry" element={<BlogMasonry />} />
         <Route path="/blog-modern" element={<BlogModern />} />
-        <Route path="/blog-details" element={<BlogDetails />} />
+        <Route path="/blog-details/:Id" element={<BlogDetails />} />
 
         {/* Pages */}
         <Route path="/page-notification" element={<Notification />} />
@@ -596,6 +602,14 @@ const Approuter = () => {
         <Route path="/admin/update-course/:Id" element={<AddCourses />} />
         <Route path="/admin/course-list" element={<CourseLists />} />
         <Route path="/admin/payment-list" element={<PaymentList />} />
+        <Route path="/admin/review-list" element={<ReviewLists />} />
+        <Route path="/admin/blog-list" element={<BlogView/>} />
+        <Route path="/admin/blog-add" element={<BlogAdd/>} />
+        <Route path="/admin/blog-update/:Id" element={<BlogAdd/>} />
+
+
+
+
 
 
 

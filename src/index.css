@@ -10,6 +10,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.blog-limit {
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* Adjust this number to set how many lines you want to display */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .chat-wrapper .content .sidebar-group .sidebar {
   border-radius: 10px;
 }

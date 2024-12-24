@@ -67,7 +67,7 @@ class Listing extends Component {
     }
 
     async userprfileget(data) {
-        return Api.post("/user/profile-data" ,data)
+        return Api.post("/user/profile-data", data)
     }
 
 
@@ -76,7 +76,7 @@ class Listing extends Component {
     }
 
     async userprfileId(data) {
-        return Api.post("/user/profile_id" ,data)
+        return Api.post("/user/profile_id", data)
     }
 
     async userBankData(data) {
@@ -87,7 +87,7 @@ class Listing extends Component {
         return Api.post("/instrutor/instrutor_post", data)
     }
 
-    
+
     async InstrutorGet() {
         return Api.get("/instrutor/instrutor_get")
     }
@@ -95,12 +95,12 @@ class Listing extends Component {
     async InstrutorGetId(Id) {
         return Api.get(`/instrutor/instrutor_get/${Id}`)
     }
-    
+
     async UpdateInstructor(data) {
-        return Api.post("/instrutor/instrutor_update" , data)
+        return Api.post("/instrutor/instrutor_update", data)
     }
 
-    
+
     async InstrutorDelete(data) {
         return Api.post("/instrutor/instrutor_delete", data)
     }
@@ -119,24 +119,65 @@ class Listing extends Component {
     }
 
     async Updatecourse(data) {
-        return Api.post("/course/course_update" , data)
+        return Api.post("/course/course_update", data)
     }
 
-    
+
     async courseDelete(data) {
         return Api.post("/course/course_delete", data)
     }
 
-    async PaymentAdd(data){
+    async PaymentAdd(data) {
         return Api.post("/payment/create", data)
     }
 
-    async PaymentSave(data){
+    async PaymentSave(data) {
         return Api.post("/payment/verify-payment", data)
     }
-    async PaymentList(){
+
+
+    async PaymentList() {
         return Api.get("/payment/paymentget")
     }
+    // Rieview
+    async ReviewSave(data) {
+        return Api.post("/review/review_add", data)
+    }
+
+    async ReviewGet() {
+        return Api.get("/review/review_get")
+    }
+
+
+    async ReviewStatus(data) {
+        return Api.post("/review/review_status", data)
+    }
+
+    async ReviewCourse(data) {
+        return Api.post("/review/review_course", data)
+    }
+    
+    // Blog Add 
+    async BlogAdd(data) {
+        return Api.post("/blog/create", data)
+    }
+
+    async BlogGet() {
+        return Api.get(`/blog/get`)
+    }
+
+    async BlogGetId(Id) {
+        return Api.get(`/blog/get/${Id}`)
+    }
+
+    async BlogDelete(data) {
+        return Api.post("/blog/delete", data)
+    }
+
+    async blogupdate(data) {
+        return Api.post("/blog/update", data)
+    }
+
     render() {
         return (
             <div>
